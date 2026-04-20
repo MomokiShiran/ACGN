@@ -144,23 +144,30 @@
     // 夜间模式
 	$(document).on('click', '.switch-dark-mode', function(event) {
 		event.preventDefault();
-        $.ajax({
-            url: theme.ajaxurl,
-            type: 'POST',
-            dataType: 'html',
-            data: {
-				mode_toggle: $('body').hasClass('io-black-mode') === true ? 1 : 0,
-				action: 'switch_dark_mode',
-            },
-        })
-        .done(function(response) {
-			$('body').toggleClass('io-black-mode '+theme.defaultclass);
-            switch_mode(); 
-            $("#"+ $('.switch-dark-mode').attr('aria-describedby')).remove();
-            //$('.switch-dark-mode').removeAttr('aria-describedby');
-        })
+        
+        // 使用localStorage保存模式偏好，不依赖后端
+        var isDark = $('body').hasClass('io-black-mode');
+        var newClass = isDark ? theme.defaultclass : 'io-black-mode';
+        
+        // 切换body类
+        $('body').removeClass('io-black-mode ' + theme.defaultclass).addClass(newClass);
+        
+        // 保存到localStorage
+        localStorage.setItem('io-theme-mode', newClass);
+        
+        // 更新UI
+        switch_mode(); 
+        
+        // 移除旧的tooltip
+        $("#"+ $('.switch-dark-mode').attr('aria-describedby')).remove();
     });
     function switch_mode(){
+        // 从localStorage读取并应用模式
+        var savedMode = localStorage.getItem('io-theme-mode');
+        if(savedMode && savedMode !== '') {
+            $('body').removeClass('io-black-mode ' + theme.defaultclass).addClass(savedMode);
+        }
+        
         if($('body').hasClass('io-black-mode')){
             if($(".switch-dark-mode").attr("data-original-title"))
                 $(".switch-dark-mode").attr("data-original-title","日间模式");
