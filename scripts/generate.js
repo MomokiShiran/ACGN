@@ -232,7 +232,7 @@ function generateSiteDetailPage(site) {
                 <div class="card-body p-0">
                     <div class="apd-bg"></div>
                     <div class="panel-body my-4">
-                        <p>${site.description}</p>
+                        <p>${site.detail || site.description}</p>
                     </div>
                 </div>
         </div>
