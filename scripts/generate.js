@@ -83,7 +83,7 @@ function generateSiteDetailPage(site) {
 <meta property="og:type" content="article">
 <meta property="og:url" content="sites/${site.id}.html">
 <meta property="og:title" content="${site.name} | MyACG">
-<meta property="og:description" content="${site.description}">
+<meta property="og:description" content="${site.detail || site.description}">
 <meta property="og:image" content="https://favicon.im/${new URL(site.url).hostname}">
 <meta property="og:site_name" content="MyACG">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
