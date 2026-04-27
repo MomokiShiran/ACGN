@@ -408,7 +408,7 @@ function generateTrashPage() {
                 </div>
             </div>
         </div>
-        <div id="content" class="content-site customize-site">
+        <div id="content" class="container my-2 my-md-3">
             <div class="row">
                 <div class="col-lg-12">
                     <h4 class="text-gray text-lg mb-4"><i class="site-tag iconfont icon-tag icon-lg me-1"></i>失效归档</h4>
