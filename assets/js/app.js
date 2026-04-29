@@ -1,7 +1,7 @@
 (function($){ 
     $(document).ready(function(){
         // 侧栏菜单初始状态设置
-        if(theme.minNav != '1')trigger_resizable(true);
+        trigger_resizable(true);
         // 主题状态
         switch_mode(); 
         // 搜索模块
@@ -21,9 +21,7 @@
     });
     function go_resize() {
         stickFooter(); 
-        //if(theme.minNav != '1'){
-            trigger_resizable();
-        //}
+        trigger_resizable();
     }
     // count-a数字动画
     $('.count-a').each(function () {
@@ -38,103 +36,10 @@
         });
     });
     $(document).on('click', "a[target!='_blank']", function() {
-        if( theme.loading=='1' && $(this).attr('href') && $(this).attr('href').indexOf("#") != 0 && $(this).attr('href').indexOf("java") != 0 && !$(this).data('fancybox') ){
-            var load = $('<div id="load-loading"></div>');
-            $("body").prepend(load);
-            load.animate({opacity:'1'},200,'swing').delay(3000).hide(300,function(){ load.remove() });
-        }
-        
         // 关闭移动端导航栏模态框
         if ($('#sidebar').hasClass('show')) {
             $('#sidebar').modal('hide');
         }
-    });
-	// 点赞
-	$(".btn-like").click(function() {
-		if ($(this).hasClass('liked')) {
-			showAlert(JSON.parse('{"status":3,"msg":"您已经赞过了!"}'));
-		} else {
-            var icop = $(this).children('.flex-column');
-			$('.btn-like').addClass('liked'); 
-			$.ajax({
-				type : 'POST',
-				url : theme.ajaxurl,  
-				data : {
-					action: "post_like",
-                    post_id: $(this).data("id"),
-                    ticket: $(this).data("ticket")
-                },
-                success : function( data ){
-                    $am = $('<i class="iconfont icon-heart" style="color: #f12345;transform: scale(1) translateY(0);position: absolute;transition: .6s;opacity: 1;"></i>');
-                    icop.prepend($am);
-					showAlert(JSON.parse('{"status":1,"msg":"谢谢点赞!"}'));
-                    $('.like-count').html(data);
-                    $am.addClass('home-like-hide');
-				},
-                error:function(){ 
-                    showAlert(JSON.parse('{"status":4,"msg":"网络错误 --."}'));
-                }
-            });
-		}
-		return false;
-    });
-    // 卡片点赞
-    $(document).on('click', '.home-like', function() {
-		if ($(this).hasClass('liked')) {
-			showAlert(JSON.parse('{"status":3,"msg":"您已经赞过了!"}'));
-		} else {
-            var icop = $(this);
-            var id = $(this).data("id");
-			$(this).addClass('liked'); 
-			$.ajax({
-				type : 'POST',
-				url : theme.ajaxurl,  
-				data : {
-					action: "post_like",
-					post_id: id
-				},
-				success : function( data ){
-                    $am = $('<i class="iconfont icon-heart" style="color: #f12345;transform: scale(1) translateY(0);position: absolute;transition: .6s;opacity: 1;"></i>');
-                    icop.prepend($am);
-                    showAlert(JSON.parse('{"status":1,"msg":"谢谢点赞!"}'));
-                    $(".home-like-"+id).html(data);
-                    $am.addClass('home-like-hide');
-				},
-                error:function(){ 
-					showAlert(JSON.parse('{"status":4,"msg":"网络错误 --."}'));
-                }
-			});
-		}
-		return false;
-    });
-    //未开启详情页计算访客方法
-    $(document).on('click', '.url-card a.is-views[data-id]', function() {
-        $.ajax({
-            type:"GET",
-            url:theme.ajaxurl,
-            data:{
-                action:'io_postviews',
-                postviews_id:$(this).data('id'),
-            },
-            cache:!1,
-        });
-    });
-    // app下载统计
-    $(document).on('click', 'a.down_count', function() {
-        var mm = document.getElementById( $(this).data("mmid") ); 
-        if( mm ){
-            mm.select();
-            document.execCommand("Copy");
-            alert("网盘密码已复制，点“确定”进入下载页面。");
-        }
-        $.ajax({
-            type:"POST",
-            url:theme.ajaxurl,
-            data: $(this).data(),
-            success : function( data ){
-                $('.down-count-text').html(data);
-            }
-        }); 
     });
     // 夜间模式
 	$(document).on('click', '.switch-dark-mode', function(event) {
@@ -142,10 +47,10 @@
         
         // 使用localStorage保存模式偏好，不依赖后端
         var isDark = $('body').hasClass('io-black-mode');
-        var newClass = isDark ? theme.defaultclass : 'io-black-mode';
+        var newClass = isDark ? 'io-grey-mode' : 'io-black-mode';
         
         // 切换body类
-        $('body').removeClass('io-black-mode ' + theme.defaultclass).addClass(newClass);
+        $('body').removeClass('io-black-mode io-grey-mode').addClass(newClass);
         
         // 保存到localStorage
         localStorage.setItem('io-theme-mode', newClass);
@@ -160,7 +65,7 @@
         // 从localStorage读取并应用模式
         var savedMode = localStorage.getItem('io-theme-mode');
         if(savedMode && savedMode !== '') {
-            $('body').removeClass('io-black-mode ' + theme.defaultclass).addClass(savedMode);
+            $('body').removeClass('io-black-mode io-grey-mode').addClass(savedMode);
         }
         
         if($('body').hasClass('io-black-mode')){
@@ -258,7 +163,7 @@
     var isMin = false,
         isMobileMin = false;
     function trigger_resizable( isNoAnim=false ) {
-        if( (theme.minNav == '1' && !isMin && 767.98<$(window).width() )||(!isMin && 767.98<$(window).width() && $(window).width()<1024) ){
+        if(!isMin && 767.98<$(window).width() && $(window).width()<1024){
             //$('#mini-button').removeAttr('checked');
             $('#mini-button').prop('checked', false);
             trigger_lsm_mini(isNoAnim);
@@ -268,7 +173,7 @@
                 isMobileMin = false;
             }
         }
-        else if( ( theme.minNav != '1')&&((isMin && $(window).width()>=1024) || ( isMobileMin && !isMin && $(window).width()>=1024 ) ) ){
+        else if((isMin && $(window).width()>=1024) || ( isMobileMin && !isMin && $(window).width()>=1024 )){
             $('#mini-button').prop('checked', true);
             trigger_lsm_mini(isNoAnim);
             isMin = false;

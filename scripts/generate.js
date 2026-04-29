@@ -24,7 +24,7 @@ function generateSiteCard(site, isRelated = false) {
                         <div class="card-body">
                             <div class="url-content d-flex align-items-center">
                                 <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">
-                                    <img class="lazy" src="assets/images/favicon.png" data-src="${faviconUrl}" onerror="this.src='assets/images/favicon.png'">
+                                    <img loading="lazy" src="${faviconUrl}" onerror="this.src='assets/images/favicon.png'">
                                 </div>
                                 <div class="url-info flex-fill">
                                     <div class="text-sm overflowClip_1">
@@ -47,7 +47,7 @@ function generateSiteCard(site, isRelated = false) {
                         <div class="card-body">
                             <div class="url-content d-flex align-items-center">
                                 <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">
-                                    <img class="lazy" src="assets/images/favicon.png" data-src="${faviconUrl}" onerror="this.src='assets/images/favicon.png'">
+                                    <img loading="lazy" src="${faviconUrl}" onerror="this.src='assets/images/favicon.png'">
                                 </div>
                                 <div class="url-info flex-fill">
                                     <div class="text-sm overflowClip_1">
@@ -295,12 +295,7 @@ function generateSiteDetailPage(site) {
         </footer>
     </div>
 </div>
-<script type="text/javascript">
-var theme = {"ajaxurl":"","addico":"","order":"asc","formpostion":"top","defaultclass":"io-grey-mode","isCustomize":"0","icourl":"","icopng":"","urlformat":"0","customizemax":"10","newWindow":"1","lazyload":"0","minNav":"","loading":"0"};
-</script>
 <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
-<script src="../assets/js/theia-sticky-sidebar.js?ver=2.0406"></script>
-<script src="../assets/js/lazyload.min.js?ver=2.0406"></script>
 <script src="../assets/js/app.js?ver=2.0406"></script>
 <script>
 $(document).on('click','a.smooth-n',function(ev) {
@@ -327,7 +322,7 @@ function generateTrashPage() {
                                     <div class="card-body">
                                         <div class="url-content d-flex align-items-center">
                                             <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">
-                                                <img class="lazy" src="../assets/images/favicon.png" data-src="${faviconUrl}" onerror="this.src='../assets/images/favicon.png'">
+                                                <img loading="lazy" src="${faviconUrl}" onerror="this.src='../assets/images/favicon.png'">
                                             </div>
                                             <div class="url-info flex-fill">
                                                 <div class="text-sm overflowClip_1"><strong>${site.name}</strong></div>
@@ -539,12 +534,7 @@ ${siteCards}
         </footer>
     </div>
 </div>
-<script type="text/javascript">
-var theme = {"ajaxurl":"","addico":"","order":"asc","formpostion":"top","defaultclass":"io-grey-mode","isCustomize":"0","icourl":"","icopng":"","urlformat":"0","customizemax":"10","newWindow":"1","lazyload":"0","minNav":"","loading":"0"};
-</script>
 <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
-<script src="../assets/js/theia-sticky-sidebar.js?ver=2.0406"></script>
-<script src="../assets/js/lazyload.min.js?ver=2.0406"></script>
 <script src="../assets/js/app.js?ver=2.0406"></script>
 <script>
 $(document).on('click','a.smooth-n',function(ev) {
