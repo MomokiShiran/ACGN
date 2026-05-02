@@ -583,17 +583,19 @@ function initTooltips(selector) {
 // 平滑滚动功能
 $(document).ready(function() {
     setTimeout(function() {
-        $('a.smooth[href="' + window.location.hash + '"]').click();
+        $('a.sidebar-menu-link[href="' + window.location.hash + '"]').click();
     }, 300);
 
-    $(document).on('click', 'a.smooth', function(ev) {
-        ev.preventDefault();
+    $(document).on('click', 'a.sidebar-menu-link', function(ev) {
         var href = $(this).attr("href");
-        var target = document.querySelector(href);
-        if (target) {
-            if ($('.sidebar').hasClass('show')) $('.sidebar').removeClass('show');
-            var offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
-            window.scrollTo({top: offset, behavior: 'smooth'});
+        if (href && href.startsWith('#term-')) { // 只处理锚点链接
+            ev.preventDefault();
+            var target = document.querySelector(href);
+            if (target) {
+                if ($('.sidebar').hasClass('show')) $('.sidebar').removeClass('show');
+                var offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
+                window.scrollTo({top: offset, behavior: 'smooth'});
+            }
         }
     });
 });

@@ -181,7 +181,7 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--color-scrollbar) var(
 .page-container > .flex-fill { min-width: 0; }
 .main-content { flex-direction: column; display: flex; }
 .content-site { padding: 0 var(--space-8); width: 100%; margin-right: auto; margin-left: auto; }
-.down-content img, .site-content img, .apd img, .post-apd img, .panel-body img { max-width: 100%; height: auto; }
+.down-content-img, .site-content-img, .apd-img, .post-apd-img, .panel-body-img { max-width: 100%; height: auto; }
 
 .nothing {
   padding: var(--space-5) 0;
@@ -245,8 +245,8 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--color-scrollbar) var(
 .overflow-y-auto { overflow-y: auto; overflow-x: unset; }
 
 .btn.focus, .btn:focus { outline: 0; box-shadow: none; line-height: var(--line-height-normal); }
-.tooltip-inner img { margin: var(--space-xs) 0; }
-.tooltip-inner p { color: var(--color-bg-white); line-height: var(--line-height-normal); }
+.tooltip-inner-img { margin: var(--space-xs) 0; }
+.tooltip-inner-text { color: var(--color-bg-white); line-height: var(--line-height-normal); }
 .modal-backdrop { z-index: var(--z-modal-backdrop) !important; backdrop-filter: blur(10px); background: rgba(0,0,0,.5); }
 .modal-backdrop.show { opacity: 1; }
 .modal { z-index: var(--z-modal); }
@@ -298,8 +298,8 @@ html, body { scrollbar-width: thin; scrollbar-color: var(--color-scrollbar) var(
 
 .btn-outline-danger { color: var(--color-primary); border-color: var(--color-primary); font-weight: var(--font-weight-normal); }
 .btn-outline-danger:hover { color: var(--color-bg-white); border-color: var(--color-primary); background-color: var(--color-primary); }
-.text-muted a { color: #6c757d; line-height: var(--line-height-normal); }
-.text-muted a:hover { color: #5c656d; }
+.text-muted-link { color: #6c757d; line-height: var(--line-height-normal); }
+.text-muted-link:hover { color: #5c656d; }
 
 .custom-switch .custom-control-label::before { height: 1.125rem; width: 2rem; border-radius: 0.57rem; background-color: transparent; }
 .custom-switch .custom-control-label::after { width: calc(1.125rem - 4px); height: calc(1.125rem - 4px); }
