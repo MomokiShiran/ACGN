@@ -2020,5 +2020,139 @@
       "isNew": false,
       "detail": "不支持支付宝/微信支付。"
     }
+  ],
+  "trashSites": [
+    {
+      "name": "异度姬",
+      "description": "以漫资讯丨游戏测评丨剪辑工程资料丨壁纸库为主",
+      "url": "#",
+      "id": 1000
+    },
+    {
+      "name": "ACG调查小队",
+      "description": "动漫资源网站，已关闭注册",
+      "url": "#",
+      "id": 1001
+    },
+    {
+      "name": "ACG萌图",
+      "description": "某个人站，分享P站美图",
+      "url": "#",
+      "id": 1002
+    },
+    {
+      "name": "星宫BT",
+      "description": "综合ACG资源bt下载站",
+      "url": "#",
+      "id": 1003
+    },
+    {
+      "name": "吐槽弹幕网",
+      "description": "内容分类混乱，虽有弹幕",
+      "url": "#",
+      "id": 1004
+    },
+    {
+      "name": "动漫岛",
+      "description": "含无修表番，画质一般",
+      "url": "#",
+      "id": 1005
+    },
+    {
+      "name": "游戏盘",
+      "description": "需要登录|游戏动漫网盘",
+      "url": "#",
+      "id": 1006
+    },
+    {
+      "name": "靴下小屋",
+      "description": "游戏动漫轻小说音乐综合资源社区",
+      "url": "#",
+      "id": 1007
+    },
+    {
+      "name": "星空の小站",
+      "description": "分享各设备游玩的gal小站",
+      "url": "#",
+      "id": 1008
+    },
+    {
+      "name": "萌兔本地漫画阅读器",
+      "description": "可上传本地漫画分页浏览",
+      "url": "#",
+      "id": 1009
+    },
+    {
+      "name": "哎哟绅士",
+      "description": "喵屋论坛，非博客",
+      "url": "#",
+      "id": 1010
+    },
+    {
+      "name": "EroCool",
+      "description": "中文界面|支持滚动阅读",
+      "url": "#",
+      "id": 1011
+    },
+    {
+      "name": "hentaidock",
+      "description": "基本生肉|支持滚动阅读",
+      "url": "#",
+      "id": 1012
+    },
+    {
+      "name": "恋爱游戏网",
+      "description": "需要登录并有积分才能看到链接",
+      "url": "#",
+      "id": 1013
+    },
+    {
+      "name": "yande.re_db",
+      "description": "忧郁的弟弟/loli网站背景图",
+      "url": "#",
+      "id": 1014
+    },
+    {
+      "name": "漫画猫",
+      "description": "比B站正版慢一个礼拜左右",
+      "url": "#",
+      "id": 1015
+    },
+    {
+      "name": "拷貝漫畫",
+      "description": "网速较慢但很全",
+      "url": "#",
+      "id": 1016
+    },
+    {
+      "name": "エロ国",
+      "description": "国外ACG资源付费网盘下载",
+      "url": "#",
+      "id": 1017
+    },
+    {
+      "name": "JoyHentai",
+      "description": "台湾版E绅士",
+      "url": "#",
+      "id": 1018
+    },
+    {
+      "name": "澄空学园",
+      "description": "国内著名汉化组社区",
+      "url": "#",
+      "id": 1019
+    },
+    {
+      "name": "里番在线【发布页】",
+      "description": "里番在线【发布页】",
+      "url": "#",
+      "id": 1020
+    },
+    {
+      "name": "喵绅士",
+      "description": "日更新番剧免費中文成人H漫",
+      "url": "#",
+      "id": 1021
+    }
   ]
 }

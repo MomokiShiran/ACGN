@@ -318,7 +318,7 @@ function generateTrashPage() {
         return `
                         <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2">
                             <div class="url-body default">
-                                <a href="${site.oldUrl}" target="_blank" data-id="${site.id}" class="card no-c mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${site.description}">
+                                <a href="${site.url}" target="_blank" data-id="${site.id}" class="card no-c mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${site.description}">
                                     <div class="card-body">
                                         <div class="url-content d-flex align-items-center">
                                             <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">
