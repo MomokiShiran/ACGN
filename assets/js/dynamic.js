@@ -8,6 +8,7 @@
             url: 'data/sites.json',
             dataType: 'json',
             success: function(data) {
+                renderSidebar(data);
                 renderSiteCards(data);
                 reInitializeFeatures();
             },
@@ -15,6 +16,67 @@
                 console.error('加载数据失败:', error);
             }
         });
+    }
+
+    function renderSidebar(data) {
+        var categories = data.categories;
+        var sidebarHtml = '';
+
+        var mainMenuIds = ['term-2', 'term-3', 'term-12', 'term-5', 'term-8', 'term-6', 'term-9', 'term-7', 'term-18', 'term-4'];
+        var subMenuIds = ['term-11', 'term-15', 'term-17', 'term-13', 'term-16', 'term-22', 'term-21'];
+        var shoppingMenuId = 'term-14';
+
+        // 生成主菜单
+        mainMenuIds.forEach(function(id) {
+            var category = categories.find(function(c) { return c.id === id; });
+            if (category) {
+                sidebarHtml += generateSidebarItem(category);
+            }
+        });
+
+        // 生成工具大全下拉菜单
+        sidebarHtml += '<li class="sidebar-item">';
+        sidebarHtml += '<a href="javascript:;" class="sidebar-menu-link">';
+        sidebarHtml += '<i class="far fa-paper-plane icon-fw icon-lg me-2"></i>';
+        sidebarHtml += '<span class="sidebar-menu-text">工具大全</span>';
+        sidebarHtml += '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>';
+        sidebarHtml += '</a>';
+        sidebarHtml += '<ul class="sidebar-submenu">';
+        subMenuIds.forEach(function(id) {
+            var category = categories.find(function(c) { return c.id === id; });
+            if (category) {
+                sidebarHtml += generateSidebarSubItem(category);
+            }
+        });
+        sidebarHtml += '</ul>';
+        sidebarHtml += '</li>';
+
+        // 生成ACG购物
+        var shoppingCategory = categories.find(function(c) { return c.id === shoppingMenuId; });
+        if (shoppingCategory) {
+            sidebarHtml += generateSidebarItem(shoppingCategory);
+        }
+
+        $('#sidebar-nav-list').html(sidebarHtml);
+    }
+
+    function generateSidebarItem(category) {
+        var html = '<li class="sidebar-item">';
+        html += '<a href="#' + category.id + '" class="sidebar-menu-link">';
+        html += '<i class="' + (category.icon || 'fas fa-link') + ' icon-fw icon-lg me-2"></i>';
+        html += '<span class="sidebar-menu-text">' + category.name + '</span>';
+        html += '</a>';
+        html += '</li>';
+        return html;
+    }
+
+    function generateSidebarSubItem(category) {
+        var html = '<li class="sidebar-item">';
+        html += '<a href="#' + category.id + '" class="sidebar-menu-link">';
+        html += '<span class="sidebar-menu-text">' + category.name + '</span>';
+        html += '</a>';
+        html += '</li>';
+        return html;
     }
 
     function renderSiteCards(data) {

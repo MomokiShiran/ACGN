@@ -180,8 +180,8 @@
             isMin = false;
         }
     }
-    // sidebar-menu-inner收缩展开
-    $('.sidebar-menu-inner a').on('click',function(){
+    // sidebar-menu-inner收缩展开 - 使用事件委托
+    $(document).on('click', '.sidebar-menu-inner a', function(){
         if (!$('.sidebar-nav').hasClass('mini-sidebar')) {
             $(this).parent("li").siblings("li.sidebar-item").children('ul').slideUp(200);
             if ($(this).next().css('display') == "none") {

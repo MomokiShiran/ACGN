@@ -3,12 +3,12 @@
     {
       "id": "term-2",
       "name": "次元美图",
-      "icon": "fa-image"
+      "icon": "fas fa-image"
     },
     {
       "id": "term-3",
       "name": "在线动漫",
-      "icon": "fa-play-circle"
+      "icon": "fas fa-play-circle"
     },
     {
       "id": "term-12",
@@ -18,22 +18,22 @@
     {
       "id": "term-5",
       "name": "在线本子",
-      "icon": "fa-book"
+      "icon": "fas fa-book"
     },
     {
       "id": "term-8",
       "name": "在线里番",
-      "icon": "fa-audio-description"
+      "icon": "fas fa-audio-description"
     },
     {
       "id": "term-6",
       "name": "ACG资源社区",
-      "icon": "fa-users"
+      "icon": "fas fa-users"
     },
     {
       "id": "term-9",
       "name": "ACG图书馆",
-      "icon": "fa-university"
+      "icon": "fas fa-university"
     },
     {
       "id": "term-7",
@@ -48,47 +48,47 @@
     {
       "id": "term-4",
       "name": "动漫下载",
-      "icon": "fa-download"
+      "icon": "fas fa-download"
     },
     {
       "id": "term-11",
       "name": "BT下载站",
-      "icon": ""
+      "icon": "fas fa-download"
     },
     {
       "id": "term-15",
       "name": "BT下载软件",
-      "icon": ""
+      "icon": "fas fa-download"
     },
     {
       "id": "term-17",
       "name": "Telegram频道",
-      "icon": ""
+      "icon": "fab fa-telegram"
     },
     {
       "id": "term-13",
       "name": "图源搜索工具",
-      "icon": ""
+      "icon": "fas fa-search"
     },
     {
       "id": "term-16",
       "name": "进阶ACG必备",
-      "icon": ""
+      "icon": "fas fa-tools"
     },
     {
       "id": "term-22",
       "name": "付费网盘资源下载",
-      "icon": ""
+      "icon": "fas fa-cloud-download-alt"
     },
     {
       "id": "term-21",
       "name": "其它小工具",
-      "icon": ""
+      "icon": "fas fa-wrench"
     },
     {
       "id": "term-14",
       "name": "ACG购物",
-      "icon": "fa-shopping-bag"
+      "icon": "fas fa-shopping-bag"
     }
   ],
   "sites": [
