@@ -21,6 +21,10 @@
     function renderSidebar(data) {
         var categories = data.categories;
         var sidebarHtml = '';
+        var sidebarSkeleton = $('#sidebar-skeleton');
+        var sidebarContent = $('#sidebar-content');
+        var sidebarBottomSkeleton = $('#sidebar-bottom-skeleton');
+        var sidebarBottomContent = $('#sidebar-bottom-content');
 
         var mainMenuIds = ['term-2', 'term-3', 'term-12', 'term-5', 'term-8', 'term-6', 'term-9', 'term-7', 'term-18', 'term-4'];
         var subMenuIds = ['term-11', 'term-15', 'term-17', 'term-13', 'term-16', 'term-22', 'term-21'];
@@ -58,6 +62,12 @@
         }
 
         $('#sidebar-nav-list').html(sidebarHtml);
+        
+        // 隐藏侧边栏骨架屏，显示实际内容
+        sidebarSkeleton.addClass('skeleton-hidden');
+        sidebarContent.removeClass('skeleton-hidden');
+        sidebarBottomSkeleton.addClass('skeleton-hidden');
+        sidebarBottomContent.removeClass('skeleton-hidden');
     }
 
     function generateSidebarItem(category) {
@@ -80,7 +90,8 @@
     }
 
     function renderSiteCards(data) {
-        const container = $('.content-site');
+        const container = $('#site-content');
+        const skeletonContainer = $('#skeleton-loading');
         const categories = data.categories;
         const sites = data.sites;
         
@@ -97,6 +108,10 @@
 
         htmlContent += generateFriendLinks();
         container.html(htmlContent);
+        
+        // 隐藏骨架屏，显示实际内容
+        skeletonContainer.addClass('skeleton-hidden');
+        container.removeClass('skeleton-hidden');
     }
 
     function generateCategorySection(category, sites) {
