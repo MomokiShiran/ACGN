@@ -180,7 +180,7 @@
                 <a href="https://www.acgbox.link/">ACG盒子</a>
                 <a href="https://www.mgnacg.com/" title="专注动漫的二次元小站">橘子动漫</a>
                 <a href="https://www.myiys.com/" title="技术导航-动漫导航-二次元导航">ACGN导航</a>
-                <a href="/friends/" target="_blank" title="更多链接" rel="noopener noreferrer">更多链接</a>
+                <a href="/friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer">更多链接</a>
             </div>
         </div>
         `;
