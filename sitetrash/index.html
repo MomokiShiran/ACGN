@@ -246,11 +246,16 @@ $(document).ready(function() {
         `;
     }
     
-    function renderSites(sites) {
+    function renderSites(data) {
         const container = $('#sites-list');
         container.empty();
-        sites.forEach(site => {
-            container.append(renderSiteCard(site));
+        
+        data.categories.forEach(category => {
+            if (category.sites && category.sites.length > 0) {
+                category.sites.forEach(site => {
+                    container.append(renderSiteCard(site));
+                });
+            }
         });
     }
     
@@ -260,7 +265,7 @@ $(document).ready(function() {
         
         $.getJSON(SITES_JSON)
             .done(function(data) {
-                renderSites(data.sites);
+                renderSites(data);
                 skeletonContainer.addClass('skeleton-hidden');
                 sitesContainer.removeClass('skeleton-hidden');
             })

@@ -96,16 +96,13 @@
 
     const renderSiteCards = (data) => {
         const categories = data.categories;
-        const sites = data.sites;
         const skeletonContainer = $('#skeleton-loading');
         const container = $('#site-content');
         let htmlContent = '';
 
         categories.forEach((category) => {
-            const categorySites = sites.filter(site => site.category === category.id);
-
-            if (categorySites.length > 0) {
-                htmlContent += generateCategorySection(category, categorySites);
+            if (category.sites && category.sites.length > 0) {
+                htmlContent += generateCategorySection(category);
             }
         });
 
@@ -116,9 +113,9 @@
         container.removeClass('skeleton-hidden');
     };
 
-    const generateCategorySection = (category, sites) => {
+    const generateCategorySection = (category) => {
         let sitesHtml = '';
-        sites.forEach((site) => {
+        category.sites.forEach((site) => {
             sitesHtml += generateSiteCard(site);
         });
 

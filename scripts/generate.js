@@ -11,6 +11,16 @@ const getCategoryName = (categoryId) => {
     return cat ? cat.name : categoryId;
 };
 
+const findSite = (siteId) => {
+    for (const category of data.categories) {
+        if (category.sites) {
+            const site = category.sites.find(s => s.id === siteId);
+            if (site) return site;
+        }
+    }
+    return null;
+};
+
 const generateSiteCard = (site, isRelated = false) => {
     const faviconUrl = `https://favicon.im/${new URL(site.url).hostname}`;
     const newBadge = site.isNew ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>' : '';
@@ -65,7 +75,7 @@ const generateSiteCard = (site, isRelated = false) => {
 const generateSiteDetailPage = (site) => {
     const categoryName = getCategoryName(site.category);
     const relatedSites = (site.relatedIds || [])
-        .map(id => data.sites.find(s => s.id === id))
+        .map(id => findSite(id))
         .filter(Boolean);
     
     const getHostname = (url) => {
@@ -323,13 +333,17 @@ const generateAll = () => {
 
     let generatedCount = 0;
 
-    for (const site of data.sites) {
-        const html = generateSiteDetailPage(site);
-        const filePath = path.join(OUTPUT_DIR, `${site.id}.html`);
-        fs.writeFileSync(filePath, html);
-        console.log(`Generated: sites/${site.id}.html - ${site.name}`);
-        generatedCount++;
-    }
+    data.categories.forEach(category => {
+        if (category.sites) {
+            category.sites.forEach(site => {
+                const html = generateSiteDetailPage(site);
+                const filePath = path.join(OUTPUT_DIR, `${site.id}.html`);
+                fs.writeFileSync(filePath, html);
+                console.log(`Generated: sites/${site.id}.html - ${site.name}`);
+                generatedCount++;
+            });
+        }
+    });
 
     console.log(`\n✅ Total: ${generatedCount} site pages generated`);
     console.log('Generation complete!');
