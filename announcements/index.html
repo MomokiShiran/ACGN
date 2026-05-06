@@ -31,12 +31,12 @@
                     <!-- logo -->
                     <div class="logo overflow-hidden">
                         <a href="/" class="logo-expanded">
-                            <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="logo-light" alt="MyACGN">
-						    <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="logo-dark d-none" alt="MyACGN">
+                            <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="logo-light" alt="MyACGN" loading="lazy">
+						    <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="logo-dark d-none" alt="MyACGN" loading="lazy">
                         </a>
                         <a href="/" class="logo-collapsed">
-                            <img src="../assets/images/favicon.png" height="40" class="logo-light" alt="MyACGN">
-						    <img src="../assets/images/favicon.png" height="40" class="logo-dark d-none" alt="MyACGN">
+                            <img src="../assets/images/favicon.png" height="40" class="logo-light" alt="MyACGN" loading="lazy">
+						    <img src="../assets/images/favicon.png" height="40" class="logo-dark d-none" alt="MyACGN" loading="lazy">
                         </a>
                     </div>
                     <!-- logo end -->
@@ -241,17 +241,6 @@
 <!-- page-container end -->
 <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
 <script src="../assets/js/app.js?ver=2.0406"></script>
-<script>
-    $(document).on('click','a.smooth-n',function(ev) {
-        ev.preventDefault();
-        var href = $(this).attr("href");
-        var target = document.querySelector(href);
-        if(target) {
-            var offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
-            window.scrollTo({top: offset, behavior: 'smooth'});
-        }
-    });
-    </script>
 
 </body>
 </html>

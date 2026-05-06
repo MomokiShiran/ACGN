@@ -3,103 +3,106 @@
         loadSiteData();
     });
 
-    function loadSiteData() {
+    const loadSiteData = () => {
         $.ajax({
             url: 'data/sites.json',
             dataType: 'json',
-            success: function(data) {
+            success: (data) => {
                 renderSidebar(data);
                 renderSiteCards(data);
                 reInitializeFeatures();
             },
-            error: function(error) {
+            error: (error) => {
                 console.error('加载数据失败:', error);
             }
         });
-    }
+    };
 
-    function renderSidebar(data) {
-        var categories = data.categories;
-        var sidebarHtml = '';
-        var sidebarSkeleton = $('#sidebar-skeleton');
-        var sidebarContent = $('#sidebar-content');
-        var sidebarBottomSkeleton = $('#sidebar-bottom-skeleton');
-        var sidebarBottomContent = $('#sidebar-bottom-content');
+    const renderSidebar = (data) => {
+        const categories = data.categories;
+        let sidebarHtml = '';
+        const sidebarSkeleton = $('#sidebar-skeleton');
+        const sidebarContent = $('#sidebar-content');
+        const sidebarBottomSkeleton = $('#sidebar-bottom-skeleton');
+        const sidebarBottomContent = $('#sidebar-bottom-content');
 
-        var mainMenuIds = ['term-2', 'term-3', 'term-12', 'term-5', 'term-8', 'term-6', 'term-9', 'term-7', 'term-18', 'term-4'];
-        var subMenuIds = ['term-11', 'term-15', 'term-17', 'term-13', 'term-16', 'term-22', 'term-21'];
-        var shoppingMenuId = 'term-14';
+        const mainMenuIds = ['term-2', 'term-3', 'term-12', 'term-5', 'term-8', 'term-6', 'term-9', 'term-7', 'term-18', 'term-4'];
+        const subMenuIds = ['term-11', 'term-15', 'term-17', 'term-13', 'term-16', 'term-22', 'term-21'];
+        const shoppingMenuId = 'term-14';
 
-        // 生成主菜单
-        mainMenuIds.forEach(function(id) {
-            var category = categories.find(function(c) { return c.id === id; });
+        const findCategory = (categories, id) => categories.find(c => c.id === id);
+
+        mainMenuIds.forEach((id) => {
+            const category = findCategory(categories, id);
             if (category) {
                 sidebarHtml += generateSidebarItem(category);
             }
         });
 
-        // 生成工具大全下拉菜单
-        sidebarHtml += '<li class="sidebar-item">';
-        sidebarHtml += '<a href="javascript:;" class="sidebar-menu-link">';
-        sidebarHtml += '<i class="far fa-paper-plane icon-fw icon-lg me-2"></i>';
-        sidebarHtml += '<span class="sidebar-menu-text">工具大全</span>';
-        sidebarHtml += '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>';
-        sidebarHtml += '</a>';
-        sidebarHtml += '<ul class="sidebar-submenu">';
-        subMenuIds.forEach(function(id) {
-            var category = categories.find(function(c) { return c.id === id; });
+        let subMenuHtml = '';
+        subMenuIds.forEach((id) => {
+            const category = findCategory(categories, id);
             if (category) {
-                sidebarHtml += generateSidebarSubItem(category);
+                subMenuHtml += generateSidebarSubItem(category);
             }
         });
-        sidebarHtml += '</ul>';
-        sidebarHtml += '</li>';
 
-        // 生成ACG购物
-        var shoppingCategory = categories.find(function(c) { return c.id === shoppingMenuId; });
+        sidebarHtml += `
+            <li class="sidebar-item">
+                <a href="javascript:;" class="sidebar-menu-link">
+                    <i class="far fa-paper-plane icon-fw icon-lg me-2"></i>
+                    <span class="sidebar-menu-text">工具大全</span>
+                    <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                    ${subMenuHtml}
+                </ul>
+            </li>
+        `;
+
+        const shoppingCategory = findCategory(categories, shoppingMenuId);
         if (shoppingCategory) {
             sidebarHtml += generateSidebarItem(shoppingCategory);
         }
 
         $('#sidebar-nav-list').html(sidebarHtml);
         
-        // 隐藏侧边栏骨架屏，显示实际内容
         sidebarSkeleton.addClass('skeleton-hidden');
         sidebarContent.removeClass('skeleton-hidden');
         sidebarBottomSkeleton.addClass('skeleton-hidden');
         sidebarBottomContent.removeClass('skeleton-hidden');
-    }
+    };
 
-    function generateSidebarItem(category) {
-        var html = '<li class="sidebar-item">';
-        html += '<a href="#' + category.id + '" class="sidebar-menu-link">';
-        html += '<i class="' + (category.icon || 'fas fa-link') + ' icon-fw icon-lg me-2"></i>';
-        html += '<span class="sidebar-menu-text">' + category.name + '</span>';
-        html += '</a>';
-        html += '</li>';
-        return html;
-    }
+    const generateSidebarItem = (category) => {
+        return `
+            <li class="sidebar-item">
+                <a href="#${category.id}" class="sidebar-menu-link">
+                    <i class="${category.icon || 'fas fa-link'} icon-fw icon-lg me-2"></i>
+                    <span class="sidebar-menu-text">${category.name}</span>
+                </a>
+            </li>
+        `;
+    };
 
-    function generateSidebarSubItem(category) {
-        var html = '<li class="sidebar-item">';
-        html += '<a href="#' + category.id + '" class="sidebar-menu-link">';
-        html += '<span class="sidebar-menu-text">' + category.name + '</span>';
-        html += '</a>';
-        html += '</li>';
-        return html;
-    }
+    const generateSidebarSubItem = (category) => {
+        return `
+            <li class="sidebar-item">
+                <a href="#${category.id}" class="sidebar-menu-link">
+                    <span class="sidebar-menu-text">${category.name}</span>
+                </a>
+            </li>
+        `;
+    };
 
-    function renderSiteCards(data) {
-        const container = $('#site-content');
-        const skeletonContainer = $('#skeleton-loading');
+    const renderSiteCards = (data) => {
         const categories = data.categories;
         const sites = data.sites;
-        
+        const skeletonContainer = $('#skeleton-loading');
+        const container = $('#site-content');
         let htmlContent = '';
-        categories.forEach(function(category) {
-            const categorySites = sites.filter(function(site) {
-                return site.category === category.id;
-            });
+
+        categories.forEach((category) => {
+            const categorySites = sites.filter(site => site.category === category.id);
 
             if (categorySites.length > 0) {
                 htmlContent += generateCategorySection(category, categorySites);
@@ -109,56 +112,58 @@
         htmlContent += generateFriendLinks();
         container.html(htmlContent);
         
-        // 隐藏骨架屏，显示实际内容
         skeletonContainer.addClass('skeleton-hidden');
         container.removeClass('skeleton-hidden');
-    }
+    };
 
-    function generateCategorySection(category, sites) {
-        let html = '';
-        html += '<h4 class="text-gray text-lg mb-4 d-flex flex-fill">';
-        html += '<i class="site-tag iconfont icon-tag icon-lg me-1" id="' + category.id + '"></i>';
-        html += category.name;
-        html += '</h4>';
-        html += '<div class="row">';
-        
-        sites.forEach(function(site) {
-            html += generateSiteCard(site);
+    const generateCategorySection = (category, sites) => {
+        let sitesHtml = '';
+        sites.forEach((site) => {
+            sitesHtml += generateSiteCard(site);
         });
 
-        html += '</div>';
-        return html;
-    }
+        return `
+            <h4 class="text-gray text-lg mb-4 d-flex flex-fill">
+                <i class="site-tag iconfont icon-tag icon-lg me-1" id="${category.id}"></i>
+                ${category.name}
+            </h4>
+            <div class="row">
+                ${sitesHtml}
+            </div>
+        `;
+    };
 
-    function generateSiteCard(site) {
+    const generateSiteCard = (site) => {
         const faviconUrl = 'https://favicon.im/' + (new URL(site.url).hostname);
         const newBadge = site.isNew ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>' : '';
         
-        let html = '';
-        html += '<div class="url-card col-6 col-sm-6 col-md-4 col-xl-5a col-xxl-6a">';
-        html += '<div class="url-body default">';
-        html += '<a href="sites/' + site.id + '.html" target="_blank" data-id="' + site.id + '" data-url="' + site.url + '" class="card no-c mb-4 site-' + site.id + '" data-bs-toggle="tooltip" data-bs-placement="bottom" title="' + site.description + '" rel="noopener noreferrer">';
-        html += '<div class="card-body">';
-        html += '<div class="url-content d-flex align-items-center">';
-        html += '<div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">';
-        html += '<img loading="lazy" src="' + faviconUrl + '" onerror="this.src=\'assets/images/favicon.png\'">';
-        html += '</div>';
-        html += '<div class="url-info flex-fill">';
-        html += '<div class="text-sm overflowClip_1">';
-        html += newBadge + '<strong>' + site.name + '</strong>';
-        html += '</div>';
-        html += '<p class="overflowClip_1 m-0 text-muted text-xs">' + site.description + '</p>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</a>';
-        html += '<a href="' + site.url + '" class="togo text-center text-muted" target="_blank" data-id="' + site.id + '" data-bs-toggle="tooltip" data-bs-placement="right" title="直达" rel="nofollow" rel="noopener noreferrer"><i class="iconfont icon-goto"></i></a>';
-        html += '</div>';
-        html += '</div>';
-        return html;
-    }
+        return `
+            <div class="url-card col-6 col-sm-6 col-md-4 col-xl-5a col-xxl-6a">
+                <div class="url-body default">
+                    <a href="sites/${site.id}.html" target="_blank" data-id="${site.id}" data-url="${site.url}" class="card no-c mb-4 site-${site.id}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${site.description}" rel="noopener noreferrer">
+                        <div class="card-body">
+                            <div class="url-content d-flex align-items-center">
+                                <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">
+                                    <img loading="lazy" src="${faviconUrl}" onerror="this.src='assets/images/favicon.png'">
+                                </div>
+                                <div class="url-info flex-fill">
+                                    <div class="text-sm overflowClip_1">
+                                        ${newBadge}<strong>${site.name}</strong>
+                                    </div>
+                                    <p class="overflowClip_1 m-0 text-muted text-xs">${site.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="${site.url}" class="togo text-center text-muted" target="_blank" data-id="${site.id}" data-bs-toggle="tooltip" data-bs-placement="right" title="直达" rel="nofollow" rel="noopener noreferrer">
+                        <i class="iconfont icon-goto"></i>
+                    </a>
+                </div>
+            </div>
+        `;
+    };
 
-    function reInitializeFeatures() {
+    const reInitializeFeatures = () => {
         if (typeof initTooltips === 'function') {
             if (isPC()) {
                 initTooltips();
@@ -166,9 +171,9 @@
                 initTooltips('.qr-img[data-bs-toggle="tooltip"]');
             }
         }
-    }
+    };
 
-    function generateFriendLinks() {
+    const generateFriendLinks = () => {
         return `
         <h4 class="text-gray text-lg mb-4">
             <i class="iconfont icon-book-mark-line icon-lg me-2" id="friendlink"></i>友情链接        </h4>
@@ -184,5 +189,5 @@
             </div>
         </div>
         `;
-    }
+    };
 })(jQuery);

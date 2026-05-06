@@ -6,12 +6,12 @@ const OUTPUT_DIR = path.join(__dirname, '../sites');
 
 const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
 
-function getCategoryName(categoryId) {
+const getCategoryName = (categoryId) => {
     const cat = data.categories.find(c => c.id === categoryId);
     return cat ? cat.name : categoryId;
-}
+};
 
-function generateSiteCard(site, isRelated = false) {
+const generateSiteCard = (site, isRelated = false) => {
     const faviconUrl = `https://favicon.im/${new URL(site.url).hostname}`;
     const newBadge = site.isNew ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>' : '';
 
@@ -60,9 +60,9 @@ function generateSiteCard(site, isRelated = false) {
                     <a href="${site.url}" class="togo text-center text-muted is-views" target="_blank" data-bs-toggle="tooltip" data-bs-placement="right" title="直达" rel="nofollow" rel="noopener noreferrer"><i class="iconfont icon-goto"></i></a>
                 </div>
             </div>`;
-}
+};
 
-function generateSiteDetailPage(site) {
+const generateSiteDetailPage = (site) => {
     const categoryName = getCategoryName(site.category);
     const relatedSites = (site.relatedIds || [])
         .map(id => data.sites.find(s => s.id === id))
@@ -115,12 +115,12 @@ function generateSiteDetailPage(site) {
             <div class="sidebar-logo border-bottom border-color">
                 <div class="logo overflow-hidden">
                     <a href="/" class="logo-expanded">
-                        <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN">
-                        <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN">
+                        <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN" loading="lazy">
+                        <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN" loading="lazy">
                     </a>
                     <a href="/" class="logo-collapsed">
-                        <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN">
-                        <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN">
+                        <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN" loading="lazy">
+                        <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN" loading="lazy">
                     </a>
                 </div>
             </div>
@@ -310,22 +310,11 @@ function generateSiteDetailPage(site) {
 </div>
 <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
 <script src="../assets/js/app.js?ver=2.0406"></script>
-<script>
-$(document).on('click','a.smooth-n',function(ev) {
-    ev.preventDefault();
-    var href = $(this).attr("href");
-    var target = document.querySelector(href);
-    if(target) {
-        var offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
-        window.scrollTo({top: offset, behavior: 'smooth'});
-    }
-});
-</script>
 </body>
 </html>`;
-}
+};
 
-function generateAll() {
+const generateAll = () => {
     console.log('Starting HTML generation...\n');
 
     if (!fs.existsSync(OUTPUT_DIR)) {
@@ -344,7 +333,7 @@ function generateAll() {
 
     console.log(`\n✅ Total: ${generatedCount} site pages generated`);
     console.log('Generation complete!');
-}
+};
 
 if (require.main === module) {
     generateAll();
