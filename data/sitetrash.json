@@ -1,0 +1,219 @@
+{
+  "categories": [
+    {
+      "id": "term-2",
+      "name": "次元美图",
+      "icon": "fas fa-image"
+    },
+    {
+      "id": "term-3",
+      "name": "在线动漫",
+      "icon": "fas fa-play-circle"
+    },
+    {
+      "id": "term-12",
+      "name": "在线漫画",
+      "icon": "fab fa-stack-overflow"
+    },
+    {
+      "id": "term-5",
+      "name": "在线本子",
+      "icon": "fas fa-book"
+    },
+    {
+      "id": "term-8",
+      "name": "在线里番",
+      "icon": "fas fa-audio-description"
+    },
+    {
+      "id": "term-6",
+      "name": "ACG资源社区",
+      "icon": "fas fa-users"
+    },
+    {
+      "id": "term-7",
+      "name": "Galgame",
+      "icon": "far fa-registered"
+    },
+    {
+      "id": "term-11",
+      "name": "BT下载站",
+      "icon": "fas fa-download"
+    },
+    {
+      "id": "term-22",
+      "name": "付费网盘资源下载",
+      "icon": "fas fa-cloud-download-alt"
+    }
+  ],
+  "sites": [
+    {
+      "id": 1000,
+      "name": "异度姬",
+      "url": "",
+      "description": "以漫资讯丨游戏测评丨剪辑工程资料丨壁纸库为主",
+      "category": "term-2"
+    },
+    {
+      "id": 1001,
+      "name": "ACG调查小队",
+      "url": "",
+      "description": "动漫资源网站，已关闭注册",
+      "category": "term-6"
+    },
+    {
+      "id": 1002,
+      "name": "ACG萌图",
+      "url": "",
+      "description": "某个人站，分享P站美图",
+      "category": "term-2"
+    },
+    {
+      "id": 1003,
+      "name": "星宫BT",
+      "url": "",
+      "description": "综合ACG资源bt下载站",
+      "category": "term-11"
+    },
+    {
+      "id": 1004,
+      "name": "吐槽弹幕网",
+      "url": "",
+      "description": "内容分类混乱，虽有弹幕",
+      "category": "term-3"
+    },
+    {
+      "id": 1005,
+      "name": "动漫岛",
+      "url": "",
+      "description": "含无修表番，画质一般",
+      "category": "term-3"
+    },
+    {
+      "id": 1006,
+      "name": "游戏盘",
+      "url": "",
+      "description": "需要登录|游戏动漫网盘",
+      "category": "term-6"
+    },
+    {
+      "id": 1007,
+      "name": "靴下小屋",
+      "url": "",
+      "description": "游戏动漫轻小说音乐综合资源社区",
+      "category": "term-6"
+    },
+    {
+      "id": 1008,
+      "name": "星空の小站",
+      "url": "",
+      "description": "分享各设备游玩的gal小站",
+      "category": "term-7"
+    },
+    {
+      "id": 1009,
+      "name": "萌兔本地漫画阅读器",
+      "url": "",
+      "description": "可上传本地漫画分页浏览",
+      "category": "term-12"
+    },
+    {
+      "id": 1010,
+      "name": "哎哟绅士",
+      "url": "",
+      "description": "喵屋论坛，非博客",
+      "category": "term-6"
+    },
+    {
+      "id": 1011,
+      "name": "EroCool",
+      "url": "",
+      "description": "中文界面|支持滚动阅读",
+      "category": "term-5"
+    },
+    {
+      "id": 1012,
+      "name": "hentaidock",
+      "url": "",
+      "description": "基本生肉|支持滚动阅读",
+      "category": "term-5"
+    },
+    {
+      "id": 1013,
+      "name": "恋爱游戏网",
+      "url": "",
+      "description": "需要登录并有积分才能看到链接",
+      "category": "term-7"
+    },
+    {
+      "id": 1014,
+      "name": "yande.re_db",
+      "url": "",
+      "description": "忧郁的弟弟/loli网站背景图",
+      "category": "term-2"
+    },
+    {
+      "id": 1015,
+      "name": "漫画猫",
+      "url": "",
+      "description": "比B站正版慢一个礼拜左右",
+      "category": "term-12"
+    },
+    {
+      "id": 1016,
+      "name": "拷貝漫畫",
+      "url": "",
+      "description": "网速较慢但很全",
+      "category": "term-12"
+    },
+    {
+      "id": 1017,
+      "name": "エロ国",
+      "url": "",
+      "description": "国外ACG资源付费网盘下载",
+      "category": "term-22"
+    },
+    {
+      "id": 1018,
+      "name": "JoyHentai",
+      "url": "",
+      "description": "台湾版E绅士",
+      "category": "term-5"
+    },
+    {
+      "id": 1019,
+      "name": "澄空学园",
+      "url": "",
+      "description": "国内著名汉化组社区",
+      "category": "term-6"
+    },
+    {
+      "id": 1020,
+      "name": "里番在线【发布页】",
+      "url": "",
+      "description": "里番在线【发布页】",
+      "category": "term-8"
+    },
+    {
+      "id": 1021,
+      "name": "喵绅士",
+      "url": "",
+      "description": "日更新番剧免費中文成人H漫",
+      "category": "term-8"
+    },
+    {
+      "id": 440,
+      "name": "Kemono",
+      "url": "https://kemono.party",
+      "description": "收录了大量画师的赞助内容，例如fanbox，patron、fantia",
+      "category": "term-6"
+    },
+    {
+      "id": 402,
+      "name": "LSP壁纸",
+      "url": "https://www.lspbz.com",
+      "description": "LSP的动漫游戏二次元原画壁纸图片库",
+      "category": "term-2"
+    }
+  ]
+}
