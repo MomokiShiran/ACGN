@@ -171,20 +171,76 @@
         </div>
         
         <div id="skeleton-loading" class="content-site skeleton-container">
-            <h4 class="text-gray text-lg mb-4"><i class="site-tag iconfont icon-tag icon-lg me-1"></i>失效归档</h4>
-            <div class="row">
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
-                <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2"><div class="url-body default"><div class="skeleton-card"></div></div></div>
+            <div class="skeleton-category">
+                <div class="skeleton-title skeleton-animation"></div>
+                <div class="skeleton-row">
+                    <div class="skeleton-card">
+                        <div class="skeleton-card-inner">
+                            <div class="skeleton-card-content">
+                                <div class="skeleton-avatar skeleton-animation"></div>
+                                <div class="skeleton-text-group">
+                                    <div class="skeleton-text-line skeleton-animation"></div>
+                                    <div class="skeleton-text-line short skeleton-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-card-inner">
+                            <div class="skeleton-card-content">
+                                <div class="skeleton-avatar skeleton-animation"></div>
+                                <div class="skeleton-text-group">
+                                    <div class="skeleton-text-line skeleton-animation"></div>
+                                    <div class="skeleton-text-line short skeleton-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-card-inner">
+                            <div class="skeleton-card-content">
+                                <div class="skeleton-avatar skeleton-animation"></div>
+                                <div class="skeleton-text-group">
+                                    <div class="skeleton-text-line skeleton-animation"></div>
+                                    <div class="skeleton-text-line short skeleton-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-card-inner">
+                            <div class="skeleton-card-content">
+                                <div class="skeleton-avatar skeleton-animation"></div>
+                                <div class="skeleton-text-group">
+                                    <div class="skeleton-text-line skeleton-animation"></div>
+                                    <div class="skeleton-text-line short skeleton-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-card-inner">
+                            <div class="skeleton-card-content">
+                                <div class="skeleton-avatar skeleton-animation"></div>
+                                <div class="skeleton-text-group">
+                                    <div class="skeleton-text-line skeleton-animation"></div>
+                                    <div class="skeleton-text-line short skeleton-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skeleton-card-inner">
+                            <div class="skeleton-card-content">
+                                <div class="skeleton-avatar skeleton-animation"></div>
+                                <div class="skeleton-text-group">
+                                    <div class="skeleton-text-line skeleton-animation"></div>
+                                    <div class="skeleton-text-line short skeleton-animation"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -224,7 +280,7 @@ $(document).ready(function() {
     
     function renderSiteCard(site) {
         const faviconUrl = site.url ? `https://favicon.im/${new URL(site.url).hostname}` : '../assets/images/favicon.png';
-        const detailUrl = `../sites/${site.id}.html`;
+        const detailUrl = `../sites/detail.html?id=${site.id}`;
         const togoUrl = site.url || '#';
         
         return `

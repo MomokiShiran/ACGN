@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>公告 | MyACGN</title>
+<title>网站详情 | MyACGN</title>
 <meta name="theme-color" content="#f9f9f9">
-<meta name="keywords" content="MyACGN盒子,二次元,导航,公告">
-<meta name="description" content="MyACGN盒子公告列表">
+<meta name="keywords" content="MyACGN盒子,二次元,导航">
+<meta name="description" content="MyACGN盒子网站详情">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/announcements/">
-<meta property="og:title" content="公告 | MyACGN">
-<meta property="og:description" content="MyACGN盒子公告列表">
+<meta property="og:url" content="/sites/detail.html">
+<meta property="og:title" content="网站详情 | MyACGN">
+<meta property="og:description" content="MyACGN盒子网站详情">
 <meta property="og:image" content="../assets/images/20210727002253-59085.jpeg">
 <meta property="og:site_name" content="MyACGN">
 <link rel="shortcut icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="../assets/css/style.css?ver=2.0406">
 <link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406">
 <script src="../assets/js/jquery.min.js?ver=2.0406"></script>
-<link rel="canonical" href="/announcements/">
+<link rel="canonical" href="/sites/detail.html">
 </head>
 <body class="io-grey-mode">
    <div class="page-container">
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="main-content flex-fill page">
+        <div class="main-content flex-fill single">
 		<div class="page-header big sticky">
 			<div class="navbar navbar-expand-md">
                 <div class="container-fluid p-0">
@@ -159,6 +159,7 @@
                                 </svg>
                             </label>
                         </div>
+                        <ul class="navbar-nav site-menu me-4 page-header-list"></ul>
                     </div>
                     <ul class="nav navbar-menu text-xs order-1 order-md-2">
 						<li class="nav-item me-3 mr-lg-0 d-none d-lg-block">
@@ -174,40 +175,71 @@
 				</div>
             </div>
         </div>
-<div id="content" class="container my-2 my-md-3">
-    <div id="skeleton-loading" class="panel site-content no-hover-card card transparent">
-        <div class="card-body">
-            <div class="skeleton-title skeleton-animation"></div>
-            <div class="skeleton-announcement-card">
-                <div class="skeleton-announcement-title skeleton-animation"></div>
-                <div class="skeleton-announcement-meta skeleton-animation"></div>
-                <div class="skeleton-announcement-desc skeleton-animation"></div>
-                <div class="skeleton-announcement-desc short skeleton-animation"></div>
+<div id="skeleton-loading" class="container my-2 my-md-3 content">
+    <div class="row site-content py-4 py-md-5 mb-xl-5 mb-0">
+        <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+            <div class="siteico">
+                <div class="skeleton-site-logo skeleton-animation"></div>
             </div>
-            <div class="skeleton-announcement-card">
-                <div class="skeleton-announcement-title skeleton-animation"></div>
-                <div class="skeleton-announcement-meta skeleton-animation"></div>
-                <div class="skeleton-announcement-desc skeleton-animation"></div>
-                <div class="skeleton-announcement-desc short skeleton-animation"></div>
-            </div>
-            <div class="skeleton-announcement-card">
-                <div class="skeleton-announcement-title skeleton-animation"></div>
-                <div class="skeleton-announcement-meta skeleton-animation"></div>
-                <div class="skeleton-announcement-desc skeleton-animation"></div>
-                <div class="skeleton-announcement-desc short skeleton-animation"></div>
-            </div>
-            <div class="skeleton-announcement-card">
-                <div class="skeleton-announcement-title skeleton-animation"></div>
-                <div class="skeleton-announcement-meta skeleton-animation"></div>
-                <div class="skeleton-announcement-desc skeleton-animation"></div>
-                <div class="skeleton-announcement-desc short skeleton-animation"></div>
+        </div>
+        <div class="col mt-4 mt-sm-0">
+            <div class="site-body text-sm">
+                <div class="skeleton-tag skeleton-animation mb-2"></div>
+                <div class="skeleton-site-name skeleton-animation mb-3"></div>
+                <div class="mt-2">
+                    <div class="skeleton-site-desc skeleton-animation mb-2"></div>
+                    <div class="skeleton-site-desc short skeleton-animation mb-3"></div>
+                    <div class="site-go mt-3">
+                        <span class="site-go-url">
+                            <div class="skeleton-btn skeleton-animation" style="margin-right: 10px; display: inline-block;"></div>
+                        </span>
+                        <div class="skeleton-btn skeleton-animation" style="display: inline-block;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="announcements-container" class="panel site-content no-hover-card card transparent skeleton-hidden">
-        <div class="card-body">
-            <h1 class="h2 mb-3">公告列表</h1>
-            <div id="announcements-list">
+    <div class="panel site-content card transparent">
+        <div class="card-body p-0">
+            <div class="apd-bg"></div>
+            <div class="panel-body my-4">
+                <div class="skeleton-article-line long skeleton-animation mb-3"></div>
+                <div class="skeleton-article-line long skeleton-animation mb-3"></div>
+                <div class="skeleton-article-line long skeleton-animation mb-3"></div>
+                <div class="skeleton-article-line short skeleton-animation"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="site-content" class="container my-2 my-md-3 content skeleton-hidden">
+    <div class="row site-content py-4 py-md-5 mb-xl-5 mb-0">
+        <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+            <div class="siteico">
+                <div class="blur blur-layer" id="site-blur" style="background: transparent url(../assets/images/favicon.png) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;animation: rotate 30s linear infinite;"></div>
+                <img class="img-cover" id="site-icon" src="../assets/images/favicon.png" alt="网站图标">
+            </div>
+        </div>
+        <div class="col mt-4 mt-sm-0">
+            <div class="site-body text-sm">
+                <span class="btn-cat custom_btn-d mb-2" id="site-category">加载中...</span>
+                <div class="site-name h3 my-3" id="site-name">加载中...</div>
+                <div class="mt-2">
+                    <p class="mb-2" id="site-description">加载中...</p>
+                    <div class="site-go mt-3">
+                        <span class="site-go-url">
+                            <a style="margin-right: 10px;" href="#" id="site-url" title="直达" target="_blank" class="btn btn-arrow" rel="noopener noreferrer"><span>链接直达<i class="iconfont icon-arrow-r-m"></i></span></a>
+                        </span>
+                        <a href="javascript:/" class="btn btn-arrow qr-img" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-html="true" id="site-qr"><span>手机查看<i class="iconfont icon-qr-sweep"></i></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel site-content card transparent">
+        <div class="card-body p-0">
+            <div class="apd-bg"></div>
+            <div class="panel-body my-4">
+                <p id="site-detail-content">加载中...</p>
             </div>
         </div>
     </div>
@@ -238,40 +270,129 @@
 <script src="../assets/js/app.js?ver=2.0406"></script>
 <script>
 $(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const siteId = parseInt(urlParams.get('id'));
+    
+    if (!siteId) {
+        showError('未找到网站ID');
+        return;
+    }
+    
     $.ajax({
-        url: '../data/announcements.json',
+        url: '../data/sites.json',
         dataType: 'json',
         success: function(data) {
-            const announcements = data.announcements.sort((a, b) => new Date(b.date) - new Date(a.date));
-            const container = $('#announcements-list');
+            let site = null;
+            let categoryName = '';
             
-            announcements.forEach(announcement => {
-                const date = new Date(announcement.date);
-                const formattedDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
-                
-                container.append(`
-                    <a href="detail.html?id=${announcement.id}" class="card mb-3" style="text-decoration: none; color: inherit;">
-                        <div class="card-body">
-                            <div class="d-flex w-100 justify-content-between mb-2">
-                                <h5 class="mb-0">${announcement.title}</h5>
-                                <small class="text-muted">${formattedDate}</small>
-                            </div>
-                            <p class="mb-2">${announcement.excerpt}</p>
-                            <small class="text-muted"><i class="iconfont icon-chakan"></i> ${announcement.views.toLocaleString()} 浏览</small>
-                        </div>
-                    </a>
-                `);
-            });
+            for (let category of data.categories) {
+                const found = category.sites.find(s => s.id === siteId);
+                if (found) {
+                    site = found;
+                    categoryName = category.name;
+                    break;
+                }
+            }
             
-            $('#skeleton-loading').addClass('skeleton-hidden');
-            $('#announcements-container').removeClass('skeleton-hidden');
+            if (!site) {
+                $.ajax({
+                    url: '../data/sitetrash.json',
+                    dataType: 'json',
+                    success: function(trashData) {
+                        for (let category of trashData.categories) {
+                            const found = category.sites.find(s => s.id === siteId);
+                            if (found) {
+                                site = found;
+                                categoryName = category.name;
+                                break;
+                            }
+                        }
+                        
+                        if (!site) {
+                            showError('未找到该网站');
+                            return;
+                        }
+                        
+                        renderSite(site, categoryName);
+                    },
+                    error: function() {
+                        showError('加载网站信息失败，请刷新页面重试。');
+                    }
+                });
+            } else {
+                renderSite(site, categoryName);
+            }
         },
         error: function() {
-            $('#skeleton-loading').addClass('skeleton-hidden');
-            $('#announcements-container').removeClass('skeleton-hidden');
-            $('#announcements-list').html('<div class="alert alert-danger">加载公告失败，请刷新页面重试。</div>');
+            $.ajax({
+                url: '../data/sitetrash.json',
+                dataType: 'json',
+                success: function(trashData) {
+                    let site = null;
+                    let categoryName = '';
+                    
+                    for (let category of trashData.categories) {
+                        const found = category.sites.find(s => s.id === siteId);
+                        if (found) {
+                            site = found;
+                            categoryName = category.name;
+                            break;
+                        }
+                    }
+                    
+                    if (!site) {
+                        showError('未找到该网站');
+                        return;
+                    }
+                    
+                    renderSite(site, categoryName);
+                },
+                error: function() {
+                    showError('加载网站信息失败，请刷新页面重试。');
+                }
+            });
         }
     });
+    
+    function renderSite(site, categoryName) {
+            
+            const faviconUrl = site.url ? `https://favicon.im/${new URL(site.url).hostname}` : '../assets/images/favicon.png';
+            
+            document.title = site.name + ' | MyACGN';
+            
+            $('meta[name="keywords"]').attr('content', site.name + ',MyACGN');
+            $('meta[name="description"]').attr('content', site.description);
+            $('meta[property="og:title"]').attr('content', site.name + ' | MyACGN');
+            $('meta[property="og:description"]').attr('content', site.description);
+            $('meta[property="og:image"]').attr('content', faviconUrl);
+            $('meta[property="og:url"]').attr('content', window.location.href);
+            $('link[rel="canonical"]').attr('href', window.location.href);
+            
+            $('#site-blur').css('background-image', `url(${faviconUrl})`);
+            $('#site-icon').attr('src', faviconUrl).attr('alt', site.name).attr('title', site.name);
+            
+            $('#site-category').text(categoryName);
+            $('#site-name').text(site.name);
+            $('#site-description').text(site.description);
+            $('#site-url').attr('href', site.url).attr('title', site.name);
+            
+            const qrUrl = site.url ? encodeURIComponent(site.url) : '';
+            $('#site-qr').attr('data-bs-original-title', `<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrUrl}' width='150'>`);
+            
+            $('#site-detail-content').text(site.detail || site.description);
+            
+            $('#skeleton-loading').addClass('skeleton-hidden');
+            $('#site-content').removeClass('skeleton-hidden');
+    }
+    
+    function showError(message) {
+        $('#skeleton-loading').addClass('skeleton-hidden');
+        $('#site-content').removeClass('skeleton-hidden');
+        $('#site-name').text('错误');
+        $('#site-category').text('');
+        $('#site-description').text(message);
+        $('#site-detail-content').html(`<div class="alert alert-danger">${message}</div><a href="/" class="btn btn-primary">返回首页</a>`);
+    }
 });
 </script>
 </body>

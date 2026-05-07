@@ -137,7 +137,7 @@
         return `
             <div class="url-card col-6 col-sm-6 col-md-4 col-xl-5a col-xxl-6a">
                 <div class="url-body default">
-                    <a href="sites/${site.id}.html" target="_blank" data-id="${site.id}" data-url="${site.url}" class="card no-c mb-4 site-${site.id}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${site.description}" rel="noopener noreferrer">
+                    <a href="sites/detail.html?id=${site.id}" target="_blank" data-id="${site.id}" data-url="${site.url}" class="card no-c mb-4 site-${site.id}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${site.description}" rel="noopener noreferrer">
                         <div class="card-body">
                             <div class="url-content d-flex align-items-center">
                                 <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">

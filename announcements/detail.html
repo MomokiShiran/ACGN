@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css?ver=2.0406">
 <link rel="stylesheet" href="../assets/css/common.css?ver=2.0406">
 <link rel="stylesheet" href="../assets/css/style.css?ver=2.0406">
+<link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406">
 <script src="../assets/js/jquery.min.js?ver=2.0406"></script>
 <link rel="canonical" href="/announcements/detail.html">
 </head>
@@ -174,21 +175,30 @@
             </div>
         </div>
 <div id="content" class="container my-2 my-md-3">
-    	    <div class="panel site-content no-hover-card card transparent">
-			<div class="card-body">
-    	        <h1 id="announcement-title" class="h2 mb-3">加载中...</h1>
-    	        <div id="announcement-meta" class="d-flex flex-fill text-muted text-sm mb-5">
-    	        </div>
-    	        <div id="announcement-content" class="panel-body mt-2">
-                    <div class="text-center py-5">
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">加载中...</span>
-                        </div>
-                    </div>
-    	        </div>
-    	    </div>
-			</div>
-
+    <div id="skeleton-loading" class="panel site-content no-hover-card card transparent">
+        <div class="card-body skeleton-article">
+            <div class="skeleton-article-title skeleton-animation"></div>
+            <div class="skeleton-article-meta skeleton-animation"></div>
+            <div class="skeleton-article-content">
+                <div class="skeleton-article-line long skeleton-animation"></div>
+                <div class="skeleton-article-line long skeleton-animation"></div>
+                <div class="skeleton-article-line short skeleton-animation"></div>
+                <div class="skeleton-article-line long skeleton-animation"></div>
+                <div class="skeleton-article-line long skeleton-animation"></div>
+                <div class="skeleton-article-line short skeleton-animation"></div>
+                <div class="skeleton-article-line long skeleton-animation"></div>
+            </div>
+        </div>
+    </div>
+    <div id="announcement-container" class="panel site-content no-hover-card card transparent skeleton-hidden">
+        <div class="card-body">
+            <h1 id="announcement-title" class="h2 mb-3">加载中...</h1>
+            <div id="announcement-meta" class="d-flex flex-fill text-muted text-sm mb-5">
+            </div>
+            <div id="announcement-content" class="panel-body mt-2">
+            </div>
+        </div>
+    </div>
 </div>
             <footer class="main-footer footer-type-1 text-xs">
                 <div id="footer-tools" class="d-flex flex-column footer-tools">
@@ -253,8 +263,13 @@ $(document).ready(function() {
             `);
             
             $('#announcement-content').html(announcement.content);
+            
+            $('#skeleton-loading').addClass('skeleton-hidden');
+            $('#announcement-container').removeClass('skeleton-hidden');
         },
         error: function() {
+            $('#skeleton-loading').addClass('skeleton-hidden');
+            $('#announcement-container').removeClass('skeleton-hidden');
             showError('加载公告失败，请刷新页面重试。');
         }
     });
