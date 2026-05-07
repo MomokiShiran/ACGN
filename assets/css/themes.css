@@ -54,7 +54,7 @@
  * Dark Mode Overrides
  */
 
-/* Base Elements */
+/* Base */
 .io-black-mode {
   background-color: var(--bg-darker);
 }
@@ -64,16 +64,91 @@
 .io-black-mode .bg-light {
   background: var(--bg-darkgray) !important;
 }
-.io-black-mode .text-gray {
-  color: #888;
-}
 .io-black-mode .modal-content,
 .io-black-mode .flex-avatar,
-.io-black-mode .card {
+.io-black-mode .card,
+.io-black-mode .block,
+.io-black-mode .url-body {
   background-color: var(--bg-dark);
 }
-.io-black-mode .url-body:hover {
-  box-shadow: var(--shadow-md);
+
+/* Text Colors */
+.io-black-mode,
+.io-black-mode body,
+.io-black-mode p,
+.io-black-mode a,
+.io-black-mode strong,
+.io-black-mode h1,
+.io-black-mode h2,
+.io-black-mode h3,
+.io-black-mode h4,
+.io-black-mode h5,
+.io-black-mode h6,
+.io-black-mode .text-sm,
+.io-black-mode .text-md,
+.io-black-mode .text-lg,
+.io-black-mode .text-xl,
+.io-black-mode .text-xs,
+.io-black-mode .sidebar-menu-text,
+.io-black-mode .h1,
+.io-black-mode .h2,
+.io-black-mode .h3,
+.io-black-mode .h4,
+.io-black-mode .h5,
+.io-black-mode .h6,
+.io-black-mode .panel-body,
+.io-black-mode .comments-title,
+.io-black-mode label,
+.io-black-mode .bulletin-container-link,
+.io-black-mode .friendlink a,
+.io-black-mode .footer-text,
+.io-black-mode .footer-text a {
+  color: var(--text);
+}
+
+/* Text-muted overrides */
+.io-black-mode .text-gray,
+.io-black-mode .text-muted,
+.io-black-mode .text-gray.text-lg,
+.io-black-mode .url-info .text-muted {
+  color: var(--text-muted) !important;
+}
+/* Footer links with text-muted class should use text color instead */
+.io-black-mode .footer-text a.text-muted {
+  color: var(--text) !important;
+}
+
+/* Link Hover - Only website cards and footer links should turn red on hover */
+.io-black-mode .url-body a:hover,
+.io-black-mode .url-body:hover strong,
+.io-black-mode .site-content .url-body a:hover,
+.io-black-mode .footer-text a:hover,
+.io-black-mode .footer-text a:hover strong {
+  color: var(--primary) !important;
+}
+/* Specific exceptions for announcements and other page cards */
+.io-black-mode .content .card:hover,
+.io-black-mode .content .card:hover a,
+.io-black-mode .content .card:hover h1,
+.io-black-mode .content .card:hover h2,
+.io-black-mode .content .card:hover h3,
+.io-black-mode .content .card:hover h4,
+.io-black-mode .content .card:hover h5,
+.io-black-mode .content .card:hover h6,
+.io-black-mode .content .card:hover .h1,
+.io-black-mode .content .card:hover .h2,
+.io-black-mode .content .card:hover .h3,
+.io-black-mode .content .card:hover .h4,
+.io-black-mode .content .card:hover .h5,
+.io-black-mode .content .card:hover .h6 {
+  color: var(--text) !important;
+}
+
+/* Togo Arrow (keep muted) */
+.io-black-mode .togo,
+.io-black-mode .togo:hover,
+.io-black-mode .togo i {
+  color: var(--text-muted) !important;
 }
 
 /* Header & Sidebar */
@@ -127,7 +202,7 @@
   color: #aaa;
 }
 .io-black-mode .switch-dark-mode:hover .mode-ico {
-  color: var(--color-bg-white);
+  color: var(--bg-white);
 }
 .switch-dark-mode .mode-ico {
   color: #777;
@@ -136,22 +211,23 @@
   color: #444;
 }
 
-/* Logo Display States */
+/* Card Hover Effects */
+.io-black-mode .url-body:hover {
+  box-shadow: var(--shadow-md);
+}
 .io-black-mode .site-content .card:hover,
 .io-black-mode .site-content .block:hover,
 .io-black-mode .site-content .url-body:hover {
   transform: none !important;
   box-shadow: var(--shadow-sm) !important;
 }
-.io-black-mode .navbar-brand-light {
-  display: none !important;
-}
-.io-black-mode .navbar-brand-dark {
-  display: initial !important;
-}
+
+/* Logo Display States */
+.io-black-mode .navbar-brand-light,
 .io-black-mode .sidebar-logo-light {
   display: none !important;
 }
+.io-black-mode .navbar-brand-dark,
 .io-black-mode .sidebar-logo-dark {
   display: initial !important;
 }
