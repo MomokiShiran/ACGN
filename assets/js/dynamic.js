@@ -76,7 +76,7 @@
     const generateSidebarItem = (category) => {
         return `
             <li class="sidebar-item">
-                <a href="#${category.id}" class="sidebar-menu-link">
+                <a href="/index.html#${category.id}" class="sidebar-menu-link">
                     <i class="${category.icon || 'fas fa-link'} icon-fw icon-lg me-2"></i>
                     <span class="sidebar-menu-text">${category.name}</span>
                 </a>
@@ -87,7 +87,7 @@
     const generateSidebarSubItem = (category) => {
         return `
             <li class="sidebar-item">
-                <a href="#${category.id}" class="sidebar-menu-link">
+                <a href="/index.html#${category.id}" class="sidebar-menu-link">
                     <span class="sidebar-menu-text">${category.name}</span>
                 </a>
             </li>
