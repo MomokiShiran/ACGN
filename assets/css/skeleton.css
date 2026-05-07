@@ -154,3 +154,154 @@
   margin: 8px 0;
   border-radius: 1px;
 }
+
+/* 文章详情页骨架屏 */
+.skeleton-article {
+  padding: 24px;
+}
+
+.skeleton-article-title {
+  width: 80%;
+  height: 32px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.skeleton-article-meta {
+  width: 200px;
+  height: 16px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+
+.skeleton-article-content {
+  margin-top: 24px;
+}
+
+.skeleton-article-line {
+  height: 16px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton-article-line.short {
+  width: 60%;
+}
+
+.skeleton-article-line.long {
+  width: 100%;
+}
+
+/* 公告列表骨架屏 */
+.skeleton-announcement-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.skeleton-announcement-title {
+  width: 60%;
+  height: 20px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton-announcement-meta {
+  width: 150px;
+  height: 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.skeleton-announcement-desc {
+  width: 100%;
+  height: 14px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-announcement-desc.short {
+  width: 70%;
+}
+
+/* 网站详情页骨架屏 */
+.skeleton-site-detail {
+  padding: 24px;
+}
+
+.skeleton-site-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.skeleton-site-logo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 90%;
+  height: 90%;
+  border-radius: var(--radius-xl);
+}
+
+.skeleton-site-info {
+  flex: 1;
+}
+
+.skeleton-site-name {
+  width: 200px;
+  height: 28px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton-site-url {
+  width: 300px;
+  height: 16px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton-site-desc {
+  width: 100%;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.skeleton-site-tags {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.skeleton-tag {
+  width: 80px;
+  height: 30px;
+  border-radius: var(--radius-xl);
+}
+
+.skeleton-site-name {
+  width: 200px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.skeleton-site-desc {
+  width: 100%;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.skeleton-site-desc.short {
+  width: 60%;
+}
+
+.skeleton-btn {
+  width: 120px;
+  height: 38px;
+  border-radius: var(--radius-xl);
+}

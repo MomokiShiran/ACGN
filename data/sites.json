@@ -606,6 +606,14 @@
       "icon": "fas fa-users",
       "sites": [
         {
+          "id": 455,
+          "name": "ARIA COMPANY",
+          "url": "https://aqua-aria.company",
+          "description": "二次元资源分享",
+          "category": "term-6",
+          "isNew": true
+        },
+        {
           "id": 449,
           "name": "Kg仓库",
           "url": "https://kgacg.com",
