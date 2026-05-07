@@ -250,14 +250,6 @@
           "isNew": false
         },
         {
-          "id": 169,
-          "name": "哔咪动漫/M站",
-          "url": "https://www.bimiacg4.net",
-          "description": "界面类似B站，可以找到冷门番",
-          "category": "term-3",
-          "isNew": false
-        },
-        {
           "id": 168,
           "name": "ebb",
           "url": "https://ebb.io",

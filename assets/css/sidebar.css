@@ -38,7 +38,6 @@
 .sidebar-logo-dark {
   max-height: 40px;
   width: auto;
-  object-fit: contain;
 }
 .sidebar-logo-dark {
   display: none;
@@ -64,7 +63,7 @@
   padding-left: var(--space-3);
   line-height: 50px;
   max-height: 50px;
-  color: #b2b8be;
+  color: var(--text-muted);
   transition: all var(--transition-normal);
 }
 .sidebar-item {
@@ -136,7 +135,6 @@
 
 .sidebar-popup {
   display: block;
-  position: absolute;
   position: fixed;
   border: 3px solid rgba(60, 71, 76, 0);
 }
@@ -147,7 +145,7 @@
 .sidebar-popup.second {
   left: 60px;
 }
-.sidebar-popup i, .sidiebar-popup .label-primary {
+.sidebar-popup i, .sidebar-popup .label-primary {
   display: none;
 }
 .sidebar-popup .sidebar-menu-text {
@@ -163,7 +161,6 @@
 .sidebar-popup-list, .sidebar-popup-item {
   width: 180px;
 }
-.sidebar-popup .sidebar-menu-inner ul li:last-child,
 .sidebar-popup .sidebar-menu-item:last-child>a {
   border-radius: 0 0 var(--radius-xl) var(--radius-xl);
 }
