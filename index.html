@@ -38,136 +38,115 @@
         <div class="sidebar-logo border-bottom border-color">
           <div class="logo overflow-hidden">
             <a href="/" class="logo-expanded">
-              <img src="./assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN">
-              <img src="./assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN">
+              <img loading="lazy" src="./assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN">
+              <img loading="lazy" src="./assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN">
             </a>
             <a href="/" class="logo-collapsed">
-              <img src="./assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN">
-              <img src="./assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN">
+              <img loading="lazy" src="./assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN">
+              <img loading="lazy" src="./assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN">
             </a>
           </div>
         </div>
 
-        <!-- 侧边栏菜单 -->
-        <div class="sidebar-menu flex-fill">
+        <!-- 侧边栏骨架屏 -->
+        <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
+          <div class="sidebar-scroll">
+            <div class="sidebar-menu-inner skeleton-sidebar-menu">
+              <!-- 主菜单项 - 10个 -->
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              
+              <!-- 工具大全项（带下拉箭头占位） -->
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+                <div class="skeleton-sidebar-text short skeleton-animation"></div>
+              </div>
+              
+              <!-- ACG购物项 -->
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 侧边栏骨架屏 - 底部菜单 -->
+        <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color">
+          <div class="flex-bottom">
+            <div class="skeleton-sidebar-menu">
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+              <div class="skeleton-sidebar-item">
+                <div class="skeleton-sidebar-icon skeleton-animation"></div>
+                <div class="skeleton-sidebar-text skeleton-animation"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 实际侧边栏菜单 -->
+        <div id="sidebar-content" class="sidebar-menu flex-fill skeleton-hidden">
           <div class="sidebar-scroll">
             <div class="sidebar-menu-inner">
-              <ul class="sidebar-nav-list">
-                <li class="sidebar-item">
-                  <a href="#term-2" class="sidebar-menu-link">
-                    <i class="fas fa-image icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">次元美图</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-3" class="sidebar-menu-link">
-                    <i class="fas fa-play-circle icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">在线动漫</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-12" class="sidebar-menu-link">
-                    <i class="fab fa-stack-overflow icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">在线漫画</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-5" class="sidebar-menu-link">
-                    <i class="fas fa-book icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">在线本子</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-8" class="sidebar-menu-link">
-                    <i class="fas fa-audio-description icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">在线里番</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-6" class="sidebar-menu-link">
-                    <i class="fas fa-users icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">ACG资源社区</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-9" class="sidebar-menu-link">
-                    <i class="fas fa-university icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">ACG图书馆</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-7" class="sidebar-menu-link">
-                    <i class="far fa-registered icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">Galgame</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-18" class="sidebar-menu-link">
-                    <i class="fab fa-envira icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">轻小说</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a href="#term-4" class="sidebar-menu-link">
-                    <i class="fas fa-download icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">动漫下载</span>
-                  </a>
-                </li>
-
-                <!-- 工具大全 - 下拉菜单 -->
-                <li class="sidebar-item">
-                  <a href="javascript:;" class="sidebar-menu-link">
-                    <i class="far fa-paper-plane icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">工具大全</span>
-                    <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
-                  </a>
-                  <ul class="sidebar-submenu">
-                    <li class="sidebar-item">
-                      <a href="#term-11" class="sidebar-menu-link"><span class="sidebar-menu-text">BT下载站</span></a>
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="#term-15" class="sidebar-menu-link"><span class="sidebar-menu-text">BT下载软件</span></a>
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="#term-17" class="sidebar-menu-link"><span class="sidebar-menu-text">Telegram频道</span></a>
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="#term-13" class="sidebar-menu-link"><span class="sidebar-menu-text">图源搜索工具</span></a>
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="#term-16" class="sidebar-menu-link"><span class="sidebar-menu-text">进阶ACG必备</span></a>
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="#term-22" class="sidebar-menu-link"><span class="sidebar-menu-text">付费网盘资源下载</span></a>
-                    </li>
-                    <li class="sidebar-item">
-                      <a href="#term-21" class="sidebar-menu-link"><span class="sidebar-menu-text">其它小工具</span></a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="sidebar-item">
-                  <a href="#term-14" class="sidebar-menu-link">
-                    <i class="fas fa-shopping-bag icon-fw icon-lg me-2"></i>
-                    <span class="sidebar-menu-text">ACG购物</span>
-                  </a>
-                </li>
+              <ul class="sidebar-nav-list" id="sidebar-nav-list">
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="border-top py-2 border-color">
+        <div id="sidebar-bottom-content" class="border-top py-2 border-color skeleton-hidden">
           <div class="flex-bottom">
             <ul class="sidebar-nav-list">
               <li class="sidebar-item">
-                <a href="sitetrash/" class="sidebar-menu-link">
+                <a href="sitetrash/index.html" class="sidebar-menu-link">
                   <i class="fas fa-trash icon-fw icon-lg me-2"></i>
                   <span class="sidebar-menu-text">失效归档</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a href="/postsite/" class="sidebar-menu-link">
+                <a href="/postsite/index.html" class="sidebar-menu-link">
                   <i class="fas fa-link icon-fw icon-lg me-2"></i>
                   <span class="sidebar-menu-text">投稿&反馈</span>
                 </a>
@@ -188,8 +167,8 @@
           <div class="container-fluid p-0">
 
             <a href="/" class="navbar-brand d-md-none">
-              <img src="./assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN">
-              <img src="./assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN">
+              <img loading="lazy" src="./assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN">
+              <img loading="lazy" src="./assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN">
             </a>
 
             <div class="collapse navbar-collapse order-2 order-md-1">
@@ -233,7 +212,7 @@
           <div class="bulletin mx-1 mx-md-2">
             <ul class="bulletin-ul bulletin-list">
               <li class="scrolltext-title overflowClip_1">
-                <a href="announcements/64.html" rel="bulletin" class="bulletin-container-link">➡️本站浏览须知⬅️</a>
+                <a href="announcements/detail.html?id=64" rel="bulletin" class="bulletin-container-link">➡️本站浏览须知⬅️</a>
               </li>
             </ul>
           </div>
@@ -242,21 +221,258 @@
       </div>
     </div>
 
-    <div class="content-site customize-site content">
-<h4 class="text-gray text-lg mb-4">
-            <i class="iconfont icon-book-mark-line icon-lg me-2" id="friendlink"></i>友情链接        </h4>
-        <div class="friendlink text-xs card no-hover-card">
-            <div class="card-body">
-                <a href="https://ciyuan.cat/" title="次元猫导航，一个专注于发现、收录Acg，二次元相关网站的导航网站" target="_blank" rel="noopener noreferrer">次元猫导航</a>
-<a href="https://xiaoyou66.com/" title="二次元技术宅" target="_blank" rel="noopener noreferrer">小游</a>
-<a href="https://msiv.tv/" title="阿瓦隆！遗世独立的理想乡" target="_blank" rel="noopener noreferrer">弥生寺</a>
-<a href="https://www.acgbox.link/">ACG盒子</a>
-<a href="https://www.mgnacg.com/" title="专注动漫的二次元小站">橘子动漫</a>
-<a href="https://www.myiys.com/" title="技术导航-动漫导航-二次元导航">ACGN导航</a>
-                <a href="/friends/" target="_blank" title="更多链接" rel="noopener noreferrer">更多链接</a>
+    <!-- 骨架屏加载容器 -->
+    <div id="skeleton-loading" class="content-site skeleton-container">
+        <!-- 骨架屏分类 - 重复5次模拟多个分类 -->
+        <div class="skeleton-category">
+            <div class="skeleton-title skeleton-animation"></div>
+            <div class="skeleton-row">
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
+        <div class="skeleton-category">
+            <div class="skeleton-title skeleton-animation"></div>
+            <div class="skeleton-row">
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-category">
+            <div class="skeleton-title skeleton-animation"></div>
+            <div class="skeleton-row">
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-category">
+            <div class="skeleton-title skeleton-animation"></div>
+            <div class="skeleton-row">
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="skeleton-category">
+            <div class="skeleton-title skeleton-animation"></div>
+            <div class="skeleton-row">
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-card-inner">
+                        <div class="skeleton-card-content">
+                            <div class="skeleton-avatar skeleton-animation"></div>
+                            <div class="skeleton-text-group">
+                                <div class="skeleton-text-line skeleton-animation"></div>
+                                <div class="skeleton-text-line short skeleton-animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 实际内容容器 -->
+    <div id="site-content" class="content-site customize-site content skeleton-hidden">
       </div>
 
       <footer class="main-footer footer-type-1 text-xs">
@@ -272,6 +488,12 @@
         <div class="footer-inner" style="text-align: center;">
           <div class="footer-text">
             © 2026 MyACGN &nbsp;&nbsp;Powered by <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer"><strong>ACGN</strong></a>
+            <span class="mx-2">|</span>
+            <a href="/about/index.html" class="text-muted">关于本站</a>
+            <span class="mx-1">|</span>
+            <a href="/disclaimer/index.html" class="text-muted">免责声明</a>
+            <span class="mx-1">|</span>
+            <a href="/privacy/index.html" class="text-muted">隐私政策</a>
           </div>
           <div class="footer-text mt-2" style="font-size: 11px; color: #888; max-width: 800px; margin: 0 auto; line-height: 1.8;">
             <strong>免责声明：</strong>本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站，本站对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。本站仅供学习交流使用，请勿用于非法用途。

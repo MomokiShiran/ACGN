@@ -31,12 +31,12 @@
                     <!-- logo -->
                     <div class="logo overflow-hidden">
                         <a href="/" class="logo-expanded">
-                            <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN">
-						    <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN">
+                            <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN" loading="lazy">
+						    <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN" loading="lazy">
                         </a>
                         <a href="/" class="logo-collapsed">
-                            <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN">
-						    <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN">
+                            <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN" loading="lazy">
+						    <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN" loading="lazy">
                         </a>
                     </div>
                     <!-- logo end -->
@@ -149,8 +149,8 @@
                 <div class="border-top py-2 border-color">
                     <div class="flex-bottom">
                         <ul class="sidebar-nav-list">
-                            <li class="menu-item menu-item-type-taxonomy menu-item-object-favorites menu-item-379 sidebar-item"><a href="/sitetrash/" class="sidebar-menu-link"><i class="fas fa-trash icon-fw icon-lg me-2"></i>  <span class="sidebar-menu-text">失效归档</span></a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-280 sidebar-item"><a href="/postsite/" class="sidebar-menu-link"><i class="fas fa-link icon-fw icon-lg me-2"></i>  <span class="sidebar-menu-text">投稿&#038;反馈</span></a></li>
+                            <li class="menu-item menu-item-type-taxonomy menu-item-object-favorites menu-item-379 sidebar-item"><a href="/sitetrash/index.html" class="sidebar-menu-link"><i class="fas fa-trash icon-fw icon-lg me-2"></i>  <span class="sidebar-menu-text">失效归档</span></a></li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-280 sidebar-item"><a href="/postsite/index.html" class="sidebar-menu-link"><i class="fas fa-link icon-fw icon-lg me-2"></i>  <span class="sidebar-menu-text">投稿&#038;反馈</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -303,6 +303,12 @@
                 <div class="footer-inner" style="text-align: center;">
                     <div class="footer-text">
                         © 2026 MyACGN &nbsp;&nbsp;Powered by <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer"><strong>ACGN</strong></a>
+                        <span class="mx-2">|</span>
+                        <a href="/about/index.html" class="text-muted">关于本站</a>
+                        <span class="mx-1">|</span>
+                        <a href="/disclaimer/index.html" class="text-muted">免责声明</a>
+                        <span class="mx-1">|</span>
+                        <a href="/privacy/index.html" class="text-muted">隐私政策</a>
                     </div>
                     <div class="footer-text mt-2" style="font-size: 11px; color: #888; max-width: 800px; margin: 0 auto; line-height: 1.8;">
                         <strong>免责声明：</strong>本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站本站对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。本站仅供学习交流使用，请勿用于非法用途。
@@ -315,17 +321,6 @@
 <!-- page-container end -->
 <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
 <script src="../assets/js/app.js?ver=2.0406"></script>
-<script>
-    $(document).on('click','a.smooth-n',function(ev) {
-        ev.preventDefault();
-        var href = $(this).attr("href");
-        var target = document.querySelector(href);
-        if(target) {
-            var offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
-            window.scrollTo({top: offset, behavior: 'smooth'});
-        }
-    });
-    </script>
 
 </body>
 </html>

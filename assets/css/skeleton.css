@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+/* 骨架屏加载容器 */
+.skeleton-container {
+  display: block;
+}
+
+.skeleton-hidden {
+  display: none !important;
+}
+
+.skeleton-category {
+  margin-bottom: 24px;
+}
+
+.skeleton-title {
+  width: 120px;
+  height: 24px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.skeleton-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+.skeleton-card {
+  width: 50%;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 576px) {
+  .skeleton-card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .skeleton-card {
+    width: 33.333333%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .skeleton-card {
+    width: 20%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .skeleton-card {
+    width: 16.666667%;
+  }
+}
+
+.skeleton-card-inner {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.skeleton-card-content {
+  display: flex;
+  align-items: center;
+}
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.skeleton-text-group {
+  flex: 1;
+}
+
+.skeleton-text-line {
+  height: 16px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.skeleton-text-line.short {
+  width: 60%;
+}
+
+.skeleton-text-line:last-child {
+  margin-bottom: 0;
+}
+
+/* 骨架屏动画 */
+.skeleton-animation {
+  background: linear-gradient(
+    90deg,
+    var(--bg-gray, #f0f0f0) 25%,
+    var(--bg-light, #e0e0e0) 50%,
+    var(--bg-gray, #f0f0f0) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 侧边栏骨架屏样式 */
+.skeleton-sidebar-menu {
+  padding: 0;
+}
+
+.skeleton-sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 0 var(--space-3);
+  height: 50px;
+  line-height: 50px;
+}
+
+.skeleton-sidebar-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.skeleton-sidebar-text {
+  height: 16px;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.skeleton-sidebar-text.short {
+  width: 16px;
+  flex: none;
+  margin-left: auto;
+  margin-right: 24px;
+}
+
+.skeleton-sidebar-divider {
+  height: 1px;
+  margin: 8px 0;
+  border-radius: 1px;
+}
