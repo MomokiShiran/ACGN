@@ -16,8 +16,8 @@
 
 1. 克隆项目
 ```bash
-git clone https://github.com/your-username/acg_nav.git
-cd acg_nav
+git clone https://github.com/MomokiShiran/ACGN.git
+cd ACGN
 ```
 
 2. 启动本地服务器
