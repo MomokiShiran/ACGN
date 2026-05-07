@@ -406,15 +406,6 @@
           "isNew": false
         },
         {
-          "id": 70,
-          "name": "Manga Raw",
-          "url": "https://mangaraw.to",
-          "description": "生肉日语漫画",
-          "category": "term-12",
-          "isNew": false,
-          "detail": "日语生肉，搜索框在最上面。"
-        },
-        {
           "id": 69,
           "name": "搜漫",
           "url": "https://www.soman.com",
@@ -422,14 +413,6 @@
           "category": "term-12",
           "isNew": false,
           "detail": "描述：搜漫连接了全网多个资源丰富的漫画源，为漫画爱好者提供最新最全的漫画资源搜索服务，带你享受一站式看遍全网漫画的极致体验。"
-        },
-        {
-          "id": 66,
-          "name": "动漫之家",
-          "url": "http://manhua.dmzj.com",
-          "description": "大妈之家",
-          "category": "term-12",
-          "isNew": false
         }
       ]
     },
@@ -1736,14 +1719,6 @@
           "category": "term-16",
           "isNew": false,
           "detail": "教程：https://www.bilibili.com/video/av93021529/"
-        },
-        {
-          "id": 146,
-          "name": "ZArchiver",
-          "url": "https://www.zarchiver.me/download-zarchiver",
-          "description": "安卓手机上最强的解压软件。",
-          "category": "term-16",
-          "isNew": false
         },
         {
           "id": 145,

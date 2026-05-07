@@ -69,6 +69,21 @@
       "icon": "fab fa-stack-overflow",
       "sites": [
         {
+          "id": 66,
+          "name": "动漫之家",
+          "url": "http://manhua.dmzj.com",
+          "description": "大妈之家",
+          "category": "term-12"
+        },
+        {
+          "id": 70,
+          "name": "Manga Raw",
+          "url": "https://mangaraw.to",
+          "description": "生肉日语漫画",
+          "category": "term-12",
+          "detail": "日语生肉，搜索框在最上面。"
+        },
+        {
           "id": 1009,
           "name": "萌兔本地漫画阅读器",
           "url": "",
@@ -235,6 +250,20 @@
           "url": "",
           "description": "国外ACG资源付费网盘下载",
           "category": "term-22"
+        }
+      ]
+    },
+    {
+      "id": "term-16",
+      "name": "进阶ACG必备",
+      "icon": "fas fa-tools",
+      "sites": [
+        {
+          "id": 146,
+          "name": "ZArchiver",
+          "url": "https://www.zarchiver.me/download-zarchiver",
+          "description": "安卓手机上最强的解压软件。",
+          "category": "term-16"
         }
       ]
     }
