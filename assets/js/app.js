@@ -2,7 +2,6 @@
     $(document).ready(function(){
         trigger_resizable(true);
         switch_mode(); 
-        stickFooter();
         if(isPC()){ 
             initTooltips(); 
         } else { 
@@ -17,8 +16,7 @@
         wid = setTimeout(go_resize, 200); 
     });
 
-    function go_resize() {
-        stickFooter(); 
+    const go_resize = () => {
         trigger_resizable();
     }
 
@@ -28,48 +26,34 @@
         }
     });
 
-    $(document).on('click', '.switch-dark-mode', function(event) {
+    $(document).on('click', '.switch-dark-mode', (event) => {
 		event.preventDefault();
         
         const isDark = $('body').hasClass('io-black-mode');
         const newClass = isDark ? 'io-grey-mode' : 'io-black-mode';
         
-        $('body').removeClass('io-black-mode io-grey-mode').addClass(newClass);
         localStorage.setItem('io-theme-mode', newClass);
         switch_mode(); 
         $("#"+ $('.switch-dark-mode').attr('aria-describedby')).remove();
     });
 
-    function switch_mode(){
+    const switch_mode = () => {
         const savedMode = localStorage.getItem('io-theme-mode');
+        let mode = savedMode;
         
-        // 如果没有保存的主题设置，检查系统深色模式偏好
-        if (!savedMode || savedMode === '') {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                $('body').removeClass('io-black-mode io-grey-mode').addClass('io-black-mode');
-            } else {
-                $('body').removeClass('io-black-mode io-grey-mode').addClass('io-grey-mode');
-            }
-        } else {
-            $('body').removeClass('io-black-mode io-grey-mode').addClass(savedMode);
+        if (!mode) {
+            mode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'io-black-mode' : 'io-grey-mode';
         }
         
-        if($('body').hasClass('io-black-mode')){
-            if($(".switch-dark-mode").attr("data-bs-original-title"))
-                $(".switch-dark-mode").attr("data-bs-original-title","日间模式");
-            else
-                $(".switch-dark-mode").attr("title","日间模式");
-            $(".mode-ico").removeClass("icon-night");
-            $(".mode-ico").addClass("icon-light");
-        }
-        else{
-            if($(".switch-dark-mode").attr("data-bs-original-title"))
-                $(".switch-dark-mode").attr("data-bs-original-title","夜间模式");
-            else
-                $(".switch-dark-mode").attr("title","夜间模式");
-            $(".mode-ico").removeClass("icon-light");
-            $(".mode-ico").addClass("icon-night");
-        }
+        $('body').removeClass('io-black-mode io-grey-mode').addClass(mode);
+        
+        const isDark = mode === 'io-black-mode';
+        const title = isDark ? '日间模式' : '夜间模式';
+        const $switch = $('.switch-dark-mode');
+        const attrName = $switch.attr('data-bs-original-title') ? 'data-bs-original-title' : 'title';
+        $switch.attr(attrName, title);
+        
+        $('.mode-ico').removeClass(isDark ? 'icon-night' : 'icon-light').addClass(isDark ? 'icon-light' : 'icon-night');
     }
 
     // 监听系统主题变化
@@ -95,29 +79,29 @@
         }
     });
 
-    $('.go-up').click(function () {
+    $('.go-up').click( () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
         return false;
     }); 
 
-    $('.slider_menu').children("ul").children("li").not(".anchor").hover(function() {
-        $(this).addClass("hover");
-        toTarget($(this).parent());
-    }, function() {
-        $(this).removeClass("hover");
+    $('.slider_menu').children("ul").children("li").not(".anchor").hover((e) => {
+        $(e.currentTarget).addClass("hover");
+        toTarget($(e.currentTarget).parent());
+    }, (e) => {
+        $(e.currentTarget).removeClass("hover");
     });
 
-    $('.slider_menu').mouseleave(function(e) {
-        const menu = $(this).children("ul");
-        window.setTimeout(function() { 
+    $('.slider_menu').mouseleave((e) => {
+        const menu = $(e.currentTarget).children("ul");
+        window.setTimeout(() => { 
             toTarget(menu) 
         }, 50);
     });  
 
-    function intoSlider() {
-        $(".slider_menu[sliderTab]").each(function() {
-            if(!$(this).hasClass('into')){
-                const menu = $(this).children("ul");
+    const intoSlider = () => {
+        $(".slider_menu[sliderTab]").each((_, el) => {
+            if(!$(el).hasClass('into')){
+                const menu = $(el).children("ul");
                 menu.prepend('<li class="anchor" style="position:absolute;width:0;height:28px"></li>');
                 const target = menu.find('.active').parent();
                 if(0 < target.length){
@@ -128,104 +112,90 @@
                         opacity: "1"
                     });
                 }
-                $(this).addClass('into');
+                $(el).addClass('into');
             }
         });
     }
 
-    function stickFooter() {
-        requestAnimationFrame(() => {
-            $('.main-footer').attr('style', '');
-            if($('.main-footer').hasClass('text-xs')){
-                const win_height = jQuery(window).height();
-                const footer_height = $('.main-footer').outerHeight(true);
-                const main_content_height = $('.main-footer').position().top + footer_height;
-                const currentMarginTop = parseInt($('.main-footer').css('marginTop'), 10);
-                if(win_height > main_content_height - currentMarginTop){
-                    $('.main-footer').css({
-                        marginTop: win_height - main_content_height
-                    });
-                }
-            }
-        });
-    }
-
-    $('.sidebar-switch').on('click',function(){
+    $('.sidebar-switch').on('click', () => {
         $('.sidebar').removeClass('mini-sidebar');
     }); 
 
     let isMin = false,
         isMobileMin = false;
 
-    function trigger_resizable(isNoAnim=false) {
-        if(!isMin && 767.98<$(window).width() && $(window).width()<1024){
+    const trigger_resizable = (isNoAnim=false) => {
+        const winWidth = $(window).width();
+        
+        if (!isMin && winWidth > 767.98 && winWidth < 1024) {
             $('.mini-button').prop('checked', false);
             trigger_lsm_mini(isNoAnim);
             isMin = true;
-            if(isMobileMin){
+            if (isMobileMin) {
                 $('.sidebar').addClass('mini-sidebar');
                 isMobileMin = false;
             }
-        }
-        else if((isMin && $(window).width()>=1024) || (isMobileMin && !isMin && $(window).width()>=1024)){
+        } else if ((isMin && winWidth >= 1024) || (isMobileMin && !isMin && winWidth >= 1024)) {
             $('.mini-button').prop('checked', true);
             trigger_lsm_mini(isNoAnim);
             isMin = false;
-            if(isMobileMin){
-                isMobileMin = false;
-            }
-        }
-        else if($(window).width() < 767.98 && $('.sidebar').hasClass('mini-sidebar')){
+            isMobileMin = false;
+        } else if (winWidth < 767.98 && $('.sidebar').hasClass('mini-sidebar')) {
             $('.sidebar').removeClass('mini-sidebar');
             isMobileMin = true;
             isMin = false;
         }
     }
 
-    $(document).on('click', '.sidebar-menu-inner a', function(){
-        if (!$('.sidebar-nav').hasClass('mini-sidebar')) {
-            $(this).parent("li").siblings("li.sidebar-item").children('ul').slideUp(200);
-            if ($(this).next().css('display') == "none") {
-                $(this).next('ul').slideDown(200);
-                $(this).parent('li').addClass('sidebar-show').siblings('li').removeClass('sidebar-show');
-            } else {
-                $(this).next('ul').slideUp(200);
-                $(this).parent('li').removeClass('sidebar-show');
-            }
+    $(document).on('click', '.sidebar-menu-inner a', (e) => {
+        if ($('.sidebar-nav').hasClass('mini-sidebar')) return;
+        
+        const $li = $(e.currentTarget).parent('li');
+        $li.siblings('li.sidebar-item').children('ul').slideUp(200);
+        
+        const $next = $(e.currentTarget).next('ul');
+        const isHidden = $next.css('display') === 'none';
+        
+        if (isHidden) {
+            $next.slideDown(200);
+            $li.addClass('sidebar-show').siblings('li').removeClass('sidebar-show');
+        } else {
+            $next.slideUp(200);
+            $li.removeClass('sidebar-show');
         }
     });
 
-    $('.mini-button').on('click',function(){
-        trigger_lsm_mini();
-    });
+    $('.mini-button').on('click', trigger_lsm_mini);
 
-    function trigger_lsm_mini(isNoAnim = false){
-        if ($('.header-mini-btn input[type="checkbox"]').prop("checked")) {
-            $('.sidebar-nav').removeClass('mini-sidebar');
-            $('.sidebar-menu ul ul').css("display", "none");
-            if(isNoAnim)
-                $('.sidebar-nav').width(220);
-            else
-                $('.sidebar-nav').stop().animate({width: 220},200);
+    const trigger_lsm_mini = (isNoAnim = false) => {
+        const isChecked = $('.header-mini-btn input[type="checkbox"]').prop('checked');
+        const $sidebarNav = $('.sidebar-nav');
+        const width = isChecked ? 220 : 60;
+        
+        if (isChecked) {
+            $sidebarNav.removeClass('mini-sidebar');
+            $('.sidebar-menu ul ul').css('display', 'none');
         } else {
             $('.sidebar-item.sidebar-show').removeClass('sidebar-show');
             $('.sidebar-menu ul').removeAttr('style');
-            $('.sidebar-nav').addClass('mini-sidebar');
-            if(isNoAnim)
-                $('.sidebar-nav').width(60);
-            else
-                $('.sidebar-nav').stop().animate({width : 60},200);
+            $sidebarNav.addClass('mini-sidebar');
+        }
+        
+        if (isNoAnim) {
+            $sidebarNav.width(width);
+        } else {
+            $sidebarNav.stop().animate({width}, 200);
         }
     }
 
-    $(document).on('mouseover','.mini-sidebar .sidebar-menu ul:first>li,.mini-sidebar .flex-bottom ul:first>li',function(){
+    $(document).on('mouseover','.mini-sidebar .sidebar-menu ul:first>li,.mini-sidebar .flex-bottom ul:first>li', (e) => {
         let offset = 2;
-        if($(this).parents('.flex-bottom').length!=0)
+        if($(e.currentTarget).parents('.flex-bottom').length!=0)
             offset = -3;
         $(".sidebar-popup.second").length == 0 && ($("body").append("<div class='second sidebar-popup sidebar-menu-inner text-sm'><div></div></div>"));
-        $(".sidebar-popup.second>div").html($(this).html());
+        $(".sidebar-popup.second>div").html($(e.currentTarget).html());
         $(".sidebar-popup.second").show();
-        let top = $(this).offset().top - $(window).scrollTop() + offset; 
+        let top = $(e.currentTarget).offset().top - $(window).scrollTop() + offset; 
         const popupHeight = $(".sidebar-popup.second>div").height();
         const windowHeight = $(window).height();
         if(windowHeight - top <= 0 ){
@@ -234,112 +204,74 @@
         $(".sidebar-popup.second").stop().animate({"top":top}, 50);
     });
 
-    $(document).on('mouseleave','.mini-sidebar .sidebar-menu ul:first, .mini-sidebar .slimScrollBar,.second.sidebar-popup',function(){
+    $(document).on('mouseleave','.mini-sidebar .sidebar-menu ul:first,.second.sidebar-popup', () => {
         $(".sidebar-popup.second").hide();
-    });
-
-    $(document).on('mouseover','.mini-sidebar .slimScrollBar,.second.sidebar-popup',function(){
-        $(".sidebar-popup.second").show();
     });
 })(jQuery);
 
-function isPC() {
+const isPC = () => {
     const u = navigator.userAgent;
     const Agents = ["Android", "iPhone", "webOS", "BlackBerry", "SymbianOS", "Windows Phone", "iPad", "iPod"];
     return !Agents.some(agent => u.indexOf(agent) > 0);
-}
+};
 
-function showAlert(data) {
-    let title, alertType, ico;
-    switch(data.status) {
-        case 1: 
-            title = '成功';
-            alertType = 'success';
-            ico = 'icon-adopt';
-            break;
-        case 2: 
-            title = '信息';
-            alertType = 'info';
-            ico = 'icon-tishi';
-            break;
-        case 3: 
-            title = '警告';
-            alertType = 'warning';
-            ico = 'icon-warning';
-            break;
-        case 4: 
-            title = '错误';
-            alertType = 'danger';
-            ico = 'icon-close-circle';
-            break;
-        default:
-            return;
-    }
+const showAlert = (data) => {
+    const alertTypes = {
+        1: { title: '成功', type: 'success', ico: 'icon-adopt' },
+        2: { title: '信息', type: 'info', ico: 'icon-tishi' },
+        3: { title: '警告', type: 'warning', ico: 'icon-warning' },
+        4: { title: '错误', type: 'danger', ico: 'icon-close-circle' }
+    };
+    
+    const config = alertTypes[data.status];
+    if (!config) return;
+    
     const msg = data.msg || '';
-    if(!$('.alert-placeholder').hasClass('text-sm')){
-        $('body').append('<div class="alert-placeholder text-sm" style="position: fixed;bottom: 10px;right: 10px;z-index: 1000;text-align: right;text-align: -webkit-right"></div>');
+    
+    if (!$('.alert-placeholder').hasClass('text-sm')) {
+        $('body').append('<div class="alert-placeholder text-sm" style="position:fixed;bottom:10px;right:10px;z-index:1000;text-align:right"></div>');
     }
+    
     const $html = $(`
         <div class="alert-body" style="display:none;">
-            <div class="alert alert-${alertType} text-lg pr-4 pr-md-5" style="text-align:initial">
-                <i class="iconfont ${ico} icon-lg" style="vertical-align: middle;margin-right: 10px"></i>
-                <span style="vertical-align:middle">${title}</span>
+            <div class="alert alert-${config.type} text-lg pr-4 pr-md-5" style="text-align:initial">
+                <i class="iconfont ${config.ico} icon-lg" style="vertical-align:middle;margin-right:10px"></i>
+                <span style="vertical-align:middle">${config.title}</span>
                 <br>
                 <span class="text-md" style="margin-left:30px;vertical-align:middle">${msg}</span>
             </div>
         </div>
     `);
+    
     $('.alert-placeholder').append($html);
-    $html.show(200).delay(3500).hide(300, () => $(this).remove()); 
-} 
+    $html.show(200).delay(3500).hide(300, function() { $(this).remove(); }); 
+};
 
-function toTarget(menu, padding = true, isMult = true) {
-    const slider = menu.children(".anchor");
-    let target = menu.children(".hover").first();
+const toTarget = (menu, padding = true, isMult = true) => {
+    const slider = menu.children('.anchor');
+    let target = menu.children('.hover').first();
+    
     if (!target || target.length === 0) {
-        if (isMult) {
-            target = menu.find('.active').parent();
-        } else {
-            target = menu.find('.active');
-        }
+        target = isMult ? menu.find('.active').parent() : menu.find('.active');
     }
+    
     if (target && target.length > 0) {
         const posLeft = target.position().left + target.scrollLeft();
         const outerWidth = target.outerWidth();
-        if (padding) {
-            slider.css({
-                left: posLeft + "px",
-                width: outerWidth + "px",
-                opacity: "1"
-            });
-        } else {
-            slider.css({
-                left: posLeft + (outerWidth / 4) + "px",
-                width: outerWidth / 2 + "px",
-                opacity: "1"
-            });
-        }
+        const css = {
+            left: padding ? posLeft + 'px' : posLeft + outerWidth / 4 + 'px',
+            width: padding ? outerWidth + 'px' : outerWidth / 2 + 'px',
+            opacity: '1'
+        };
+        slider.css(css);
     } else {
-        slider.css({
-            opacity: "0"
-        });
+        slider.css({ opacity: '0' });
     }
-}
+};
 
-function initTooltips(selector) {
-    selector = selector || '[data-bs-toggle="tooltip"]';
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll(selector));
-    tooltipTriggerList.forEach((tooltipTriggerEl) => {
-        new bootstrap.Tooltip(tooltipTriggerEl, { trigger: 'hover' });
-    });
-}
+const initTooltips = (selector) => {
+    const elements = document.querySelectorAll(selector || '[data-bs-toggle="tooltip"]');
+    Array.from(elements).forEach(el => new bootstrap.Tooltip(el, { trigger: 'hover' }));
+};
 
-$(document).on('click', 'a.smooth-n', function(ev) {
-    ev.preventDefault();
-    const href = $(this).attr('href');
-    const target = document.querySelector(href);
-    if (target) {
-        const offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
-        window.scrollTo({ top: offset, behavior: 'smooth' });
-    }
-});
+

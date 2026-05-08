@@ -180,7 +180,7 @@
 				</div>
             </div>
         </div>
-    <div class="container my-4 my-md-5 content">
+    <div class="content my-4 my-md-5">
             <div class="panel card no-hover-card">
                 <div class="card-body">
                     <h1 class="h2 mb-4">网站投稿&意见反馈</h1>
@@ -569,17 +569,6 @@
 <!-- page-container end -->
 <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
 <script src="../assets/js/app.js?ver=2.0406"></script>
-<script>
-    $(document).on('click','a.smooth-n',function(ev) {
-        ev.preventDefault();
-        var href = $(this).attr("href");
-        var target = document.querySelector(href);
-        if(target) {
-            var offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
-            window.scrollTo({top: offset, behavior: 'smooth'});
-        }
-    });
-    </script>
 
 </body>
 </html>

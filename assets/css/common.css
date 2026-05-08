@@ -220,9 +220,14 @@ html, body {
 .main-content {
   flex-direction: column;
   display: flex;
+  min-height: 100vh;
 }
 
-.content-site {
+.main-content > .content {
+  flex: 1;
+}
+
+.content {
   padding: var(--space-5) var(--space-8);
   width: 100%;
   margin-right: auto;
