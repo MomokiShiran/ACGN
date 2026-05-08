@@ -20,47 +20,13 @@
   margin-bottom: 16px;
 }
 
-.skeleton-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -8px;
-}
-
-.skeleton-card {
-  width: 50%;
-  padding: 0 8px;
-  margin-bottom: 16px;
-}
-
-@media (min-width: 576px) {
-  .skeleton-card {
-    width: 50%;
-  }
-}
-
-@media (min-width: 768px) {
-  .skeleton-card {
-    width: 33.333333%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .skeleton-card {
-    width: 20%;
-  }
-}
-
-@media (min-width: 1400px) {
-  .skeleton-card {
-    width: 16.666667%;
-  }
-}
-
+/* 骨架屏卡片样式 */
 .skeleton-card-inner {
   background: var(--bg-white);
   border-radius: var(--radius-lg);
   padding: 16px;
   box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
 }
 
 .skeleton-card-content {
@@ -92,6 +58,95 @@
 
 .skeleton-text-line:last-child {
   margin-bottom: 0;
+}
+
+/* 移动端响应式样式 */
+@media (max-width: 767.98px) {
+  .skeleton-title {
+    width: 100px;
+    height: 20px;
+    margin-bottom: 12px;
+  }
+  .skeleton-card-inner {
+    padding: 12px;
+  }
+  .skeleton-avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+  .skeleton-text-line {
+    height: 14px;
+    margin-bottom: 6px;
+  }
+  .skeleton-article {
+    padding: 16px;
+  }
+  .skeleton-article-title {
+    height: 28px;
+  }
+  .skeleton-article-meta {
+    height: 14px;
+    margin-bottom: 24px;
+  }
+  .skeleton-article-line {
+    height: 14px;
+    margin-bottom: 10px;
+  }
+  .skeleton-announcement-card {
+    padding: 16px;
+  }
+  .skeleton-announcement-title {
+    height: 18px;
+    margin-bottom: 10px;
+  }
+  .skeleton-announcement-meta {
+    height: 12px;
+    margin-bottom: 12px;
+  }
+  .skeleton-announcement-desc {
+    height: 12px;
+    margin-bottom: 6px;
+  }
+  .skeleton-site-detail {
+    padding: 16px;
+  }
+  .skeleton-site-logo {
+    width: 85%;
+    height: 85%;
+  }
+  .skeleton-site-name {
+    width: 160px;
+    height: 24px;
+    margin-bottom: 10px;
+  }
+  .skeleton-site-url {
+    width: 240px;
+    height: 14px;
+    margin-bottom: 10px;
+  }
+  .skeleton-site-desc {
+    height: 14px;
+  }
+  .skeleton-btn {
+    width: 100px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skeleton-card-inner {
+    padding: 10px;
+  }
+  .skeleton-avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+  .skeleton-text-line {
+    height: 12px;
+    margin-bottom: 5px;
+  }
 }
 
 /* 骨架屏动画 */
@@ -282,22 +337,6 @@
   width: 80px;
   height: 30px;
   border-radius: var(--radius-xl);
-}
-
-.skeleton-site-name {
-  width: 200px;
-  height: 32px;
-  border-radius: 4px;
-}
-
-.skeleton-site-desc {
-  width: 100%;
-  height: 16px;
-  border-radius: 4px;
-}
-
-.skeleton-site-desc.short {
-  width: 60%;
 }
 
 .skeleton-btn {

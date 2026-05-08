@@ -42,7 +42,15 @@
 
     function switch_mode(){
         const savedMode = localStorage.getItem('io-theme-mode');
-        if(savedMode && savedMode !== '') {
+        
+        // 如果没有保存的主题设置，检查系统深色模式偏好
+        if (!savedMode || savedMode === '') {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                $('body').removeClass('io-black-mode io-grey-mode').addClass('io-black-mode');
+            } else {
+                $('body').removeClass('io-black-mode io-grey-mode').addClass('io-grey-mode');
+            }
+        } else {
             $('body').removeClass('io-black-mode io-grey-mode').addClass(savedMode);
         }
         
@@ -62,6 +70,21 @@
             $(".mode-ico").removeClass("icon-light");
             $(".mode-ico").addClass("icon-night");
         }
+    }
+
+    // 监听系统主题变化
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            // 只有在用户没有手动设置主题时才自动切换
+            if (!localStorage.getItem('io-theme-mode')) {
+                if (e.matches) {
+                    $('body').removeClass('io-grey-mode').addClass('io-black-mode');
+                } else {
+                    $('body').removeClass('io-black-mode').addClass('io-grey-mode');
+                }
+                switch_mode();
+            }
+        });
     }
 
     $(window).scroll(function () {

@@ -31,6 +31,22 @@
     width: 17.5rem;
   }
 
+  /* 优化站点卡片移动端样式 */
+  .url-card .card-body {
+    padding: var(--space-3);
+  }
+  .url-card .url-img {
+    width: 36px;
+    height: 36px;
+  }
+  .url-card .url-info .text-sm {
+    font-size: var(--font-size-sm);
+  }
+  .url-card .url-info .text-xs {
+    font-size: var(--font-size-xs);
+  }
+  
+  /* 移动端卡片网格优化 */
   .row,
   .row-sm {
     margin-right: 0;
@@ -64,5 +80,26 @@
   select,
   button {
     max-width: 100%;
+  }
+
+  /* 优化分类标题移动端样式 */
+  h4.text-gray {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+  }
+}
+
+/* 超小屏进一步优化 */
+@media (max-width: 480px) {
+  .url-card .card-body {
+    padding: var(--space-2);
+  }
+  .url-card .url-img {
+    width: 32px;
+    height: 32px;
+  }
+  .container {
+    padding-right: var(--space-3);
+    padding-left: var(--space-3);
   }
 }
