@@ -135,7 +135,7 @@
         const newBadge = site.isNew ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>' : '';
         
         return `
-            <div class="url-card col-6 col-sm-6 col-md-4 col-xl-5a col-xxl-6a">
+            <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
                 <div class="url-body default">
                     <a href="sites/detail.html?id=${site.id}" target="_blank" data-id="${site.id}" data-url="${site.url}" class="card no-c mb-4 site-${site.id}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="${site.description}" rel="noopener noreferrer">
                         <div class="card-body">
