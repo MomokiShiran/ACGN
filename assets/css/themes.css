@@ -29,23 +29,7 @@
 .io-grey-mode .sidebar-item-list {
   background: none;
 }
-.io-grey-mode .sidebar-show,
-.io-grey-mode .sidebar-item-link:hover {
-  color: var(--primary);
-  background: none;
-}
-.io-grey-mode .sidebar-popup-inner {
-  background: #dadbdd;
-}
-.io-grey-mode .sidebar-popup::before {
-  border-color: transparent #dadbdd transparent;
-}
-.io-grey-mode .sidebar-nav,
-.io-grey-mode .sidebar-popup-item {
-  background: var(--bg-gray);
-}
-.io-grey-mode .sidebar-item-link:hover,
-.io-grey-mode .sidebar-popup-link:hover {
+.io-grey-mode .sidebar-show {
   color: var(--primary);
   background: none;
 }
@@ -169,23 +153,7 @@
 .io-black-mode .sidebar-item-list {
   background: none;
 }
-.io-black-mode .sidebar-show,
-.io-black-mode .sidebar-item-link:hover {
-  color: var(--primary);
-  background: none;
-}
-.io-black-mode .sidebar-popup-inner {
-  background: var(--bg-darkest);
-}
-.io-black-mode .sidebar-popup::before {
-  border-color: transparent var(--bg-darkest) transparent;
-}
-.io-black-mode .sidebar-nav,
-.io-black-mode .sidebar-popup-item {
-  background: var(--bg-dark);
-}
-.io-black-mode .sidebar-item-link:hover,
-.io-black-mode .sidebar-popup-link:hover {
+.io-black-mode .sidebar-show {
   color: var(--primary);
   background: none;
 }
