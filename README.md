@@ -40,7 +40,7 @@ npx http-server
 
 ## 版本历史
 
-当前版本: **1.5.0**
+当前版本: **1.5.1**
 
 查看完整版本历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
