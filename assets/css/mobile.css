@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-/* Mobile Menu */
-.mobile-menu-link {
-  color: #777;
-}
-
 @media (min-width:768px) {
   .navbar {
     padding: 0 1rem;
@@ -15,10 +10,6 @@
 }
 
 @media (max-width:767.98px) {
-  .nav-github {
-    display: none;
-  }
-
   .sidebar-nav {
     background: transparent !important;
     width: 100% !important;
@@ -40,33 +31,38 @@
     width: 17.5rem;
   }
 
+  /* 优化站点卡片移动端样式 */
+  .url-card .card-body {
+    padding: var(--space-3);
+  }
+  .url-card .url-img {
+    width: 36px;
+    height: 36px;
+  }
+  .url-card .url-info .text-sm {
+    font-size: var(--font-size-sm);
+  }
+  .url-card .url-info .text-xs {
+    font-size: var(--font-size-xs);
+  }
+  
+  /* 移动端卡片网格优化 */
   .row,
-  .row-lg,
-  .row-md,
-  .row-sm,
-  .row-xs {
+  .row-sm {
     margin-right: 0;
     margin-left: 0;
   }
   .row > [class*="col-"],
-  .row-lg > [class*="col-"],
-  .row-md > [class*="col-"],
-  .row-sm > [class*="col-"],
-  .row-xs > [class*="col-"] {
+  .row-sm > [class*="col-"] {
     padding-right: var(--space-2);
     padding-left: var(--space-2);
   }
-  .container,
-  .container-lg {
+  .container {
     padding-right: var(--space-4);
     padding-left: var(--space-4);
   }
 
-  .card,
-  .block {
-    overflow-x: hidden;
-  }
-  .url-card .card-body {
+  .card {
     overflow-x: hidden;
   }
 
@@ -84,5 +80,26 @@
   select,
   button {
     max-width: 100%;
+  }
+
+  /* 优化分类标题移动端样式 */
+  h4.text-gray {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+  }
+}
+
+/* 超小屏进一步优化 */
+@media (max-width: 480px) {
+  .url-card .card-body {
+    padding: var(--space-2);
+  }
+  .url-card .url-img {
+    width: 32px;
+    height: 32px;
+  }
+  .container {
+    padding-right: var(--space-3);
+    padding-left: var(--space-3);
   }
 }

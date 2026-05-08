@@ -19,8 +19,8 @@
 
 2. **克隆仓库**
    ```bash
-   git clone https://github.com/your-username/acg_nav.git
-   cd acg_nav
+   git clone https://github.com/MomokiShiran/ACGN.git
+   cd AGNN
    ```
 
 3. **创建分支**
@@ -91,12 +91,12 @@ acg_nav/
 │   ├── sitetrash.json  # 失效网站数据
 │   └── announcements.json # 公告数据
 ├── sites/              # 网站详情页
+│   ├── detail.html     # 网站详情
 ├── announcements/      # 公告页面
 │   ├── index.html      # 公告列表
 │   └── detail.html     # 公告详情
 ├── sitetrash/          # 失效归档
 ├── postsite/           # 投稿反馈
-├── scripts/            # 构建脚本
 ├── index.html          # 主页
 ├── README.md           # 项目说明
 └── CONTRIBUTING.md     # 贡献指南
