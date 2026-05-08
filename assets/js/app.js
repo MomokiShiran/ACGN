@@ -1,41 +1,68 @@
-(function($){ 
-    $(document).ready(function(){
-        trigger_resizable(true);
-        switch_mode(); 
-        if(isPC()){ 
-            initTooltips(); 
-        } else { 
-            initTooltips('.qr-img[data-bs-toggle="tooltip"]'); 
-        }
-        intoSlider();
-    });
+(function($){
+    const isPC = () => {
+        const u = navigator.userAgent;
+        const Agents = ["Android", "iPhone", "webOS", "BlackBerry", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        return !Agents.some(agent => u.indexOf(agent) > 0);
+    };
 
-    let wid = 0;
-    $(window).resize(function() {
-		clearTimeout(wid);
-        wid = setTimeout(go_resize, 200); 
-    });
-
-    const go_resize = () => {
-        trigger_resizable();
-    }
-
-    $(document).on('click', "a[target!='_blank']", function() {
-        if ($('.sidebar').hasClass('show')) {
-            $('.sidebar').modal('hide');
-        }
-    });
-
-    $(document).on('click', '.switch-dark-mode', (event) => {
-		event.preventDefault();
+    const showAlert = (data) => {
+        const alertTypes = {
+            1: { title: '成功', type: 'success', ico: 'icon-adopt' },
+            2: { title: '信息', type: 'info', ico: 'icon-tishi' },
+            3: { title: '警告', type: 'warning', ico: 'icon-warning' },
+            4: { title: '错误', type: 'danger', ico: 'icon-close-circle' }
+        };
         
-        const isDark = $('body').hasClass('io-black-mode');
-        const newClass = isDark ? 'io-grey-mode' : 'io-black-mode';
+        const config = alertTypes[data.status];
+        if (!config) return;
         
-        localStorage.setItem('io-theme-mode', newClass);
-        switch_mode(); 
-        $("#"+ $('.switch-dark-mode').attr('aria-describedby')).remove();
-    });
+        const msg = data.msg || '';
+        
+        if (!$('.alert-placeholder').hasClass('text-sm')) {
+            $('body').append('<div class="alert-placeholder text-sm" style="position:fixed;bottom:10px;right:10px;z-index:1000;text-align:right"></div>');
+        }
+        
+        const $html = $(`
+            <div class="alert-body" style="display:none;">
+                <div class="alert alert-${config.type} text-lg pr-4 pr-md-5" style="text-align:initial">
+                    <i class="iconfont ${config.ico} icon-lg" style="vertical-align:middle;margin-right:10px"></i>
+                    <span style="vertical-align:middle">${config.title}</span>
+                    <br>
+                    <span class="text-md" style="margin-left:30px;vertical-align:middle">${msg}</span>
+                </div>
+            </div>
+        `);
+        
+        $('.alert-placeholder').append($html);
+        $html.show(200).delay(3500).hide(300, function() { $(this).remove(); }); 
+    };
+
+    const toTarget = (menu, padding = true, isMult = true) => {
+        const slider = menu.children('.anchor');
+        let target = menu.children('.hover').first();
+        
+        if (!target || target.length === 0) {
+            target = isMult ? menu.find('.active').parent() : menu.find('.active');
+        }
+        
+        if (target && target.length > 0) {
+            const posLeft = target.position().left + target.scrollLeft();
+            const outerWidth = target.outerWidth();
+            const css = {
+                left: padding ? posLeft + 'px' : posLeft + outerWidth / 4 + 'px',
+                width: padding ? outerWidth + 'px' : outerWidth / 2 + 'px',
+                opacity: '1'
+            };
+            slider.css(css);
+        } else {
+            slider.css({ opacity: '0' });
+        }
+    };
+
+    const initTooltips = (selector) => {
+        const elements = document.querySelectorAll(selector || '[data-bs-toggle="tooltip"]');
+        Array.from(elements).forEach(el => new bootstrap.Tooltip(el, { trigger: 'hover' }));
+    };
 
     const switch_mode = () => {
         const savedMode = localStorage.getItem('io-theme-mode');
@@ -54,7 +81,111 @@
         $switch.attr(attrName, title);
         
         $('.mode-ico').removeClass(isDark ? 'icon-night' : 'icon-light').addClass(isDark ? 'icon-light' : 'icon-night');
-    }
+    };
+
+    const intoSlider = () => {
+        $(".slider_menu[sliderTab]").each((_, el) => {
+            if(!$(el).hasClass('into')){
+                const menu = $(el).children("ul");
+                menu.prepend('<li class="anchor" style="position:absolute;width:0;height:28px"></li>');
+                const target = menu.find('.active').parent();
+                if(0 < target.length){
+                    menu.children(".anchor").css({
+                        left: target.position().left + target.scrollLeft() + "px",
+                        width: target.outerWidth() + "px",
+                        height: target.height() + "px",
+                        opacity: "1"
+                    });
+                }
+                $(el).addClass('into');
+            }
+        });
+    };
+
+    let isMin = false,
+        isMobileMin = false;
+
+    const trigger_lsm_mini = (isNoAnim = false) => {
+        const isChecked = $('.header-mini-btn input[type="checkbox"]').prop('checked');
+        const $sidebarNav = $('.sidebar-nav');
+        const width = isChecked ? 220 : 60;
+        
+        if (isChecked) {
+            $sidebarNav.removeClass('mini-sidebar');
+            $('.sidebar-menu ul ul').css('display', 'none');
+        } else {
+            $('.sidebar-item.sidebar-show').removeClass('sidebar-show');
+            $('.sidebar-menu ul').removeAttr('style');
+            $sidebarNav.addClass('mini-sidebar');
+        }
+        
+        if (isNoAnim) {
+            $sidebarNav.width(width);
+        } else {
+            $sidebarNav.stop().animate({width}, 200);
+        }
+    };
+
+    const trigger_resizable = (isNoAnim=false) => {
+        const winWidth = $(window).width();
+        
+        if (!isMin && winWidth > 767.98 && winWidth < 1024) {
+            $('.mini-button').prop('checked', false);
+            trigger_lsm_mini(isNoAnim);
+            isMin = true;
+            if (isMobileMin) {
+                $('.sidebar').addClass('mini-sidebar');
+                isMobileMin = false;
+            }
+        } else if ((isMin && winWidth >= 1024) || (isMobileMin && !isMin && winWidth >= 1024)) {
+            $('.mini-button').prop('checked', true);
+            trigger_lsm_mini(isNoAnim);
+            isMin = false;
+            isMobileMin = false;
+        } else if (winWidth < 767.98 && $('.sidebar').hasClass('mini-sidebar')) {
+            $('.sidebar').removeClass('mini-sidebar');
+            isMobileMin = true;
+            isMin = false;
+        }
+    };
+
+    let wid = 0;
+    const go_resize = () => {
+        trigger_resizable();
+    };
+
+    $(document).ready(function(){
+        trigger_resizable(true);
+        switch_mode(); 
+        if(isPC()){ 
+            initTooltips(); 
+        } else { 
+            initTooltips('.qr-img[data-bs-toggle="tooltip"]'); 
+        }
+        intoSlider();
+    });
+
+    $(window).resize(function() {
+		clearTimeout(wid);
+        wid = setTimeout(go_resize, 200); 
+    });
+
+    $(document).on('click', "a[target!='_blank']", function() {
+        if ($('.sidebar').hasClass('show')) {
+            $('.sidebar').modal('hide');
+        }
+    });
+
+    $(document).on('click', '.switch-dark-mode', (event) => {
+		event.preventDefault();
+        
+        const isDark = $('body').hasClass('io-black-mode');
+        const newClass = isDark ? 'io-grey-mode' : 'io-black-mode';
+        
+        localStorage.setItem('io-theme-mode', newClass);
+        switch_mode(); 
+        $("#"+ $('.switch-dark-mode').attr('aria-describedby')).remove();
+    });
 
     // 监听系统主题变化
     if (window.matchMedia) {
@@ -98,54 +229,9 @@
         }, 50);
     });  
 
-    const intoSlider = () => {
-        $(".slider_menu[sliderTab]").each((_, el) => {
-            if(!$(el).hasClass('into')){
-                const menu = $(el).children("ul");
-                menu.prepend('<li class="anchor" style="position:absolute;width:0;height:28px"></li>');
-                const target = menu.find('.active').parent();
-                if(0 < target.length){
-                    menu.children(".anchor").css({
-                        left: target.position().left + target.scrollLeft() + "px",
-                        width: target.outerWidth() + "px",
-                        height: target.height() + "px",
-                        opacity: "1"
-                    });
-                }
-                $(el).addClass('into');
-            }
-        });
-    }
-
     $('.sidebar-switch').on('click', () => {
         $('.sidebar').removeClass('mini-sidebar');
     }); 
-
-    let isMin = false,
-        isMobileMin = false;
-
-    const trigger_resizable = (isNoAnim=false) => {
-        const winWidth = $(window).width();
-        
-        if (!isMin && winWidth > 767.98 && winWidth < 1024) {
-            $('.mini-button').prop('checked', false);
-            trigger_lsm_mini(isNoAnim);
-            isMin = true;
-            if (isMobileMin) {
-                $('.sidebar').addClass('mini-sidebar');
-                isMobileMin = false;
-            }
-        } else if ((isMin && winWidth >= 1024) || (isMobileMin && !isMin && winWidth >= 1024)) {
-            $('.mini-button').prop('checked', true);
-            trigger_lsm_mini(isNoAnim);
-            isMin = false;
-            isMobileMin = false;
-        } else if (winWidth < 767.98 && $('.sidebar').hasClass('mini-sidebar')) {
-            $('.sidebar').removeClass('mini-sidebar');
-            isMobileMin = true;
-            isMin = false;
-        }
-    }
 
     $(document).on('click', '.sidebar-menu-inner a', (e) => {
         if ($('.sidebar-nav').hasClass('mini-sidebar')) return;
@@ -167,27 +253,6 @@
 
     $('.mini-button').on('click', trigger_lsm_mini);
 
-    const trigger_lsm_mini = (isNoAnim = false) => {
-        const isChecked = $('.header-mini-btn input[type="checkbox"]').prop('checked');
-        const $sidebarNav = $('.sidebar-nav');
-        const width = isChecked ? 220 : 60;
-        
-        if (isChecked) {
-            $sidebarNav.removeClass('mini-sidebar');
-            $('.sidebar-menu ul ul').css('display', 'none');
-        } else {
-            $('.sidebar-item.sidebar-show').removeClass('sidebar-show');
-            $('.sidebar-menu ul').removeAttr('style');
-            $sidebarNav.addClass('mini-sidebar');
-        }
-        
-        if (isNoAnim) {
-            $sidebarNav.width(width);
-        } else {
-            $sidebarNav.stop().animate({width}, 200);
-        }
-    }
-
     $(document).on('mouseover','.mini-sidebar .sidebar-menu ul:first>li,.mini-sidebar .flex-bottom ul:first>li', (e) => {
         let offset = 2;
         if($(e.currentTarget).parents('.flex-bottom').length!=0)
@@ -207,71 +272,12 @@
     $(document).on('mouseleave','.mini-sidebar .sidebar-menu ul:first,.second.sidebar-popup', () => {
         $(".sidebar-popup.second").hide();
     });
+
+    // Expose functions to global scope for dynamic.js
+    window.isPC = isPC;
+    window.initTooltips = initTooltips;
+    window.showAlert = showAlert;
+    window.toTarget = toTarget;
 })(jQuery);
-
-const isPC = () => {
-    const u = navigator.userAgent;
-    const Agents = ["Android", "iPhone", "webOS", "BlackBerry", "SymbianOS", "Windows Phone", "iPad", "iPod"];
-    return !Agents.some(agent => u.indexOf(agent) > 0);
-};
-
-const showAlert = (data) => {
-    const alertTypes = {
-        1: { title: '成功', type: 'success', ico: 'icon-adopt' },
-        2: { title: '信息', type: 'info', ico: 'icon-tishi' },
-        3: { title: '警告', type: 'warning', ico: 'icon-warning' },
-        4: { title: '错误', type: 'danger', ico: 'icon-close-circle' }
-    };
-    
-    const config = alertTypes[data.status];
-    if (!config) return;
-    
-    const msg = data.msg || '';
-    
-    if (!$('.alert-placeholder').hasClass('text-sm')) {
-        $('body').append('<div class="alert-placeholder text-sm" style="position:fixed;bottom:10px;right:10px;z-index:1000;text-align:right"></div>');
-    }
-    
-    const $html = $(`
-        <div class="alert-body" style="display:none;">
-            <div class="alert alert-${config.type} text-lg pr-4 pr-md-5" style="text-align:initial">
-                <i class="iconfont ${config.ico} icon-lg" style="vertical-align:middle;margin-right:10px"></i>
-                <span style="vertical-align:middle">${config.title}</span>
-                <br>
-                <span class="text-md" style="margin-left:30px;vertical-align:middle">${msg}</span>
-            </div>
-        </div>
-    `);
-    
-    $('.alert-placeholder').append($html);
-    $html.show(200).delay(3500).hide(300, function() { $(this).remove(); }); 
-};
-
-const toTarget = (menu, padding = true, isMult = true) => {
-    const slider = menu.children('.anchor');
-    let target = menu.children('.hover').first();
-    
-    if (!target || target.length === 0) {
-        target = isMult ? menu.find('.active').parent() : menu.find('.active');
-    }
-    
-    if (target && target.length > 0) {
-        const posLeft = target.position().left + target.scrollLeft();
-        const outerWidth = target.outerWidth();
-        const css = {
-            left: padding ? posLeft + 'px' : posLeft + outerWidth / 4 + 'px',
-            width: padding ? outerWidth + 'px' : outerWidth / 2 + 'px',
-            opacity: '1'
-        };
-        slider.css(css);
-    } else {
-        slider.css({ opacity: '0' });
-    }
-};
-
-const initTooltips = (selector) => {
-    const elements = document.querySelectorAll(selector || '[data-bs-toggle="tooltip"]');
-    Array.from(elements).forEach(el => new bootstrap.Tooltip(el, { trigger: 'hover' }));
-};
 
 
