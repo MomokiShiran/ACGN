@@ -36,8 +36,9 @@
       'term-18',
       'term-4',
     ];
-    const subIds = ['term-11', 'term-15', 'term-17', 'term-13', 'term-16', 'term-22', 'term-21'];
     const findCat = id => cats.find(c => c.id === id);
+    const toolCollection = cats.find(c => c.id === 'tool-collection');
+    const subCats = toolCollection && toolCollection.children ? toolCollection.children : [];
 
     let html = mainIds
       .map(id => {
@@ -46,18 +47,15 @@
       })
       .join('');
 
-    const subHtml = subIds
-      .map(id => {
-        const c = findCat(id);
-        return c ? genSideSubItem(c) : '';
-      })
+    const subHtml = subCats
+      .map(c => genSideSubItem(c))
       .join('');
 
     html +=
       '<li class="sidebar-item">' +
       '<a href="javascript:;" class="sidebar-menu-link">' +
-      '<i class="far fa-paper-plane icon-fw icon-lg me-2"></i>' +
-      '<span class="sidebar-menu-text">工具大全</span>' +
+      '<i class="' + (toolCollection?.icon || 'fas fa-toolbox') + ' icon-fw icon-lg me-2"></i>' +
+      '<span class="sidebar-menu-text">' + (toolCollection?.name || '工具大全') + '</span>' +
       '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>' +
       '</a><ul class="sidebar-submenu">' +
       subHtml +
@@ -100,11 +98,21 @@
     '</span></a></li>';
 
   const renderSiteCards = data => {
-    let html =
-      data.categories
-        .filter(c => c.sites && c.sites.length > 0)
-        .map(c => genCatSection(c))
-        .join('') + genFriendLinks();
+    let html = '';
+    
+    data.categories.forEach(cat => {
+      if (cat.children && cat.children.length > 0) {
+        cat.children.forEach(subCat => {
+          if (subCat.sites && subCat.sites.length > 0) {
+            html += genCatSection(subCat);
+          }
+        });
+      } else if (cat.sites && cat.sites.length > 0) {
+        html += genCatSection(cat);
+      }
+    });
+    
+    html += genFriendLinks();
 
     const container = qs('#site-content');
     const skeleton = qs('#skeleton-loading');

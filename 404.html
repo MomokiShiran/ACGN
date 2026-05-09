@@ -390,19 +390,5 @@
     </div>
     <script src="assets/js/bootstrap.min.js?ver=2.0406"></script>
     <script src="assets/js/app.js?ver=2.0406"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        document.addEventListener('click', function (e) {
-          const target = e.target.closest('a.smooth');
-          if (target) {
-            e.preventDefault();
-            const href = target.getAttribute('href');
-            if (href && href.indexOf('#') === 0) {
-              window.location.href = '/' + href;
-            }
-          }
-        });
-      });
-    </script>
   </body>
 </html>
