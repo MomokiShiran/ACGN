@@ -29,7 +29,7 @@
   margin: 0 -20px;
   height: 74px;
 }
-.header-mini-btn input[type="checkbox"] {
+.header-mini-btn input[type='checkbox'] {
   display: none;
 }
 .header-mini-btn path {
@@ -42,7 +42,7 @@
   --offset: -38;
   stroke-dasharray: var(--length) var(--total-length);
   stroke-dashoffset: var(--offset);
-  transition: all .8s cubic-bezier(.645,.045,.355,1);
+  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .header-mini-btn circle {
   fill: #fff3;
@@ -59,8 +59,8 @@
 .header-mini-btn label:hover circle {
   opacity: 1;
 }
-.header-mini-btn input:checked+svg .line--1,
-.header-mini-btn input:checked+svg .line--3 {
+.header-mini-btn input:checked + svg .line--1,
+.header-mini-btn input:checked + svg .line--3 {
   --length: 12.602325267;
 }
 .header-mini-btn .line--1,
@@ -71,7 +71,9 @@
   --total-length: 80;
 }
 .header-mini-btn path {
-  transition: all .5s cubic-bezier(.645,.045,.355,1), stroke var(--transition-fast);
+  transition:
+    all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+    stroke var(--transition-fast);
 }
 .header-mini-btn label:hover path {
   stroke: var(--primary);
@@ -92,7 +94,7 @@
 /* Header Big */
 .page-header.big {
   backdrop-filter: blur(10px);
-  background: rgba(255,255,255,.7);
+  background: rgba(255, 255, 255, 0.7);
 }
 .header-big {
   position: relative;
@@ -100,7 +102,7 @@
   padding-top: 100px;
   padding-bottom: 60px;
 }
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .header-big {
     padding-top: 170px;
     padding-bottom: 110px;

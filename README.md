@@ -15,12 +15,14 @@
 ### 本地运行
 
 1. 克隆项目
+
 ```bash
 git clone https://github.com/MomokiShiran/ACGN.git
 cd ACGN
 ```
 
 2. 启动本地服务器
+
 ```bash
 # 使用 Python
 python -m http.server 8000

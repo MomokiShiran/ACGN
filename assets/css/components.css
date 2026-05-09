@@ -30,7 +30,7 @@
   position: absolute;
   width: inherit;
   height: inherit;
-  opacity: .2;
+  opacity: 0.2;
 }
 .img-cover {
   max-width: 90% !important;
@@ -47,7 +47,7 @@
 .site-body .btn {
   border-radius: var(--radius-xl);
   padding: 7px 16px;
-  background-color: rgba(138, 138, 138, .15);
+  background-color: rgba(138, 138, 138, 0.15);
   transition: var(--transition-normal);
 }
 .site-body .btn:hover {
@@ -75,7 +75,7 @@
   visibility: visible;
   margin-top: -10px;
 }
-@media screen and (max-width:575.98px) {
+@media screen and (max-width: 575.98px) {
   .siteico:before {
     padding-top: 60%;
   }
