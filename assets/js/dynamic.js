@@ -32,8 +32,12 @@
         html +=
           '<li class="sidebar-item">' +
           '<a href="javascript:;" class="sidebar-menu-link">' +
-          '<i class="' + (cat.icon || 'fas fa-toolbox') + ' icon-fw icon-lg me-2"></i>' +
-          '<span class="sidebar-menu-text">' + cat.name + '</span>' +
+          '<i class="' +
+          (cat.icon || 'fas fa-toolbox') +
+          ' icon-fw icon-lg me-2"></i>' +
+          '<span class="sidebar-menu-text">' +
+          cat.name +
+          '</span>' +
           '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>' +
           '</a><ul class="sidebar-submenu">' +
           subHtml +
@@ -78,7 +82,7 @@
 
   const renderSiteCards = data => {
     let html = '';
-    
+
     data.categories.forEach(cat => {
       if (cat.children && cat.children.length > 0) {
         cat.children.forEach(subCat => {
@@ -90,7 +94,7 @@
         html += genCatSection(cat);
       }
     });
-    
+
     html += genFriendLinks();
 
     const container = qs('#site-content');
