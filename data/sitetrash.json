@@ -236,6 +236,13 @@
           "url": "",
           "description": "综合ACG资源bt下载站",
           "category": "term-11"
+        },
+        {
+          "id": 232,
+          "name": "acg23",
+          "url": "https://www.acg23.com",
+          "description": "综合资源种子下载",
+          "category": "term-11"
         }
       ]
     },
