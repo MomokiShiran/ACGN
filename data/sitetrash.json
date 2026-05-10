@@ -226,51 +226,58 @@
       ]
     },
     {
-      "id": "term-11",
-      "name": "BT下载站",
-      "icon": "fas fa-download",
-      "sites": [
+      "id": "tool-collection",
+      "name": "工具大全",
+      "icon": "fas fa-toolbox",
+      "children": [
         {
-          "id": 1003,
-          "name": "星宫BT",
-          "url": "",
-          "description": "综合ACG资源bt下载站",
-          "category": "term-11"
+          "id": "term-11",
+          "name": "BT下载站",
+          "icon": "fas fa-download",
+          "sites": [
+            {
+              "id": 1003,
+              "name": "星宫BT",
+              "url": "",
+              "description": "综合ACG资源bt下载站",
+              "category": "term-11"
+            },
+            {
+              "id": 232,
+              "name": "acg23",
+              "url": "https://www.acg23.com",
+              "description": "综合资源种子下载",
+              "category": "term-11"
+            }
+          ]
         },
         {
-          "id": 232,
-          "name": "acg23",
-          "url": "https://www.acg23.com",
-          "description": "综合资源种子下载",
-          "category": "term-11"
-        }
-      ]
-    },
-    {
-      "id": "term-22",
-      "name": "付费网盘资源下载",
-      "icon": "fas fa-cloud-download-alt",
-      "sites": [
+          "id": "term-22",
+          "name": "付费网盘资源下载",
+          "icon": "fas fa-cloud-download-alt",
+          "sites": [
+            {
+              "id": 1017,
+              "name": "エロ国",
+              "url": "",
+              "description": "国外ACG资源付费网盘下载",
+              "category": "term-22"
+            }
+          ]
+        },
         {
-          "id": 1017,
-          "name": "エロ国",
-          "url": "",
-          "description": "国外ACG资源付费网盘下载",
-          "category": "term-22"
-        }
-      ]
-    },
-    {
-      "id": "term-16",
-      "name": "进阶ACG必备",
-      "icon": "fas fa-tools",
-      "sites": [
-        {
-          "id": 146,
-          "name": "ZArchiver",
-          "url": "https://www.zarchiver.me/download-zarchiver",
-          "description": "安卓手机上最强的解压软件。",
-          "category": "term-16"
+          "id": "term-16",
+          "name": "进阶ACG必备",
+          "icon": "fas fa-tools",
+          "sites": [
+            {
+              "id": 146,
+              "name": "ZArchiver",
+              "url": "https://www.zarchiver.me/download-zarchiver",
+              "description": "安卓手机上最强的解压软件。",
+              "category": "term-16"
+            }
+          ]
         }
       ]
     }
