@@ -2139,16 +2139,6 @@
               "icon": "assets/images/sites/app.illuminarty.ai.png"
             },
             {
-              "id": 433,
-              "name": "TG喵",
-              "url": "https://meow.tg",
-              "description": "Telgram资源搜索引擎",
-              "category": "term-21",
-              "isNew": true,
-              "detail": "目前已经索引超过百万资源，一键投稿分享频道&amp;搜索机器人（感谢匿名用户的投稿）",
-              "icon": "assets/images/sites/meow.tg.png"
-            },
-            {
               "id": 398,
               "name": "hbr活动日程查询",
               "url": "https://hbr.quest/schedule",
