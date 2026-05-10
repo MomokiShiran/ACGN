@@ -175,13 +175,13 @@
     '<i class="iconfont icon-book-mark-line icon-lg me-2" id="friendlink"></i>友情链接</h4>' +
     '<div class="friendlink text-xs card no-hover-card">' +
     '<div class="card-body">' +
-    '<a href="https://ciyuan.cat/" title="次元猫导航" target="_blank" rel="noopener noreferrer">次元猫导航</a>' +
-    '<a href="https://xiaoyou66.com/" title="二次元技术宅" target="_blank" rel="noopener noreferrer">小游</a>' +
-    '<a href="https://msiv.tv/" title="阿瓦隆！遗世独立的理想乡" target="_blank" rel="noopener noreferrer">弥生寺</a>' +
-    '<a href="https://www.acgbox.link/">ACG盒子</a>' +
-    '<a href="https://www.mgnacg.com/" title="专注动漫的二次元小站">橘子动漫</a>' +
-    '<a href="https://www.myiys.com/" title="技术导航-动漫导航-二次元导航">ACGN导航</a>' +
-    '<a href="/friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer">更多链接</a>' +
+    '<a href="https://ciyuan.cat/" title="次元猫导航" target="_blank" rel="noopener noreferrer" class="friendlink-link">次元猫导航</a>' +
+    '<a href="https://xiaoyou66.com/" title="二次元技术宅" target="_blank" rel="noopener noreferrer" class="friendlink-link">小游</a>' +
+    '<a href="https://msiv.tv/" title="阿瓦隆！遗世独立的理想乡" target="_blank" rel="noopener noreferrer" class="friendlink-link">弥生寺</a>' +
+    '<a href="https://www.acgbox.link/" class="friendlink-link">ACG盒子</a>' +
+    '<a href="https://www.mgnacg.com/" title="专注动漫的二次元小站" class="friendlink-link">橘子动漫</a>' +
+    '<a href="https://www.myiys.com/" title="技术导航-动漫导航-二次元导航" class="friendlink-link">ACGN导航</a>' +
+    '<a href="/friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer" class="friendlink-link">更多链接</a>' +
     '</div>' +
     '</div>';
 
