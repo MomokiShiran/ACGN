@@ -24,16 +24,16 @@
   right: 0;
 }
 .url-card .card-body {
-  padding: .9375rem;
+  padding: 0.9375rem;
 }
 .url-card .url-img {
   width: 40px;
   height: 40px;
   flex: none;
-  background: rgba(128, 128, 128, .1);
+  background: rgba(128, 128, 128, 0.1);
   overflow: hidden;
 }
-.url-card .url-img>img {
+.url-card .url-img > img {
   max-height: 100%;
   vertical-align: unset;
 }
@@ -49,17 +49,17 @@
   width: 20px;
   height: 20px;
 }
-.url-card .post-min .url-img>img {
+.url-card .post-min .url-img > img {
   vertical-align: unset;
 }
 .url-card.wechat a.card:after,
 .url-card.down a.card:after {
   position: absolute;
   display: inline-block;
-  font-family: "iconfont";
+  font-family: 'iconfont';
   color: #888;
   margin-left: 10px;
-  opacity: .15;
+  opacity: 0.15;
 }
 .url-card.wechat a.card:after {
   content: '\e60d';
@@ -93,7 +93,7 @@
   width: 30px;
   height: 30px;
   line-height: 30px;
-  opacity: .2;
+  opacity: 0.2;
   transition: opacity var(--transition-normal);
 }
 .url-card .mini a.togo {
@@ -111,8 +111,8 @@
 }
 .url-card-tag-link {
   font-size: 75%;
-  padding: .125rem .4rem;
-  background: rgba(134, 134, 134, .1);
+  padding: 0.125rem 0.4rem;
+  background: rgba(134, 134, 134, 0.1);
   color: #888;
   border-radius: var(--radius-pill);
   transition: var(--transition-normal);
@@ -125,7 +125,7 @@
   text-shadow: 0 0 5px;
 }
 .panel-body .url-card.shortcode-url .card {
-  background: rgba(136, 136, 136, .1);
+  background: rgba(136, 136, 136, 0.1);
 }
 .url-card .remove-site {
   position: absolute;
@@ -136,7 +136,7 @@
   line-height: 20px;
 }
 .url-card .mini .card-body {
-  padding: .4rem .5rem;
+  padding: 0.4rem 0.5rem;
 }
 
 /* Bulletin Card */

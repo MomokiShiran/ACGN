@@ -1,0 +1,25 @@
+{
+  "name": "acgn",
+  "version": "1.6.0",
+  "description": "ACG二次元导航盒子",
+  "main": "index.html",
+  "scripts": {
+    "lint": "eslint assets/js/app.js assets/js/dynamic.js",
+    "lint:fix": "eslint assets/js/app.js assets/js/dynamic.js --fix",
+    "format": "prettier --write '**/*.{js,json,md,css,scss,html}'",
+    "format:check": "prettier --check '**/*.{js,json,md,css,scss,html}'"
+  },
+  "keywords": [
+    "acg",
+    "navigation",
+    "anime"
+  ],
+  "author": "",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5"
+  }
+}

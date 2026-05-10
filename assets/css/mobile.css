@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .navbar {
     padding: 0 1rem;
   }
@@ -9,7 +9,7 @@
   }
 }
 
-@media (max-width:767.98px) {
+@media (max-width: 767.98px) {
   .sidebar-nav {
     background: transparent !important;
     width: 100% !important;
@@ -20,14 +20,14 @@
     display: none;
     padding-left: 0 !important;
   }
-  .sidebar-nav.show>div {
-    transform: translate3d(0,0,0);
+  .sidebar-nav.show > div {
+    transform: translate3d(0, 0, 0);
   }
-  .sidebar-nav>* {
+  .sidebar-nav > * {
     position: fixed;
     height: 100%;
     transition: var(--transition-fast);
-    transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%, 0, 0);
     width: 17.5rem;
   }
 
@@ -45,15 +45,15 @@
   .url-card .url-info .text-xs {
     font-size: var(--font-size-xs);
   }
-  
+
   /* 移动端卡片网格优化 */
   .row,
   .row-sm {
     margin-right: 0;
     margin-left: 0;
   }
-  .row > [class*="col-"],
-  .row-sm > [class*="col-"] {
+  .row > [class*='col-'],
+  .row-sm > [class*='col-'] {
     padding-right: var(--space-2);
     padding-left: var(--space-2);
   }

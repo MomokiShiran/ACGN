@@ -1,185 +1,267 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>公告详情 | MyACGN</title>
-<meta name="theme-color" content="#f9f9f9">
-<meta name="keywords" content="MyACGN盒子,二次元,导航,公告">
-<meta name="description" content="MyACGN盒子公告详情">
-<meta property="og:type" content="article">
-<meta property="og:url" content="/announcements/detail.html">
-<meta property="og:title" content="公告详情 | MyACGN">
-<meta property="og:description" content="MyACGN盒子公告详情">
-<meta property="og:image" content="../assets/images/20210727002253-59085.jpeg">
-<meta property="og:site_name" content="MyACGN">
-<link rel="shortcut icon" href="../assets/images/favicon.png">
-<link rel="apple-touch-icon" href="../assets/images/favicon.png"><link rel="stylesheet" href="../assets/css/iconfont.css?ver=2.0406">
-<link rel="stylesheet" href="../assets/css/all.min.css?ver=2.0406">
-<link rel="stylesheet" href="../assets/css/bootstrap.min.css?ver=2.0406">
-<link rel="stylesheet" href="../assets/css/common.css?ver=2.0406">
-<link rel="stylesheet" href="../assets/css/style.css?ver=2.0406">
-<link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406">
-<script src="../assets/js/jquery.min.js?ver=2.0406"></script>
-<link rel="canonical" href="/announcements/detail.html">
-</head>
-<body class="io-grey-mode">
-   <div class="page-container">
-        <div id="sidebar" class="sticky sidebar-nav fade sidebar">
-            <div class="modal-dialog h-100 sidebar-nav-inner">
-                <div class="sidebar-logo border-bottom border-color">
-                    <div class="logo overflow-hidden">
-                        <a href="/" class="logo-expanded">
-                            <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-light" alt="MyACGN" loading="lazy">
-						    <img src="../assets/images/20210727002253-59085.jpeg" height="40" class="sidebar-logo-dark" alt="MyACGN" loading="lazy">
-                        </a>
-                        <a href="/" class="logo-collapsed">
-                            <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-light" alt="MyACGN" loading="lazy">
-						    <img src="../assets/images/favicon.png" height="40" class="sidebar-logo-dark" alt="MyACGN" loading="lazy">
-                        </a>
-                    </div>
-                </div>
-                <div class="sidebar-menu flex-fill">
-                    <div class="sidebar-scroll">
-                        <div class="sidebar-menu-inner">
-                            <ul class="sidebar-nav-list">
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-2" class="sidebar-menu-link">
-                                        <i class="fas fa-image icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">次元美图</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-3" class="sidebar-menu-link">
-                                        <i class="fas fa-play-circle icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">在线动漫</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-12" class="sidebar-menu-link">
-                                        <i class="fab fa-stack-overflow icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">在线漫画</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-5" class="sidebar-menu-link">
-                                        <i class="fas fa-book icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">在线本子</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-8" class="sidebar-menu-link">
-                                        <i class="fas fa-audio-description icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">在线里番</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-6" class="sidebar-menu-link">
-                                        <i class="fas fa-users icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">ACG资源社区</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-9" class="sidebar-menu-link">
-                                        <i class="fas fa-university icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">ACG图书馆</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-7" class="sidebar-menu-link">
-                                        <i class="far fa-registered icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">Galgame</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-18" class="sidebar-menu-link">
-                                        <i class="fab fa-envira icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">轻小说</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-4" class="sidebar-menu-link">
-                                        <i class="fas fa-download icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">动漫下载</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="javascript:;" class="sidebar-menu-link">
-                                        <i class="far fa-paper-plane icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">工具大全</span>
-                                        <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li class="sidebar-item"><a href="/index.html#term-11" class="sidebar-menu-link"><span class="sidebar-menu-text">BT下载站</span></a></li>
-                                        <li class="sidebar-item"><a href="/index.html#term-15" class="sidebar-menu-link"><span class="sidebar-menu-text">BT下载软件</span></a></li>
-                                        <li class="sidebar-item"><a href="/index.html#term-17" class="sidebar-menu-link"><span class="sidebar-menu-text">Telegram频道</span></a></li>
-                                        <li class="sidebar-item"><a href="/index.html#term-13" class="sidebar-menu-link"><span class="sidebar-menu-text">图源搜索工具</span></a></li>
-                                        <li class="sidebar-item"><a href="/index.html#term-16" class="sidebar-menu-link"><span class="sidebar-menu-text">进阶ACG必备</span></a></li>
-                                        <li class="sidebar-item"><a href="/index.html#term-22" class="sidebar-menu-link"><span class="sidebar-menu-text">付费网盘资源下载</span></a></li>
-                                        <li class="sidebar-item"><a href="/index.html#term-21" class="sidebar-menu-link"><span class="sidebar-menu-text">其它小工具</span></a></li>
-                                    </ul>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="/index.html#term-14" class="sidebar-menu-link">
-                                        <i class="fas fa-shopping-bag icon-fw icon-lg me-2"></i>
-                                        <span class="sidebar-menu-text">ACG购物</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="border-top py-2 border-color">
-                    <div class="flex-bottom">
-                        <ul class="sidebar-nav-list">
-                            <li class="sidebar-item"><a href="/sitetrash/" class="sidebar-menu-link"><i class="fas fa-trash icon-fw icon-lg me-2"></i><span class="sidebar-menu-text">失效归档</span></a></li>
-                            <li class="sidebar-item"><a href="/postsite/" class="sidebar-menu-link"><i class="fas fa-link icon-fw icon-lg me-2"></i><span class="sidebar-menu-text">投稿&反馈</span></a></li>
-                        </ul>
-                    </div>
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>公告详情 - MyACGN</title>
+    <meta name="theme-color" content="#f9f9f9" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="MyACGN" />
+    <meta name="keywords" content="MyACGN公告详情,ACG导航公告,二次元网站公告" />
+    <meta name="description" content="MyACGN公告详情页面，查看网站公告的详细内容。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:url" content="/announcements/detail.html" />
+    <meta property="og:title" content="公告详情 - MyACGN" />
+    <meta property="og:description" content="MyACGN公告详情页面，查看网站公告的详细内容。" />
+    <meta property="og:image" content="../assets/images/20210727002253-59085.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="MyACGN" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="公告详情 - MyACGN" />
+    <meta name="twitter:description" content="查看网站公告的详细内容。" />
+    <meta name="twitter:image" content="../assets/images/20210727002253-59085.jpeg" />
+    
+    <link rel="shortcut icon" href="../assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png" />
+    <link rel="stylesheet" href="../assets/css/iconfont.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/all.min.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/common.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/style.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406" />
+    <link rel="canonical" href="/announcements/detail.html" />
+  </head>
+  <body class="io-grey-mode">
+    <div class="page-container">
+      <div id="sidebar" class="sticky sidebar-nav fade sidebar">
+        <div class="modal-dialog h-100 sidebar-nav-inner">
+          <div class="sidebar-logo border-bottom border-color">
+            <div class="logo overflow-hidden">
+              <a href="/" class="logo-expanded">
+                <img
+                  src="../assets/images/20210727002253-59085.jpeg"
+                  height="40"
+                  class="sidebar-logo-light"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+                <img
+                  src="../assets/images/20210727002253-59085.jpeg"
+                  height="40"
+                  class="sidebar-logo-dark"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+              </a>
+              <a href="/" class="logo-collapsed">
+                <img
+                  src="../assets/images/favicon.png"
+                  height="40"
+                  class="sidebar-logo-light"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+                <img
+                  src="../assets/images/favicon.png"
+                  height="40"
+                  class="sidebar-logo-dark"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+              </a>
             </div>
-        </div>
-        <div class="main-content flex-fill page">
-		<div class="page-header big sticky">
-			<div class="navbar navbar-expand-md">
-                <div class="container-fluid p-0">
-                    <a href="/" class="navbar-brand d-md-none">
-						<img src="../assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN">
-						<img src="../assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN">
+          </div>
+          <div class="sidebar-menu flex-fill">
+            <div class="sidebar-scroll">
+              <div class="sidebar-menu-inner">
+                <ul class="sidebar-nav-list">
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-2" class="sidebar-menu-link">
+                      <i class="fas fa-image icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">次元美图</span>
                     </a>
-                    <div class="collapse navbar-collapse order-2 order-md-1">
-                        <div class="header-mini-btn">
-                            <label>
-                                <input class="mini-button" type="checkbox" checked>
-                                <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
-                                    <path class="line--2" d="M0 50h80"></path>
-                                    <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
-                                </svg>
-                            </label>
-                        </div>
-                    </div>
-                    <ul class="nav navbar-menu text-xs order-1 order-md-2">
-						<li class="nav-item me-3 mr-lg-0 d-none d-lg-block">
-							<div class="text-sm overflowClip_1">
-                                <script src="//v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-                                <span id="hitokoto"></span>
-							</div>
-						</li>
-						<li class="nav-item d-md-none mobile-menu ms-4">
-							<a href="javascript:/" id="sidebar-switch" data-bs-toggle="modal" data-bs-target="#sidebar"><i class="iconfont icon-classification icon-2x"></i></a>
-						</li>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-3" class="sidebar-menu-link">
+                      <i class="fas fa-play-circle icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">在线动漫</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-12" class="sidebar-menu-link">
+                      <i class="fab fa-stack-overflow icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">在线漫画</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-5" class="sidebar-menu-link">
+                      <i class="fas fa-book icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">在线本子</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-8" class="sidebar-menu-link">
+                      <i class="fas fa-audio-description icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">在线里番</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-6" class="sidebar-menu-link">
+                      <i class="fas fa-users icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">ACG资源社区</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-9" class="sidebar-menu-link">
+                      <i class="fas fa-university icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">ACG图书馆</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-7" class="sidebar-menu-link">
+                      <i class="far fa-registered icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">Galgame</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-18" class="sidebar-menu-link">
+                      <i class="fab fa-envira icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">轻小说</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-4" class="sidebar-menu-link">
+                      <i class="fas fa-download icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">动漫下载</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="javascript:;" class="sidebar-menu-link">
+                      <i class="far fa-paper-plane icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">工具大全</span>
+                      <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-11" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">BT下载站</span></a
+                        >
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-15" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">BT下载软件</span></a
+                        >
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-17" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">Telegram频道</span></a
+                        >
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-13" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">图源搜索工具</span></a
+                        >
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-16" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">进阶ACG必备</span></a
+                        >
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-22" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">付费网盘资源下载</span></a
+                        >
+                      </li>
+                      <li class="sidebar-item">
+                        <a href="/index.html#term-21" class="sidebar-menu-link"
+                          ><span class="sidebar-menu-text">其它小工具</span></a
+                        >
+                      </li>
                     </ul>
-				</div>
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/index.html#term-14" class="sidebar-menu-link">
+                      <i class="fas fa-shopping-bag icon-fw icon-lg me-2"></i>
+                      <span class="sidebar-menu-text">ACG购物</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
+          <div class="border-top py-2 border-color">
+            <div class="flex-bottom">
+              <ul class="sidebar-nav-list">
+                <li class="sidebar-item">
+                  <a href="/sitetrash/" class="sidebar-menu-link"
+                    ><i class="fas fa-trash icon-fw icon-lg me-2"></i
+                    ><span class="sidebar-menu-text">失效归档</span></a
+                  >
+                </li>
+                <li class="sidebar-item">
+                  <a href="/postsite/" class="sidebar-menu-link"
+                    ><i class="fas fa-link icon-fw icon-lg me-2"></i
+                    ><span class="sidebar-menu-text">投稿&反馈</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-<div id="content" class="content my-2 my-md-3">
-    <div id="skeleton-loading" class="panel site-content no-hover-card card transparent">
-        <div class="card-body skeleton-article">
-            <div class="skeleton-article-title skeleton-animation"></div>
-            <div class="skeleton-article-meta skeleton-animation"></div>
-            <div class="skeleton-article-content">
+      </div>
+      <div class="main-content flex-fill page">
+        <div class="page-header big sticky">
+          <div class="navbar navbar-expand-md">
+            <div class="container-fluid p-0">
+              <a href="/" class="navbar-brand d-md-none">
+                <img src="../assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN" />
+                <img src="../assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN" />
+              </a>
+              <div class="collapse navbar-collapse order-2 order-md-1">
+                <div class="header-mini-btn">
+                  <label>
+                    <input class="mini-button" type="checkbox" checked />
+                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
+                      <path class="line--2" d="M0 50h80"></path>
+                      <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
+                    </svg>
+                  </label>
+                </div>
+              </div>
+              <ul class="nav navbar-menu text-xs order-1 order-md-2">
+                <li class="nav-item me-3 mr-lg-0 d-none d-lg-block">
+                  <div class="text-sm overflowClip_1">
+                    <script src="//v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+                    <span id="hitokoto"></span>
+                  </div>
+                </li>
+                <li class="nav-item d-md-none mobile-menu ms-4">
+                  <a
+                    href="javascript:/"
+                    id="sidebar-switch"
+                    data-bs-toggle="modal"
+                    data-bs-target="#sidebar"
+                    ><i class="iconfont icon-classification icon-2x"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="content" class="content my-2 my-md-3">
+          <div id="skeleton-loading" class="panel site-content no-hover-card card transparent">
+            <div class="card-body skeleton-article">
+              <div class="skeleton-article-title skeleton-animation"></div>
+              <div class="skeleton-article-meta skeleton-animation"></div>
+              <div class="skeleton-article-content">
                 <div class="skeleton-article-line long skeleton-animation"></div>
                 <div class="skeleton-article-line long skeleton-animation"></div>
                 <div class="skeleton-article-line short skeleton-animation"></div>
@@ -187,99 +269,125 @@
                 <div class="skeleton-article-line long skeleton-animation"></div>
                 <div class="skeleton-article-line short skeleton-animation"></div>
                 <div class="skeleton-article-line long skeleton-animation"></div>
+              </div>
             </div>
-        </div>
-    </div>
-    <div id="announcement-container" class="panel site-content no-hover-card card transparent skeleton-hidden">
-        <div class="card-body">
-            <h1 id="announcement-title" class="h2 mb-3">加载中...</h1>
-            <div id="announcement-meta" class="d-flex flex-fill text-muted text-sm mb-5">
+          </div>
+          <div
+            id="announcement-container"
+            class="panel site-content no-hover-card card transparent skeleton-hidden"
+          >
+            <div class="card-body">
+              <h1 id="announcement-title" class="h2 mb-3">加载中...</h1>
+              <div id="announcement-meta" class="d-flex flex-fill text-muted text-sm mb-5"></div>
+              <div id="announcement-content" class="panel-body mt-2"></div>
             </div>
-            <div id="announcement-content" class="panel-body mt-2">
+          </div>
+        </div>
+        <footer class="main-footer footer-type-1 text-xs">
+          <div id="footer-tools" class="d-flex flex-column footer-tools">
+            <a href="javascript:/" id="go-to-up" class="btn rounded-circle go-up m-1" rel="go-top">
+              <i class="iconfont icon-to-up"></i>
+            </a>
+            <a
+              href="javascript:/"
+              id="switch-mode"
+              class="btn rounded-circle switch-dark-mode m-1"
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              title="夜间模式"
+            >
+              <i class="mode-ico iconfont icon-light"></i>
+            </a>
+          </div>
+          <div class="footer-inner" style="text-align: center">
+            <div class="footer-text">
+              © 2026 MyACGN &nbsp;&nbsp;Powered by
+              <a
+                href="https://github.com/MomokiShiran/ACGN"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><strong>ACGN</strong></a
+              >
             </div>
-        </div>
+            <div
+              class="footer-text mt-2"
+              style="
+                font-size: 11px;
+                color: #888;
+                max-width: 800px;
+                margin: 0 auto;
+                line-height: 1.8;
+              "
+            >
+              <strong>免责声明：</strong
+              >本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站本站对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。本站仅供学习交流使用，请勿用于非法用途。
+            </div>
+          </div>
+        </footer>
+      </div>
+      <!-- main-content end -->
     </div>
-</div>
-            <footer class="main-footer footer-type-1 text-xs">
-                <div id="footer-tools" class="d-flex flex-column footer-tools">
-                    <a href="javascript:/" id="go-to-up" class="btn rounded-circle go-up m-1" rel="go-top">
-                        <i class="iconfont icon-to-up"></i>
-                    </a>
-                                                            <a href="javascript:/" id="switch-mode" class="btn rounded-circle switch-dark-mode m-1" data-bs-toggle="tooltip" data-bs-placement="left" title="夜间模式">
-                        <i class="mode-ico iconfont icon-light"></i>
-                    </a>
-                </div>
-                <div class="footer-inner" style="text-align: center;">
-                    <div class="footer-text">
-                        © 2026 MyACGN &nbsp;&nbsp;Powered by <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer"><strong>ACGN</strong></a>
-                    </div>
-                    <div class="footer-text mt-2" style="font-size: 11px; color: #888; max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                        <strong>免责声明：</strong>本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站本站对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。本站仅供学习交流使用，请勿用于非法用途。
-                    </div>
-                </div>
-            </footer>
-        </div>
-<!-- main-content end -->
-    </div>
-<!-- page-container end -->
-<script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
-<script src="../assets/js/app.js?ver=2.0406"></script>
-<script>
-$(document).ready(function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const announcementId = parseInt(urlParams.get('id'));
-    
-    if (!announcementId) {
-        showError('未找到公告ID');
-        return;
-    }
-    
-    $.ajax({
-        url: '../data/announcements.json',
-        dataType: 'json',
-        success: function(data) {
+    <!-- page-container end -->
+    <script src="../assets/js/bootstrap.min.js?ver=2.0406"></script>
+    <script src="../assets/js/app.js?ver=2.0406"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const announcementId = parseInt(urlParams.get('id'));
+
+        const qs = (sel) => document.querySelector(sel);
+
+        if (!announcementId) {
+          showError('未找到公告ID');
+          return;
+        }
+
+        fetch('../data/announcements.json')
+          .then(response => response.json())
+          .then(data => {
             const announcement = data.announcements.find(a => a.id === announcementId);
-            
+
             if (!announcement) {
-                showError('未找到该公告');
-                return;
+              showError('未找到该公告');
+              return;
             }
-            
+
             const date = new Date(announcement.date);
             const now = new Date();
             const yearsDiff = Math.floor((now - date) / (365.25 * 24 * 60 * 60 * 1000));
             const timeAgo = yearsDiff > 0 ? yearsDiff + '年前' : '今年';
-            const formattedDate = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
-            
+            const formattedDate =
+              date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
+
             document.title = announcement.title + ' | MyACGN';
-            $('#announcement-title').text(announcement.title);
-            
-            $('#announcement-meta').html(`
+            qs('#announcement-title').textContent = announcement.title;
+
+            qs('#announcement-meta').innerHTML = `
                 <span class="me-3 d-none d-sm-block"><i class="iconfont icon-time"></i> ${timeAgo} (${formattedDate})</span>
                 <span class="me-3"><i class="iconfont icon-user-circle"></i> ${announcement.author}</span>
                 <span class="views me-3"><i class="iconfont icon-chakan"></i> ${announcement.views.toLocaleString()}</span>
                 <span class="me-3"><a class="" href="#comments"> <i class="iconfont icon-comment"></i> ${announcement.comments}</a></span>
                 <span class="me-3"><a class="btn-like btn-link-like" href="javascript:;" post_like data-id="${announcement.id}"><i class="iconfont icon-like"></i> <span class="like-count">${announcement.likes}</span></a></span>
-            `);
-            
-            $('#announcement-content').html(announcement.content);
-            
-            $('#skeleton-loading').addClass('skeleton-hidden');
-            $('#announcement-container').removeClass('skeleton-hidden');
-        },
-        error: function() {
-            $('#skeleton-loading').addClass('skeleton-hidden');
-            $('#announcement-container').removeClass('skeleton-hidden');
+            `;
+
+            qs('#announcement-content').innerHTML = announcement.content;
+
+            qs('#skeleton-loading').classList.add('skeleton-hidden');
+            qs('#announcement-container').classList.remove('skeleton-hidden');
+          })
+          .catch(() => {
+            qs('#skeleton-loading').classList.add('skeleton-hidden');
+            qs('#announcement-container').classList.remove('skeleton-hidden');
             showError('加载公告失败，请刷新页面重试。');
+          });
+
+        function showError(message) {
+          qs('#announcement-title').textContent = '错误';
+          qs('#announcement-meta').innerHTML = '';
+          qs('#announcement-content').innerHTML =
+            `<div class="alert alert-danger">${message}</div><a href="index.html" class="btn btn-primary">返回公告列表</a>`;
         }
-    });
-    
-    function showError(message) {
-        $('#announcement-title').text('错误');
-        $('#announcement-meta').html('');
-        $('#announcement-content').html(`<div class="alert alert-danger">${message}</div><a href="index.html" class="btn btn-primary">返回公告列表</a>`);
-    }
-});
-</script>
-</body>
+      });
+    </script>
+  </body>
 </html>

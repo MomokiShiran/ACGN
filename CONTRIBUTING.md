@@ -18,12 +18,14 @@
 1. **Fork 仓库**
 
 2. **克隆仓库**
+
    ```bash
    git clone https://github.com/MomokiShiran/ACGN.git
    cd AGNN
    ```
 
 3. **创建分支**
+
    ```bash
    git checkout -b feature/your-feature-name
    # 或
@@ -36,12 +38,14 @@
    - 添加必要的注释
 
 5. **提交更改**
+
    ```bash
    git add .
    git commit -m "feat: 添加新功能"  # 遵循提交规范
    ```
 
 6. **推送到 Fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -63,17 +67,16 @@ feat: xxxxxxx
 
 #### Type 类型
 
-| 类型 | 说明 |
-|------|------|
-| `feat` | 新功能 |
-| `fix` | 修复bug |
-| `docs` | 文档更新 |
-| `style` | 代码格式调整（不影响功能） |
-| `refactor` | 重构 |
-| `perf` | 性能优化 |
-| `test` | 测试相关 |
-| `chore` | 构建/工具相关 |
-
+| 类型       | 说明                       |
+| ---------- | -------------------------- |
+| `feat`     | 新功能                     |
+| `fix`      | 修复bug                    |
+| `docs`     | 文档更新                   |
+| `style`    | 代码格式调整（不影响功能） |
+| `refactor` | 重构                       |
+| `perf`     | 性能优化                   |
+| `test`     | 测试相关                   |
+| `chore`    | 构建/工具相关              |
 
 ## 开发指南
 
@@ -108,7 +111,6 @@ acg_nav/
 - **CSS3** + **Bootstrap 4** - 样式框架
 - **JavaScript** + **jQuery** - 交互逻辑
 - **JSON** - 数据存储
-
 
 ## 数据管理
 
@@ -164,7 +166,6 @@ acg_nav/
 ### 失效归档
 
 失效网站移至 `data/sitetrash.json`，保留原有信息以便后续恢复。
-
 
 ## 添加新网站
 
