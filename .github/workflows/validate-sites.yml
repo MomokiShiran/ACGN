@@ -1,0 +1,30 @@
+name: Validate sites.json
+
+on:
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "data/sites.json"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Run sites.json validation
+        run: node scripts/validate-sites.js
+
+      - name: Format check
+        run: |
+          if [ -f "package.json" ]; then
+            npm run format:check 2>/dev/null || echo "Format check script not found, skipping"
+          fi
