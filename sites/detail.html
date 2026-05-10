@@ -490,8 +490,10 @@
         }
 
         function renderSite(site, categoryName) {
-          // 使用自定义icon或fallback到默认
-          const faviconUrl = site.icon || '../assets/images/favicon.png';
+          // 使用自定义icon或fallback到默认，确保路径为绝对路径
+          const faviconUrl = site.icon 
+            ? (site.icon.startsWith('/') ? site.icon : '/' + site.icon) 
+            : '../assets/images/favicon.png';
 
           document.title = site.name + ' | MyACGN';
 
