@@ -115,12 +115,8 @@
   };
 
   const genSiteCard = site => {
-    let host;
-    try {
-      host = new URL(site.url).hostname;
-    } catch {
-      host = 'example.com';
-    }
+    // 使用自定义icon或fallback到默认
+    const iconUrl = site.icon || 'assets/images/favicon.png';
     const newBadge = site.isNew
       ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>'
       : '';
@@ -141,8 +137,8 @@
       '<div class="card-body">' +
       '<div class="url-content d-flex align-items-center">' +
       '<div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">' +
-      '<img loading="lazy" src="https://favicon.im/' +
-      host +
+      '<img loading="lazy" src="' +
+      iconUrl +
       '" onerror="this.src=\'assets/images/favicon.png\'">' +
       '</div>' +
       '<div class="url-info flex-fill">' +

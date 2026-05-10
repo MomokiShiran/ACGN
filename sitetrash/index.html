@@ -394,9 +394,8 @@
         const qs = (sel) => document.querySelector(sel);
 
         function renderSiteCard(site) {
-          const faviconUrl = site.url
-            ? `https://favicon.im/${new URL(site.url).hostname}`
-            : '../assets/images/favicon.png';
+          // 使用自定义icon或fallback到默认
+          const faviconUrl = site.icon || '../assets/images/favicon.png';
           const detailUrl = `../sites/detail.html?id=${site.id}`;
           const togoUrl = site.url || '#';
 
