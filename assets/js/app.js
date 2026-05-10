@@ -98,7 +98,7 @@
     if (!sidebar) return;
 
     const isChecked = checkbox?.checked ?? true;
-    const width = isChecked ? 220 : 60;
+    const width = isChecked ? 150 : 60;
 
     if (isChecked) {
       sidebar.classList.remove('mini-sidebar');
