@@ -428,9 +428,20 @@
 
           let html = '';
           data.categories.forEach(category => {
+            // 处理顶级分类的网站
             if (category.sites && category.sites.length > 0) {
               category.sites.forEach(site => {
                 html += renderSiteCard(site);
+              });
+            }
+            // 处理二级分类的网站
+            if (category.children && category.children.length > 0) {
+              category.children.forEach(subCategory => {
+                if (subCategory.sites && subCategory.sites.length > 0) {
+                  subCategory.sites.forEach(site => {
+                    html += renderSiteCard(site);
+                  });
+                }
               });
             }
           });

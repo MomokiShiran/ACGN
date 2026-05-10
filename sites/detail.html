@@ -433,11 +433,23 @@
             let site = null;
             let categoryName = '';
             for (let category of data.categories) {
-              const found = category.sites.find(s => s.id === siteId);
+              const found = category.sites ? category.sites.find(s => s.id === siteId) : null;
               if (found) {
                 site = found;
                 categoryName = category.name;
                 break;
+              }
+              // 检查二级分类
+              if (category.children) {
+                for (let subCategory of category.children) {
+                  const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
+                  if (subFound) {
+                    site = subFound;
+                    categoryName = subCategory.name;
+                    break;
+                  }
+                }
+                if (site) break;
               }
             }
 
@@ -445,11 +457,23 @@
             if (!site) {
               data = await (await fetch('../data/sitetrash.json')).json();
               for (let category of data.categories) {
-                const found = category.sites.find(s => s.id === siteId);
+                const found = category.sites ? category.sites.find(s => s.id === siteId) : null;
                 if (found) {
                   site = found;
                   categoryName = category.name;
                   break;
+                }
+                // 检查二级分类
+                if (category.children) {
+                  for (let subCategory of category.children) {
+                    const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
+                    if (subFound) {
+                      site = subFound;
+                      categoryName = subCategory.name;
+                      break;
+                    }
+                  }
+                  if (site) break;
                 }
               }
             }
