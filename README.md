@@ -33,16 +33,34 @@ npx http-server
 
 3. 访问 `http://localhost:8000`
 
+### 开发环境
+
+如果想要参与开发，建议安装开发依赖：
+
+```bash
+npm install
+```
+
+可用命令：
+
+```bash
+npm run lint         # JS 代码检查
+npm run lint:fix     # 自动修复 JS 代码问题
+npm run format       # 格式化所有文件 (JS/JSON/MD/CSS/HTML)
+npm run format:check # 检查所有文件格式
+```
+
 ## 技术栈
 
 - **HTML5** - 页面结构
-- **CSS3** + **Bootstrap 4** - 样式框架
-- **JavaScript** + **jQuery** - 交互逻辑
+- **CSS3** + **Bootstrap 5** - 样式框架
+- **现代 JavaScript** - 交互逻辑
 - **JSON** - 数据存储
+- **ESLint** + **Prettier** - 代码规范工具
 
 ## 版本历史
 
-当前版本: **1.5.1**
+当前版本: **1.6.0**
 
 查看完整版本历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
@@ -57,4 +75,15 @@ npx http-server
 
 ---
 
-**免责声明**：本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站，本站对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。
+## 开源协议
+
+本项目基于 **GNU Affero General Public License v3.0 (AGPL-3.0)** 开源。
+
+---
+
+## 图标版权说明
+
+- 网站图标版权归各网站所有者所有
+- 如涉及图标版权问题，请联系站长处理
+
+**免责声明**：本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站，对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。
