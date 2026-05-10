@@ -69,9 +69,15 @@
     toggle() {
       const newTheme = document.body.classList.contains(this.dark) ? this.light : this.dark;
       localStorage.setItem(this.key, newTheme);
+      const modeBtn = qs('.switch-dark-mode');
+      if (modeBtn && typeof bootstrap !== 'undefined') {
+        const tooltipInstance = bootstrap.Tooltip.getInstance(modeBtn);
+        if (tooltipInstance) {
+          tooltipInstance.hide();
+          tooltipInstance.dispose();
+        }
+      }
       this.apply(newTheme);
-      const tooltip = qs(qs('.switch-dark-mode')?.getAttribute('aria-describedby') || '');
-      tooltip?.remove();
       if (typeof bootstrap !== 'undefined') initTooltips('.switch-dark-mode');
     },
 
