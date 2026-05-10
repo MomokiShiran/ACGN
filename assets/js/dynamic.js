@@ -1,5 +1,5 @@
 /**
- * Dynamic.js - 精简版
+ * Dynamic.js
  */
 
 (function () {
@@ -23,46 +23,25 @@
   };
 
   const renderSidebar = data => {
-    const cats = data.categories;
-    const mainIds = [
-      'term-2',
-      'term-3',
-      'term-12',
-      'term-5',
-      'term-8',
-      'term-6',
-      'term-9',
-      'term-7',
-      'term-18',
-      'term-4',
-    ];
-    const findCat = id => cats.find(c => c.id === id);
-    const toolCollection = cats.find(c => c.id === 'tool-collection');
-    const subCats = toolCollection && toolCollection.children ? toolCollection.children : [];
+    const mainCategories = data.categories;
 
-    let html = mainIds
-      .map(id => {
-        const c = findCat(id);
-        return c ? genSideItem(c) : '';
-      })
-      .join('');
-
-    const subHtml = subCats
-      .map(c => genSideSubItem(c))
-      .join('');
-
-    html +=
-      '<li class="sidebar-item">' +
-      '<a href="javascript:;" class="sidebar-menu-link">' +
-      '<i class="' + (toolCollection?.icon || 'fas fa-toolbox') + ' icon-fw icon-lg me-2"></i>' +
-      '<span class="sidebar-menu-text">' + (toolCollection?.name || '工具大全') + '</span>' +
-      '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>' +
-      '</a><ul class="sidebar-submenu">' +
-      subHtml +
-      '</ul></li>';
-
-    const shopCat = findCat('term-14');
-    if (shopCat) html += genSideItem(shopCat);
+    let html = '';
+    mainCategories.forEach(cat => {
+      if (cat.id === 'tool-collection' && cat.children && cat.children.length > 0) {
+        const subHtml = cat.children.map(c => genSideSubItem(c)).join('');
+        html +=
+          '<li class="sidebar-item">' +
+          '<a href="javascript:;" class="sidebar-menu-link">' +
+          '<i class="' + (cat.icon || 'fas fa-toolbox') + ' icon-fw icon-lg me-2"></i>' +
+          '<span class="sidebar-menu-text">' + cat.name + '</span>' +
+          '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>' +
+          '</a><ul class="sidebar-submenu">' +
+          subHtml +
+          '</ul></li>';
+      } else if (!cat.children || cat.children.length === 0) {
+        html += genSideItem(cat);
+      }
+    });
 
     const navList = qs('#sidebar-nav-list');
     if (navList) navList.innerHTML = html;

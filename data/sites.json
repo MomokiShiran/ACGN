@@ -1294,62 +1294,6 @@
       ]
     },
     {
-      "id": "term-11",
-      "name": "BT下载站",
-      "icon": "fas fa-download",
-      "sites": [
-        {
-          "id": 232,
-          "name": "acg23",
-          "url": "https://www.acg23.com",
-          "description": "综合资源种子下载",
-          "category": "term-11",
-          "isNew": false
-        },
-        {
-          "id": 176,
-          "name": "東京図書館",
-          "url": "https://www.tokyotosho.info",
-          "description": "国外bt下载站",
-          "category": "term-11",
-          "isNew": false
-        },
-        {
-          "id": 111,
-          "name": "GGBases",
-          "url": "https://www.ggbases.com",
-          "description": "ACG游戏bt下载工站",
-          "category": "term-11",
-          "isNew": false
-        },
-        {
-          "id": 56,
-          "name": "Anidex",
-          "url": "https://anidex.info",
-          "description": "国外bt下载站",
-          "category": "term-11",
-          "isNew": false
-        },
-        {
-          "id": 55,
-          "name": "Sukebei",
-          "url": "https://sukebei.nyaa.si",
-          "description": "全球著名R18-ACG-bt下载站",
-          "category": "term-11",
-          "isNew": false
-        },
-        {
-          "id": 54,
-          "name": "Nyaa",
-          "url": "https://nyaa.si",
-          "description": "全球著名全年龄ACG-bt下载站",
-          "category": "term-11",
-          "isNew": false,
-          "detail": "需要科学上网。"
-        }
-      ]
-    },
-    {
       "id": "term-14",
       "name": "ACG购物",
       "icon": "fas fa-shopping-bag",
@@ -1453,6 +1397,62 @@
       "name": "工具大全",
       "icon": "fas fa-toolbox",
       "children": [
+        {
+          "id": "term-11",
+          "name": "BT下载站",
+          "icon": "fas fa-download",
+          "sites": [
+            {
+              "id": 232,
+              "name": "acg23",
+              "url": "https://www.acg23.com",
+              "description": "综合资源种子下载",
+              "category": "term-11",
+              "isNew": false
+            },
+            {
+              "id": 176,
+              "name": "東京図書館",
+              "url": "https://www.tokyotosho.info",
+              "description": "国外bt下载站",
+              "category": "term-11",
+              "isNew": false
+            },
+            {
+              "id": 111,
+              "name": "GGBases",
+              "url": "https://www.ggbases.com",
+              "description": "ACG游戏bt下载工站",
+              "category": "term-11",
+              "isNew": false
+            },
+            {
+              "id": 56,
+              "name": "Anidex",
+              "url": "https://anidex.info",
+              "description": "国外bt下载站",
+              "category": "term-11",
+              "isNew": false
+            },
+            {
+              "id": 55,
+              "name": "Sukebei",
+              "url": "https://sukebei.nyaa.si",
+              "description": "全球著名R18-ACG-bt下载站",
+              "category": "term-11",
+              "isNew": false
+            },
+            {
+              "id": 54,
+              "name": "Nyaa",
+              "url": "https://nyaa.si",
+              "description": "全球著名全年龄ACG-bt下载站",
+              "category": "term-11",
+              "isNew": false,
+              "detail": "需要科学上网。"
+            }
+          ]
+        },
         {
           "id": "term-15",
           "name": "BT下载软件",
