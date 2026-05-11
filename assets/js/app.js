@@ -3,7 +3,7 @@
  */
 
 // 防止 iframe 嵌套
-(function() {
+(function () {
   try {
     if (window.self !== window.top) {
       // 页面被嵌套在 iframe 中
