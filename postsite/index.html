@@ -12,20 +12,29 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="MyACGN" />
     <meta name="keywords" content="MyACGN投稿,ACG网站投稿,二次元网站推荐,网站意见反馈" />
-    <meta name="description" content="MyACGN投稿页面，欢迎向我们推荐优质ACG二次元网站，或提供意见反馈，共同维护这个导航盒子。" />
+    <meta
+      name="description"
+      content="MyACGN投稿页面，欢迎向我们推荐优质ACG二次元网站，或提供意见反馈，共同维护这个导航盒子。"
+    />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="/postsite/index.html" />
     <meta property="og:title" content="网站投稿与意见反馈 - MyACGN" />
-    <meta property="og:description" content="MyACGN投稿页面，欢迎向我们推荐优质ACG二次元网站，或提供意见反馈。" />
+    <meta
+      property="og:description"
+      content="MyACGN投稿页面，欢迎向我们推荐优质ACG二次元网站，或提供意见反馈。"
+    />
     <meta property="og:image" content="../assets/images/20210727002253-59085.jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="MyACGN" />
-    
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="网站投稿与意见反馈 - MyACGN" />
-    <meta name="twitter:description" content="欢迎向MyACGN推荐优质ACG二次元网站，或提供意见反馈。" />
+    <meta
+      name="twitter:description"
+      content="欢迎向MyACGN推荐优质ACG二次元网站，或提供意见反馈。"
+    />
     <meta name="twitter:image" content="../assets/images/20210727002253-59085.jpeg" />
     <link rel="shortcut icon" href="../assets/images/favicon.png" />
     <link rel="apple-touch-icon" href="../assets/images/favicon.png" />
@@ -76,7 +85,7 @@
               </a>
             </div>
           </div>
-          
+
           <!-- 侧边栏骨架屏 -->
           <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
             <div class="sidebar-scroll">
@@ -184,13 +193,23 @@
           </div>
         </div>
       </div>
-<div class="main-content flex-fill page">
+      <div class="main-content flex-fill page">
         <div class="page-header big sticky header">
           <div class="navbar navbar-expand-md">
             <div class="container-fluid p-0">
               <a href="/" class="navbar-brand d-md-none">
-                <img src="../assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN" loading="lazy" />
-                <img src="../assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN" loading="lazy" />
+                <img
+                  src="../assets/images/favicon.png"
+                  class="navbar-brand-light"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+                <img
+                  src="../assets/images/favicon.png"
+                  class="navbar-brand-dark"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
               </a>
               <div class="collapse navbar-collapse order-2 order-md-1">
                 <div class="header-mini-btn">
@@ -659,7 +678,8 @@
         });
 
         function checkText(text) {
-          var reg = /[。|？|！|，|、|；|：|"|'|（|）|《|》|〈|〉|【|】|『|』|「|」|﹃|﹄|〔|〕|…|—|～|﹏|￥]/;
+          var reg =
+            /[。|？|！|，|、|；|：|"|'|（|）|《|》|〈|〉|【|】|『|』|「|」|﹃|﹄|〔|〕|…|—|～|﹏|￥]/;
           if (reg.test(text)) {
             showAlert(JSON.parse('{"status":3,"msg":"关键词请使用英语逗号分隔。"}'));
             return true;
@@ -698,12 +718,15 @@
             }
             var tgType = el.closest('.i-tougao').getAttribute('data-type');
             var docId = el.getAttribute('data-type');
-            document.getElementById('show_' + tgType + '_' + docId).src = '../assets/images/add.png';
+            document.getElementById('show_' + tgType + '_' + docId).src =
+              '../assets/images/add.png';
             document.getElementById('tougao_' + tgType + '_' + docId).value = '';
             el.style.display = 'none';
             document.getElementById('upload_' + tgType + '_' + docId).disabled = false;
             document.getElementById('upload_' + tgType + '_' + docId).value = '';
-            document.getElementById('upload_' + tgType + '_' + docId).parentNode.classList.remove('disabled');
+            document
+              .getElementById('upload_' + tgType + '_' + docId)
+              .parentNode.classList.remove('disabled');
           });
         });
       });

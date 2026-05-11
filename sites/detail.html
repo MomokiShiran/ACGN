@@ -17,17 +17,20 @@
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="/sites/detail.html" />
     <meta property="og:title" content="网站详情 - MyACGN" />
-    <meta property="og:description" content="MyACGN网站详情页面，查看ACG二次元网站的详细介绍和信息。" />
+    <meta
+      property="og:description"
+      content="MyACGN网站详情页面，查看ACG二次元网站的详细介绍和信息。"
+    />
     <meta property="og:image" content="../assets/images/20210727002253-59085.jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="MyACGN" />
-    
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="网站详情 - MyACGN" />
     <meta name="twitter:description" content="查看ACG二次元网站的详细介绍和信息。" />
     <meta name="twitter:image" content="../assets/images/20210727002253-59085.jpeg" />
-    
+
     <link rel="shortcut icon" href="../assets/images/favicon.png" />
     <link rel="apple-touch-icon" href="../assets/images/favicon.png" />
     <link rel="stylesheet" href="../assets/css/iconfont.css?ver=2.0406" />
@@ -78,7 +81,7 @@
               </a>
             </div>
           </div>
-          
+
           <!-- 侧边栏骨架屏 -->
           <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
             <div class="sidebar-scroll">
@@ -186,13 +189,23 @@
           </div>
         </div>
       </div>
-<div class="main-content flex-fill single">
+      <div class="main-content flex-fill single">
         <div class="page-header big sticky">
           <div class="navbar navbar-expand-md">
             <div class="container-fluid p-0">
               <a href="/" class="navbar-brand d-md-none">
-                <img src="../assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN" loading="lazy" />
-                <img src="../assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN" loading="lazy" />
+                <img
+                  src="../assets/images/favicon.png"
+                  class="navbar-brand-light"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+                <img
+                  src="../assets/images/favicon.png"
+                  class="navbar-brand-dark"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
               </a>
               <div class="collapse navbar-collapse order-2 order-md-1">
                 <div class="header-mini-btn">
@@ -391,7 +404,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const siteId = parseInt(urlParams.get('id'));
 
-        const qs = (sel) => document.querySelector(sel);
+        const qs = sel => document.querySelector(sel);
 
         if (!siteId) {
           showError('未找到网站ID');
@@ -414,7 +427,9 @@
               // 检查二级分类
               if (category.children) {
                 for (let subCategory of category.children) {
-                  const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
+                  const subFound = subCategory.sites
+                    ? subCategory.sites.find(s => s.id === siteId)
+                    : null;
                   if (subFound) {
                     site = subFound;
                     categoryName = subCategory.name;
@@ -438,7 +453,9 @@
                 // 检查二级分类
                 if (category.children) {
                   for (let subCategory of category.children) {
-                    const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
+                    const subFound = subCategory.sites
+                      ? subCategory.sites.find(s => s.id === siteId)
+                      : null;
                     if (subFound) {
                       site = subFound;
                       categoryName = subCategory.name;
@@ -463,8 +480,10 @@
 
         function renderSite(site, categoryName) {
           // 使用自定义icon或fallback到默认，确保路径为绝对路径
-          const faviconUrl = site.icon 
-            ? (site.icon.startsWith('/') ? site.icon : '/' + site.icon) 
+          const faviconUrl = site.icon
+            ? site.icon.startsWith('/')
+              ? site.icon
+              : '/' + site.icon
             : '../assets/images/favicon.png';
 
           document.title = site.name + ' | MyACGN';

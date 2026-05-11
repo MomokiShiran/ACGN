@@ -1,4 +1,4 @@
-/**
+  /**
  * Sidebar.js - 动态侧边栏
  */
 
@@ -10,15 +10,19 @@
       // 计算正确的 data 路径
       const currentPath = window.location.pathname;
       let dataPath = 'data/sites.json';
-      
+
       // 如果不在根目录，需要调整路径
       if (!currentPath.endsWith('/') && !currentPath.includes('index.html')) {
         // 计算需要多少个 ../ 才能回到根目录
-        const pathSegments = currentPath.split('/').filter(segment => segment.length > 0 && !segment.endsWith('.html'));
+        const pathSegments = currentPath
+          .split('/')
+          .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
         dataPath = '../'.repeat(pathSegments.length) + dataPath;
       } else if (currentPath.includes('index.html')) {
         // 如果是 index.html 但在子目录
-        const pathSegments = currentPath.split('/').filter(segment => segment.length > 0 && !segment.endsWith('.html'));
+        const pathSegments = currentPath
+          .split('/')
+          .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
         if (pathSegments.length > 0) {
           dataPath = '../'.repeat(pathSegments.length) + dataPath;
         }
@@ -28,7 +32,12 @@
       renderSidebar(data);
 
       // 侧边栏骨架屏处理
-      ['sidebar-skeleton', 'sidebar-content', 'sidebar-bottom-skeleton', 'sidebar-bottom-content'].forEach((id, i) => {
+      [
+        'sidebar-skeleton',
+        'sidebar-content',
+        'sidebar-bottom-skeleton',
+        'sidebar-bottom-content',
+      ].forEach((id, i) => {
         const el = qs('#' + id);
         if (el) el.classList.toggle('skeleton-hidden', i % 2 === 0);
       });

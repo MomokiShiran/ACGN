@@ -17,12 +17,15 @@
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:url" content="/announcements/index.html" />
     <meta property="og:title" content="公告 - MyACGN" />
-    <meta property="og:description" content="MyACGN公告页面，查看网站最新动态、更新公告和重要通知。" />
+    <meta
+      property="og:description"
+      content="MyACGN公告页面，查看网站最新动态、更新公告和重要通知。"
+    />
     <meta property="og:image" content="../assets/images/20210727002253-59085.jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="MyACGN" />
-    
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="公告 - MyACGN" />
     <meta name="twitter:description" content="MyACGN公告页面，查看网站最新动态和通知。" />
@@ -77,7 +80,7 @@
               </a>
             </div>
           </div>
-          
+
           <!-- 侧边栏骨架屏 -->
           <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
             <div class="sidebar-scroll">
@@ -185,13 +188,23 @@
           </div>
         </div>
       </div>
-<div class="main-content flex-fill page">
+      <div class="main-content flex-fill page">
         <div class="page-header big sticky">
           <div class="navbar navbar-expand-md">
             <div class="container-fluid p-0">
               <a href="/" class="navbar-brand d-md-none">
-                <img src="../assets/images/favicon.png" class="navbar-brand-light" alt="MyACGN" loading="lazy" />
-                <img src="../assets/images/favicon.png" class="navbar-brand-dark" alt="MyACGN" loading="lazy" />
+                <img
+                  src="../assets/images/favicon.png"
+                  class="navbar-brand-light"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
+                <img
+                  src="../assets/images/favicon.png"
+                  class="navbar-brand-dark"
+                  alt="MyACGN"
+                  loading="lazy"
+                />
               </a>
               <div class="collapse navbar-collapse order-2 order-md-1">
                 <div class="header-mini-btn">
@@ -315,7 +328,7 @@
     <script src="../assets/js/app.js?ver=2.0406"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const qs = (sel) => document.querySelector(sel);
+        const qs = sel => document.querySelector(sel);
         fetch('../data/announcements.json')
           .then(response => response.json())
           .then(data => {
