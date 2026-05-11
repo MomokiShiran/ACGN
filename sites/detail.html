@@ -330,6 +330,7 @@
                 <div class="site-name h3 my-3" id="site-name">加载中...</div>
                 <div class="mt-2">
                   <p class="mb-2" id="site-description">加载中...</p>
+                  <p class="text-muted text-xs mb-2" id="site-created-at">创建时间：加载中...</p>
                   <div class="site-go mt-3">
                     <span class="site-go-url">
                       <a
@@ -523,6 +524,7 @@
           qs('#site-category').textContent = categoryName;
           qs('#site-name').textContent = site.name;
           qs('#site-description').textContent = site.description;
+          qs('#site-created-at').textContent = '收录时间：' + (site.createdAt || '未知');
           qs('#site-url').setAttribute('href', site.url);
           qs('#site-url').setAttribute('title', site.name);
 
