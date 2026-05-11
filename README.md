@@ -60,7 +60,7 @@ npm run format:check # 检查所有文件格式
 
 ## 版本历史
 
-当前版本: **1.6.0**
+当前版本: **1.6.1**
 
 查看完整版本历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
@@ -78,8 +78,6 @@ npm run format:check # 检查所有文件格式
 ## 开源协议
 
 本项目基于 **GNU Affero General Public License v3.0 (AGPL-3.0)** 开源。
-
----
 
 ## 图标版权说明
 
