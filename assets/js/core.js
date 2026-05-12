@@ -1,6 +1,6 @@
 /**
  * core.js - 基础核心模块
- * 包含: utils, iframe-protect, theme, ui, sidebar-interaction
+ * 包含: utils, iframe-protect, theme, ui, sidebar-interaction, data-loader
  */
 
 (function () {
@@ -461,4 +461,52 @@
   // 暴露到全局
   window.triggerLsmMini = triggerLsmMini;
   window.triggerResizable = triggerResizable;
+})();
+
+(function () {
+  'use strict';
+
+  const { qs, resolvePath } = window.utils || {
+    qs: (sel) => document.querySelector(sel),
+    resolvePath: (p) => p
+  };
+
+  let cachedData = null;
+  let loadingPromise = null;
+  const subscribers = [];
+
+  const onDataLoaded = (callback) => {
+    if (cachedData) {
+      callback(cachedData);
+    } else {
+      subscribers.push(callback);
+    }
+  };
+
+  const loadData = async () => {
+    if (cachedData) return cachedData;
+    if (loadingPromise) return loadingPromise;
+
+    loadingPromise = (async () => {
+      try {
+        const dataPath = resolvePath('data/sites.json');
+        const response = await fetch(dataPath);
+        cachedData = await response.json();
+        subscribers.forEach(callback => callback(cachedData));
+        subscribers.length = 0;
+        return cachedData;
+      } catch (err) {
+        console.error('[DataLoader] 加载数据失败:', err);
+        loadingPromise = null;
+        throw err;
+      }
+    })();
+    return loadingPromise;
+  };
+
+  window.DataLoader = {
+    load: loadData,
+    onLoaded: onDataLoaded,
+    get: () => cachedData
+  };
 })();
