@@ -1,27 +1,17 @@
 /**
- * Dynamic.js - 首页站点卡片
+ * Dynamic.js - 首页站点卡片渲染
+ * 使用 DataLoader 共享数据源
  */
 
 (function () {
-  const qs = (sel, ctx = document) => ctx.querySelector(sel);
+  'use strict';
 
-  const loadSiteData = async () => {
-    try {
-      const data = await (await fetch('data/sites.json')).json();
-      renderSiteCards(data);
-      if (typeof window.initTooltips === 'function') {
-        window.initTooltips(
-          typeof window.isPC === 'function' && window.isPC()
-            ? undefined
-            : '.qr-img[data-bs-toggle="tooltip"]'
-        );
-      }
-    } catch (err) {
-      console.error('加载数据失败:', err);
-    }
+  const { qs, isPC } = window.utils || {
+    qs: (sel) => document.querySelector(sel),
+    isPC: () => true
   };
 
-  const renderSiteCards = data => {
+  const renderSiteCards = (data) => {
     let html = '';
 
     data.categories.forEach(cat => {
@@ -43,9 +33,14 @@
     if (container) container.innerHTML = html;
     if (skeleton) skeleton.classList.add('skeleton-hidden');
     if (container) container.classList.remove('skeleton-hidden');
+
+    // 初始化工具提示
+    if (window.initTooltips) {
+      window.initTooltips(isPC() ? undefined : '.qr-img[data-bs-toggle="tooltip"]');
+    }
   };
 
-  const genCatSection = c => {
+  const genCatSection = (c) => {
     const sites = c.sites.map(site => genSiteCard(site)).join('');
     return (
       '<h4 class="text-gray text-lg mb-4 d-flex flex-fill">' +
@@ -59,8 +54,7 @@
     );
   };
 
-  const genSiteCard = site => {
-    // 使用自定义icon或fallback到默认
+  const genSiteCard = (site) => {
     const iconUrl = site.icon || 'assets/images/favicon.png';
     const newBadge = site.isNew
       ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>'
@@ -126,5 +120,28 @@
     '</div>' +
     '</div>';
 
-  document.addEventListener('DOMContentLoaded', loadSiteData);
+  // 等待 app 加载完成后，使用 DataLoader 加载数据
+  const init = () => {
+    if (window.DataLoader) {
+      window.DataLoader.onLoaded(renderSiteCards);
+      window.DataLoader.load();
+    } else {
+      // 回退方案：直接加载
+      const loadSiteData = async () => {
+        try {
+          const data = await (await fetch('data/sites.json')).json();
+          renderSiteCards(data);
+        } catch (err) {
+          console.error('[Dynamic] 加载数据失败:', err);
+        }
+      };
+      loadSiteData();
+    }
+  };
+
+  if (window.loader) {
+    window.addEventListener('app:loaded', init);
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+  }
 })();

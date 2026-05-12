@@ -1,52 +1,14 @@
-  /**
- * Sidebar.js - 动态侧边栏
+/**
+ * Sidebar.js - 动态侧边栏菜单渲染
+ * 使用 DataLoader 共享数据源
  */
 
 (function () {
-  const qs = (sel, ctx = document) => ctx.querySelector(sel);
+  'use strict';
 
-  const loadSidebarData = async () => {
-    try {
-      // 计算正确的 data 路径
-      const currentPath = window.location.pathname;
-      let dataPath = 'data/sites.json';
+  const { qs } = window.utils || { qs: (sel) => document.querySelector(sel) };
 
-      // 如果不在根目录，需要调整路径
-      if (!currentPath.endsWith('/') && !currentPath.includes('index.html')) {
-        // 计算需要多少个 ../ 才能回到根目录
-        const pathSegments = currentPath
-          .split('/')
-          .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
-        dataPath = '../'.repeat(pathSegments.length) + dataPath;
-      } else if (currentPath.includes('index.html')) {
-        // 如果是 index.html 但在子目录
-        const pathSegments = currentPath
-          .split('/')
-          .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
-        if (pathSegments.length > 0) {
-          dataPath = '../'.repeat(pathSegments.length) + dataPath;
-        }
-      }
-
-      const data = await (await fetch(dataPath)).json();
-      renderSidebar(data);
-
-      // 侧边栏骨架屏处理
-      [
-        'sidebar-skeleton',
-        'sidebar-content',
-        'sidebar-bottom-skeleton',
-        'sidebar-bottom-content',
-      ].forEach((id, i) => {
-        const el = qs('#' + id);
-        if (el) el.classList.toggle('skeleton-hidden', i % 2 === 0);
-      });
-    } catch (err) {
-      console.error('加载侧边栏数据失败:', err);
-    }
-  };
-
-  const renderSidebar = data => {
+  const renderSidebar = (data) => {
     const mainCategories = data.categories;
 
     let html = '';
@@ -73,9 +35,20 @@
 
     const navList = qs('#sidebar-nav-list');
     if (navList) navList.innerHTML = html;
+
+    // 侧边栏骨架屏处理
+    [
+      'sidebar-skeleton',
+      'sidebar-content',
+      'sidebar-bottom-skeleton',
+      'sidebar-bottom-content',
+    ].forEach((id, i) => {
+      const el = qs('#' + id);
+      if (el) el.classList.toggle('skeleton-hidden', i % 2 === 0);
+    });
   };
 
-  const genSideItem = c =>
+  const genSideItem = (c) =>
     '<li class="sidebar-item"><a href="/index.html#' +
     c.id +
     '" class="sidebar-menu-link">' +
@@ -86,7 +59,7 @@
     c.name +
     '</span></a></li>';
 
-  const genSideSubItem = c =>
+  const genSideSubItem = (c) =>
     '<li class="sidebar-item"><a href="/index.html#' +
     c.id +
     '" class="sidebar-menu-link">' +
@@ -94,5 +67,30 @@
     c.name +
     '</span></a></li>';
 
-  document.addEventListener('DOMContentLoaded', loadSidebarData);
+  // 等待 app 加载完成后，使用 DataLoader 加载数据
+  const init = () => {
+    if (window.DataLoader) {
+      window.DataLoader.onLoaded(renderSidebar);
+      window.DataLoader.load();
+    } else {
+      // 回退方案：直接加载
+      const loadSidebarData = async () => {
+        try {
+          const { resolvePath } = window.utils || { resolvePath: (p) => p };
+          const dataPath = resolvePath('data/sites.json');
+          const data = await (await fetch(dataPath)).json();
+          renderSidebar(data);
+        } catch (err) {
+          console.error('[Sidebar] 加载数据失败:', err);
+        }
+      };
+      loadSidebarData();
+    }
+  };
+
+  if (window.loader) {
+    window.addEventListener('app:loaded', init);
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
+  }
 })();
