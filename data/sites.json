@@ -2204,6 +2204,17 @@
               "createdAt": "2025-01-01 00:00:00"
             },
             {
+              "id": 459,
+              "name": "Project SEKAI",
+              "url": "https://pjsekai.sega.jp",
+              "description": "世界计划 彩色舞台 feat. 初音未来 官方网站",
+              "category": "term-16",
+              "isNew": true,
+              "icon": "assets/images/sites/pjsekai.sega.jp.png",
+              "disabledAt": "",
+              "createdAt": "2026-05-13 00:00:00"
+            },
+            {
               "id": 397,
               "name": "Pixez",
               "url": "https://notsfsssf.github.io/Pix-EzViewer",
