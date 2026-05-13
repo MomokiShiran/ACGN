@@ -194,12 +194,23 @@
       "icon": "fas fa-play-circle",
       "sites": [
         {
+          "id": 460,
+          "name": "嗷呜动漫",
+          "url": "https://www.aowu.tv",
+          "description": "免费在线动漫观看平台",
+          "category": "term-3",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-13 00:00:00"
+        },
+        {
           "id": 435,
           "name": "金阿尼",
           "url": "https://kimani.tv/?utm_source=myacgbox",
           "description": "无广告，免费无须注册，高速播放，当季动画同步更新",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "icon": "assets/images/sites/kimani.tv.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -210,7 +221,7 @@
           "url": "https://kumanshe.com",
           "description": "以免费国漫为主",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "酷漫社是一家漫画免费分享以及在线浏览平台，这里有及时的新番漫画，活跃的ACG氛围，有创意的漫画师�?",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -221,7 +232,7 @@
           "url": "https://arlnigdm.com",
           "description": "无广告，番剧多",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -231,7 +242,7 @@
           "url": "http://haliyy.com",
           "description": "资源较全，画质较差，路线多",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "感谢服服服鸡的投稿",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -242,7 +253,7 @@
           "url": "https://www.acg.rw",
           "description": "画质一般，播放开始有广告",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -252,7 +263,7 @@
           "url": "https://acgfantuan.com",
           "description": "以新番为主，无广告",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "以新番为主，无广告，地址发布页：https://fantuantv.com/",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -263,7 +274,7 @@
           "url": "https://www.zzzfun.com",
           "description": "有时会挂，画质较高",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -273,7 +284,7 @@
           "url": "https://omofun.tv/",
           "description": "【需要下载APP】画质高，弹幕多",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "支持安卓和IOS",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -284,7 +295,7 @@
           "url": "https://www.5dm.app",
           "description": "【推荐】更新快，画质高",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
