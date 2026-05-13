@@ -4,8 +4,8 @@
   "description": "ACG二次元导航盒子",
   "main": "index.html",
   "scripts": {
-    "lint": "eslint assets/js/app.js assets/js/dynamic.js",
-    "lint:fix": "eslint assets/js/app.js assets/js/dynamic.js --fix",
+    "lint": "eslint assets/js/core.js assets/js/dynamic.js assets/js/loader.js assets/js/sidebar.js assets/js/site-detail.js",
+    "lint:fix": "eslint assets/js/core.js assets/js/dynamic.js assets/js/loader.js assets/js/sidebar.js assets/js/site-detail.js --fix",
     "format": "prettier --write '**/*.{js,json,md,css,scss,html}'",
     "format:check": "prettier --check '**/*.{js,json,md,css,scss,html}'"
   },

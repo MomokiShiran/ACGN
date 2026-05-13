@@ -11,11 +11,13 @@
   const getPathPrefix = () => {
     const currentPath = window.location.pathname;
     if (currentPath === '/' || currentPath === '/index.html') return '';
-    const pathSegments = currentPath.split('/').filter(segment => segment.length > 0 && !segment.endsWith('.html'));
+    const pathSegments = currentPath
+      .split('/')
+      .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
     return '../'.repeat(pathSegments.length);
   };
 
-  const loadScript = (src) => {
+  const loadScript = src => {
     const prefix = getPathPrefix();
     const fullSrc = prefix + src;
     if (loading.has(fullSrc)) return loading.get(fullSrc);
@@ -25,8 +27,15 @@
       const script = document.createElement('script');
       script.src = fullSrc;
       script.async = false;
-      script.onload = () => { loaded.add(fullSrc); loading.delete(fullSrc); resolve(); };
-      script.onerror = () => { loading.delete(fullSrc); reject(new Error(`Failed to load ${fullSrc}`)); };
+      script.onload = () => {
+        loaded.add(fullSrc);
+        loading.delete(fullSrc);
+        resolve();
+      };
+      script.onerror = () => {
+        loading.delete(fullSrc);
+        reject(new Error(`Failed to load ${fullSrc}`));
+      };
       document.head.appendChild(script);
     });
 

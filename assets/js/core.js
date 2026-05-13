@@ -12,12 +12,19 @@
 
   // 设备检测
   const isPC = () =>
-    !['Android', 'iPhone', 'webOS', 'BlackBerry', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'].some(
-      agent => navigator.userAgent.includes(agent)
-    );
+    ![
+      'Android',
+      'iPhone',
+      'webOS',
+      'BlackBerry',
+      'SymbianOS',
+      'Windows Phone',
+      'iPad',
+      'iPod',
+    ].some(agent => navigator.userAgent.includes(agent));
 
   // 路径解析 - 获取相对于根目录的路径
-  const resolvePath = (relativePath) => {
+  const resolvePath = relativePath => {
     const currentPath = window.location.pathname;
     // 判断是否在根目录（/ 或 /index.html）
     if (currentPath === '/' || currentPath === '/index.html') {
@@ -45,7 +52,7 @@
     qsa,
     isPC,
     resolvePath,
-    debounce
+    debounce,
   };
 })();
 
@@ -115,7 +122,7 @@
 (function () {
   'use strict';
 
-  const { qs } = window.utils || { qs: (sel) => document.querySelector(sel) };
+  const { qs } = window.utils || { qs: sel => document.querySelector(sel) };
 
   const ThemeManager = {
     dark: 'io-black-mode',
@@ -192,11 +199,10 @@
 (function () {
   'use strict';
 
-  const { qs, qsa, isPC, debounce } = window.utils || {
-    qs: (sel) => document.querySelector(sel),
-    qsa: (sel) => Array.from(document.querySelectorAll(sel)),
+  const { qs, qsa, isPC } = window.utils || {
+    qs: sel => document.querySelector(sel),
+    qsa: sel => Array.from(document.querySelectorAll(sel)),
     isPC: () => true,
-    debounce: (fn) => fn
   };
 
   let scrollTimeout = null;
@@ -303,11 +309,10 @@
 (function () {
   'use strict';
 
-  const { qs, qsa, isPC, debounce } = window.utils || {
-    qs: (sel) => document.querySelector(sel),
-    qsa: (sel) => Array.from(document.querySelectorAll(sel)),
-    isPC: () => true,
-    debounce: (fn) => fn
+  const { qs, qsa, debounce } = window.utils || {
+    qs: sel => document.querySelector(sel),
+    qsa: sel => Array.from(document.querySelectorAll(sel)),
+    debounce: fn => fn,
   };
 
   let isMin = false;
@@ -466,16 +471,15 @@
 (function () {
   'use strict';
 
-  const { qs, resolvePath } = window.utils || {
-    qs: (sel) => document.querySelector(sel),
-    resolvePath: (p) => p
+  const { resolvePath } = window.utils || {
+    resolvePath: p => p,
   };
 
   let cachedData = null;
   let loadingPromise = null;
   const subscribers = [];
 
-  const onDataLoaded = (callback) => {
+  const onDataLoaded = callback => {
     if (cachedData) {
       callback(cachedData);
     } else {
@@ -507,6 +511,6 @@
   window.DataLoader = {
     load: loadData,
     onLoaded: onDataLoaded,
-    get: () => cachedData
+    get: () => cachedData,
   };
 })();

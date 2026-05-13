@@ -7,7 +7,25 @@
 
   const { qs, resolvePath } = window.utils || {
     qs: sel => document.querySelector(sel),
-    resolvePath: p => p
+    resolvePath: p => p,
+  };
+
+  const findSiteInData = (data, siteId) => {
+    for (let category of data.categories) {
+      const found = category.sites ? category.sites.find(s => s.id === siteId) : null;
+      if (found) {
+        return { site: found, categoryName: category.name };
+      }
+      if (category.children) {
+        for (let subCategory of category.children) {
+          const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
+          if (subFound) {
+            return { site: subFound, categoryName: subCategory.name };
+          }
+        }
+      }
+    }
+    return null;
   };
 
   const init = () => {
@@ -28,77 +46,37 @@
   };
 
   const findAndRenderSite = (data, siteId) => {
-    let site = null;
-    let categoryName = '';
-
-    for (let category of data.categories) {
-      const found = category.sites ? category.sites.find(s => s.id === siteId) : null;
-      if (found) {
-        site = found;
-        categoryName = category.name;
-        break;
-      }
-      if (category.children) {
-        for (let subCategory of category.children) {
-          const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
-          if (subFound) {
-            site = subFound;
-            categoryName = subCategory.name;
-            break;
-          }
-        }
-        if (site) break;
-      }
-    }
-
-    if (!site) {
+    const result = findSiteInData(data, siteId);
+    if (result) {
+      renderSite(result.site, result.categoryName);
+    } else {
       loadSitetrash(siteId);
-      return;
     }
-
-    renderSite(site, categoryName);
   };
 
-  const loadSitetrash = async (siteId) => {
+  const loadSitetrash = async siteId => {
     try {
       const sitetrashPath = resolvePath('data/sitetrash.json');
       const data = await (await fetch(sitetrashPath)).json();
-      let site = null;
-      let categoryName = '';
+      const result = findSiteInData(data, siteId);
 
-      for (let category of data.categories) {
-        const found = category.sites ? category.sites.find(s => s.id === siteId) : null;
-        if (found) {
-          site = found;
-          categoryName = category.name;
-          break;
-        }
-        if (category.children) {
-          for (let subCategory of category.children) {
-            const subFound = subCategory.sites ? subCategory.sites.find(s => s.id === siteId) : null;
-            if (subFound) {
-              site = subFound;
-              categoryName = subCategory.name;
-              break;
-            }
-          }
-          if (site) break;
-        }
-      }
-
-      if (!site) {
+      if (!result) {
         showError('未找到该网站');
         return;
       }
 
-      renderSite(site, categoryName);
+      renderSite(result.site, result.categoryName);
     } catch (err) {
       showError('加载网站信息失败，请刷新页面重试。');
     }
   };
 
   const renderSite = (site, categoryName) => {
-    const faviconUrl = site.icon ? (site.icon.startsWith('/') ? site.icon : '/' + site.icon) : resolvePath('assets/images/favicon.png');
+    const faviconUrl = site.icon
+      ? site.icon.startsWith('/')
+        ? site.icon
+        : '/' + site.icon
+      : resolvePath('assets/images/favicon.png');
 
     document.title = site.name + ' | MyACGN';
 
@@ -131,7 +109,10 @@
     qs('#site-url').setAttribute('title', site.name);
 
     const qrUrl = site.url ? encodeURIComponent(site.url) : '';
-    qs('#site-qr').setAttribute('data-bs-original-title', `<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrUrl}' width='150'>`);
+    qs('#site-qr').setAttribute(
+      'data-bs-original-title',
+      `<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrUrl}' width='150'>`
+    );
 
     qs('#site-detail-content').textContent = site.detail || site.description;
 
@@ -141,13 +122,14 @@
     if (window.initTooltips) window.initTooltips();
   };
 
-  const showError = (message) => {
+  const showError = message => {
     qs('#skeleton-loading').classList.add('skeleton-hidden');
     qs('#site-content').classList.remove('skeleton-hidden');
     qs('#site-name').textContent = '错误';
     qs('#site-category').textContent = '';
     qs('#site-description').textContent = message;
-    qs('#site-detail-content').innerHTML = `<div class="alert alert-danger">${message}</div><a href="/" class="btn btn-primary">返回首页</a>`;
+    qs('#site-detail-content').innerHTML =
+      `<div class="alert alert-danger">${message}</div><a href="/" class="btn btn-primary">返回首页</a>`;
   };
 
   if (window.loader) {

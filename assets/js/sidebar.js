@@ -5,9 +5,9 @@
 (function () {
   'use strict';
 
-  const { qs } = window.utils || { qs: (sel) => document.querySelector(sel) };
+  const { qs } = window.utils || { qs: sel => document.querySelector(sel) };
 
-  const renderSidebar = (data) => {
+  const renderSidebar = data => {
     const mainCategories = data.categories;
 
     let html = '';
@@ -35,20 +35,35 @@
     const navList = qs('#sidebar-nav-list');
     if (navList) navList.innerHTML = html;
 
-    ['sidebar-skeleton', 'sidebar-content', 'sidebar-bottom-skeleton', 'sidebar-bottom-content'].forEach((id, i) => {
+    [
+      'sidebar-skeleton',
+      'sidebar-content',
+      'sidebar-bottom-skeleton',
+      'sidebar-bottom-content',
+    ].forEach((id, i) => {
       const el = qs('#' + id);
       if (el) el.classList.toggle('skeleton-hidden', i % 2 === 0);
     });
   };
 
-  const genSideItem = (c) =>
-    '<li class="sidebar-item"><a href="/index.html#' + c.id + '" class="sidebar-menu-link">' +
-    '<i class="' + (c.icon || 'fas fa-link') + ' icon-fw icon-lg me-2"></i>' +
-    '<span class="sidebar-menu-text">' + c.name + '</span></a></li>';
+  const genSideItem = c =>
+    '<li class="sidebar-item"><a href="/index.html#' +
+    c.id +
+    '" class="sidebar-menu-link">' +
+    '<i class="' +
+    (c.icon || 'fas fa-link') +
+    ' icon-fw icon-lg me-2"></i>' +
+    '<span class="sidebar-menu-text">' +
+    c.name +
+    '</span></a></li>';
 
-  const genSideSubItem = (c) =>
-    '<li class="sidebar-item"><a href="/index.html#' + c.id + '" class="sidebar-menu-link">' +
-    '<span class="sidebar-menu-text">' + c.name + '</span></a></li>';
+  const genSideSubItem = c =>
+    '<li class="sidebar-item"><a href="/index.html#' +
+    c.id +
+    '" class="sidebar-menu-link">' +
+    '<span class="sidebar-menu-text">' +
+    c.name +
+    '</span></a></li>';
 
   const init = () => {
     if (window.DataLoader) {
