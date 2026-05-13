@@ -1,71 +1,51 @@
 /**
- * Loader.js - 动态模块加载器
+ * 动态模块加载器
  */
 
-(function () {
-  'use strict';
+// 标记已加载
+window.loader = true;
 
-  const loaded = new Set();
-  const loading = new Map();
+// 主入口加载函数
+const loadApp = async () => {
+  const path = window.location.pathname;
 
-  const getPathPrefix = () => {
-    const currentPath = window.location.pathname;
-    if (currentPath === '/' || currentPath === '/index.html') return '';
-    const pathSegments = currentPath
-      .split('/')
-      .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
-    return '../'.repeat(pathSegments.length);
-  };
+  if (path === '/' || path === '/index.html') {
+    // 首页：并行加载 core, sidebar, dynamic
+    const [, sidebarModule, dynamicModule] = await Promise.all([
+      import('./core.js'),
+      import('./sidebar.js'),
+      import('./dynamic.js'),
+    ]);
 
-  const loadScript = src => {
-    const prefix = getPathPrefix();
-    const fullSrc = prefix + src;
-    if (loading.has(fullSrc)) return loading.get(fullSrc);
-    if (loaded.has(fullSrc)) return Promise.resolve();
+    // 等所有模块加载完再初始化
+    sidebarModule.initSidebar();
+    dynamicModule.initDynamic();
+  } else if (path.endsWith('/sites/detail.html')) {
+    // 详情页：并行加载 core, sidebar, site-detail
+    const [, sidebarModule, siteDetailModule] = await Promise.all([
+      import('./core.js'),
+      import('./sidebar.js'),
+      import('./site-detail.js'),
+    ]);
 
-    const promise = new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = fullSrc;
-      script.async = false;
-      script.onload = () => {
-        loaded.add(fullSrc);
-        loading.delete(fullSrc);
-        resolve();
-      };
-      script.onerror = () => {
-        loading.delete(fullSrc);
-        reject(new Error(`Failed to load ${fullSrc}`));
-      };
-      document.head.appendChild(script);
-    });
+    // 等所有模块加载完再初始化
+    sidebarModule.initSidebar();
+    siteDetailModule.initSiteDetail();
+  } else {
+    // 其他页面：并行加载 core, sidebar
+    const [, sidebarModule] = await Promise.all([import('./core.js'), import('./sidebar.js')]);
 
-    loading.set(fullSrc, promise);
-    return promise;
-  };
+    // 等所有模块加载完再初始化
+    sidebarModule.initSidebar();
+  }
 
-  const detectAndLoad = async () => {
-    const path = window.location.pathname;
+  // 触发加载完成事件
+  window.dispatchEvent(new CustomEvent('app:loaded'));
+};
 
-    await loadScript('assets/js/core.js');
-
-    if (path === '/' || path === '/index.html') {
-      await loadScript('assets/js/sidebar.js');
-      await loadScript('assets/js/dynamic.js');
-    } else if (path.endsWith('/sites/detail.html')) {
-      await loadScript('assets/js/sidebar.js');
-      await loadScript('assets/js/site-detail.js');
-    } else {
-      await loadScript('assets/js/sidebar.js');
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        window.dispatchEvent(new CustomEvent('app:loaded'));
-      });
-    } else {
-      window.dispatchEvent(new CustomEvent('app:loaded'));
-    }
-  };
-
-  detectAndLoad();
-})();
+// 确保 DOM 加载完成
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadApp);
+} else {
+  loadApp();
+}
