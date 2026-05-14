@@ -12,18 +12,10 @@ export const isPC = () =>
     agent => navigator.userAgent.includes(agent)
   );
 
-// 路径解析 - 获取相对于根目录的路径
+// 路径解析 - 使用相对于根目录的绝对路径
 export const resolvePath = relativePath => {
-  const currentPath = window.location.pathname;
-  // 判断是否在根目录（/ 或 /index.html）
-  if (currentPath === '/' || currentPath === '/index.html') {
-    return relativePath;
-  }
-  // 处理子目录
-  const pathSegments = currentPath
-    .split('/')
-    .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
-  return '../'.repeat(pathSegments.length) + relativePath;
+  // 始终使用相对于根目录的路径
+  return '/' + relativePath;
 };
 
 // 防抖函数
