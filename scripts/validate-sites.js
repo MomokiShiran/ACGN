@@ -10,12 +10,12 @@ function readAndParse(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     const data = JSON.parse(content);
-    
+
     if (!data || typeof data !== 'object' || !Array.isArray(data.categories)) {
       console.error(`✗ JSON 结构错误: 缺少 categories 数组 [${path.basename(filePath)}]`);
       process.exit(1);
     }
-    
+
     console.log(`✓ JSON 格式正确 [${path.basename(filePath)}]`);
     return data.categories;
   } catch (error) {
@@ -34,7 +34,10 @@ function validateRequiredFields(categories, fileName) {
     // 检查分类必填字段
     for (const field of requiredFields) {
       if (!category[field]) {
-        console.error(`✗ 分类缺少必填字段 '${field}' [${fileName}]:`, category.name || category.id || '未知');
+        console.error(
+          `✗ 分类缺少必填字段 '${field}' [${fileName}]:`,
+          category.name || category.id || '未知'
+        );
         hasError = true;
       }
     }
@@ -44,14 +47,21 @@ function validateRequiredFields(categories, fileName) {
       for (const subCategory of category.children) {
         for (const field of requiredFields) {
           if (!subCategory[field]) {
-            console.error(`✗ 子分类缺少必填字段 '${field}' [${fileName}]:`, subCategory.name || subCategory.id || '未知');
+            console.error(
+              `✗ 子分类缺少必填字段 '${field}' [${fileName}]:`,
+              subCategory.name || subCategory.id || '未知'
+            );
             hasError = true;
           }
         }
 
         // 检查子分类的站点
         if (subCategory.sites && Array.isArray(subCategory.sites)) {
-          validateSiteFields(subCategory.sites, `${category.name} -> ${subCategory.name}`, fileName);
+          validateSiteFields(
+            subCategory.sites,
+            `${category.name} -> ${subCategory.name}`,
+            fileName
+          );
         }
       }
     }
@@ -66,7 +76,10 @@ function validateRequiredFields(categories, fileName) {
     for (const site of sites) {
       for (const field of siteRequiredFields) {
         if (!site[field]) {
-          console.error(`✗ 站点缺少必填字段 '${field}' [${fileName} -> ${categoryName}]:`, site.name || site.id || '未知');
+          console.error(
+            `✗ 站点缺少必填字段 '${field}' [${fileName} -> ${categoryName}]:`,
+            site.name || site.id || '未知'
+          );
           hasError = true;
         }
       }
@@ -89,7 +102,9 @@ function checkDuplicateUrls(categories, fileName) {
       if (site.url) {
         const normalizedUrl = site.url.toLowerCase().replace(/\/$/, '');
         if (urlMap.has(normalizedUrl)) {
-          console.error(`✗ 重复链接: '${site.url}' [${fileName} -> ${categoryName}] 和 [${urlMap.get(normalizedUrl)}]`);
+          console.error(
+            `✗ 重复链接: '${site.url}' [${fileName} -> ${categoryName}] 和 [${urlMap.get(normalizedUrl)}]`
+          );
           hasDuplicate = true;
         } else {
           urlMap.set(normalizedUrl, `${fileName} -> ${categoryName}`);
@@ -103,7 +118,7 @@ function checkDuplicateUrls(categories, fileName) {
     if (category.sites && Array.isArray(category.sites) && !category.children) {
       checkSites(category.sites, category.name);
     }
-    
+
     // 嵌套子分类的站点
     if (category.children && Array.isArray(category.children)) {
       for (const subCategory of category.children) {
@@ -181,7 +196,9 @@ function checkUrlFormat(categories, fileName) {
   function checkUrls(sites, categoryName) {
     for (const site of sites) {
       if (site.url && !urlRegex.test(site.url)) {
-        console.error(`✗ URL格式错误 [${fileName} -> ${categoryName}]: '${site.url}' (站点: ${site.name || site.id})`);
+        console.error(
+          `✗ URL格式错误 [${fileName} -> ${categoryName}]: '${site.url}' (站点: ${site.name || site.id})`
+        );
         hasError = true;
       }
     }
@@ -192,7 +209,7 @@ function checkUrlFormat(categories, fileName) {
     if (category.sites && Array.isArray(category.sites) && !category.children) {
       checkUrls(category.sites, category.name);
     }
-    
+
     // 嵌套子分类的站点
     if (category.children && Array.isArray(category.children)) {
       for (const subCategory of category.children) {

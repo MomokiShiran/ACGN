@@ -9,8 +9,6 @@
     />
     <meta name="theme-color" content="#f9f9f9" />
     <meta name="robots" content="index, follow" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'" />
     <meta name="author" content="MyACGN" />
     <title>MyACGN - ACG二次元导航盒子 | 动漫、漫画、游戏、资源导航</title>
     <meta
@@ -37,7 +35,10 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MyACGN - ACG二次元导航盒子" />
-    <meta name="twitter:description" content="MyACGN是专业的ACG二次元导航盒子，收录海量优质动漫、漫画、游戏、资源网站。" />
+    <meta
+      name="twitter:description"
+      content="MyACGN是专业的ACG二次元导航盒子，收录海量优质动漫、漫画、游戏、资源网站。"
+    />
     <meta name="twitter:image" content="./assets/images/20210727002253-59085.jpeg" />
 
     <link rel="canonical" href="/" />
@@ -190,7 +191,7 @@
                   </a>
                 </li>
                 <li class="sidebar-item">
-                  <a href="/postsite/index.html" class="sidebar-menu-link">
+                  <a href="postsite/index.html" class="sidebar-menu-link">
                     <i class="fas fa-link icon-fw icon-lg me-2"></i>
                     <span class="sidebar-menu-text">投稿&反馈</span>
                   </a>
@@ -200,7 +201,6 @@
           </div>
         </div>
       </div>
-
       <!-- 主内容区域 -->
       <div class="main-content flex-fill">
         <!-- 顶部导航栏 -->
@@ -240,7 +240,6 @@
               <ul class="nav navbar-menu text-xs order-1 order-md-2">
                 <li class="nav-item me-3 mr-lg-0 d-none d-lg-block">
                   <div class="text-sm overflowClip_1">
-                    <script src="//v1.hitokoto.cn/?encode=js&select=.hitokoto" defer></script>
                     <span class="hitokoto"></span>
                   </div>
                 </li>
@@ -263,7 +262,7 @@
         <div class="bulletin-big mx-3 mx-md-0 mb-4">
           <div class="bulletin-container card my-2 bulletin-box">
             <div class="card-body py-1 px-2 px-md-3 d-flex flex-fill text-xs text-muted">
-              <div><i class="iconfont icon-bulletin" style="line-height: 25px"></i></div>
+              <div><i class="iconfont icon-bulletin line-height-25"></i></div>
               <div class="bulletin mx-1 mx-md-2">
                 <ul class="bulletin-ul bulletin-list">
                   <li class="scrolltext-title overflowClip_1">
@@ -549,7 +548,7 @@
             </a>
           </div>
 
-          <div class="footer-inner" style="text-align: center">
+          <div class="footer-inner text-center">
             <div class="footer-text">
               © 2026 MyACGN &nbsp;&nbsp;Powered by
               <a
@@ -575,8 +574,11 @@
                 line-height: 1.8;
               "
             >
+              <strong>联系方式：</strong>若有任何问题或合作，请发送邮件至
+              <a href="mailto:help@acgn-world.com" class="text-muted">help@acgn-world.com</a>
+              <br />
               <strong>免责声明：</strong
-              >本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站，本站对第三方网站内容不承担任何责任。如有侵权内容，请联系站长删除。本站仅供学习交流使用，请勿用于非法用途。
+              >本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。所有链接均指向第三方网站，本站对第三方网站内容不承担任何责任。如有侵权内容，请联系我们删除。本站仅供学习交流使用，请勿用于非法用途。
             </div>
           </div>
         </footer>
@@ -584,7 +586,6 @@
     </div>
 
     <script src="assets/js/bootstrap.min.js?ver=2.0406"></script>
-    <script src="assets/js/dynamic.js?ver=2.0406"></script>
-    <script src="assets/js/app.js?ver=2.0406"></script>
+    <script type="module" src="assets/js/loader.js"></script>
   </body>
 </html>

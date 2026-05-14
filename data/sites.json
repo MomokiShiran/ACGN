@@ -45,6 +45,7 @@
           "description": "某个人站，每天会搬运P站排名前50图",
           "category": "term-2",
           "isNew": false,
+          "icon": "assets/images/sites/pic.tjsky.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -56,16 +57,6 @@
           "category": "term-2",
           "isNew": false,
           "icon": "assets/images/sites/hentai-img.com.png",
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
-          "id": 158,
-          "name": "Anime Image",
-          "url": "https://aniimg.com",
-          "description": "全年龄动漫图片，显示403说明你IP被封了。",
-          "category": "term-2",
-          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -194,12 +185,23 @@
       "icon": "fas fa-play-circle",
       "sites": [
         {
+          "id": 460,
+          "name": "嗷呜动漫",
+          "url": "https://www.aowu.tv",
+          "description": "免费在线动漫观看平台",
+          "category": "term-3",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-13 00:00:00"
+        },
+        {
           "id": 435,
           "name": "金阿尼",
           "url": "https://kimani.tv/?utm_source=myacgbox",
           "description": "无广告，免费无须注册，高速播放，当季动画同步更新",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "icon": "assets/images/sites/kimani.tv.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -210,7 +212,7 @@
           "url": "https://kumanshe.com",
           "description": "以免费国漫为主",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "酷漫社是一家漫画免费分享以及在线浏览平台，这里有及时的新番漫画，活跃的ACG氛围，有创意的漫画师�?",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -221,7 +223,7 @@
           "url": "https://arlnigdm.com",
           "description": "无广告，番剧多",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -231,7 +233,7 @@
           "url": "http://haliyy.com",
           "description": "资源较全，画质较差，路线多",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "感谢服服服鸡的投稿",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -242,7 +244,7 @@
           "url": "https://www.acg.rw",
           "description": "画质一般，播放开始有广告",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -252,7 +254,7 @@
           "url": "https://acgfantuan.com",
           "description": "以新番为主，无广告",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "以新番为主，无广告，地址发布页：https://fantuantv.com/",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -263,7 +265,7 @@
           "url": "https://www.zzzfun.com",
           "description": "有时会挂，画质较高",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -273,7 +275,7 @@
           "url": "https://omofun.tv/",
           "description": "【需要下载APP】画质高，弹幕多",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "detail": "支持安卓和IOS",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -284,7 +286,7 @@
           "url": "https://www.5dm.app",
           "description": "【推荐】更新快，画质高",
           "category": "term-3",
-          "isNew": true,
+          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -426,6 +428,17 @@
       "name": "在线漫画",
       "icon": "fab fa-stack-overflow",
       "sites": [
+        {
+          "id": 462,
+          "name": "MangaCopy",
+          "url": "https://mangacopy.com",
+          "description": "漫画站",
+          "category": "term-12",
+          "isNew": true,
+          "icon": "assets/images/sites/mangacopy.com.png",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
         {
           "id": 405,
           "name": "聚合漫画屋",
@@ -1370,6 +1383,39 @@
       "icon": "far fa-registered",
       "sites": [
         {
+          "id": 461,
+          "name": "SearchGal",
+          "url": "https://searchgal.homes",
+          "description": "Galgame搜索站",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "assets/images/sites/searchgal.homes.svg",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
+        {
+          "id": 466,
+          "name": "HikariNagi",
+          "url": "https://www.hikarinagi.org",
+          "description": "Galgame资源站",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "assets/images/sites/www.hikarinagi.org.png",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
+        {
+          "id": 467,
+          "name": "Kungal",
+          "url": "https://www.kungal.com",
+          "description": "Galgame资源站",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "assets/images/sites/www.kungal.com.ico",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
+        {
           "id": 434,
           "name": "GALXP",
           "url": "https://www.galxp.com",
@@ -2193,6 +2239,28 @@
           "icon": "fas fa-tools",
           "sites": [
             {
+              "id": 463,
+              "name": "LoveLive10",
+              "url": "https://lovelive10.com",
+              "description": "Love Live相关",
+              "category": "term-16",
+              "isNew": true,
+              "icon": "assets/images/sites/lovelive10.com.png",
+              "disabledAt": "",
+              "createdAt": "2026-05-14 00:00:00"
+            },
+            {
+              "id": 464,
+              "name": "DrawRef",
+              "url": "https://drawref.cn",
+              "description": "绘画参考",
+              "category": "term-16",
+              "isNew": true,
+              "icon": "assets/images/sites/drawref.cn.png",
+              "disabledAt": "",
+              "createdAt": "2026-05-14 00:00:00"
+            },
+            {
               "id": 399,
               "name": "Game8",
               "url": "https://game8.jp",
@@ -2202,6 +2270,17 @@
               "icon": "assets/images/sites/game8.jp.png",
               "disabledAt": "",
               "createdAt": "2025-01-01 00:00:00"
+            },
+            {
+              "id": 459,
+              "name": "Project SEKAI",
+              "url": "https://pjsekai.sega.jp",
+              "description": "世界计划 彩色舞台 feat. 初音未来 官方网站",
+              "category": "term-16",
+              "isNew": true,
+              "icon": "assets/images/sites/pjsekai.sega.jp.png",
+              "disabledAt": "",
+              "createdAt": "2026-05-13 00:00:00"
             },
             {
               "id": 397,
@@ -2306,7 +2385,7 @@
             {
               "id": 223,
               "name": "新番动漫表",
-              "url": "https://hmacg.cn/bangumi",
+              "url": "https://xf.hmacg.cn",
               "description": "展示日本新番表",
               "category": "term-16",
               "isNew": false,

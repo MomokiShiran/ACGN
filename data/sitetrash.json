@@ -6,6 +6,17 @@
       "icon": "fas fa-image",
       "sites": [
         {
+          "id": 158,
+          "name": "Anime Image",
+          "url": "https://aniimg.com",
+          "description": "全年龄动漫图片，显示403说明你IP被封了。",
+          "category": "term-2",
+          "isNew": false,
+          "icon": "assets/images/sites/aniimg.com.png",
+          "disabledAt": "2026-05-14 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
           "id": 1000,
           "name": "异度姬",
           "url": "",
@@ -306,6 +317,12 @@
       ]
     },
     {
+      "id": "term-9",
+      "name": "ACG图书馆",
+      "icon": "fas fa-university",
+      "sites": []
+    },
+    {
       "id": "term-7",
       "name": "Galgame",
       "icon": "far fa-registered",
@@ -331,6 +348,24 @@
           "createdAt": "2025-01-01 00:00:00"
         }
       ]
+    },
+    {
+      "id": "term-18",
+      "name": "轻小说",
+      "icon": "fab fa-envira",
+      "sites": []
+    },
+    {
+      "id": "term-4",
+      "name": "动漫下载",
+      "icon": "fas fa-download",
+      "sites": []
+    },
+    {
+      "id": "term-14",
+      "name": "ACG购物",
+      "icon": "fas fa-shopping-bag",
+      "sites": []
     },
     {
       "id": "tool-collection",
@@ -365,21 +400,22 @@
           ]
         },
         {
-          "id": "term-22",
-          "name": "付费网盘资源下载",
-          "icon": "fas fa-cloud-download-alt",
-          "sites": [
-            {
-              "id": 1017,
-              "name": "エロ国",
-              "url": "",
-              "description": "国外ACG资源付费网盘下载",
-              "category": "term-22",
-              "disabledAt": "2026-01-01 00:00:00",
-              "icon": "",
-              "createdAt": "2025-01-01 00:00:00"
-            }
-          ]
+          "id": "term-15",
+          "name": "BT下载软件",
+          "icon": "fas fa-download",
+          "sites": []
+        },
+        {
+          "id": "term-17",
+          "name": "Telegram频道",
+          "icon": "fab fa-telegram",
+          "sites": []
+        },
+        {
+          "id": "term-13",
+          "name": "图源搜索工具",
+          "icon": "fas fa-search",
+          "sites": []
         },
         {
           "id": "term-16",
@@ -397,6 +433,29 @@
               "createdAt": "2025-01-01 00:00:00"
             }
           ]
+        },
+        {
+          "id": "term-22",
+          "name": "付费网盘资源下载",
+          "icon": "fas fa-cloud-download-alt",
+          "sites": [
+            {
+              "id": 1017,
+              "name": "エロ国",
+              "url": "",
+              "description": "国外ACG资源付费网盘下载",
+              "category": "term-22",
+              "disabledAt": "2026-01-01 00:00:00",
+              "icon": "",
+              "createdAt": "2025-01-01 00:00:00"
+            }
+          ]
+        },
+        {
+          "id": "term-21",
+          "name": "其它小工具",
+          "icon": "fas fa-wrench",
+          "sites": []
         }
       ]
     }
