@@ -61,16 +61,6 @@
           "createdAt": "2025-01-01 00:00:00"
         },
         {
-          "id": 158,
-          "name": "Anime Image",
-          "url": "https://aniimg.com",
-          "description": "全年龄动漫图片，显示403说明你IP被封了。",
-          "category": "term-2",
-          "isNew": false,
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
           "id": 153,
           "name": "Anime-pictures",
           "url": "https://anime-pictures.net",
@@ -438,6 +428,17 @@
       "name": "在线漫画",
       "icon": "fab fa-stack-overflow",
       "sites": [
+        {
+          "id": 462,
+          "name": "MangaCopy",
+          "url": "https://mangacopy.com",
+          "description": "漫画站",
+          "category": "term-12",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
         {
           "id": 405,
           "name": "聚合漫画屋",
@@ -1382,6 +1383,28 @@
       "icon": "far fa-registered",
       "sites": [
         {
+          "id": 461,
+          "name": "SearchGal",
+          "url": "https://searchgal.homes",
+          "description": "Galgame搜索站",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
+        {
+          "id": 466,
+          "name": "HikariNagi",
+          "url": "https://www.hikarinagi.org",
+          "description": "Galgame资源站",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
+        {
           "id": 434,
           "name": "GALXP",
           "url": "https://www.galxp.com",
@@ -2205,6 +2228,28 @@
           "icon": "fas fa-tools",
           "sites": [
             {
+              "id": 463,
+              "name": "LoveLive10",
+              "url": "https://lovelive10.com",
+              "description": "Love Live相关",
+              "category": "term-16",
+              "isNew": true,
+              "icon": "",
+              "disabledAt": "",
+              "createdAt": "2026-05-14 00:00:00"
+            },
+            {
+              "id": 464,
+              "name": "DrawRef",
+              "url": "https://drawref.cn",
+              "description": "绘画参考",
+              "category": "term-16",
+              "isNew": true,
+              "icon": "",
+              "disabledAt": "",
+              "createdAt": "2026-05-14 00:00:00"
+            },
+            {
               "id": 399,
               "name": "Game8",
               "url": "https://game8.jp",
@@ -2329,7 +2374,7 @@
             {
               "id": 223,
               "name": "新番动漫表",
-              "url": "https://hmacg.cn/bangumi",
+              "url": "https://xf.hmacg.cn",
               "description": "展示日本新番表",
               "category": "term-16",
               "isNew": false,
