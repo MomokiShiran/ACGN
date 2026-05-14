@@ -2,11 +2,11 @@
  * 侧边栏菜单渲染模块
  */
 
-import { qs } from './utils.js';
+import { qs, BASE_URL } from './utils.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
 const genSideItem = c =>
-  '<li class="sidebar-item"><a href="/index.html#' +
+  '<li class="sidebar-item"><a href="' + BASE_URL + '/index.html#' +
   c.id +
   '" class="sidebar-menu-link">' +
   '<i class="' +
@@ -17,7 +17,7 @@ const genSideItem = c =>
   '</span></a></li>';
 
 const genSideSubItem = c =>
-  '<li class="sidebar-item"><a href="/index.html#' +
+  '<li class="sidebar-item"><a href="' + BASE_URL + '/index.html#' +
   c.id +
   '" class="sidebar-menu-link">' +
   '<span class="sidebar-menu-text">' +

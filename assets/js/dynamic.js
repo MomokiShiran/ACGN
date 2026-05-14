@@ -2,7 +2,7 @@
  * 首页站点卡片渲染模块
  */
 
-import { qs, isPC } from './utils.js';
+import { qs, isPC, BASE_URL } from './utils.js';
 import { initTooltips } from './ui.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
@@ -17,13 +17,13 @@ const genCatSection = c =>
   '</div>';
 
 const genSiteCard = site => {
-  const iconUrl = site.icon || 'assets/images/favicon.png';
+  const iconUrl = site.icon || BASE_URL + '/assets/images/favicon.png';
   const newBadge = site.isNew
     ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>'
     : '';
   return (
     '<div class="url-card col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2"><div class="url-body default">' +
-    '<a href="sites/detail.html?id=' +
+    '<a href="' + BASE_URL + '/sites/detail.html?id=' +
     site.id +
     '" target="_blank" data-id="' +
     site.id +
@@ -38,7 +38,7 @@ const genSiteCard = site => {
     '<div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">' +
     '<img loading="lazy" src="' +
     iconUrl +
-    '" onerror="this.src=\'assets/images/favicon.png\'"></div>' +
+    '" onerror="this.onerror=null;this.src=\'' + BASE_URL + '/assets/images/favicon.png\'"></div>' +
     '<div class="url-info flex-fill"><div class="text-sm overflowClip_1">' +
     newBadge +
     '<strong>' +
@@ -65,7 +65,7 @@ const genFriendLinks = () =>
   '<a href="https://www.acgbox.link/" class="friendlink-link">ACG盒子</a>' +
   '<a href="https://www.mgnacg.com/" title="专注动漫的二次元小站" class="friendlink-link">橘子动漫</a>' +
   '<a href="https://www.myiys.com/" title="技术导航-动漫导航-二次元导航" class="friendlink-link">ACGN导航</a>' +
-  '<a href="/friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer" class="friendlink-link">更多链接</a>' +
+  '<a href="' + BASE_URL + '/friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer" class="friendlink-link">更多链接</a>' +
   '</div></div>';
 
 const renderSiteCards = data => {
