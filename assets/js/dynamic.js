@@ -3,6 +3,8 @@
  */
 
 import { qs, isPC } from './utils.js';
+import { initTooltips } from './ui.js';
+import { onDataLoaded, loadData } from './data-loader.js';
 
 const genCatSection = c =>
   '<h4 class="text-gray text-lg mb-4 d-flex flex-fill">' +
@@ -87,13 +89,10 @@ const renderSiteCards = data => {
   if (skeleton) skeleton.classList.add('skeleton-hidden');
   if (container) container.classList.remove('skeleton-hidden');
 
-  if (window.initTooltips)
-    window.initTooltips(isPC() ? undefined : '.qr-img[data-bs-toggle="tooltip"]');
+  initTooltips(isPC() ? undefined : '.qr-img[data-bs-toggle="tooltip"]');
 };
 
 export const initDynamic = () => {
-  if (window.DataLoader) {
-    window.DataLoader.onLoaded(renderSiteCards);
-    window.DataLoader.load();
-  }
+  onDataLoaded(renderSiteCards);
+  loadData();
 };

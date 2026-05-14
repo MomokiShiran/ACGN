@@ -3,6 +3,7 @@
  */
 
 import { qs } from './utils.js';
+import { onDataLoaded, loadData } from './data-loader.js';
 
 const genSideItem = c =>
   '<li class="sidebar-item"><a href="/index.html#' +
@@ -63,8 +64,6 @@ const renderSidebar = data => {
 };
 
 export const initSidebar = () => {
-  if (window.DataLoader) {
-    window.DataLoader.onLoaded(renderSidebar);
-    window.DataLoader.load();
-  }
+  onDataLoaded(renderSidebar);
+  loadData();
 };
