@@ -3,7 +3,7 @@
  */
 
 // 基础 URL 配置
-export const BASE_URL = 'https://momokishiran.github.io/ACGN';
+export const BASE_URL = 'https://momokishiran.github.io/ACGN/';
 
 // 选择器工具
 export const qs = (sel, ctx = document) => ctx.querySelector(sel);
