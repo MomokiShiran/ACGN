@@ -435,7 +435,7 @@
           "description": "漫画站",
           "category": "term-12",
           "isNew": true,
-          "icon": "",
+          "icon": "assets/images/sites/mangacopy.com.png",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -1389,7 +1389,7 @@
           "description": "Galgame搜索站",
           "category": "term-7",
           "isNew": true,
-          "icon": "",
+          "icon": "assets/images/sites/searchgal.homes.svg",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -1400,7 +1400,18 @@
           "description": "Galgame资源站",
           "category": "term-7",
           "isNew": true,
-          "icon": "",
+          "icon": "assets/images/sites/www.hikarinagi.org.png",
+          "disabledAt": "",
+          "createdAt": "2026-05-14 00:00:00"
+        },
+        {
+          "id": 467,
+          "name": "Kungal",
+          "url": "https://www.kungal.com",
+          "description": "Galgame资源站",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "assets/images/sites/www.kungal.com.ico",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -2234,7 +2245,7 @@
               "description": "Love Live相关",
               "category": "term-16",
               "isNew": true,
-              "icon": "",
+              "icon": "assets/images/sites/lovelive10.com.png",
               "disabledAt": "",
               "createdAt": "2026-05-14 00:00:00"
             },
@@ -2245,7 +2256,7 @@
               "description": "绘画参考",
               "category": "term-16",
               "isNew": true,
-              "icon": "",
+              "icon": "assets/images/sites/drawref.cn.png",
               "disabledAt": "",
               "createdAt": "2026-05-14 00:00:00"
             },
