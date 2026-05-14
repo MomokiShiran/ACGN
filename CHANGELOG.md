@@ -1,5 +1,29 @@
 # 更新日志 (Changelog)
 
+## [1.7.0] - 2026-05-14
+
+### 功能重构及新增
+
+- **增加联系方式**
+- **增加收录时间**
+- **抽离侧边栏逻辑为独立模块**
+- **JS重构为 ES Module 风格**
+
+### 数据更新
+
+- 添加新网站 "SearchGal" (Galgame搜索站)
+- 添加新网站 "MangaCopy" (漫画站)
+- 添加新网站 "LoveLive10" (Love Live相关)
+- 添加新网站 "DrawRef" (绘画参考)
+- 添加新网站 "HikariNagi" (Galgame资源站)
+- 添加新网站 "Kungal" (Galgame资源站)
+- 添加新网站 "嗷呜动漫"
+- 添加新网站 "Project SEKAI"
+- 更新 "新番动漫表" URL
+- 移动 "Anime Image" 到失效归档
+
+---
+
 ## [1.6.1] - 2026-05-11
 
 ### 优化改进
