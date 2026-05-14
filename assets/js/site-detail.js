@@ -52,7 +52,9 @@ const loadSitetrash = async siteId => {
 
 const renderSite = (site, categoryName) => {
   const faviconUrl = site.icon
-    ? `${BASE_URL}${site.icon.startsWith('/') ? '' : '/'}${site.icon}`
+    ? site.icon.startsWith('/')
+      ? site.icon
+      : `${BASE_URL}/${site.icon}`
     : resolvePath('assets/images/favicon.png');
 
   document.title = site.name + ' | MyACGN';
