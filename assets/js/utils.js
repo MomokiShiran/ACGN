@@ -2,6 +2,9 @@
  * 工具函数模块
  */
 
+// 基础 URL 配置
+export const BASE_URL = 'https://momokishiran.github.io/ACGN/';
+
 // 选择器工具
 export const qs = (sel, ctx = document) => ctx.querySelector(sel);
 export const qsa = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -12,10 +15,9 @@ export const isPC = () =>
     agent => navigator.userAgent.includes(agent)
   );
 
-// 路径解析 - 使用相对于根目录的绝对路径
+// 路径解析
 export const resolvePath = relativePath => {
-  // 始终使用相对于根目录的路径
-  return '/' + relativePath;
+  return `${BASE_URL}/${relativePath}`;
 };
 
 // 防抖函数
