@@ -2,9 +2,6 @@
  * 工具函数模块
  */
 
-// 基础 URL 配置
-export const BASE_URL = 'https://momokishiran.github.io/ACGN';
-
 // 选择器工具
 export const qs = (sel, ctx = document) => ctx.querySelector(sel);
 export const qsa = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -15,9 +12,18 @@ export const isPC = () =>
     agent => navigator.userAgent.includes(agent)
   );
 
-// 路径解析
+// 路径解析 - 获取相对于根目录的路径
 export const resolvePath = relativePath => {
-  return `${BASE_URL}/${relativePath}`;
+  const currentPath = window.location.pathname;
+  // 判断是否在根目录（/ 或 /index.html）
+  if (currentPath === '/' || currentPath === '/index.html') {
+    return relativePath;
+  }
+  // 处理子目录
+  const pathSegments = currentPath
+    .split('/')
+    .filter(segment => segment.length > 0 && !segment.endsWith('.html'));
+  return '../'.repeat(pathSegments.length) + relativePath;
 };
 
 // 防抖函数
