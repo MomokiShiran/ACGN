@@ -2,9 +2,6 @@
  * 动态模块加载器
  */
 
-// 标记已加载
-window.loader = true;
-
 // 主入口加载函数
 const loadApp = async () => {
   const path = window.location.pathname;
@@ -38,9 +35,6 @@ const loadApp = async () => {
     // 等所有模块加载完再初始化
     sidebarModule.initSidebar();
   }
-
-  // 触发加载完成事件
-  window.dispatchEvent(new CustomEvent('app:loaded'));
 };
 
 // 确保 DOM 加载完成

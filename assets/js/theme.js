@@ -3,6 +3,7 @@
  */
 
 import { qs } from './utils.js';
+import { initTooltips } from './ui.js';
 
 class ThemeManagerClass {
   constructor() {
@@ -59,8 +60,8 @@ class ThemeManagerClass {
       }
     }
     this.apply(newTheme);
-    if (typeof bootstrap !== 'undefined' && window.initTooltips) {
-      window.initTooltips('.switch-dark-mode');
+    if (typeof bootstrap !== 'undefined') {
+      initTooltips('.switch-dark-mode');
     }
   }
 

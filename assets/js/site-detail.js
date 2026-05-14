@@ -3,6 +3,8 @@
  */
 
 import { qs, resolvePath } from './utils.js';
+import { initTooltips } from './ui.js';
+import { onDataLoaded, loadData } from './data-loader.js';
 
 const findSiteInData = (data, siteId) => {
   for (let category of data.categories) {
@@ -96,7 +98,7 @@ const renderSite = (site, categoryName) => {
   qs('#skeleton-loading').classList.add('skeleton-hidden');
   qs('#site-content').classList.remove('skeleton-hidden');
 
-  if (window.initTooltips) window.initTooltips();
+  initTooltips();
 };
 
 const showError = message => {
@@ -118,10 +120,8 @@ export const initSiteDetail = () => {
     return;
   }
 
-  if (window.DataLoader) {
-    window.DataLoader.onLoaded(data => {
-      findAndRenderSite(data, siteId);
-    });
-    window.DataLoader.load();
-  }
+  onDataLoaded(data => {
+    findAndRenderSite(data, siteId);
+  });
+  loadData();
 };
