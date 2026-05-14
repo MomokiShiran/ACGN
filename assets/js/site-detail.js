@@ -2,7 +2,7 @@
  * 网站详情页模块
  */
 
-import { qs, resolvePath } from './utils.js';
+import { qs, BASE_URL } from './utils.js';
 import { initTooltips } from './ui.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
@@ -35,7 +35,7 @@ const findAndRenderSite = (data, siteId) => {
 
 const loadSitetrash = async siteId => {
   try {
-    const sitetrashPath = resolvePath('data/sitetrash.json');
+    const sitetrashPath = BASE_URL + '/data/sitetrash.json';
     const data = await (await fetch(sitetrashPath)).json();
     const result = findSiteInData(data, siteId);
 
@@ -55,7 +55,7 @@ const renderSite = (site, categoryName) => {
     ? site.icon.startsWith('/')
       ? site.icon
       : '/' + site.icon
-    : resolvePath('assets/images/favicon.png');
+    : BASE_URL + '/assets/images/favicon.png';
 
   document.title = site.name + ' | MyACGN';
 

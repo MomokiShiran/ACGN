@@ -2,7 +2,7 @@
  * 数据加载模块
  */
 
-import { resolvePath } from './utils.js';
+import { BASE_URL } from './utils.js';
 
 let cachedData = null;
 let loadingPromise = null;
@@ -22,7 +22,7 @@ export const loadData = async () => {
 
   loadingPromise = (async () => {
     try {
-      const dataPath = resolvePath('data/sites.json');
+      const dataPath = BASE_URL + '/data/sites.json';
       const response = await fetch(dataPath);
       cachedData = await response.json();
       subscribers.forEach(callback => callback(cachedData));
