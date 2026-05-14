@@ -8,12 +8,14 @@ import { ThemeManager } from './theme.js';
 import { initTooltips, showAlert, initUI } from './ui.js';
 import { triggerLsmMini, triggerResizable, initSidebarInteraction } from './sidebar-interaction.js';
 import { onDataLoaded, loadData, getData } from './data-loader.js';
+import { initHitokoto } from './hitokoto.js';
 
 // 初始化
 initIframeProtect();
 ThemeManager.init();
 initUI(ThemeManager);
 initSidebarInteraction();
+initHitokoto();
 
 // 暴露到全局（兼容旧代码）
 window.utils = { qs, qsa, isPC, resolvePath, debounce };
