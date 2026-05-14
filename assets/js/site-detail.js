@@ -2,7 +2,7 @@
  * 网站详情页模块
  */
 
-import { qs, resolvePath } from './utils.js';
+import { qs, resolvePath, BASE_URL } from './utils.js';
 import { initTooltips } from './ui.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
@@ -54,7 +54,7 @@ const renderSite = (site, categoryName) => {
   const faviconUrl = site.icon
     ? site.icon.startsWith('/')
       ? site.icon
-      : '/' + site.icon
+      : `${BASE_URL}/${site.icon}`
     : resolvePath('assets/images/favicon.png');
 
   document.title = site.name + ' | MyACGN';
