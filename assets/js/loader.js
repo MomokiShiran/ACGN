@@ -4,9 +4,9 @@
 
 // 主入口加载函数
 const loadApp = async () => {
-  const path = window.location.pathname;
+  const pageType = document.body.dataset.pageType;
 
-  if (path === '/' || path === '/index.html') {
+  if (pageType === 'home') {
     // 首页：并行加载 core, sidebar, dynamic
     const [, sidebarModule, dynamicModule] = await Promise.all([
       import('./core.js'),
@@ -17,7 +17,7 @@ const loadApp = async () => {
     // 等所有模块加载完再初始化
     sidebarModule.initSidebar();
     dynamicModule.initDynamic();
-  } else if (path.endsWith('/sites/detail.html')) {
+  } else if (pageType === 'detail') {
     // 详情页：并行加载 core, sidebar, site-detail
     const [, sidebarModule, siteDetailModule] = await Promise.all([
       import('./core.js'),
