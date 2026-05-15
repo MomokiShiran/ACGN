@@ -49,17 +49,14 @@
   /* 移动端卡片网格优化 */
   .row,
   .row-sm {
-    margin-right: 0;
-    margin-left: 0;
+    margin: 0;
   }
   .row > [class*='col-'],
   .row-sm > [class*='col-'] {
-    padding-right: var(--space-2);
-    padding-left: var(--space-2);
+    padding: 0 var(--space-2);
   }
   .container {
-    padding-right: var(--space-4);
-    padding-left: var(--space-4);
+    padding: 0 var(--space-4);
   }
 
   .card {
@@ -67,12 +64,10 @@
   }
 
   .header-big {
-    padding-left: var(--space-4);
-    padding-right: var(--space-4);
+    padding: 0 var(--space-4);
   }
   .page-header {
-    padding-left: var(--space-3);
-    padding-right: var(--space-3);
+    padding: 0 var(--space-3);
   }
 
   input,

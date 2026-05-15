@@ -624,13 +624,11 @@ a.text-muted:hover,
 .row-sm {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
+  margin: 0 -0.5rem;
 }
 .row-sm [class*='col-'],
 .row-sm .col {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0 0.5rem;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -664,37 +662,30 @@ a.text-muted:hover,
     padding: 1rem;
   }
   .container {
-    padding-right: 0.625rem;
-    padding-left: 0.625rem;
+    padding: 0 0.625rem;
   }
   .row {
-    margin-right: -0.625rem;
-    margin-left: -0.625rem;
+    margin: 0 -0.625rem;
   }
   .row > .col,
   .row > [class*='col-'] {
-    padding-right: 0.625rem;
-    padding-left: 0.625rem;
+    padding: 0 0.625rem;
   }
   .row-md {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
+    margin: 0 -0.5rem;
   }
   .row-md [class*='col-'],
   .row-md .col {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0 0.5rem;
   }
   .no-gutters {
-    margin-right: 0;
-    margin-left: 0;
+    margin: 0;
   }
   .no-gutters > .col,
   .no-gutters > [class*='col-'] {
-    padding-right: 0;
-    padding-left: 0;
+    padding: 0;
   }
 }
 
