@@ -103,26 +103,25 @@
 /* Link Hover - Only website cards and footer links should turn red on hover */
 .io-black-mode .url-body a:hover,
 .io-black-mode .url-body:hover strong,
-.io-black-mode .site-content .url-body a:hover,
 .io-black-mode .footer-text a:hover,
 .io-black-mode .footer-text a:hover strong {
   color: var(--primary) !important;
 }
 /* Specific exceptions for announcements and other page cards */
-.io-black-mode .content .card:hover,
-.io-black-mode .content .card:hover a,
-.io-black-mode .content .card:hover h1,
-.io-black-mode .content .card:hover h2,
-.io-black-mode .content .card:hover h3,
-.io-black-mode .content .card:hover h4,
-.io-black-mode .content .card:hover h5,
-.io-black-mode .content .card:hover h6,
-.io-black-mode .content .card:hover .h1,
-.io-black-mode .content .card:hover .h2,
-.io-black-mode .content .card:hover .h3,
-.io-black-mode .content .card:hover .h4,
-.io-black-mode .content .card:hover .h5,
-.io-black-mode .content .card:hover .h6 {
+.io-black-mode .url-card:hover,
+.io-black-mode .url-card:hover a,
+.io-black-mode .url-card:hover h1,
+.io-black-mode .url-card:hover h2,
+.io-black-mode .url-card:hover h3,
+.io-black-mode .url-card:hover h4,
+.io-black-mode .url-card:hover h5,
+.io-black-mode .url-card:hover h6,
+.io-black-mode .url-card:hover .h1,
+.io-black-mode .url-card:hover .h2,
+.io-black-mode .url-card:hover .h3,
+.io-black-mode .url-card:hover .h4,
+.io-black-mode .url-card:hover .h5,
+.io-black-mode .url-card:hover .h6 {
   color: var(--text) !important;
 }
 
@@ -181,9 +180,7 @@
 .io-black-mode .url-body:hover {
   box-shadow: var(--shadow-md);
 }
-.io-black-mode .site-content .card:hover,
-.io-black-mode .site-content .block:hover,
-.io-black-mode .site-content .url-body:hover {
+.io-black-mode .url-card:hover {
   transform: none !important;
   box-shadow: var(--shadow-sm) !important;
 }
