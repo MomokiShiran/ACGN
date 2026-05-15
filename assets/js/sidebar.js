@@ -3,26 +3,8 @@
  */
 
 import { qs } from './utils.js';
+import { genSideItem, genSideSubItem } from './sidebar-renderer.js';
 import { onDataLoaded, loadData } from './data-loader.js';
-
-const genSideItem = c =>
-  '<li class="sidebar-item"><a href="../../index.html#' +
-  c.id +
-  '" class="sidebar-menu-link">' +
-  '<i class="' +
-  (c.icon || 'fas fa-link') +
-  ' icon-fw icon-lg me-2"></i>' +
-  '<span class="sidebar-menu-text">' +
-  c.name +
-  '</span></a></li>';
-
-const genSideSubItem = c =>
-  '<li class="sidebar-item"><a href="../../index.html#' +
-  c.id +
-  '" class="sidebar-menu-link">' +
-  '<span class="sidebar-menu-text">' +
-  c.name +
-  '</span></a></li>';
 
 const renderSidebar = data => {
   const mainCategories = data.categories;
@@ -63,6 +45,7 @@ const renderSidebar = data => {
   });
 };
 
+// 初始化侧边栏
 export const initSidebar = () => {
   onDataLoaded(renderSidebar);
   loadData();

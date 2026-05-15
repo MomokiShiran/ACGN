@@ -40,6 +40,7 @@ export const triggerLsmMini = (noAnim = false) => {
   }
 };
 
+// 根据窗口大小调整侧边栏
 export const triggerResizable = (noAnim = false) => {
   const winWidth = window.innerWidth;
   if (!isMin && winWidth > 767.98 && winWidth < 1024) {

@@ -6,8 +6,6 @@
 export const qs = (sel, ctx = document) => ctx.querySelector(sel);
 export const qsa = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-
-
 // 设备检测
 export const isPC = () =>
   !['Android', 'iPhone', 'webOS', 'BlackBerry', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'].some(

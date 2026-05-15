@@ -3,7 +3,7 @@
  */
 
 import { qs } from './utils.js';
-import { initTooltips } from './ui.js';
+import { initTooltips } from './tooltips.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
 const findSiteInData = (data, siteId) => {
@@ -107,6 +107,7 @@ const showError = message => {
     `<div class="alert alert-danger">${message}</div><a href="../../" class="btn btn-primary">返回首页</a>`;
 };
 
+// 初始化网站详情页
 export const initSiteDetail = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const siteId = parseInt(urlParams.get('id'));

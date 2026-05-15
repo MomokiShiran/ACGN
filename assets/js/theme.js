@@ -3,7 +3,7 @@
  */
 
 import { qs } from './utils.js';
-import { initTooltips } from './ui.js';
+import { initTooltips } from './tooltips.js';
 
 class ThemeManagerClass {
   constructor() {
@@ -75,4 +75,5 @@ class ThemeManagerClass {
   }
 }
 
+// 主题管理器单例
 export const ThemeManager = new ThemeManagerClass();

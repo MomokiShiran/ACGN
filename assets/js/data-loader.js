@@ -2,12 +2,11 @@
  * 数据加载模块
  */
 
-
-
 let cachedData = null;
 let loadingPromise = null;
 const subscribers = [];
 
+// 注册数据加载完成回调
 export const onDataLoaded = callback => {
   if (cachedData) {
     callback(cachedData);
@@ -16,6 +15,7 @@ export const onDataLoaded = callback => {
   }
 };
 
+// 加载站点数据
 export const loadData = async () => {
   if (cachedData) return cachedData;
   if (loadingPromise) return loadingPromise;
@@ -37,4 +37,5 @@ export const loadData = async () => {
   return loadingPromise;
 };
 
+// 获取已缓存的数据
 export const getData = () => cachedData;
