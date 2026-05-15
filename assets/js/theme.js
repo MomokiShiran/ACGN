@@ -3,7 +3,6 @@
  */
 
 import { qs } from './utils.js';
-import { initTooltips } from './tooltips.js';
 
 class ThemeManagerClass {
   constructor() {
@@ -29,7 +28,9 @@ class ThemeManagerClass {
       meta.name = 'theme-color';
       document.head.appendChild(meta);
     }
-    meta.content = theme === this.dark ? '#1a1a2e' : '#f9f9f9';
+    // Get theme color from CSS variable
+    const computedStyle = getComputedStyle(document.body);
+    meta.content = computedStyle.getPropertyValue('--theme-color').trim();
     this.updateBtn(theme);
   }
 
@@ -51,18 +52,7 @@ class ThemeManagerClass {
   toggle() {
     const newTheme = document.body.classList.contains(this.dark) ? this.light : this.dark;
     localStorage.setItem(this.key, newTheme);
-    const modeBtn = qs('.switch-dark-mode');
-    if (modeBtn && typeof bootstrap !== 'undefined') {
-      const tooltipInstance = bootstrap.Tooltip.getInstance(modeBtn);
-      if (tooltipInstance) {
-        tooltipInstance.hide();
-        tooltipInstance.dispose();
-      }
-    }
     this.apply(newTheme);
-    if (typeof bootstrap !== 'undefined') {
-      initTooltips('.switch-dark-mode');
-    }
   }
 
   init() {

@@ -13,7 +13,7 @@
   display: none;
 }
 .page-header {
-  background: var(--bg-white);
+  background: var(--header-bg);
   box-shadow: var(--shadow-sm);
   transition: background-color var(--transition-normal);
 }
@@ -93,8 +93,8 @@
 
 /* Header Big */
 .page-header.big {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--header-blur);
+  background: var(--header-bg);
 }
 .header-big {
   position: relative;

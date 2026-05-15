@@ -1,34 +1,152 @@
 /* ============================================
-   CSS Variables - Simplified System
+   CSS Variables - Theme System
    ============================================ */
 
+/* Light Mode (Default) */
 :root {
-  /* Colors */
+  /* Primary Colors */
   --primary: #f1404b;
   --primary-light: #f1417c;
   --primary-accent: #db448b;
 
+  /* Text Colors */
   --text: #282a2d;
   --text-muted: #888;
   --text-dark: #1d232b;
 
+  /* Background Colors */
   --bg: #f9f9f9;
-  --bg-white: #fff;
+  --bg-surface: #fff;
   --bg-card: #fff;
   --bg-light: #f1f3f6;
-  --bg-dark: #2c2e2f;
-  --bg-darker: #1b1d1f;
-  --bg-darkest: #151618;
   --bg-gray: #f0f2f4;
-  --bg-darkgray: #363738;
 
+  /* Border Colors */
   --border: #e9ebef;
   --border-light: rgba(136, 136, 136, 0.2);
-  --border-dark: rgba(0, 0, 0, 0.15);
 
+  /* Scrollbar */
   --scrollbar: #c4c4c4;
   --scrollbar-hover: #999;
   --scrollbar-track: rgba(0, 0, 0, 0.05);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Header & Sidebar */
+  --header-bg: rgba(255, 255, 255, 0.7);
+  --header-blur: blur(10px);
+  --sidebar-bg: #2c2e2f;
+  --sidebar-text: #888;
+  --sidebar-hover: rgba(0, 0, 0, 0.2);
+  --sidebar-active: rgba(0, 0, 0, 0.2);
+
+  /* Cards & Components */
+  --card-bg: #fff;
+  --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --input-bg: #f1f3f6;
+  --input-border: #f1f3f6;
+
+  /* Footer */
+  --footer-btn-bg: rgba(0, 0, 0, 0.1);
+  --footer-btn-text: #888;
+
+  /* Theme Color for Meta Tag */
+  --theme-color: #f9f9f9;
+}
+
+/* Dark Mode */
+.io-black-mode {
+  /* Text Colors */
+  --text: #c6c9cf;
+  --text-muted: #bbb;
+  --text-dark: #e8eaed;
+
+  /* Background Colors */
+  --bg: #1b1d1f;
+  --bg-surface: #2c2e2f;
+  --bg-card: #2c2e2f;
+  --bg-light: #2c2e2f;
+  --bg-gray: #363738;
+
+  /* Border Colors */
+  --border: transparent;
+  --border-light: transparent;
+
+  /* Scrollbar */
+  --scrollbar: #555;
+  --scrollbar-hover: #777;
+  --scrollbar-track: rgba(255, 255, 255, 0.05);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+  /* Header & Sidebar */
+  --header-bg: rgba(44, 46, 47, 0.95);
+  --sidebar-bg: #2c2e2f;
+  --sidebar-text: #b2b8be;
+  --sidebar-hover: rgba(0, 0, 0, 0.3);
+  --sidebar-active: rgba(0, 0, 0, 0.2);
+
+  /* Cards & Components */
+  --card-bg: #2c2e2f;
+  --card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --input-bg: #363738;
+  --input-border: #363738;
+
+  /* Footer */
+  --footer-btn-bg: #363738;
+  --footer-btn-text: #aaa;
+
+  /* Theme Color for Meta Tag */
+  --theme-color: #1a1a2e;
+}
+
+/* Grey Mode */
+.io-grey-mode {
+  /* Text Colors */
+  --text: #515c6b;
+  --text-muted: #515c6b;
+  --text-dark: #3a434e;
+
+  /* Background Colors */
+  --bg: #f9f9f9;
+  --bg-surface: #fff;
+  --bg-card: #fff;
+  --bg-light: #f9f9f9;
+  --bg-gray: #f0f2f4;
+
+  /* Border Colors */
+  --border: transparent;
+  --border-light: transparent;
+
+  /* Header & Sidebar */
+  --header-bg: #fff;
+  --sidebar-bg: #fff;
+  --sidebar-text: #515c6b;
+  --sidebar-hover: var(--primary);
+  --sidebar-active: transparent;
+
+  /* Cards & Components */
+  --card-bg: #fff;
+  --input-bg: #f0f2f4;
+  --input-border: #f0f2f4;
+
+  /* Theme Color for Meta Tag */
+  --theme-color: #f9f9f9;
+}
+
+/* Backwards Compatibility Aliases */
+:root,
+.io-black-mode,
+.io-grey-mode {
+  --bg-white: var(--bg-surface);
+  --bg-dark: var(--sidebar-bg);
+  --bg-darker: #1b1d1f;
+  --bg-darkest: #151618;
+  --bg-darkgray: var(--bg-gray);
 
   --blue: #20a0ff;
   --green: #39c408;
@@ -172,7 +290,7 @@ a:hover {
 }
 
 p {
-  color: var(--text-dark);
+  color: var(--text);
   margin: 0;
   white-space: normal;
   word-wrap: break-word;
@@ -476,7 +594,7 @@ a.text-muted:hover,
 
 .card,
 .block {
-  background: var(--bg-white);
+  background: var(--card-bg);
   border-width: 0;
   margin-bottom: var(--space-4);
   box-shadow: var(--shadow-sm);
@@ -501,16 +619,16 @@ a.text-muted:hover,
 
 .form-control {
   font-size: var(--font-size-md);
-  color: #6d6e74;
-  border: 1px solid var(--bg-light);
-  background-color: var(--bg-light);
+  color: var(--text-muted);
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
   line-height: var(--line-height-normal);
   font-weight: var(--font-weight-normal);
 }
 
 .form-control:focus {
-  border: 1px solid var(--bg-light);
-  background-color: var(--bg-light);
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
   box-shadow: none;
 }
 
@@ -519,15 +637,15 @@ a.text-muted:hover,
 .form-control:-ms-input-placeholder,
 .form-control::-ms-input-placeholder,
 .form-control::placeholder {
-  color: #888a8f;
+  color: var(--text-muted);
   opacity: 1;
 }
 
 .form-control:disabled,
 .form-control[readonly] {
-  background-color: var(--bg-light);
+  background-color: var(--input-bg);
   opacity: 1;
-  color: #0d131b;
+  color: var(--text);
 }
 
 .btn-light {
@@ -704,7 +822,7 @@ a.text-muted:hover,
   width: 100%;
   height: 100%;
   z-index: var(--z-loading);
-  background: var(--bg-white);
+  background: var(--bg-surface);
   transition: ease-in-out var(--transition-slow);
 }
 
@@ -1275,40 +1393,6 @@ a.text-muted:hover,
 }
 .overflow-auto {
   overflow: auto;
-}
-
-/* ============================================
-   Themes
-   ============================================ */
-
-.io-grey-mode {
-  --bg: #f9f9f9;
-  --bg-dark: #f9f9f9;
-  --bg-darkgray: #dadbdd;
-  --bg-gray: #f0f2f4;
-  --text: #515c6b;
-  --text-muted: #515c6b;
-  --bg-white: #fff;
-  --border-light: transparent;
-}
-
-.io-black-mode {
-  --text: #c6c9cf;
-  --text-muted: #bbb;
-  --bg: #1b1d1f;
-  --bg-white: #2c2e2f;
-  --bg-card: #2c2e2f;
-  --bg-light: #2c2e2f;
-  --bg-dark: #2c2e2f;
-  --bg-darker: #1f2123;
-  --bg-darkest: #151618;
-  --bg-darkgray: #363738;
-  --border: transparent;
-  --scrollbar: #555;
-  --scrollbar-hover: #777;
-  --scrollbar-track: rgba(255, 255, 255, 0.05);
-  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 [id^='term-'] {
