@@ -23,7 +23,7 @@ const genSiteCard = site => {
     : '';
   return (
     '<div class="url-card col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2"><div class="url-body default">' +
-    '<a href="/sites/detail.html?id=' +
+    '<a href="../../sites/detail.html?id=' +
     site.id +
     '" target="_blank" data-id="' +
     site.id +
@@ -65,7 +65,7 @@ const genFriendLinks = () =>
   '<a href="https://www.acgbox.link/" class="friendlink-link">ACG盒子</a>' +
   '<a href="https://www.mgnacg.com/" title="专注动漫的二次元小站" class="friendlink-link">橘子动漫</a>' +
   '<a href="https://www.myiys.com/" title="技术导航-动漫导航-二次元导航" class="friendlink-link">ACGN导航</a>' +
-  '<a href="/friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer" class="friendlink-link">更多链接</a>' +
+  '<a href="../../friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer" class="friendlink-link">更多链接</a>' +
   '</div></div>';
 
 const renderSiteCards = data => {

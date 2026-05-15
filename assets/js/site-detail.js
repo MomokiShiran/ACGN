@@ -51,9 +51,7 @@ const loadSitetrash = async siteId => {
 };
 
 const renderSite = (site, categoryName) => {
-  const faviconUrl = site.icon 
-    ? site.icon.replace(/^\/?/, '/') 
-    : '/assets/images/favicon.png';
+  const faviconUrl = site.icon ? site.icon.replace(/^\/?/, '/') : '/assets/images/favicon.png';
 
   document.title = site.name + ' | MyACGN';
 
@@ -106,7 +104,7 @@ const showError = message => {
   qs('#site-category').textContent = '';
   qs('#site-description').textContent = message;
   qs('#site-detail-content').innerHTML =
-    `<div class="alert alert-danger">${message}</div><a href="/" class="btn btn-primary">返回首页</a>`;
+    `<div class="alert alert-danger">${message}</div><a href="../../" class="btn btn-primary">返回首页</a>`;
 };
 
 export const initSiteDetail = () => {
