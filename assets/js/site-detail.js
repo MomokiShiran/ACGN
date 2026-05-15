@@ -34,18 +34,24 @@ const findAndRenderSite = (data, siteId) => {
 };
 
 const loadSitetrash = async siteId => {
+  console.log('[SiteDetail] 未在主数据中找到站点，尝试从 sitetrash.json 加载，siteId:', siteId);
   try {
     const sitetrashPath = '../../data/sitetrash.json';
+    console.log('[SiteDetail] 请求:', sitetrashPath);
     const data = await (await fetch(sitetrashPath)).json();
+    console.log('[SiteDetail] sitetrash.json 加载完成');
     const result = findSiteInData(data, siteId);
 
     if (!result) {
+      console.log('[SiteDetail] 在 sitetrash.json 中也未找到站点');
       showError('未找到该网站');
       return;
     }
 
+    console.log('[SiteDetail] 在 sitetrash.json 中找到站点，开始渲染');
     renderSite(result.site, result.categoryName);
   } catch (err) {
+    console.error('[SiteDetail] 加载 sitetrash.json 失败:', err);
     showError('加载网站信息失败，请刷新页面重试。');
   }
 };
