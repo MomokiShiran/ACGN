@@ -22,7 +22,7 @@ export const loadData = async () => {
 
   loadingPromise = (async () => {
     try {
-      const dataPath = '../../data/sites.json';
+      const dataPath = './data/sites.json';
       const response = await fetch(dataPath);
       cachedData = await response.json();
       subscribers.forEach(callback => callback(cachedData));
