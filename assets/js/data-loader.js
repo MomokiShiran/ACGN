@@ -31,7 +31,7 @@ export const loadData = async () => {
   console.log('[DataLoader] 开始加载站点数据');
   loadingPromise = (async () => {
     try {
-      const dataPath = '/data/sites.json';
+      const dataPath = new URL('../../data/sites.json', import.meta.url).href;
       console.log('[DataLoader] 正在请求:', dataPath);
       const response = await fetch(dataPath);
       
