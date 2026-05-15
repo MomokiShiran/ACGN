@@ -381,8 +381,12 @@
         const qs = sel => document.querySelector(sel);
 
         function renderSiteCard(site) {
-          // 使用自定义icon或fallback到默认
-          const faviconUrl = site.icon || '../assets/images/favicon.png';
+          // 使用自定义 icon 或 fallback 到默认
+          const faviconUrl = site.icon
+            ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
+              ? site.icon
+              : `../${site.icon.replace(/^\.\/?/, '')}`
+            : '../assets/images/favicon.png';
           const detailUrl = `../sites/detail.html?id=${site.id}`;
           const togoUrl = site.url || '#';
 

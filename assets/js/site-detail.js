@@ -6,6 +6,8 @@ import { qs } from './utils.js';
 import { initTooltips } from './tooltips.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
+const DEFAULT_FAVICON_URL = new URL('../../assets/images/favicon.png', import.meta.url).href;
+
 const findSiteInData = (data, siteId) => {
   for (let category of data.categories) {
     const found = category.sites ? category.sites.find(s => s.id === siteId) : null;
@@ -36,7 +38,7 @@ const findAndRenderSite = (data, siteId) => {
 const loadSitetrash = async siteId => {
   console.log('[SiteDetail] 未在主数据中找到站点，尝试从 sitetrash.json 加载，siteId:', siteId);
   try {
-    const sitetrashPath = '../../data/sitetrash.json';
+    const sitetrashPath = new URL('../../data/sitetrash.json', import.meta.url).href;
     console.log('[SiteDetail] 请求:', sitetrashPath);
     const data = await (await fetch(sitetrashPath)).json();
     console.log('[SiteDetail] sitetrash.json 加载完成');
@@ -57,7 +59,11 @@ const loadSitetrash = async siteId => {
 };
 
 const renderSite = (site, categoryName) => {
-  const faviconUrl = site.icon ? site.icon : '../../assets/images/favicon.png';
+  const faviconUrl = site.icon
+    ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
+      ? site.icon
+      : new URL('../../' + site.icon.replace(/^\.\/?/, ''), import.meta.url).href
+    : DEFAULT_FAVICON_URL;
 
   document.title = site.name + ' | MyACGN';
 

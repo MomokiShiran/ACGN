@@ -2,15 +2,21 @@
  * 站点卡片渲染模块
  */
 
+const DEFAULT_ICON_URL = new URL('../../assets/images/favicon.png', import.meta.url).href;
+
 // 生成单个站点卡片
 export const genSiteCard = site => {
-  const iconUrl = site.icon || '../../assets/images/favicon.png';
+  const iconUrl = site.icon
+    ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
+      ? site.icon
+      : new URL('../../' + site.icon.replace(/^\.\/?/, ''), import.meta.url).href
+    : DEFAULT_ICON_URL;
   const newBadge = site.isNew
     ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>'
     : '';
   return (
     '<div class="url-card col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2"><div class="url-body default">' +
-    '<a href="../../sites/detail.html?id=' +
+    '<a href="sites/detail.html?id=' +
     site.id +
     '" target="_blank" data-id="' +
     site.id +
@@ -25,7 +31,7 @@ export const genSiteCard = site => {
     '<div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">' +
     '<img loading="lazy" src="' +
     iconUrl +
-    '" onerror="this.onerror=null;this.src=\'../../assets/images/favicon.png\'"></div>' +
+    '" onerror="this.onerror=null;this.src=\'' + DEFAULT_ICON_URL + '\'"></div>' +
     '<div class="url-info flex-fill"><div class="text-sm overflowClip_1">' +
     newBadge +
     '<strong>' +
