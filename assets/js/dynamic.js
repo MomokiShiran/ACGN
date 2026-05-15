@@ -17,7 +17,7 @@ const genCatSection = c =>
   '</div>';
 
 const genSiteCard = site => {
-  const iconUrl = site.icon || '/assets/images/favicon.png';
+  const iconUrl = site.icon || '../../assets/images/favicon.png';
   const newBadge = site.isNew
     ? '<span class="badge badge-danger text-ss me-1" title="新">New</span>'
     : '';
@@ -38,7 +38,7 @@ const genSiteCard = site => {
     '<div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">' +
     '<img loading="lazy" src="' +
     iconUrl +
-    '" onerror="this.onerror=null;this.src=\'/assets/images/favicon.png\'"></div>' +
+    '" onerror="this.onerror=null;this.src=\'../../assets/images/favicon.png\'"></div>' +
     '<div class="url-info flex-fill"><div class="text-sm overflowClip_1">' +
     newBadge +
     '<strong>' +

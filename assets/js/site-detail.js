@@ -35,7 +35,7 @@ const findAndRenderSite = (data, siteId) => {
 
 const loadSitetrash = async siteId => {
   try {
-    const sitetrashPath = '/data/sitetrash.json';
+    const sitetrashPath = '../../data/sitetrash.json';
     const data = await (await fetch(sitetrashPath)).json();
     const result = findSiteInData(data, siteId);
 
@@ -51,7 +51,7 @@ const loadSitetrash = async siteId => {
 };
 
 const renderSite = (site, categoryName) => {
-  const faviconUrl = site.icon ? site.icon.replace(/^\/?/, '/') : '/assets/images/favicon.png';
+  const faviconUrl = site.icon ? site.icon : '../../assets/images/favicon.png';
 
   document.title = site.name + ' | MyACGN';
 
