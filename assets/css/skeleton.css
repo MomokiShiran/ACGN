@@ -200,8 +200,7 @@
 .skeleton-sidebar-text.short {
   width: 16px;
   flex: none;
-  margin-left: auto;
-  margin-right: 24px;
+  margin: auto 24px auto auto;
 }
 
 .skeleton-sidebar-divider {

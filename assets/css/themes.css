@@ -2,59 +2,21 @@
 
 /*
  * Theme Overrides
- * Note: Base theme variables are defined in common.css
+ * All theme variables are defined in common.css
+ * This file contains necessary per-theme style overrides
  */
 
-/* Grey Mode Overrides */
-
-/* Sidebar */
-.io-grey-mode .sidebar-logo {
-  background: var(--bg-white);
-}
-.io-grey-mode .page-header {
-  box-shadow: none;
-}
-.io-grey-mode .sidebar-nav-inner {
-  background: var(--bg-white);
-}
-.io-grey-mode .border-color {
-  border-color: transparent !important;
-}
-.io-grey-mode .flex-bottom-link,
-.io-grey-mode .sidebar-menu-link {
-  color: #515c6b;
-}
-.io-grey-mode .sidebar-item-list {
-  background: none;
-}
-.io-grey-mode .sidebar-show {
-  color: var(--primary);
-  background: none;
+/* Base Body Styles */
+body {
+  color: var(--text);
+  background: var(--bg);
 }
 
-/*
- * Dark Mode Overrides
- */
-
-/* Base */
 .io-black-mode {
-  background-color: var(--bg-darker);
-}
-.io-black-mode .btn-move {
-  color: #989da1 !important;
-}
-.io-black-mode .bg-light {
-  background: var(--bg-darkgray) !important;
-}
-.io-black-mode .modal-content,
-.io-black-mode .flex-avatar,
-.io-black-mode .card,
-.io-black-mode .block,
-.io-black-mode .url-body {
-  background-color: var(--bg-dark);
+  background-color: var(--bg);
 }
 
-/* Text Colors */
+/* Text Colors - Ensure all text elements use our variables */
 .io-black-mode,
 .io-black-mode body,
 .io-black-mode p,
@@ -88,104 +50,37 @@
   color: var(--text);
 }
 
-/* Text-muted overrides */
+/* Text Muted Overrides */
 .io-black-mode .text-gray,
 .io-black-mode .text-muted,
 .io-black-mode .text-gray.text-lg,
 .io-black-mode .url-info .text-muted {
   color: var(--text-muted) !important;
 }
-/* Footer links with text-muted class should use text color instead */
-.io-black-mode .footer-text a.text-muted {
-  color: var(--text) !important;
+
+/* Sidebar Menu Link Colors */
+.io-grey-mode .flex-bottom-link,
+.io-grey-mode .sidebar-menu-link {
+  color: var(--sidebar-text);
 }
 
-/* Link Hover - Only website cards and footer links should turn red on hover */
-.io-black-mode .url-body a:hover,
-.io-black-mode .url-body:hover strong,
-.io-black-mode .site-content .url-body a:hover,
-.io-black-mode .footer-text a:hover,
-.io-black-mode .footer-text a:hover strong {
-  color: var(--primary) !important;
-}
-/* Specific exceptions for announcements and other page cards */
-.io-black-mode .content .card:hover,
-.io-black-mode .content .card:hover a,
-.io-black-mode .content .card:hover h1,
-.io-black-mode .content .card:hover h2,
-.io-black-mode .content .card:hover h3,
-.io-black-mode .content .card:hover h4,
-.io-black-mode .content .card:hover h5,
-.io-black-mode .content .card:hover h6,
-.io-black-mode .content .card:hover .h1,
-.io-black-mode .content .card:hover .h2,
-.io-black-mode .content .card:hover .h3,
-.io-black-mode .content .card:hover .h4,
-.io-black-mode .content .card:hover .h5,
-.io-black-mode .content .card:hover .h6 {
-  color: var(--text) !important;
-}
-
-/* Togo Arrow (keep muted) */
-.io-black-mode .togo,
-.io-black-mode .togo:hover,
-.io-black-mode .togo i {
-  color: var(--text-muted) !important;
-}
-
-/* Header & Sidebar */
-.io-black-mode .page-header {
-  background: var(--bg-dark);
-  box-shadow: var(--shadow-md);
-}
-.io-black-mode .border-color {
-  border-color: transparent !important;
-}
-.io-black-mode .sidebar-nav-inner {
-  background: var(--bg-dark);
-}
 .io-black-mode .flex-bottom-link,
 .io-black-mode .sidebar-menu-link {
-  color: #b2b8be;
-}
-.io-black-mode .sidebar-item-list {
-  background: none;
-}
-.io-black-mode .sidebar-show {
-  color: var(--primary);
-  background: none;
+  color: var(--sidebar-text);
 }
 
-/* Footer */
-.io-black-mode .footer-tools .btn {
-  color: #aaa;
-  background: var(--bg-darkgray);
-}
-.io-black-mode .footer-tools .btn:hover {
-  color: var(--bg-white);
-}
-.io-black-mode .switch-dark-mode .mode-ico {
-  color: #aaa;
-}
-.io-black-mode .switch-dark-mode:hover .mode-ico {
-  color: var(--bg-white);
-}
-.switch-dark-mode .mode-ico {
-  color: #777;
-}
-.switch-dark-mode:hover .mode-ico {
-  color: #444;
+/* Modal and Card Backgrounds */
+.io-black-mode .modal-content,
+.io-black-mode .flex-avatar,
+.io-black-mode .card,
+.io-black-mode .block,
+.io-black-mode .url-body {
+  background-color: var(--card-bg);
 }
 
-/* Card Hover Effects */
-.io-black-mode .url-body:hover {
-  box-shadow: var(--shadow-md);
-}
-.io-black-mode .site-content .card:hover,
-.io-black-mode .site-content .block:hover,
-.io-black-mode .site-content .url-body:hover {
-  transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
+/* Light Background Override */
+.io-black-mode .bg-light {
+  background: var(--bg-gray) !important;
 }
 
 /* Logo Display States */
@@ -196,4 +91,54 @@
 .io-black-mode .navbar-brand-dark,
 .io-black-mode .sidebar-logo-dark {
   display: initial !important;
+}
+
+/* Sidebar Overrides for Grey Mode */
+.io-grey-mode .sidebar-item.sidebar-show,
+.io-grey-mode .sidebar-item > a:hover {
+  color: var(--primary);
+  background: var(--sidebar-active);
+}
+
+/* Prevent Card Transform for Announcements Page */
+.io-black-mode .url-card:hover,
+.io-black-mode .url-card:hover a,
+.io-black-mode .url-card:hover h1,
+.io-black-mode .url-card:hover h2,
+.io-black-mode .url-card:hover h3,
+.io-black-mode .url-card:hover h4,
+.io-black-mode .url-card:hover h5,
+.io-black-mode .url-card:hover h6,
+.io-black-mode .url-card:hover .h1,
+.io-black-mode .url-card:hover .h2,
+.io-black-mode .url-card:hover .h3,
+.io-black-mode .url-card:hover .h4,
+.io-black-mode .url-card:hover .h5,
+.io-black-mode .url-card:hover .h6 {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--text) !important;
+}
+
+/* Ensure Link Hover Color is Correct */
+.io-black-mode .url-body a:hover,
+.io-black-mode .url-body:hover strong,
+.io-black-mode .footer-text a:hover,
+.io-black-mode .footer-text a:hover strong {
+  color: var(--primary) !important;
+}
+
+/* Keep Togo Arrow Muted */
+.io-black-mode .togo,
+.io-black-mode .togo:hover,
+.io-black-mode .togo i {
+  color: var(--text-muted) !important;
+}
+
+/* Footer Button States */
+.io-black-mode .footer-tools .btn:hover {
+  color: var(--bg-surface);
+}
+.io-grey-mode .footer-tools .btn:hover {
+  color: var(--text-dark);
 }

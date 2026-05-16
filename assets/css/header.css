@@ -13,7 +13,7 @@
   display: none;
 }
 .page-header {
-  background: var(--bg-white);
+  background: var(--header-bg);
   box-shadow: var(--shadow-sm);
   transition: background-color var(--transition-normal);
 }
@@ -93,18 +93,16 @@
 
 /* Header Big */
 .page-header.big {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--header-blur);
+  background: var(--header-bg);
 }
 .header-big {
   position: relative;
   margin-top: -75px;
-  padding-top: 100px;
-  padding-bottom: 60px;
+  padding: 100px 0 60px;
 }
 @media screen and (min-width: 768px) {
   .header-big {
-    padding-top: 170px;
-    padding-bottom: 110px;
+    padding: 170px 0 110px;
   }
 }

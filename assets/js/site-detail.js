@@ -2,9 +2,11 @@
  * 网站详情页模块
  */
 
-import { qs, BASE_URL } from './utils.js';
-import { initTooltips } from './ui.js';
+import { qs } from './utils.js';
+import { initTooltips } from './tooltips.js';
 import { onDataLoaded, loadData } from './data-loader.js';
+
+const DEFAULT_FAVICON_URL = new URL('../../assets/images/favicon.png', import.meta.url).href;
 
 const findSiteInData = (data, siteId) => {
   for (let category of data.categories) {
@@ -25,7 +27,9 @@ const findSiteInData = (data, siteId) => {
 };
 
 const findAndRenderSite = (data, siteId) => {
+  console.log('[SiteDetail] findAndRenderSite 输入:', { data, siteId });
   const result = findSiteInData(data, siteId);
+  console.log('[SiteDetail] 查找结果:', result);
   if (result) {
     renderSite(result.site, result.categoryName);
   } else {
@@ -34,30 +38,38 @@ const findAndRenderSite = (data, siteId) => {
 };
 
 const loadSitetrash = async siteId => {
+  console.log('[SiteDetail] 未在主数据中找到站点，尝试从 sitetrash.json 加载，siteId:', siteId);
   try {
-    const sitetrashPath = BASE_URL + '/data/sitetrash.json';
+    const sitetrashPath = new URL('../../data/sitetrash.json', import.meta.url).href;
+    console.log('[SiteDetail] 请求:', sitetrashPath);
     const data = await (await fetch(sitetrashPath)).json();
+    console.log('[SiteDetail] sitetrash.json 加载完成');
     const result = findSiteInData(data, siteId);
 
     if (!result) {
+      console.log('[SiteDetail] 在 sitetrash.json 中也未找到站点');
       showError('未找到该网站');
       return;
     }
 
+    console.log('[SiteDetail] 在 sitetrash.json 中找到站点，开始渲染');
     renderSite(result.site, result.categoryName);
   } catch (err) {
+    console.error('[SiteDetail] 加载 sitetrash.json 失败:', err);
     showError('加载网站信息失败，请刷新页面重试。');
   }
 };
 
 const renderSite = (site, categoryName) => {
+  console.log('[SiteDetail] renderSite 输入:', { site, categoryName });
   const faviconUrl = site.icon
-    ? site.icon.startsWith('/')
+    ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
       ? site.icon
-      : '/' + site.icon
-    : BASE_URL + '/assets/images/favicon.png';
+      : new URL(`../../${site.icon.replace(/^\.\/?/, '')}`, import.meta.url).href
+    : DEFAULT_FAVICON_URL;
+  console.log('[SiteDetail] 计算出的 faviconUrl:', faviconUrl);
 
-  document.title = site.name + ' | MyACGN';
+  document.title = `${site.name} | MyACGN`;
 
   const metaKeywords = qs('meta[name="keywords"]');
   const metaDescription = qs('meta[name="description"]');
@@ -67,9 +79,9 @@ const renderSite = (site, categoryName) => {
   const metaOgUrl = qs('meta[property="og:url"]');
   const linkCanonical = qs('link[rel="canonical"]');
 
-  if (metaKeywords) metaKeywords.setAttribute('content', site.name + ',MyACGN');
+  if (metaKeywords) metaKeywords.setAttribute('content', `${site.name},MyACGN`);
   if (metaDescription) metaDescription.setAttribute('content', site.description);
-  if (metaOgTitle) metaOgTitle.setAttribute('content', site.name + ' | MyACGN');
+  if (metaOgTitle) metaOgTitle.setAttribute('content', `${site.name} | MyACGN`);
   if (metaOgDescription) metaOgDescription.setAttribute('content', site.description);
   if (metaOgImage) metaOgImage.setAttribute('content', faviconUrl);
   if (metaOgUrl) metaOgUrl.setAttribute('content', window.location.href);
@@ -83,7 +95,7 @@ const renderSite = (site, categoryName) => {
   qs('#site-category').textContent = categoryName;
   qs('#site-name').textContent = site.name;
   qs('#site-description').textContent = site.description;
-  qs('#site-created-at').textContent = '收录时间：' + (site.createdAt || '未知');
+  qs('#site-created-at').textContent = `收录时间：${site.createdAt || '未知'}`;
   qs('#site-url').setAttribute('href', site.url);
   qs('#site-url').setAttribute('title', site.name);
 
@@ -108,9 +120,10 @@ const showError = message => {
   qs('#site-category').textContent = '';
   qs('#site-description').textContent = message;
   qs('#site-detail-content').innerHTML =
-    `<div class="alert alert-danger">${message}</div><a href="/" class="btn btn-primary">返回首页</a>`;
+    `<div class="alert alert-danger">${message}</div><a href="../../" class="btn btn-primary">返回首页</a>`;
 };
 
+// 初始化网站详情页
 export const initSiteDetail = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const siteId = parseInt(urlParams.get('id'));

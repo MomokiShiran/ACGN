@@ -2,48 +2,30 @@
  * 侧边栏菜单渲染模块
  */
 
-import { qs, BASE_URL } from './utils.js';
+import { qs } from './utils.js';
+import { genSideItem, genSideSubItem } from './sidebar-renderer.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
-const genSideItem = c =>
-  '<li class="sidebar-item"><a href="' + BASE_URL + '/index.html#' +
-  c.id +
-  '" class="sidebar-menu-link">' +
-  '<i class="' +
-  (c.icon || 'fas fa-link') +
-  ' icon-fw icon-lg me-2"></i>' +
-  '<span class="sidebar-menu-text">' +
-  c.name +
-  '</span></a></li>';
-
-const genSideSubItem = c =>
-  '<li class="sidebar-item"><a href="' + BASE_URL + '/index.html#' +
-  c.id +
-  '" class="sidebar-menu-link">' +
-  '<span class="sidebar-menu-text">' +
-  c.name +
-  '</span></a></li>';
-
 const renderSidebar = data => {
+  console.log('[Sidebar] renderSidebar 输入数据:', data);
   const mainCategories = data.categories;
 
   let html = '';
   mainCategories.forEach(cat => {
+    console.log('[Sidebar] 处理分类:', cat);
     if (cat.id === 'tool-collection' && cat.children && cat.children.length > 0) {
       const subHtml = cat.children.map(c => genSideSubItem(c)).join('');
-      html +=
-        '<li class="sidebar-item">' +
-        '<a href="javascript:;" class="sidebar-menu-link">' +
-        '<i class="' +
-        (cat.icon || 'fas fa-toolbox') +
-        ' icon-fw icon-lg me-2"></i>' +
-        '<span class="sidebar-menu-text">' +
-        cat.name +
-        '</span>' +
-        '<i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>' +
-        '</a><ul class="sidebar-submenu">' +
-        subHtml +
-        '</ul></li>';
+      html += `
+      <li class="sidebar-item">
+        <a href="javascript:;" class="sidebar-menu-link">
+          <i class="${cat.icon || 'fas fa-toolbox'} icon-fw icon-lg me-2"></i>
+          <span class="sidebar-menu-text">${cat.name}</span>
+          <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          ${subHtml}
+        </ul>
+      </li>`;
     } else if (!cat.children || cat.children.length === 0) {
       html += genSideItem(cat);
     }
@@ -58,12 +40,14 @@ const renderSidebar = data => {
     'sidebar-bottom-skeleton',
     'sidebar-bottom-content',
   ].forEach((id, i) => {
-    const el = qs('#' + id);
+    const el = qs(`#${id}`);
     if (el) el.classList.toggle('skeleton-hidden', i % 2 === 0);
   });
 };
 
+// 初始化侧边栏
 export const initSidebar = () => {
+  console.log('[Sidebar] initSidebar 被调用');
   onDataLoaded(renderSidebar);
   loadData();
 };

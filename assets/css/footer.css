@@ -9,8 +9,8 @@
   z-index: var(--z-footer-tools);
 }
 .footer-tools .btn {
-  color: #777;
-  background: #eee;
+  color: var(--footer-btn-text);
+  background: var(--footer-btn-bg);
   width: var(--size-sm);
   height: var(--size-sm);
   font-size: var(--font-size-md);
@@ -27,7 +27,7 @@
   display: none;
 }
 .footer-tools .btn:hover {
-  color: #444;
+  color: var(--text);
 }
 .footer-tools [data-v-db6ccf64][data-v-6d083e75] {
   top: unset !important;
