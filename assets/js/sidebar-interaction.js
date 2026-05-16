@@ -27,13 +27,13 @@ export const triggerLsmMini = (noAnim = false) => {
   }
 
   if (noAnim) {
-    sidebar.style.width = width + 'px';
+    sidebar.style.width = `${width}px`;
   } else {
     const startWidth = parseInt(window.getComputedStyle(sidebar).width || '220', 10);
     const startTime = performance.now();
     const animate = time => {
       const progress = Math.min((time - startTime) / 200, 1);
-      sidebar.style.width = startWidth + (width - startWidth) * progress + 'px';
+      sidebar.style.width = `${startWidth + (width - startWidth) * progress}px`;
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
@@ -101,8 +101,7 @@ export const initSidebarInteraction = () => {
       popup.style.display = 'block';
       const top = target.getBoundingClientRect().top + offset;
       const popupHeight = popup.offsetHeight;
-      popup.style.top =
-        (window.innerHeight - top <= 0 ? window.innerHeight - popupHeight - 8 : top) + 'px';
+      popup.style.top = `${window.innerHeight - top <= 0 ? window.innerHeight - popupHeight - 8 : top}px`;
     }
   });
 

@@ -14,7 +14,7 @@ const fetchHitokoto = async () => {
     const response = await fetch(HITOKOTO_API);
     if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     const data = await response.json();
-    console.log('[Hitokoto] 获取成功:', data.hitokoto?.substring(0, 30) + '...');
+    console.log(`[Hitokoto] 获取成功: ${data.hitokoto?.substring(0, 30)}...`);
     return data;
   } catch (err) {
     console.error('[Hitokoto] 获取一言失败:', err);

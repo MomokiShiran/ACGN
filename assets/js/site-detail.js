@@ -62,10 +62,10 @@ const renderSite = (site, categoryName) => {
   const faviconUrl = site.icon
     ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
       ? site.icon
-      : new URL('../../' + site.icon.replace(/^\.\/?/, ''), import.meta.url).href
+      : new URL(`../../${site.icon.replace(/^\.\/?/, '')}`, import.meta.url).href
     : DEFAULT_FAVICON_URL;
 
-  document.title = site.name + ' | MyACGN';
+  document.title = `${site.name} | MyACGN`;
 
   const metaKeywords = qs('meta[name="keywords"]');
   const metaDescription = qs('meta[name="description"]');
@@ -75,9 +75,9 @@ const renderSite = (site, categoryName) => {
   const metaOgUrl = qs('meta[property="og:url"]');
   const linkCanonical = qs('link[rel="canonical"]');
 
-  if (metaKeywords) metaKeywords.setAttribute('content', site.name + ',MyACGN');
+  if (metaKeywords) metaKeywords.setAttribute('content', `${site.name},MyACGN`);
   if (metaDescription) metaDescription.setAttribute('content', site.description);
-  if (metaOgTitle) metaOgTitle.setAttribute('content', site.name + ' | MyACGN');
+  if (metaOgTitle) metaOgTitle.setAttribute('content', `${site.name} | MyACGN`);
   if (metaOgDescription) metaOgDescription.setAttribute('content', site.description);
   if (metaOgImage) metaOgImage.setAttribute('content', faviconUrl);
   if (metaOgUrl) metaOgUrl.setAttribute('content', window.location.href);
@@ -91,7 +91,7 @@ const renderSite = (site, categoryName) => {
   qs('#site-category').textContent = categoryName;
   qs('#site-name').textContent = site.name;
   qs('#site-description').textContent = site.description;
-  qs('#site-created-at').textContent = '收录时间：' + (site.createdAt || '未知');
+  qs('#site-created-at').textContent = `收录时间：${site.createdAt || '未知'}`;
   qs('#site-url').setAttribute('href', site.url);
   qs('#site-url').setAttribute('title', site.name);
 

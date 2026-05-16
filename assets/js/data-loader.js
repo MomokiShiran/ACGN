@@ -12,7 +12,7 @@ export const onDataLoaded = callback => {
     console.log('[DataLoader] 使用缓存数据，立即回调');
     callback(cachedData);
   } else {
-    console.log('[DataLoader] 订阅数据加载完成事件，当前订阅数:', subscribers.length + 1);
+    console.log(`[DataLoader] 订阅数据加载完成事件，当前订阅数: ${subscribers.length + 1}`);
     subscribers.push(callback);
   }
 };
