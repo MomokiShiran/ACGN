@@ -27,7 +27,9 @@ const findSiteInData = (data, siteId) => {
 };
 
 const findAndRenderSite = (data, siteId) => {
+  console.log('[SiteDetail] findAndRenderSite 输入:', { data, siteId });
   const result = findSiteInData(data, siteId);
+  console.log('[SiteDetail] 查找结果:', result);
   if (result) {
     renderSite(result.site, result.categoryName);
   } else {
@@ -59,11 +61,13 @@ const loadSitetrash = async siteId => {
 };
 
 const renderSite = (site, categoryName) => {
+  console.log('[SiteDetail] renderSite 输入:', { site, categoryName });
   const faviconUrl = site.icon
     ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
       ? site.icon
       : new URL(`../../${site.icon.replace(/^\.\/?/, '')}`, import.meta.url).href
     : DEFAULT_FAVICON_URL;
+  console.log('[SiteDetail] 计算出的 faviconUrl:', faviconUrl);
 
   document.title = `${site.name} | MyACGN`;
 

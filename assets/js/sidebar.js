@@ -7,10 +7,12 @@ import { genSideItem, genSideSubItem } from './sidebar-renderer.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
 const renderSidebar = data => {
+  console.log('[Sidebar] renderSidebar 输入数据:', data);
   const mainCategories = data.categories;
 
   let html = '';
   mainCategories.forEach(cat => {
+    console.log('[Sidebar] 处理分类:', cat);
     if (cat.id === 'tool-collection' && cat.children && cat.children.length > 0) {
       const subHtml = cat.children.map(c => genSideSubItem(c)).join('');
       html += `
@@ -45,6 +47,7 @@ const renderSidebar = data => {
 
 // 初始化侧边栏
 export const initSidebar = () => {
+  console.log('[Sidebar] initSidebar 被调用');
   onDataLoaded(renderSidebar);
   loadData();
 };

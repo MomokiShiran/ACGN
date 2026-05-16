@@ -6,6 +6,7 @@ const DEFAULT_ICON_URL = new URL('../../assets/images/favicon.png', import.meta.
 
 // 生成单个站点卡片
 export const genSiteCard = site => {
+  console.log('[SiteRenderer] genSiteCard 输入参数:', site);
   const iconUrl = site.icon
     ? /^(?:https?:)?\/\//.test(site.icon) || site.icon.startsWith('/')
       ? site.icon
@@ -40,16 +41,21 @@ export const genSiteCard = site => {
 };
 
 // 生成分类区域
-export const genCatSection = c => `
+export const genCatSection = c => {
+  console.log('[SiteRenderer] genCatSection 输入参数:', c);
+  return `
   <h4 class="text-gray text-lg mb-4 d-flex flex-fill">
     <i class="site-tag iconfont icon-tag icon-lg me-1" id="${c.id}"></i>${c.name}
   </h4>
   <div class="row">
     ${c.sites.map(site => genSiteCard(site)).join('')}
   </div>`;
+};
 
 // 生成友情链接区域
-export const genFriendLinks = () => `
+export const genFriendLinks = () => {
+  console.log('[SiteRenderer] genFriendLinks 被调用');
+  return `
   <h4 class="text-gray text-lg mb-4">
     <i class="iconfont icon-book-mark-line icon-lg me-2" id="friendlink"></i>友情链接
   </h4>
@@ -64,3 +70,4 @@ export const genFriendLinks = () => `
       <a href="../../friends/index.html" target="_blank" title="更多链接" rel="noopener noreferrer" class="friendlink-link">更多链接</a>
     </div>
   </div>`;
+};
