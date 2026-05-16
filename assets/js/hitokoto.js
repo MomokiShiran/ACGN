@@ -41,7 +41,7 @@ export const initHitokoto = async () => {
   const hitokotoElements = qsa('.hitokoto, #hitokoto');
 
   console.log('[Hitokoto] 找到', hitokotoElements.length, '个一言容器');
-  
+
   if (hitokotoElements.length === 0) {
     console.log('[Hitokoto] 未找到容器，跳过初始化');
     return;

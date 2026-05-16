@@ -34,20 +34,20 @@ export const loadData = async () => {
       const dataPath = new URL('../../data/sites.json', import.meta.url).href;
       console.log('[DataLoader] 正在请求:', dataPath);
       const response = await fetch(dataPath);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      
+
       console.log('[DataLoader] 数据请求成功，解析 JSON...');
       cachedData = await response.json();
-      
+
       console.log('[DataLoader] 数据解析完成，站点数量:', cachedData?.sites?.length || 0);
-      
+
       console.log('[DataLoader] 通知', subscribers.length, '个订阅者');
       subscribers.forEach(callback => callback(cachedData));
       subscribers.length = 0;
-      
+
       console.log('[DataLoader] 数据加载完成');
       return cachedData;
     } catch (err) {
