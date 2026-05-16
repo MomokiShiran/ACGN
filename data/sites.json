@@ -1596,6 +1596,16 @@
           "icon": "assets/images/sites/www.wenku8.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 465,
+          "name": "轻小说机翻机器人",
+          "url": "https://n.novelia.cc",
+          "description": "轻小说阅读平台",
+          "category": "term-18",
+          "isNew": true,
+          "disabledAt": "",
+          "createdAt": "2026-05-16 00:00:00"
         }
       ]
     },
@@ -2553,6 +2563,36 @@
               "icon": "assets/images/sites/github.com.png",
               "disabledAt": "",
               "createdAt": "2025-01-01 00:00:00"
+            },
+            {
+              "id": 466,
+              "name": "iMikufans Hub白葱社区",
+              "url": "https://hub.imikufans.com",
+              "description": "分享同人创作、讨论新番神作",
+              "category": "term-16",
+              "isNew": true,
+              "disabledAt": "",
+              "createdAt": "2026-05-16 00:00:00"
+            },
+            {
+              "id": 467,
+              "name": "Vocaloid中文歌词Wiki",
+              "url": "https://w.atwiki.jp/vocaloidchly",
+              "description": "Vocaloid中文歌词Wiki",
+              "category": "term-16",
+              "isNew": true,
+              "disabledAt": "",
+              "createdAt": "2026-05-16 00:00:00"
+            },
+            {
+              "id": 468,
+              "name": "MuKuu",
+              "url": "https://mukuu.herokuapp.com",
+              "description": "定制3D2 MOD",
+              "category": "term-16",
+              "isNew": true,
+              "disabledAt": "",
+              "createdAt": "2026-05-16 00:00:00"
             }
           ]
         },
