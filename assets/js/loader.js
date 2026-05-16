@@ -10,8 +10,8 @@ const loadApp = async () => {
     // 首页：并行加载 core, sidebar, dynamic
     const [, sidebarModule, dynamicModule] = await Promise.all([
       import('./core.js'),
-      import('./sidebar.js'),
-      import('./dynamic.js'),
+      import('./sidebar-loader.js'),
+      import('./dynamic-loader.js'),
     ]);
 
     // 等所有模块加载完再初始化
@@ -21,8 +21,8 @@ const loadApp = async () => {
     // 详情页：并行加载 core, sidebar, site-detail
     const [, sidebarModule, siteDetailModule] = await Promise.all([
       import('./core.js'),
-      import('./sidebar.js'),
-      import('./site-detail.js'),
+      import('./sidebar-loader.js'),
+      import('./site-detail-loader.js'),
     ]);
 
     // 等所有模块加载完再初始化
@@ -30,7 +30,10 @@ const loadApp = async () => {
     siteDetailModule.initSiteDetail();
   } else {
     // 其他页面：并行加载 core, sidebar
-    const [, sidebarModule] = await Promise.all([import('./core.js'), import('./sidebar.js')]);
+    const [, sidebarModule] = await Promise.all([
+      import('./core.js'),
+      import('./sidebar-loader.js'),
+    ]);
 
     // 等所有模块加载完再初始化
     sidebarModule.initSidebar();
