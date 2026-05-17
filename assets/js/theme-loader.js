@@ -38,11 +38,11 @@ class ThemeManagerClass {
     const isDark = theme === this.dark;
     const btn = qs('.switch-dark-mode');
     const icon = qs('.mode-ico');
-    
+
     if (btn) {
       btn.setAttribute('title', isDark ? '日间模式' : '夜间模式');
     }
-    
+
     if (icon) {
       icon.classList.remove(isDark ? 'icon-night' : 'icon-light');
       icon.classList.add(isDark ? 'icon-light' : 'icon-night');

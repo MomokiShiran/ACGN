@@ -3,7 +3,7 @@
  */
 
 import { qs } from './utils.js';
-import { initTooltips } from './tooltips.js';
+import { initTooltips } from './tooltips-loader.js';
 import { onDataLoaded, loadData } from './data-loader.js';
 
 const DEFAULT_FAVICON_URL = new URL('../../assets/images/favicon.png', import.meta.url).href;
