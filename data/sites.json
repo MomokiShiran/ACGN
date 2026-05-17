@@ -33,7 +33,7 @@
           "url": "https://wallhaven.cc",
           "description": "壁纸站，需登录查看全部内容，图片较多",
           "category": "term-2",
-          "isNew": true,
+          "isNew": false,
           "icon": "assets/images/sites/wallhaven.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
