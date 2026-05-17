@@ -28,9 +28,12 @@ jobs:
       - name: Update isNew status
         run: node scripts/update-isnew.js
 
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git diff --exit-code || git add -A && git commit -m "chore: auto-update isNew status for sites older than 30 days"
-          git push origin develop
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: auto-update isNew status for sites older than 30 days"
+          title: "chore: auto-update isNew status"
+          body: "Automatically update isNew status for sites older than 30 days"
+          branch: "auto-update-isnew"
+          delete-branch: true
