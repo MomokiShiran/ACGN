@@ -33,7 +33,7 @@
           "url": "https://wallhaven.cc",
           "description": "壁纸站，需登录查看全部内容，图片较多",
           "category": "term-2",
-          "isNew": false,
+          "isNew": true,
           "icon": "assets/images/sites/wallhaven.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -547,11 +547,22 @@
           "url": "https://www.soman.com",
           "description": "漫画搜索引擎",
           "category": "term-12",
-          "isNew": false,
+          "isNew": true,
           "detail": "描述：搜漫连接了全网多个资源丰富的漫画源，为漫画爱好者提供最新最全的漫画资源搜索服务，带你享受一站式看遍全网漫画的极致体验。",
           "icon": "assets/images/sites/www.soman.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 473,
+          "name": "Webtoon",
+          "url": "https://www.webtoons.com/",
+          "description": "漫画平台，包含多种语言版本的漫画内容",
+          "category": "term-12",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-17 00:00:00"
         }
       ]
     },
@@ -1208,6 +1219,17 @@
           "icon": "assets/images/sites/hacg.me.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 472,
+          "name": "南+ South Plus",
+          "url": "https://bbs.imoutolove.me",
+          "description": "ACGN综合论坛，包含资源分享、讨论区等",
+          "category": "term-6",
+          "isNew": true,
+          "icon": "",
+          "disabledAt": "",
+          "createdAt": "2026-05-17 00:00:00"
         }
       ]
     },
