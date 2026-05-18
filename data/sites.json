@@ -33,7 +33,7 @@
           "url": "https://wallhaven.cc",
           "description": "壁纸站，需登录查看全部内容，图片较多",
           "category": "term-2",
-          "isNew": true,
+          "isNew": false,
           "icon": "assets/images/sites/wallhaven.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
@@ -547,7 +547,7 @@
           "url": "https://www.soman.com",
           "description": "漫画搜索引擎",
           "category": "term-12",
-          "isNew": true,
+          "isNew": false,
           "detail": "描述：搜漫连接了全网多个资源丰富的漫画源，为漫画爱好者提供最新最全的漫画资源搜索服务，带你享受一站式看遍全网漫画的极致体验。",
           "icon": "assets/images/sites/www.soman.com.png",
           "disabledAt": "",
