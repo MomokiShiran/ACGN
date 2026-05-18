@@ -44,7 +44,7 @@
           "url": "https://pic.tjsky.net/pixiv",
           "description": "某个人站，每天会搬运P站排名前50图",
           "category": "term-2",
-          "isNew": true,
+          "isNew": false,
           "icon": "assets/images/sites/pic.tjsky.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
