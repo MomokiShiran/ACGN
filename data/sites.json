@@ -822,17 +822,6 @@
           "createdAt": "2026-05-07 00:00:00"
         },
         {
-          "id": 449,
-          "name": "Kg仓库",
-          "url": "https://kgacg.com",
-          "description": "积分制，下载次数受限，含AI",
-          "category": "term-6",
-          "isNew": false,
-          "detail": "一个分享与储存爱的地方！！----由匿名用户提供",
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
           "id": 448,
           "name": "萌萌御所",
           "url": "https://mmys.us",
@@ -852,17 +841,6 @@
           "category": "term-6",
           "isNew": false,
           "icon": "assets/images/sites/www.vikacg.com.png",
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
-          "id": 400,
-          "name": "F岛社区",
-          "url": "https://bbs.cloudwl.com",
-          "description": "综合资源交流站",
-          "category": "term-6",
-          "isNew": false,
-          "detail": "感谢こんばんは的投稿",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -896,36 +874,6 @@
           "isNew": false,
           "detail": "萌新指南",
           "icon": "assets/images/sites/www.hentaiclub.net.png",
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
-          "id": 300,
-          "name": "Hikarinoakari",
-          "url": "https://hikarinoakari.com",
-          "description": "推荐，ACG高音质音乐CD下载，有广告",
-          "category": "term-6",
-          "isNew": false,
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
-          "id": 299,
-          "name": "整合回路",
-          "url": "http://cn.anmaxjp.com/mobile.html",
-          "description": "以里番度盘下载为主，最早到09年",
-          "category": "term-6",
-          "isNew": false,
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
-          "id": 273,
-          "name": "stage1/s1",
-          "url": "https://bbs.saraba1st.com/2b/forum.php",
-          "description": "著名游戏动漫论坛",
-          "category": "term-6",
-          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1327,16 +1275,6 @@
           "isNew": false,
           "detail": "Bangumi番组计划：专注于动漫、音乐、游戏领域，帮助你分享、发现与结识同好的ACG网络",
           "icon": "assets/images/sites/bgm.tv.png",
-          "disabledAt": "",
-          "createdAt": "2025-01-01 00:00:00"
-        },
-        {
-          "id": 50,
-          "name": "2DFan",
-          "url": "https://galge.fun/subjects",
-          "description": "中国著名galgame图书馆&amp;评分网站",
-          "category": "term-9",
-          "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },

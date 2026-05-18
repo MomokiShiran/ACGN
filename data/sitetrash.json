@@ -313,6 +313,58 @@
           "disabledAt": "2026-01-01 00:00:00",
           "icon": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 449,
+          "name": "Kg仓库",
+          "url": "https://kgacg.com",
+          "description": "积分制，下载次数受限，含AI",
+          "category": "term-6",
+          "isNew": false,
+          "detail": "一个分享与储存爱的地方！！----由匿名用户提供",
+          "disabledAt": "2026-05-18 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 400,
+          "name": "F岛社区",
+          "url": "https://bbs.cloudwl.com",
+          "description": "综合资源交流站",
+          "category": "term-6",
+          "isNew": false,
+          "detail": "感谢こんばんは的投稿",
+          "disabledAt": "2026-05-18 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 300,
+          "name": "Hikarinoakari",
+          "url": "https://hikarinoakari.com",
+          "description": "推荐，ACG高音质音乐CD下载，有广告",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-18 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 299,
+          "name": "整合回路",
+          "url": "http://cn.anmaxjp.com/mobile.html",
+          "description": "以里番度盘下载为主，最早到09年",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-18 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 273,
+          "name": "stage1/s1",
+          "url": "https://bbs.saraba1st.com/2b/forum.php",
+          "description": "著名游戏动漫论坛",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-18 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
         }
       ]
     },
@@ -320,7 +372,18 @@
       "id": "term-9",
       "name": "ACG图书馆",
       "icon": "fas fa-university",
-      "sites": []
+      "sites": [
+        {
+          "id": 50,
+          "name": "2DFan",
+          "url": "https://galge.fun/subjects",
+          "description": "中国著名galgame图书馆&amp;评分网站",
+          "category": "term-9",
+          "isNew": false,
+          "disabledAt": "2026-05-18 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        }
+      ]
     },
     {
       "id": "term-7",
