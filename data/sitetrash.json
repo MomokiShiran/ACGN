@@ -365,6 +365,36 @@
           "isNew": false,
           "disabledAt": "2026-05-18 00:00:00",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 361,
+          "name": "ACG次元小屋",
+          "url": "https://south.yuanacg.com",
+          "description": "以galgame为主，需要注册【地址发布页】",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 185,
+          "name": "扶她404",
+          "url": "http://www.futa404.com",
+          "description": "ACG资讯站，知名度较大",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 167,
+          "name": "好萌动漫【发布页】",
+          "url": "https://nicemoe01.github.io",
+          "description": "可自由发布资源的社区，目前已关闭注册。",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
         }
       ]
     },
@@ -408,6 +438,28 @@
           "category": "term-7",
           "disabledAt": "2026-01-01 00:00:00",
           "icon": "",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 434,
+          "name": "GALXP",
+          "url": "https://www.galxp.com",
+          "description": "免费分享galgame汉化和生肉资源，更新勤快",
+          "category": "term-7",
+          "isNew": false,
+          "detail": "免费分享galgame汉化和生肉资源，更新勤快（感谢nilihity的投稿~）",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 401,
+          "name": "夏轩阁acg",
+          "url": "https://xiayuge.top",
+          "description": "主要以收录galgame的资源网站",
+          "category": "term-7",
+          "isNew": false,
+          "detail": "感谢zhhfate的投稿",
+          "disabledAt": "2026-05-19 00:00:00",
           "createdAt": "2025-01-01 00:00:00"
         }
       ]
