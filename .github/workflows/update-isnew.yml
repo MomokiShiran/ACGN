@@ -2,12 +2,14 @@ name: Update isNew Status
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -28,9 +30,13 @@ jobs:
       - name: Update isNew status
         run: node scripts/update-isnew.js
 
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Commit and push changes
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git diff --exit-code || git add -A && git commit -m "chore: auto-update isNew status for sites older than 30 days"
-          git push origin develop
+          git add data/sites.json
+          git diff --cached --quiet || git commit -m "chore: auto-update isNew status for sites older than 30 days"
+          git diff --cached --quiet || git push origin develop
