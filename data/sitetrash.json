@@ -114,6 +114,120 @@
           "disabledAt": "2026-05-11 00:00:00",
           "icon": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 429,
+          "name": "酷漫社",
+          "url": "https://kumanshe.com",
+          "description": "以免费国漫为主",
+          "category": "term-3",
+          "isNew": false,
+          "detail": "酷漫社是一家漫画免费分享以及在线浏览平台，这里有及时的新番漫画，活跃的ACG氛围，有创意的漫画师�?",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 404,
+          "name": "哈哩哈哩",
+          "url": "http://haliyy.com",
+          "description": "资源较全，画质较差，路线多",
+          "category": "term-3",
+          "isNew": false,
+          "detail": "感谢服服服鸡的投稿",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 391,
+          "name": "ACG.RW",
+          "url": "https://www.acg.rw",
+          "description": "画质一般，播放开始有广告",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 386,
+          "name": "ACG饭团",
+          "url": "https://acgfantuan.com",
+          "description": "以新番为主，无广告",
+          "category": "term-3",
+          "isNew": false,
+          "detail": "以新番为主，无广告，地址发布页：https://fantuantv.com/",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 406,
+          "name": "宫下动漫",
+          "url": "https://arlnigdm.com",
+          "description": "无广告，番剧多",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 385,
+          "name": "ZzzFun动漫视频网",
+          "url": "https://www.zzzfun.com",
+          "description": "有时会挂，画质较高",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 384,
+          "name": "OmoFun动漫",
+          "url": "https://omofun.tv/",
+          "description": "【需要下载APP】画质高，弹幕多",
+          "category": "term-3",
+          "isNew": false,
+          "detail": "支持安卓和IOS",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 380,
+          "name": "五弹幕",
+          "url": "https://www.5dm.app",
+          "description": "【推荐】更新快，画质高",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 225,
+          "name": "异世界动漫",
+          "url": "http://sbdm.net",
+          "description": "在线动漫，含表番",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 101,
+          "name": "EDD动漫",
+          "url": "http://www.edddh.net",
+          "description": "含有无修BD画质动漫",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 25,
+          "name": "樱花动漫",
+          "url": "https://www.yhdmz.org",
+          "description": "【次推荐】",
+          "category": "term-3",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
         }
       ]
     },
@@ -209,6 +323,17 @@
           "disabledAt": "2026-01-01 00:00:00",
           "icon": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 79,
+          "name": "AB 站",
+          "url": "https://acgbeo.com",
+          "description": "国内某不知名本子在线阅览站",
+          "category": "term-5",
+          "isNew": false,
+          "detail": "需要注册登入开放搜索权限。",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
         }
       ]
     },
@@ -235,6 +360,26 @@
           "category": "term-8",
           "disabledAt": "2026-01-01 00:00:00",
           "icon": "",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 234,
+          "name": "HentaiDude",
+          "url": "https://hentaidude.com",
+          "description": "含上世纪里番，英文字幕，不全",
+          "category": "term-8",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 174,
+          "name": "Hanime",
+          "url": "https://members.hanime.tv",
+          "description": "全英文字幕，免费账号最高720P，练英语必备",
+          "category": "term-8",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
           "createdAt": "2025-01-01 00:00:00"
         }
       ]
@@ -395,6 +540,38 @@
           "isNew": false,
           "disabledAt": "2026-05-19 00:00:00",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 109,
+          "name": "幻想次元",
+          "url": "https://hxcy.moe",
+          "description": "熟人邀请机制注册，注册后开放绅士内容",
+          "category": "term-6",
+          "isNew": false,
+          "detail": "不要用代理。",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 108,
+          "name": "PonpomuYuri",
+          "url": "https://www.ponpomu.com",
+          "description": "百合控聚集地！",
+          "category": "term-6",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 77,
+          "name": "花火学园",
+          "url": "https://www.sayhuahuo.com",
+          "description": "知名ACG资源论坛【答题获取邀请码】",
+          "category": "term-6",
+          "isNew": false,
+          "detail": "目前开放注册，邀请码需要答题。",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
         }
       ]
     },
@@ -459,6 +636,37 @@
           "category": "term-7",
           "isNew": false,
           "detail": "感谢zhhfate的投稿",
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 358,
+          "name": "幽隐恋梦",
+          "url": "https://ercygame.com",
+          "description": "生肉硬盘站，所有游戏均为PC版",
+          "category": "term-7",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 269,
+          "name": "05的资源小站",
+          "url": "https://05fx.glitch.me",
+          "description": "某岛学家建的gal资源站",
+          "category": "term-7",
+          "isNew": false,
+          "disabledAt": "2026-05-19 00:00:00",
+          "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 39,
+          "name": "终点论坛",
+          "url": "https://bbs.zdfx.net",
+          "description": "终点论坛。欢迎来到终点论坛，这里热爱和平，以二次元相关话题为主，努力打造舒心畅快的聊天环境，本论坛是唯一地址，您的支持是论坛的动力",
+          "category": "term-7",
+          "isNew": false,
+          "detail": "目前需要科学上网。",
           "disabledAt": "2026-05-19 00:00:00",
           "createdAt": "2025-01-01 00:00:00"
         }
