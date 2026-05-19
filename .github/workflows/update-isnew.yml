@@ -2,7 +2,7 @@ name: Update isNew Status
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
 
 jobs:
@@ -38,5 +38,5 @@ jobs:
       - name: Commit and push changes
         run: |
           git add data/sites.json
-          git commit -m "chore: auto-update isNew status for sites older than 30 days"
-          git push origin develop
+          git diff --cached --quiet || git commit -m "chore: auto-update isNew status for sites older than 30 days"
+          git diff --cached --quiet || git push origin develop
