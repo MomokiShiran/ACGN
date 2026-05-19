@@ -599,6 +599,7 @@ a.text-muted:hover,
   margin-bottom: var(--space-4);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal) ease;
+  border-radius: var(--radius-2xl);
 }
 
 .card:hover,

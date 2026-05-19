@@ -4,6 +4,7 @@
 .url-card .url-body {
   transform: translateY(0);
   transition: all var(--transition-normal);
+  border-radius: var(--radius-2xl);
 }
 .url-card .url-body:hover {
   transform: translateY(var(--card-hover-y));
@@ -32,6 +33,7 @@
   flex: none;
   background: rgba(128, 128, 128, 0.1);
   overflow: hidden;
+  border-radius: var(--radius-md);
 }
 .url-card .url-img > img {
   max-height: 100%;
