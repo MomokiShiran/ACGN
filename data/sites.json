@@ -446,7 +446,7 @@
           "description": "漫画平台，包含多种语言版本的漫画内容",
           "category": "term-12",
           "isNew": true,
-          "icon": "assets/images/sites/www.webtoons.com.png",
+          "icon": "assets/images/sites/www.webtoons.com.ico",
           "disabledAt": "",
           "createdAt": "2026-05-17 00:00:00"
         }
@@ -968,7 +968,7 @@
           "description": "ACGN综合论坛，包含资源分享、讨论区等",
           "category": "term-6",
           "isNew": true,
-          "icon": "assets/images/sites/bbs.imoutolove.me.png",
+          "icon": "assets/images/sites/bbs.imoutolove.me.ico",
           "disabledAt": "",
           "createdAt": "2026-05-17 00:00:00"
         }
