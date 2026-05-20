@@ -605,7 +605,6 @@ a.text-muted:hover,
 .card:hover,
 .block:hover {
   transform: translateY(var(--card-hover-y-minor));
-  box-shadow: var(--shadow-md);
 }
 
 .input-group-text {
