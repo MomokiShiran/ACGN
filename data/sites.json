@@ -2003,6 +2003,16 @@
               "createdAt": "2026-05-13 00:00:00"
             },
             {
+              "id": 474,
+              "name": "Sekai Viewer",
+              "url": "https://sekai.best/",
+              "description": "Project Sekai 的网络数据库查看器",
+              "category": "term-16",
+              "isNew": true,
+              "disabledAt": "assets/images/sites/sekai.best.png",
+              "createdAt": "2026-05-24 00:00:00"
+            },
+            {
               "id": 397,
               "name": "Pixez",
               "url": "https://notsfsssf.github.io/Pix-EzViewer",
@@ -2365,6 +2375,16 @@
           "name": "其它小工具",
           "icon": "fas fa-wrench",
           "sites": [
+            {
+              "id": 475,
+              "name": "动画世代",
+              "url": "https://anime-sedai.egoist.dev/",
+              "description": "动画世代 - 点击选择你看过的动画",
+              "category": "term-21",
+              "isNew": true,
+              "disabledAt": "",
+              "createdAt": "2026-05-24 00:00:00"
+            },
             {
               "id": 439,
               "name": "Illuminarty",
