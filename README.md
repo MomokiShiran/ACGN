@@ -60,7 +60,7 @@ npm run format:check # 检查所有文件格式
 
 ## 版本历史
 
-当前版本: **1.7.3**
+当前版本: **1.7.4**
 
 查看完整版本历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
