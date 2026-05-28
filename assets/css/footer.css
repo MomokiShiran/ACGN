@@ -1,6 +1,12 @@
 @charset "utf-8";
 
 /* Footer */
+.main-footer {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  margin: 0.5rem 1rem;
+}
 .footer-tools {
   position: fixed;
   bottom: 20px;

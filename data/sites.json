@@ -666,12 +666,23 @@
       "icon": "fas fa-users",
       "sites": [
         {
+          "id": 476,
+          "name": "ANIBT",
+          "url": "https://anibt.net/",
+          "description": "动漫资源站",
+          "icon": "assets/images/sites/anibt.net.png",
+          "category": "term-6",
+          "isNew": true,
+          "disabledAt": "",
+          "createdAt": "2026-05-26 00:00:00"
+        },
+        {
           "id": 455,
           "name": "ARIA COMPANY",
           "url": "https://aqua-aria.company",
           "description": "二次元资源分享",
           "category": "term-6",
-          "isNew": true,
+          "isNew": false,
           "icon": "assets/images/sites/aqua-aria.company.png",
           "disabledAt": "",
           "createdAt": "2026-05-07 00:00:00"
@@ -1377,6 +1388,17 @@
           "isNew": false,
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
+        },
+        {
+          "id": 478,
+          "name": "动漫花园",
+          "url": "https://www.dongmanhuayuan.com",
+          "description": "动漫下载资源站",
+          "category": "term-4",
+          "icon": "assets/images/sites/dongmanhuayuan.com.ico",
+          "isNew": true,
+          "disabledAt": "",
+          "createdAt": "2026-05-26 00:00:00"
         },
         {
           "id": 30,
@@ -2376,12 +2398,23 @@
           "icon": "fas fa-wrench",
           "sites": [
             {
+              "id": 477,
+              "name": "Paper2Gal",
+              "url": "https://paper2gal.com/",
+              "description": "论文转Galgame工具",
+              "category": "term-21",
+              "isNew": true,
+              "icon": "assets/images/sites/paper2gal.com.png",
+              "disabledAt": "",
+              "createdAt": "2026-05-26 00:00:00"
+            },
+            {
               "id": 475,
               "name": "动画世代",
               "url": "https://anime-sedai.egoist.dev/",
               "description": "动画世代 - 点击选择你看过的动画",
               "category": "term-21",
-              "isNew": true,
+              "isNew": false,
               "disabledAt": "",
               "createdAt": "2026-05-24 00:00:00"
             },

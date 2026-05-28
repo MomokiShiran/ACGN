@@ -10,12 +10,12 @@ let scrollTimeout = null;
 export const initUI = ThemeManager => {
   document.addEventListener('click', e => {
     // 主题切换
-    if (e.target.closest('.switch-dark-mode, .switch-mode')) {
+    if (e.target.closest('.switch-dark-mode')) {
       e.preventDefault();
       if (ThemeManager) ThemeManager.toggle();
     }
     // 返回顶部
-    if (e.target.closest('.go-up, .go-to-up')) {
+    if (e.target.closest('.go-up')) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
