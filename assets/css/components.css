@@ -80,3 +80,148 @@
     padding-top: 60%;
   }
 }
+
+/* 自定义提示框（Tooltip） */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: none;
+  margin: 0;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  white-space: normal;
+  line-break: auto;
+  font-size: var(--font-size-xs);
+  word-wrap: break-word;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.custom-tooltip.show {
+  display: block;
+  opacity: 1;
+}
+
+.custom-tooltip .tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.custom-tooltip .tooltip-inner {
+  max-width: 300px;
+  padding: 0.75rem 1rem;
+  color: var(--bg-white);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+/* 夜间模式Tooltip样式 */
+.io-black-mode .custom-tooltip .tooltip-inner,
+.io-grey-mode .custom-tooltip .tooltip-inner {
+  color: var(--text-dark);
+  background-color: var(--bg-surface);
+}
+
+.io-black-mode .custom-tooltip.bs-tooltip-top .tooltip-arrow,
+.io-grey-mode .custom-tooltip.bs-tooltip-top .tooltip-arrow {
+  border-top-color: var(--bg-surface);
+}
+
+.io-black-mode .custom-tooltip.bs-tooltip-bottom .tooltip-arrow,
+.io-grey-mode .custom-tooltip.bs-tooltip-bottom .tooltip-arrow {
+  border-bottom-color: var(--bg-surface);
+}
+
+.io-black-mode .custom-tooltip.bs-tooltip-left .tooltip-arrow,
+.io-grey-mode .custom-tooltip.bs-tooltip-left .tooltip-arrow {
+  border-left-color: var(--bg-surface);
+}
+
+.io-black-mode .custom-tooltip.bs-tooltip-right .tooltip-arrow,
+.io-grey-mode .custom-tooltip.bs-tooltip-right .tooltip-arrow {
+  border-right-color: var(--bg-surface);
+}
+
+/* 提示框位置 - 顶部 */
+.custom-tooltip.bs-tooltip-top {
+  bottom: 100%;
+  left: 50%;
+  padding-bottom: 0.5rem;
+  transform: translateX(-50%);
+}
+
+.custom-tooltip.bs-tooltip-top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -0.5rem;
+  border-width: 0.5rem 0.5rem 0;
+  border-top-color: rgba(0, 0, 0, 0.85);
+}
+
+/* 提示框位置 - 底部 */
+.custom-tooltip.bs-tooltip-bottom {
+  top: 100%;
+  left: 50%;
+  padding-top: 0.5rem;
+  transform: translateX(-50%);
+}
+
+.custom-tooltip.bs-tooltip-bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -0.5rem;
+  border-width: 0 0.5rem 0.5rem;
+  border-bottom-color: rgba(0, 0, 0, 0.85);
+}
+
+/* 提示框位置 - 左侧 */
+.custom-tooltip.bs-tooltip-left {
+  top: 50%;
+  right: 100%;
+  padding-right: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.custom-tooltip.bs-tooltip-left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -0.5rem;
+  border-width: 0.5rem 0 0.5rem 0.5rem;
+  border-left-color: rgba(0, 0, 0, 0.85);
+}
+
+/* 提示框位置 - 右侧 */
+.custom-tooltip.bs-tooltip-right {
+  top: 50%;
+  left: 100%;
+  padding-left: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.custom-tooltip.bs-tooltip-right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -0.5rem;
+  border-width: 0.5rem 0.5rem 0.5rem 0;
+  border-right-color: rgba(0, 0, 0, 0.85);
+}
