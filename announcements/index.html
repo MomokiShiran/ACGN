@@ -42,8 +42,8 @@
   </head>
   <body class="io-grey-mode" data-page-type="other">
     <div class="page-container">
-      <div id="sidebar" class="sticky sidebar-nav fade sidebar">
-        <div class="modal-dialog h-100 sidebar-nav-inner">
+      <div id="sidebar" class="sticky sidebar-nav sidebar">
+        <div class="sidebar-nav-inner">
           <div class="sidebar-logo border-bottom border-color">
             <div class="logo overflow-hidden">
               <a href="../" class="logo-expanded">
@@ -189,51 +189,54 @@
         </div>
       </div>
       <div class="main-content flex-fill page">
-        <div class="page-header big sticky">
-          <div class="navbar navbar-expand-md">
-            <div class="container-fluid p-0">
-              <a href="../" class="navbar-brand d-md-none">
-                <img
-                  src="../assets/images/favicon.png"
-                  class="navbar-brand-light"
-                  alt="MyACGN"
-                  loading="lazy"
-                />
-                <img
-                  src="../assets/images/favicon.png"
-                  class="navbar-brand-dark"
-                  alt="MyACGN"
-                  loading="lazy"
-                />
-              </a>
-              <div class="collapse navbar-collapse order-2 order-md-1">
-                <div class="header-mini-btn">
-                  <label>
-                    <input class="mini-button" type="checkbox" checked />
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                      <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
-                      <path class="line--2" d="M0 50h80"></path>
-                      <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
-                    </svg>
-                  </label>
+        <div class="custom-header big sticky header">
+          <div class="custom-header-inner">
+            <a href="../" class="custom-logo mobile-only">
+              <img
+                loading="lazy"
+                src="../assets/images/favicon.png"
+                class="logo-light"
+                alt="MyACGN"
+              />
+              <img
+                loading="lazy"
+                src="../assets/images/favicon.png"
+                class="logo-dark"
+                alt="MyACGN"
+              />
+            </a>
+
+            <div class="header-left">
+              <div class="header-mini-btn desktop-only">
+                <label>
+                  <input class="mini-button" type="checkbox" checked />
+                  <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
+                    <path class="line--2" d="M0 50h80"></path>
+                    <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
+                  </svg>
+                </label>
+              </div>
+
+              <div class="site-menu page-header-list"></div>
+            </div>
+
+            <div class="header-right">
+              <div class="hitokoto-container desktop-only">
+                <div class="hitokoto-text overflowClip_1">
+                  <span class="hitokoto"></span>
                 </div>
               </div>
-              <ul class="nav navbar-menu text-xs order-1 order-md-2">
-                <li class="nav-item me-3 mr-lg-0 d-none d-lg-block">
-                  <div class="text-sm overflowClip_1">
-                    <span id="hitokoto"></span>
-                  </div>
-                </li>
-                <li class="nav-item d-md-none mobile-menu ms-4">
-                  <a
-                    href="javascript:/"
-                    id="sidebar-switch"
-                    data-bs-toggle="modal"
-                    data-bs-target="#sidebar"
-                    ><i class="iconfont icon-classification icon-2x"></i
-                  ></a>
-                </li>
-              </ul>
+
+              <div class="mobile-menu mobile-only">
+                <a
+                  href="javascript:/"
+                  class="sidebar-switch"
+                  id="sidebar-toggle"
+                >
+                  <i class="iconfont icon-classification icon-2x"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
