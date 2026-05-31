@@ -29,17 +29,31 @@ export const initUI = ThemeManager => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // 锚点链接平滑滚动
-    const anchorLink = e.target.closest('a[href^="#"]');
+    // 锚点链接平滑滚动 - 优先处理
+    const anchorLink = e.target.closest('a[href*="#"]');
     if (anchorLink) {
-      const targetId = anchorLink.getAttribute('href');
+      const href = anchorLink.getAttribute('href');
+      
+      // 提取哈希值
+      let targetId = null;
+      if (href.startsWith('#')) {
+        targetId = href;
+      } else {
+        const hashIndex = href.indexOf('#');
+        if (hashIndex !== -1) {
+          targetId = href.substring(hashIndex);
+        }
+      }
+      
       if (targetId && targetId !== '#') {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
+          e.stopPropagation();
           smoothScrollTo(targetElement);
           // 更新 URL 哈希但不跳转
           history.pushState(null, null, targetId);
+          return;
         }
       }
     }
