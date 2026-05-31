@@ -53,14 +53,14 @@ npm run format:check # 检查所有文件格式
 ## 技术栈
 
 - **HTML5** - 页面结构
-- **CSS3** + **Bootstrap 5** - 样式框架
+- **CSS3** - 样式框架
 - **现代 JavaScript** - 交互逻辑
 - **JSON** - 数据存储
 - **ESLint** + **Prettier** - 代码规范工具
 
 ## 版本历史
 
-当前版本: **1.7.4**
+当前版本: **1.8.0**
 
 查看完整版本历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
