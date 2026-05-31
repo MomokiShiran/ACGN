@@ -29,8 +29,6 @@ class CustomTooltip {
     // 绑定事件
     this.handleMouseEnter = this.show.bind(this);
     this.handleMouseLeave = this.delayedHide.bind(this);
-    this.handleTooltipMouseEnter = this.cancelHide.bind(this);
-    this.handleTooltipMouseLeave = this.hide.bind(this);
     
     this.init();
   }
@@ -40,7 +38,7 @@ class CustomTooltip {
     this.element.addEventListener('mouseenter', this.handleMouseEnter);
     this.element.addEventListener('mouseleave', this.handleMouseLeave);
   }
-  
+
   createTooltip() {
     // 创建tooltip元素
     this.tooltipEl = document.createElement('div');
@@ -49,10 +47,6 @@ class CustomTooltip {
       <div class="tooltip-arrow"></div>
       <div class="tooltip-inner">${this.title}</div>
     `;
-    
-    // 添加tooltip自身的事件监听器，支持鼠标移动到tooltip上保持显示
-    this.tooltipEl.addEventListener('mouseenter', this.handleTooltipMouseEnter);
-    this.tooltipEl.addEventListener('mouseleave', this.handleTooltipMouseLeave);
     
     // 将tooltip添加到body
     document.body.appendChild(this.tooltipEl);
@@ -160,10 +154,6 @@ class CustomTooltip {
     
     // 移除元素
     if (this.tooltipEl && this.tooltipEl.parentNode) {
-      // 先移除tooltip自身的事件监听器
-      this.tooltipEl.removeEventListener('mouseenter', this.handleTooltipMouseEnter);
-      this.tooltipEl.removeEventListener('mouseleave', this.handleTooltipMouseLeave);
-      
       this.tooltipEl.parentNode.removeChild(this.tooltipEl);
       this.tooltipEl = null;
     }
