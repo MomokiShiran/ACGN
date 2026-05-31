@@ -92,10 +92,20 @@ ACGN/
 │   └── detail.html       # 公告详情
 ├── assets/               # 静态资源
 │   ├── css/              # 样式文件
+│   │   ├── grid.css      # 自定义网格系统
+│   │   ├── header.css    # 自定义顶部导航栏
+│   │   ├── components.css # 自定义组件（Tooltip等）
+│   │   ├── common.css    # 通用工具类
+│   │   ├── themes.css    # 主题变量
+│   │   └── ...           # 其他样式
 │   ├── fonts/            # 字体文件（Font Awesome）
 │   ├── images/           # 图片资源
 │   │   └── sites/        # 网站图标
 │   └── js/               # JavaScript 文件
+│       ├── tooltips-loader.js  # 自定义Tooltip模块
+│       ├── sidebar-interaction-loader.js # 侧边栏交互
+│       ├── ui-loader.js  # UI加载器
+│       └── ...           # 其他模块
 ├── data/                 # 数据文件
 │   ├── sites.json        # 网站数据（主文件）
 │   ├── sitetrash.json    # 失效网站归档
@@ -127,7 +137,7 @@ ACGN/
 | 分类 | 技术 | 说明 |
 |------|------|------|
 | 页面结构 | HTML5 | 语义化标记 |
-| 样式 | CSS3 + Bootstrap 4 | 响应式设计 |
+| 样式 | CSS3 | 响应式设计 |
 | 交互 | JavaScript (ES Module) | 原生 JS，无 jQuery |
 | 数据 | JSON | 轻量级数据存储 |
 | 代码规范 | ESLint + Prettier | 代码质量保证 |

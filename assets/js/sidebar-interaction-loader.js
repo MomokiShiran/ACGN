@@ -1,5 +1,5 @@
 /**
- * 侧边栏交互模块
+ * 侧边栏交互模块 - 自定义实现，移除 Bootstrap 依赖
  */
 
 import { qs, qsa, debounce } from './utils.js';
@@ -7,6 +7,24 @@ import { qs, qsa, debounce } from './utils.js';
 let isMin = false;
 let isMobileMin = false;
 let sidebarPopupTimeout = null;
+
+// 显示移动端侧边栏
+const showSidebar = () => {
+  const sidebar = qs('.sidebar');
+  if (sidebar) {
+    sidebar.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+// 隐藏移动端侧边栏
+const hideSidebar = () => {
+  const sidebar = qs('.sidebar');
+  if (sidebar) {
+    sidebar.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+};
 
 // 侧边栏最小化
 export const triggerLsmMini = (noAnim = false) => {
@@ -65,11 +83,30 @@ export const triggerResizable = (noAnim = false) => {
       isMobileMin = true;
       isMin = false;
     }
+    // 移动端窗口改变时隐藏侧边栏
+    hideSidebar();
   }
 };
 
 // 初始化侧边栏事件
 export const initSidebarInteraction = () => {
+  // 移动端侧边栏切换按钮
+  const sidebarToggle = qs('#sidebar-toggle');
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const sidebar = qs('.sidebar');
+      if (sidebar?.classList.contains('show')) {
+        hideSidebar();
+      } else {
+        showSidebar();
+      }
+    });
+  }
+
+
+
   // 迷你侧边栏hover
   document.addEventListener('mouseover', e => {
     const sidebarNav = qs('.sidebar-nav.mini-sidebar');
@@ -139,18 +176,38 @@ export const initSidebarInteraction = () => {
       }
     }
     // 侧边栏关闭
+    const sidebar = qs('.sidebar');
+    const isSidebarToggle = e.target.closest('#sidebar-toggle');
+    const isSidebarInner = sidebar?.querySelector('.sidebar-nav-inner')?.contains(e.target);
+    
+    // 点击侧边栏外部区域关闭
+    if (sidebar?.classList.contains('show') && !isSidebarToggle && !isSidebarInner) {
+      hideSidebar();
+    }
+    
+    // 点击链接时关闭移动端侧边栏（排除侧边栏切换按钮）
     const link = e.target.closest('a');
-    if (link && link.getAttribute('target') !== '_blank') {
-      const sidebar = qs('.sidebar');
-      if (sidebar?.classList.contains('show') && typeof bootstrap !== 'undefined') {
-        bootstrap.Modal.getInstance(sidebar)?.hide();
+    if (link && link.getAttribute('target') !== '_blank' && !isSidebarToggle) {
+      if (sidebar?.classList.contains('show')) {
+        hideSidebar();
       }
     }
+    
     // 迷你按钮
     if (e.target.closest('.mini-button')) {
       triggerLsmMini();
     }
   });
 
+  // ESC键关闭侧边栏
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const sidebar = qs('.sidebar');
+      if (sidebar?.classList.contains('show')) {
+        hideSidebar();
+      }
+    }
+  });
+  
   window.addEventListener('resize', debounce(triggerResizable, 200));
 };

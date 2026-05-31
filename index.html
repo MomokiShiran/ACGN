@@ -48,15 +48,15 @@
     <link rel="stylesheet" href="assets/css/iconfont.css?ver=2.0406" />
     <link rel="stylesheet" href="assets/css/webfonts.css?ver=5.13.0" />
     <link rel="stylesheet" href="assets/css/all.min.css?ver=2.0406" />
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css?ver=2.0406" />
+    <link rel="stylesheet" href="assets/css/grid.css?ver=2.0406" />
     <link rel="stylesheet" href="assets/css/common.css?ver=2.0406" />
     <link rel="stylesheet" href="assets/css/style.css?ver=2.0406" />
   </head>
   <body class="io-grey-mode" data-page-type="home">
     <div class="page-container">
       <!-- 侧边栏导航 -->
-      <div id="sidebar" class="sticky sidebar-nav fade sidebar">
-        <div class="modal-dialog h-100 sidebar-nav-inner">
+      <div id="sidebar" class="sticky sidebar-nav sidebar">
+        <div class="sidebar-nav-inner">
           <div class="sidebar-logo border-bottom border-color">
             <div class="logo overflow-hidden">
               <a href="./" class="logo-expanded">
@@ -204,72 +204,71 @@
       <!-- 主内容区域 -->
       <div class="main-content flex-fill">
         <!-- 顶部导航栏 -->
-        <div class="page-header big sticky header">
-          <div class="navbar navbar-expand-md">
-            <div class="container-fluid p-0">
-              <a href="./" class="navbar-brand d-md-none">
-                <img
-                  loading="lazy"
-                  src="./assets/images/favicon.png"
-                  class="navbar-brand-light"
-                  alt="MyACGN"
-                />
-                <img
-                  loading="lazy"
-                  src="./assets/images/favicon.png"
-                  class="navbar-brand-dark"
-                  alt="MyACGN"
-                />
-              </a>
+        <div class="custom-header big sticky header">
+          <div class="custom-header-inner">
+            <a href="./" class="custom-logo mobile-only">
+              <img
+                loading="lazy"
+                src="./assets/images/favicon.png"
+                class="logo-light"
+                alt="MyACGN"
+              />
+              <img
+                loading="lazy"
+                src="./assets/images/favicon.png"
+                class="logo-dark"
+                alt="MyACGN"
+              />
+            </a>
 
-              <div class="collapse navbar-collapse order-2 order-md-1">
-                <div class="header-mini-btn">
-                  <label>
-                    <input class="mini-button" type="checkbox" checked />
-                    <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                      <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
-                      <path class="line--2" d="M0 50h80"></path>
-                      <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
-                    </svg>
-                  </label>
-                </div>
-
-                <ul class="navbar-nav site-menu me-4 page-header-list"></ul>
+            <div class="header-left">
+              <div class="header-mini-btn desktop-only">
+                <label>
+                  <input class="mini-button" type="checkbox" checked />
+                  <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
+                    <path class="line--2" d="M0 50h80"></path>
+                    <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
+                  </svg>
+                </label>
               </div>
 
-              <ul class="nav navbar-menu text-xs order-1 order-md-2">
-                <li class="nav-item me-3 mr-lg-0 d-none d-lg-block">
-                  <div class="text-sm overflowClip_1">
-                    <span class="hitokoto"></span>
-                  </div>
-                </li>
+              <div class="site-menu page-header-list"></div>
+            </div>
 
-                <li class="nav-item d-md-none mobile-menu ms-4">
-                  <a
-                    href="javascript:/"
-                    class="sidebar-switch mobile-menu-link"
-                    data-bs-toggle="modal"
-                    data-bs-target="#sidebar"
-                  >
-                    <i class="iconfont icon-classification icon-2x"></i>
-                  </a>
-                </li>
-              </ul>
+            <div class="header-right">
+              <div class="hitokoto-container desktop-only">
+                <div class="hitokoto-text overflowClip_1">
+                  <span class="hitokoto"></span>
+                </div>
+              </div>
+
+              <div class="mobile-menu mobile-only">
+                <a
+                  href="javascript:/"
+                  class="sidebar-switch"
+                  id="sidebar-toggle"
+                >
+                  <i class="iconfont icon-classification icon-2x"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="bulletin-big mx-3 mx-md-0 mb-4">
-          <div class="bulletin-container card my-2 bulletin-box">
-            <div class="card-body py-1 px-2 px-md-3 d-flex flex-fill text-xs text-muted">
-              <div><i class="iconfont icon-bulletin line-height-25"></i></div>
-              <div class="bulletin mx-1 mx-md-2">
-                <ul class="bulletin-ul bulletin-list">
-                  <li class="scrolltext-title overflowClip_1">
+        <div class="bulletin-section">
+          <div class="bulletin-container">
+            <div class="bulletin-content">
+              <div class="bulletin-icon">
+                <i class="iconfont icon-bulletin"></i>
+              </div>
+              <div class="bulletin-scroll">
+                <ul class="bulletin-list">
+                  <li class="bulletin-item overflowClip_1">
                     <a
                       href="announcements/detail.html?id=64"
                       rel="bulletin"
-                      class="bulletin-container-link"
+                      class="bulletin-link"
                       >➡️本站浏览须知⬅️</a
                     >
                   </li>
@@ -576,7 +575,6 @@
       </div>
     </div>
 
-    <script src="assets/js/bootstrap.min.js?ver=2.0406"></script>
-    <script type="module" src="assets/js/loader.js"></script>
+    <script type="module" src="assets/js/loader.js?v=2.0.0"></script>
   </body>
 </html>
