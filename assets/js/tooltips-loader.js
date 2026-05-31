@@ -198,6 +198,7 @@ export const initTooltips = (selector) => {
 
 // 事件委托：自动处理动态元素
 document.addEventListener('mouseenter', (e) => {
+  if (!e.target || typeof e.target.closest !== 'function') return;
   const el = e.target.closest('[data-bs-toggle="tooltip"]');
   if (el && !tooltipInstances.has(el)) {
     const tooltip = new CustomTooltip(el, {
