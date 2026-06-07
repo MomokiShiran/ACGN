@@ -1,202 +1,152 @@
-/**
- * 自定义工具提示模块
- * 完全不依赖Bootstrap的实现
- */
+// 自定义工具提示模块
 
 import { qsa } from './utils.js';
 
-// 缓存已初始化的tooltip实例
+// 使用WeakMap存储元素对应的tooltip实例，键为DOM元素
 const tooltipInstances = new WeakMap();
 
-// CustomTooltip类
-class CustomTooltip {
-  constructor(element, options = {}) {
-    this.element = element;
-    this.title = element.getAttribute('title') || element.getAttribute('data-bs-title') || '';
-    this.placement = element.getAttribute('data-bs-placement') || 'top';
-    this.customPlacement = options.placement || this.placement;
-    
-    // 清理元素的title属性，避免原生tooltip
-    if (element.getAttribute('title')) {
-      element.setAttribute('data-original-title', element.getAttribute('title'));
-      element.removeAttribute('title');
-    }
-    
-    this.tooltipEl = null;
-    this.visible = false;
-    this.hideTimeout = null;
-    
-    // 绑定事件
-    this.handleMouseEnter = this.show.bind(this);
-    this.handleMouseLeave = this.delayedHide.bind(this);
-    
-    this.init();
-  }
-  
-  init() {
-    // 使用mouseenter/mouseleave代替mouseover/mouseout，避免冒泡导致的闪烁
-    this.element.addEventListener('mouseenter', this.handleMouseEnter);
-    this.element.addEventListener('mouseleave', this.handleMouseLeave);
+// 创建tooltip实例
+
+function createTooltip(element, options = {}) {
+  const title = element.getAttribute('title') || element.getAttribute('data-bs-title') || '';
+  const placement = options.placement || element.getAttribute('data-bs-placement') || 'top';
+
+  let tooltipEl = null;
+  let visible = false;
+  let hideTimeout = null;
+
+  // 提取title属性，兼容Bootstrap的data-bs-title属性
+  if (element.getAttribute('title')) {
+    element.setAttribute('data-original-title', element.getAttribute('title'));
+    element.removeAttribute('title');
   }
 
-  createTooltip() {
-    // 创建tooltip元素
-    this.tooltipEl = document.createElement('div');
-    this.tooltipEl.className = `custom-tooltip bs-tooltip-${this.customPlacement}`;
-    this.tooltipEl.innerHTML = `
-      <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">${this.title}</div>
-    `;
-    
-    // 将tooltip添加到body
-    document.body.appendChild(this.tooltipEl);
-  }
-  
-  // 延迟隐藏
-  delayedHide() {
-    this.hideTimeout = setTimeout(() => {
-      this.hide();
-    }, 100); // 100ms的延迟
-  }
-  
-  // 取消隐藏
-  cancelHide() {
-    if (this.hideTimeout) {
-      clearTimeout(this.hideTimeout);
-      this.hideTimeout = null;
-    }
-  }
-  
-  updatePosition() {
-    if (!this.tooltipEl) return;
-    
-    // 先隐藏tooltip以获取准确的尺寸
-    this.tooltipEl.style.visibility = 'hidden';
-    this.tooltipEl.style.display = 'block';
-    
-    const elementRect = this.element.getBoundingClientRect();
-    const tooltipRect = this.tooltipEl.getBoundingClientRect();
-    
+  // 计算tooltip位置
+  // 优先使用用户指定的方向，根据元素位置和tooltip尺寸计算最终坐标
+  // 同时处理视口边界溢出，确保tooltip始终在可视区域内
+  const calcPosition = () => {
+    tooltipEl.style.visibility = 'hidden';
+    tooltipEl.style.display = 'block';
+
+    const elementRect = element.getBoundingClientRect();
+    const tooltipRect = tooltipEl.getBoundingClientRect();
+    const offset = 8;
     let top, left;
-    
-    switch (this.customPlacement) {
+
+    switch (placement) {
       case 'bottom':
-        top = elementRect.bottom + window.scrollY + 8;
+        top = elementRect.bottom + window.scrollY + offset;
         left = elementRect.left + window.scrollX + (elementRect.width / 2) - (tooltipRect.width / 2);
         break;
       case 'left':
         top = elementRect.top + window.scrollY + (elementRect.height / 2) - (tooltipRect.height / 2);
-        left = elementRect.left + window.scrollX - tooltipRect.width - 8;
+        left = elementRect.left + window.scrollX - tooltipRect.width - offset;
         break;
       case 'right':
         top = elementRect.top + window.scrollY + (elementRect.height / 2) - (tooltipRect.height / 2);
-        left = elementRect.right + window.scrollX + 8;
+        left = elementRect.right + window.scrollX + offset;
         break;
       case 'top':
       default:
-        top = elementRect.top + window.scrollY - tooltipRect.height - 8;
+        top = elementRect.top + window.scrollY - tooltipRect.height - offset;
         left = elementRect.left + window.scrollX + (elementRect.width / 2) - (tooltipRect.width / 2);
         break;
     }
-    
-    // 边界检查 - 确保tooltip不超出视口
+
+    const padding = 16;
     const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    
-    if (left < 16) {
-      left = 16;
-    } else if (left + tooltipRect.width > viewportWidth - 16) {
-      left = viewportWidth - tooltipRect.width - 16;
+    if (left < padding) left = padding;
+    else if (left + tooltipRect.width > viewportWidth - padding) left = viewportWidth - tooltipRect.width - padding;
+
+    tooltipEl.style.visibility = 'visible';
+    return { top, left };
+  };
+
+  // 取消待执行的隐藏操作
+  const cancelHide = () => {
+    if (hideTimeout) {
+      clearTimeout(hideTimeout);
+      hideTimeout = null;
     }
-    
-    // 设置位置
-    this.tooltipEl.style.position = 'absolute';
-    this.tooltipEl.style.top = `${top}px`;
-    this.tooltipEl.style.left = `${left}px`;
-    this.tooltipEl.style.transform = 'none'; // 移除CSS中的transform，使用JS计算的位置
-    this.tooltipEl.style.visibility = 'visible';
-  }
-  
-  show() {
-    // 取消任何待处理的隐藏
-    this.cancelHide();
-    
-    if (this.visible || !this.title) return;
-    
-    if (!this.tooltipEl) {
-      this.createTooltip();
-    }
-    
-    // 先添加到DOM但不显示
-    this.tooltipEl.style.display = 'block';
-    this.tooltipEl.style.opacity = '0';
-    
-    // 使用requestAnimationFrame确保DOM更新后再计算位置
+  };
+
+  // 显示tooltip
+  const show = () => {
+    cancelHide();
+    if (visible || !title) return;
+
+    tooltipEl = document.createElement('div');
+    tooltipEl.className = `custom-tooltip bs-tooltip-${placement}`;
+    tooltipEl.innerHTML = `<div class="tooltip-arrow"></div><div class="tooltip-inner">${title}</div>`;
+    document.body.appendChild(tooltipEl);
+    tooltipEl.style.opacity = '0';
+
     requestAnimationFrame(() => {
-      // 更新位置
-      this.updatePosition();
-      
-      // 显示tooltip
-      this.tooltipEl.classList.add('show');
-      this.tooltipEl.style.opacity = '';
-      this.visible = true;
+      const pos = calcPosition();
+      tooltipEl.style.position = 'absolute';
+      tooltipEl.style.top = `${pos.top}px`;
+      tooltipEl.style.left = `${pos.left}px`;
+      tooltipEl.style.transform = 'none';
+      tooltipEl.classList.add('show');
+      tooltipEl.style.opacity = '';
+      visible = true;
     });
-  }
-  
-  hide() {
-    // 清理延迟隐藏的定时器
-    this.cancelHide();
-    
-    if (!this.visible || !this.tooltipEl) return;
-    
-    this.tooltipEl.classList.remove('show');
-    this.visible = false;
-    
-    // 移除元素
-    if (this.tooltipEl && this.tooltipEl.parentNode) {
-      this.tooltipEl.parentNode.removeChild(this.tooltipEl);
-      this.tooltipEl = null;
-    }
-  }
-  
-  destroy() {
-    this.hide();
-    // 移除事件监听器
-    this.element.removeEventListener('mouseenter', this.handleMouseEnter);
-    this.element.removeEventListener('mouseleave', this.handleMouseLeave);
-    // 恢复title属性
-    const originalTitle = this.element.getAttribute('data-original-title');
+  };
+
+  // 隐藏tooltip
+  const hide = () => {
+    if (!visible || !tooltipEl) return;
+
+    tooltipEl.classList.remove('show');
+    if (tooltipEl.parentNode) tooltipEl.parentNode.removeChild(tooltipEl);
+    tooltipEl = null;
+    visible = false;
+  };
+
+  const handleMouseEnter = show;
+  const handleMouseLeave = () => {
+    hideTimeout = setTimeout(hide, 100);
+  };
+
+  // 绑定鼠标事件
+  element.addEventListener('mouseenter', handleMouseEnter);
+  element.addEventListener('mouseleave', handleMouseLeave);
+
+  // 销毁tooltip实例，移除事件监听并恢复原始title属性
+  const destroy = () => {
+    cancelHide();
+    hide();
+    element.removeEventListener('mouseenter', handleMouseEnter);
+    element.removeEventListener('mouseleave', handleMouseLeave);
+    const originalTitle = element.getAttribute('data-original-title');
     if (originalTitle) {
-      this.element.setAttribute('title', originalTitle);
-      this.element.removeAttribute('data-original-title');
+      element.setAttribute('title', originalTitle);
+      element.removeAttribute('data-original-title');
     }
-  }
+  };
+
+  return { show, hide, destroy };
 }
 
-// 初始化tooltips
+// 初始化页面中的所有tooltip元素
 export const initTooltips = (selector) => {
   const targetSelector = selector || '[data-bs-toggle="tooltip"]';
-  qsa(targetSelector).forEach(el => {
+  qsa(targetSelector).forEach((el) => {
+    // 避免重复初始化
     if (tooltipInstances.has(el)) return;
-    
-    const tooltip = new CustomTooltip(el, {
-      placement: el.getAttribute('data-bs-placement') || 'top'
-    });
+    const tooltip = createTooltip(el, { placement: el.getAttribute('data-bs-placement') || 'top' });
     tooltipInstances.set(el, tooltip);
   });
 };
 
-// 事件委托：自动处理动态元素
+// 事件委托：自动初始化鼠标悬停到的tooltip元素
+// 使用捕获阶段监听mouseenter事件，实现动态元素的tooltip支持
 document.addEventListener('mouseenter', (e) => {
   if (!e.target || typeof e.target.closest !== 'function') return;
   const el = e.target.closest('[data-bs-toggle="tooltip"]');
   if (el && !tooltipInstances.has(el)) {
-    const tooltip = new CustomTooltip(el, {
-      placement: el.getAttribute('data-bs-placement') || 'top'
-    });
+    const tooltip = createTooltip(el, { placement: el.getAttribute('data-bs-placement') || 'top' });
     tooltipInstances.set(el, tooltip);
-    
-    // 由于事件已经触发，我们需要手动调用一次show
     tooltip.show();
   }
-}, true); // 使用捕获阶段
+}, true);
