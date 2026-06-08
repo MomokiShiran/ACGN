@@ -83,15 +83,6 @@ body {
   background: var(--bg-gray) !important;
 }
 
-/* Logo Display States */
-.io-black-mode .navbar-brand-light,
-.io-black-mode .sidebar-logo-light {
-  display: none !important;
-}
-.io-black-mode .navbar-brand-dark,
-.io-black-mode .sidebar-logo-dark {
-  display: initial !important;
-}
 
 /* Sidebar Overrides for Grey Mode */
 .io-grey-mode .sidebar-item.sidebar-show,

@@ -23,9 +23,6 @@
 .custom-logo img {
   max-height: 40px;
 }
-.logo-dark {
-  display: none;
-}
 .header-left {
   display: flex;
   align-items: center;
@@ -113,15 +110,6 @@
 }
 
 /* 原有的菜单按钮样式保留 */
-.navbar-brand-light,
-.logo-light {
-  max-height: 40px;
-}
-.navbar-brand-dark,
-.logo-dark {
-  max-height: 40px;
-  display: none;
-}
 .page-header-list {
   margin: 0;
   padding: 0;
