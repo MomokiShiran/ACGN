@@ -10,7 +10,6 @@
   width: 150px;
   height: 100vh;
   z-index: 1081;
-  opacity: 1 !important;
   position: sticky;
   top: 0;
 }
@@ -122,4 +121,11 @@
 
 .sidebar-nav {
   background: var(--sidebar-bg);
+}
+
+/* 桌面端始终显示侧栏（兜底，防止其它响应式规则误隐藏） */
+@media (min-width: 768px) {
+  .sidebar-nav {
+    display: block !important;
+  }
 }

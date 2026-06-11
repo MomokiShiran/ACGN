@@ -14,19 +14,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 74px;
-  padding: 0 16px;
+  height: 60px;
+  padding: 0 12px;
+  gap: 8px;
 }
 .custom-logo {
   display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
 }
 .custom-logo img {
-  max-height: 40px;
+  max-height: 36px;
+  width: auto;
+  display: block;
 }
 .header-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
 }
 .site-menu {
   margin: 0;
@@ -35,7 +44,8 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 /* 一言容器 */
@@ -194,54 +204,34 @@
   }
 }
 
-/* 响应式样式 */
+/* 响应式样式：desktop-only / mobile-only 见 utilities.css */
 @media (min-width: 768px) {
-  .desktop-only {
-    display: block;
-  }
-  .mobile-only {
-    display: none;
-  }
-  .custom-logo {
-    display: none;
-  }
-  .hitokoto-container {
-    display: block;
-  }
-  .bulletin-section {
-    margin: 0 0 16px;
-  }
-  .bulletin-container {
-    padding: 8px 16px;
-  }
+  .custom-header-inner { height: 74px; padding: 0 16px; }
+  .custom-logo { display: none !important; }
+  .custom-logo img { max-height: 40px; }
+  .hitokoto-container { display: block; }
+  .bulletin-section { margin: 0 0 16px; }
+  .bulletin-container { padding: 8px 16px; }
 }
 @media (max-width: 767.98px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: block;
-  }
-  .custom-logo {
-    display: flex;
-  }
-  .mobile-menu {
-    display: block;
-  }
-  /* 移动端侧边栏样式 */
+  .custom-header-inner { height: 56px; padding: 0 12px; }
+  .custom-logo.mobile-only,
+  a.custom-logo { display: flex !important; }
+  .custom-logo img { max-height: 32px; }
+  .mobile-menu { display: block !important; }
+
+  /* 移动端侧边栏：遮罩层 + 抽屉 */
   .sidebar-nav {
     background: transparent !important;
     width: 100% !important;
     height: 100% !important;
     top: 0 !important;
-    position: fixed;
+    position: fixed !important;
     z-index: 1090 !important;
-    display: none;
+    display: none !important;
     padding-left: 0 !important;
   }
-  .sidebar-nav.show {
-    display: block;
-  }
+  .sidebar-nav.show { display: block !important; }
   .sidebar-nav .sidebar-nav-inner {
     position: fixed;
     height: 100%;
@@ -249,7 +239,5 @@
     transform: translateX(-100%);
     width: 17.5rem;
   }
-  .sidebar-nav.show .sidebar-nav-inner {
-    transform: translateX(0);
-  }
+  .sidebar-nav.show .sidebar-nav-inner { transform: translateX(0); }
 }
