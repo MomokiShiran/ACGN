@@ -2,6 +2,9 @@
  * 动态模块加载器
  */
 
+// 立即加载骨架屏（最优先注入，保证用户能立刻看到占位内容
+import './skeleton-renderer.js';
+
 // 主入口加载函数
 const loadApp = async () => {
   const pageType = document.body.dataset.pageType;

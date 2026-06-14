@@ -46,7 +46,6 @@
     <link rel="stylesheet" href="../assets/css/components.css?ver=2.0406" />
     <link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406" />
     <link rel="stylesheet" href="../assets/css/themes.css?ver=2.0406" />
-    <link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406" />
     <link rel="canonical" href="./detail.html" />
   </head>
   <body class="io-grey-mode" data-page-type="detail">
@@ -66,83 +65,8 @@
             </div>
           </div>
 
-          <!-- 侧边栏骨架屏 -->
-          <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
-            <div class="sidebar-scroll">
-              <div class="sidebar-menu-inner skeleton-sidebar-menu">
-                <!-- 主菜单项 - 10个 -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-
-                <!-- 工具大全项（带下拉箭头占位） -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text short skeleton-animation"></div>
-                </div>
-
-                <!-- ACG购物项 -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 侧边栏骨架屏 - 底部菜单 -->
-          <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color">
-            <div class="flex-bottom">
-              <div class="skeleton-sidebar-menu">
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="sidebar-skeleton" class="sidebar-menu flex-fill" data-skeleton-type="sidebar"></div>
+          <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color" data-skeleton-type="sidebar-bottom"></div>
 
           <!-- 实际侧边栏菜单 -->
           <div id="sidebar-content" class="sidebar-menu flex-fill skeleton-hidden">
@@ -219,42 +143,7 @@
             </div>
           </div>
         </div>
-        <div id="skeleton-loading" class="content my-2 my-md-3">
-          <div class="row site-content py-4 py-md-5 mb-xl-5 mb-0">
-            <div class="col-12 col-sm-5 col-md-4 col-lg-3">
-              <div class="siteico">
-                <div class="skeleton-site-logo skeleton-animation"></div>
-              </div>
-            </div>
-            <div class="col mt-4 mt-sm-0">
-              <div class="site-body text-sm">
-                <div class="skeleton-tag skeleton-animation mb-2"></div>
-                <div class="skeleton-site-name skeleton-animation mb-3"></div>
-                <div class="mt-2">
-                  <div class="skeleton-site-desc skeleton-animation mb-2"></div>
-                  <div class="skeleton-site-desc short skeleton-animation mb-3"></div>
-                  <div class="site-go mt-3">
-                    <span class="site-go-url">
-                      <div class="skeleton-btn skeleton-animation me-2 d-inline-block"></div>
-                    </span>
-                    <div class="skeleton-btn skeleton-animation d-inline-block"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="panel site-content card transparent no-hover-card">
-            <div class="card-body p-0">
-              <div class="apd-bg"></div>
-              <div class="panel-body my-4">
-                <div class="skeleton-article-line long skeleton-animation mb-3"></div>
-                <div class="skeleton-article-line long skeleton-animation mb-3"></div>
-                <div class="skeleton-article-line long skeleton-animation mb-3"></div>
-                <div class="skeleton-article-line short skeleton-animation"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="skeleton-loading" class="content my-2 my-md-3" data-skeleton-type="site-detail"></div>
         <div id="site-content" class="content my-2 my-md-3 skeleton-hidden">
           <div class="row site-content py-4 py-md-5 mb-xl-5 mb-0">
             <div class="col-12 col-sm-5 col-md-4 col-lg-3">

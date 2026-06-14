@@ -70,83 +70,8 @@
             </div>
           </div>
 
-          <!-- 侧边栏骨架屏 -->
-          <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
-            <div class="sidebar-scroll">
-              <div class="sidebar-menu-inner skeleton-sidebar-menu">
-                <!-- 主菜单项 - 10个 -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-
-                <!-- 工具大全项（带下拉箭头占位） -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text short skeleton-animation"></div>
-                </div>
-
-                <!-- ACG购物项 -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 侧边栏骨架屏 - 底部菜单 -->
-          <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color">
-            <div class="flex-bottom">
-              <div class="skeleton-sidebar-menu">
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="sidebar-skeleton" class="sidebar-menu flex-fill" data-skeleton-type="sidebar"></div>
+          <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color" data-skeleton-type="sidebar-bottom"></div>
 
           <!-- 实际侧边栏菜单 -->
           <div id="sidebar-content" class="sidebar-menu flex-fill skeleton-hidden">
@@ -566,20 +491,29 @@
               </div>
             </div>
           </div>
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" />
           <div id="gitalk-container"></div>
-          <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
           <script>
-            var gitalk = new Gitalk({
-              clientID: 'c4dd1acbe35205da3b40',
-              clientSecret: 'e9b45f825dd49b8187dbf91f5993492a86381244',
-              repo: 'CS_MD',
-              owner: 'zjgsuzjx',
-              admin: ['zjgsuzjx'],
-              id: location.pathname, // Ensure uniqueness and length less than 50
-              distractionFreeMode: false, // Facebook-like distraction free mode
+            window.addEventListener('load', function () {
+              var link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css';
+              document.head.appendChild(link);
+
+              var script = document.createElement('script');
+              script.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js';
+              script.onload = function () {
+                new Gitalk({
+                  clientID: 'c4dd1acbe35205da3b40',
+                  clientSecret: 'e9b45f825dd49b8187dbf91f5993492a86381244',
+                  repo: 'CS_MD',
+                  owner: 'zjgsuzjx',
+                  admin: ['zjgsuzjx'],
+                  id: location.pathname,
+                  distractionFreeMode: false,
+                }).render('gitalk-container');
+              };
+              document.body.appendChild(script);
             });
-            gitalk.render('gitalk-container');
           </script>
         </div>
         <footer class="main-footer footer-type-1 text-xs">
