@@ -75,50 +75,6 @@
 
 
 
-/* 公告容器 */
-.bulletin-section {
-  margin: 0 12px 16px;
-}
-.bulletin-container {
-  background: var(--bg-surface);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  padding: 10px 16px;
-  margin: 8px 0;
-}
-.bulletin-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-muted);
-  font-size: var(--font-size-sm);
-}
-.bulletin-icon {
-  flex-shrink: 0;
-  line-height: 30px;
-}
-.bulletin-scroll {
-  flex: 1;
-  overflow: hidden;
-  height: 30px;
-  line-height: 30px;
-}
-.bulletin-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.bulletin-item {
-  white-space: nowrap;
-}
-.bulletin-link {
-  color: var(--text-muted);
-  text-decoration: none;
-}
-.bulletin-link:hover {
-  color: var(--primary);
-}
-
 /* 原有的菜单按钮样式保留 */
 .page-header-list {
   margin: 0;
@@ -181,12 +137,6 @@
 .header-mini-btn label:hover path {
   stroke: var(--primary);
 }
-.bulletin {
-  box-sizing: border-box;
-  height: 25px;
-  line-height: 25px;
-  overflow: hidden;
-}
 
 /* Header Big */
 .custom-header.big {
@@ -210,8 +160,6 @@
   .custom-logo { display: none !important; }
   .custom-logo img { max-height: 40px; }
   .hitokoto-container { display: block; }
-  .bulletin-section { margin: 0 0 16px; }
-  .bulletin-container { padding: 8px 16px; }
 }
 @media (max-width: 767.98px) {
   .custom-header-inner { height: 56px; padding: 0 12px; }
