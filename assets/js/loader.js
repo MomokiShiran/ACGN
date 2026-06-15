@@ -10,16 +10,18 @@ const loadApp = async () => {
   const pageType = document.body.dataset.pageType;
 
   if (pageType === 'home') {
-    // 首页：并行加载 core, sidebar, dynamic
-    const [, sidebarModule, dynamicModule] = await Promise.all([
+    // 首页：并行加载 core, sidebar, dynamic, search
+    const [, sidebarModule, dynamicModule, searchModule] = await Promise.all([
       import('./core.js'),
       import('./sidebar-loader.js'),
       import('./dynamic-loader.js'),
+      import('./search-loader.js'),
     ]);
 
     // 等所有模块加载完再初始化
     sidebarModule.initSidebar();
     dynamicModule.initDynamic();
+    searchModule.initSearch();
   } else if (pageType === 'detail') {
     // 详情页：并行加载 core, sidebar, site-detail
     const [, sidebarModule, siteDetailModule] = await Promise.all([
