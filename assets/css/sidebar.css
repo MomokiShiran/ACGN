@@ -129,3 +129,26 @@
     display: block !important;
   }
 }
+
+/* 移动端侧边栏：遮罩层 + 抽屉 */
+@media (max-width: 767.98px) {
+  .sidebar-nav {
+    background: transparent !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    position: fixed !important;
+    z-index: 1090 !important;
+    display: none !important;
+    padding-left: 0 !important;
+  }
+  .sidebar-nav.show { display: block !important; }
+  .sidebar-nav .sidebar-nav-inner {
+    position: fixed;
+    height: 100%;
+    transition: transform var(--transition-fast);
+    transform: translateX(-100%);
+    width: 17.5rem;
+  }
+  .sidebar-nav.show .sidebar-nav-inner { transform: translateX(0); }
+}

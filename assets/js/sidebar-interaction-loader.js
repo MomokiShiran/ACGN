@@ -27,7 +27,7 @@ const hideSidebar = () => {
 
 // 侧边栏最小化
 export const triggerLsmMini = (noAnim = false) => {
-  const checkbox = qs('.header-mini-btn input[type="checkbox"]');
+  const checkbox = qs('.navbar-btn input[type="checkbox"]');
   const sidebar = qs('.sidebar-nav');
   if (!sidebar) return;
 
@@ -61,7 +61,7 @@ export const triggerLsmMini = (noAnim = false) => {
 export const triggerResizable = (noAnim = false) => {
   const winWidth = window.innerWidth;
   if (!isMin && winWidth > 767.98 && winWidth < 1024) {
-    const checkbox = qs('.header-mini-btn input[type="checkbox"]');
+    const checkbox = qs('.navbar-btn input[type="checkbox"]');
     if (checkbox) checkbox.checked = false;
     triggerLsmMini(noAnim);
     isMin = true;
@@ -70,7 +70,7 @@ export const triggerResizable = (noAnim = false) => {
       isMobileMin = false;
     }
   } else if ((isMin && winWidth >= 1024) || (isMobileMin && !isMin && winWidth >= 1024)) {
-    const checkbox = qs('.header-mini-btn input[type="checkbox"]');
+    const checkbox = qs('.navbar-btn input[type="checkbox"]');
     if (checkbox) checkbox.checked = true;
     triggerLsmMini(noAnim);
     isMin = false;
