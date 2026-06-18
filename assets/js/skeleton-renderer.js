@@ -8,33 +8,30 @@
  */
 
 // ========== 基础元素生成函数 ==========
-const sidebarItem = (withArrow = false) => `
+const sidebarItem = () => `
   <div class="skeleton-sidebar-item">
-    <div class="skeleton-sidebar-icon skeleton-animation"></div>
-    <div class="skeleton-sidebar-text skeleton-animation"></div>
-    ${withArrow ? '<div class="skeleton-sidebar-text short skeleton-animation"></div>' : ''}
+    <div class="skeleton-sidebar-icon"></div>
+    <div class="skeleton-sidebar-text"></div>
   </div>`;
 
 const card = () => `
   <div class="skeleton-card-inner">
     <div class="skeleton-card-content">
-      <div class="skeleton-avatar skeleton-animation"></div>
+      <div class="skeleton-avatar"></div>
       <div class="skeleton-text-group">
-        <div class="skeleton-text-line skeleton-animation"></div>
-        <div class="skeleton-text-line short skeleton-animation"></div>
+        <div class="skeleton-text-line"></div>
+        <div class="skeleton-text-line short"></div>
       </div>
     </div>
   </div>`;
 
 // ========== 骨架屏类型 ==========
 const SKEL = {
-  // 侧边栏主体（12 项：10 普通 + 1 带箭头 + 1 普通）
+  // 侧边栏主体（12 项）
   sidebar: () => `
     <div class="sidebar-scroll">
       <div class="sidebar-menu-inner skeleton-sidebar-menu">
-        ${Array(10).fill(sidebarItem(false)).join('')}
-        ${sidebarItem(true)}
-        ${sidebarItem(false)}
+        ${Array(12).fill(sidebarItem()).join('')}
       </div>
     </div>`,
 
@@ -42,20 +39,20 @@ const SKEL = {
   'sidebar-bottom': () => `
     <div class="flex-bottom">
       <div class="skeleton-sidebar-menu">
-        ${Array(2).fill(sidebarItem(false)).join('')}
+        ${Array(2).fill(sidebarItem()).join('')}
       </div>
     </div>`,
 
   // 首页主体：2 个分类，每个分类 6 张卡片
   home: () => `
     <div class="skeleton-category">
-      <div class="skeleton-title skeleton-animation"></div>
+      <div class="skeleton-title"></div>
       <div class="row">
         ${Array(6).fill(card()).map(c => `<div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">${c}</div>`).join('')}
       </div>
     </div>
     <div class="skeleton-category">
-      <div class="skeleton-title skeleton-animation"></div>
+      <div class="skeleton-title"></div>
       <div class="row">
         ${Array(6).fill(card()).map(c => `<div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">${c}</div>`).join('')}
       </div>
@@ -66,29 +63,29 @@ const SKEL = {
     <div class="panel site-content no-hover-card card transparent">
       <div class="skeleton-site-header">
         <div class="url-img rounded-circle me-3 d-flex align-items-center justify-content-center" style="width:80px;height:80px;flex-shrink:0;position:relative;">
-          <div class="skeleton-site-logo skeleton-animation"></div>
+          <div class="skeleton-site-logo"></div>
         </div>
         <div class="skeleton-site-info">
-          <div class="skeleton-site-name skeleton-animation mb-3"></div>
-          <div class="skeleton-site-url skeleton-animation mb-2"></div>
-          <div class="skeleton-site-desc skeleton-animation mb-2"></div>
-          <div class="skeleton-site-desc short skeleton-animation mb-3"></div>
+          <div class="skeleton-site-name mb-3"></div>
+          <div class="skeleton-site-url mb-2"></div>
+          <div class="skeleton-site-desc mb-2"></div>
+          <div class="skeleton-site-desc short mb-3"></div>
           <div class="skeleton-site-tags">
-            <div class="skeleton-tag skeleton-animation mb-2"></div>
-            <div class="skeleton-tag skeleton-animation mb-2"></div>
-            <div class="skeleton-tag skeleton-animation mb-2"></div>
+            <div class="skeleton-tag mb-2"></div>
+            <div class="skeleton-tag mb-2"></div>
+            <div class="skeleton-tag mb-2"></div>
           </div>
           <div class="d-flex align-items-center mt-3">
-            <div class="skeleton-btn skeleton-animation me-2 d-inline-block"></div>
-            <div class="skeleton-btn skeleton-animation d-inline-block"></div>
+            <div class="skeleton-btn me-2 d-inline-block"></div>
+            <div class="skeleton-btn d-inline-block"></div>
           </div>
         </div>
       </div>
       <div class="skeleton-article-content">
-        <div class="skeleton-article-line long skeleton-animation mb-3"></div>
-        <div class="skeleton-article-line long skeleton-animation mb-3"></div>
-        <div class="skeleton-article-line long skeleton-animation mb-3"></div>
-        <div class="skeleton-article-line short skeleton-animation"></div>
+        <div class="skeleton-article-line long mb-3"></div>
+        <div class="skeleton-article-line long mb-3"></div>
+        <div class="skeleton-article-line long mb-3"></div>
+        <div class="skeleton-article-line short"></div>
       </div>
     </div>`,
 
@@ -96,16 +93,16 @@ const SKEL = {
   announcements: () => `
     <div class="panel site-content no-hover-card card transparent">
       <div class="card-body">
-        <div class="skeleton-title skeleton-animation mb-4"></div>
+        <div class="skeleton-title mb-4"></div>
         ${Array(4)
           .fill(0)
           .map(
             () => `
           <div class="skeleton-announcement-card">
-            <div class="skeleton-announcement-title skeleton-animation"></div>
-            <div class="skeleton-announcement-meta skeleton-animation"></div>
-            <div class="skeleton-announcement-desc skeleton-animation"></div>
-            <div class="skeleton-announcement-desc short skeleton-animation"></div>
+            <div class="skeleton-announcement-title"></div>
+            <div class="skeleton-announcement-meta"></div>
+            <div class="skeleton-announcement-desc"></div>
+            <div class="skeleton-announcement-desc short"></div>
           </div>`
           )
           .join('')}
@@ -116,16 +113,16 @@ const SKEL = {
   'announcement-detail': () => `
     <div class="panel site-content no-hover-card card transparent">
       <div class="card-body skeleton-article">
-        <div class="skeleton-article-title skeleton-animation"></div>
-        <div class="skeleton-article-meta skeleton-animation"></div>
+        <div class="skeleton-article-title"></div>
+        <div class="skeleton-article-meta"></div>
         <div class="skeleton-article-content">
-          <div class="skeleton-article-line long skeleton-animation"></div>
-          <div class="skeleton-article-line long skeleton-animation"></div>
-          <div class="skeleton-article-line short skeleton-animation"></div>
-          <div class="skeleton-article-line long skeleton-animation"></div>
-          <div class="skeleton-article-line long skeleton-animation"></div>
-          <div class="skeleton-article-line short skeleton-animation"></div>
-          <div class="skeleton-article-line long skeleton-animation"></div>
+          <div class="skeleton-article-line long"></div>
+          <div class="skeleton-article-line long"></div>
+          <div class="skeleton-article-line short"></div>
+          <div class="skeleton-article-line long"></div>
+          <div class="skeleton-article-line long"></div>
+          <div class="skeleton-article-line short"></div>
+          <div class="skeleton-article-line long"></div>
         </div>
       </div>
     </div>`,
@@ -133,11 +130,11 @@ const SKEL = {
   // 通用文章页（about / disclaimer / privacy 等静态页面也可以用）
   article: () => `
     <div class="skeleton-article">
-      <div class="skeleton-article-title skeleton-animation"></div>
-      <div class="skeleton-article-meta skeleton-animation"></div>
+      <div class="skeleton-article-title"></div>
+      <div class="skeleton-article-meta"></div>
       <div class="skeleton-article-content">
-        ${Array(7).fill('<div class="skeleton-article-line long skeleton-animation"></div>').join('')}
-        <div class="skeleton-article-line short skeleton-animation"></div>
+        ${Array(7).fill('<div class="skeleton-article-line long"></div>').join('')}
+        <div class="skeleton-article-line short"></div>
       </div>
     </div>`,
 };
