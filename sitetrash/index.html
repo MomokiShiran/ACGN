@@ -40,9 +40,16 @@
     <link rel="stylesheet" href="../assets/css/iconfont.css?ver=2.0406" />
     <link rel="stylesheet" href="../assets/css/all.min.css?ver=2.0406" />
     <link rel="stylesheet" href="../assets/css/grid.css?ver=2.0406" />
-    <link rel="stylesheet" href="../assets/css/common.css?ver=2.0406" />
-    <link rel="stylesheet" href="../assets/css/style.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/variables.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/base.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/utilities.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/header.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/sidebar.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/cards.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/footer.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/components.css?ver=2.0406" />
     <link rel="stylesheet" href="../assets/css/skeleton.css?ver=2.0406" />
+    <link rel="stylesheet" href="../assets/css/themes.css?ver=2.0406" />
   </head>
   <body class="io-grey-mode" data-page-type="other">
     <div class="page-container">
@@ -50,34 +57,10 @@
         <div class="sidebar-nav-inner">
           <div class="sidebar-logo border-bottom border-color">
             <div class="logo overflow-hidden">
-              <a href="../index.html" class="logo-expanded">
+              <a href="../">
                 <img
                   src="../assets/images/20210727002253-59085.jpeg"
                   height="40"
-                  class="sidebar-logo-light"
-                  alt="MyACGN"
-                  loading="lazy"
-                />
-                <img
-                  src="../assets/images/20210727002253-59085.jpeg"
-                  height="40"
-                  class="sidebar-logo-dark"
-                  alt="MyACGN"
-                  loading="lazy"
-                />
-              </a>
-              <a href="../index.html" class="logo-collapsed">
-                <img
-                  src="../assets/images/favicon.png"
-                  height="40"
-                  class="sidebar-logo-light"
-                  alt="MyACGN"
-                  loading="lazy"
-                />
-                <img
-                  src="../assets/images/favicon.png"
-                  height="40"
-                  class="sidebar-logo-dark"
                   alt="MyACGN"
                   loading="lazy"
                 />
@@ -85,83 +68,8 @@
             </div>
           </div>
 
-          <!-- 侧边栏骨架屏 -->
-          <div id="sidebar-skeleton" class="sidebar-menu flex-fill">
-            <div class="sidebar-scroll">
-              <div class="sidebar-menu-inner skeleton-sidebar-menu">
-                <!-- 主菜单项 - 10个 -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-
-                <!-- 工具大全项（带下拉箭头占位） -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text short skeleton-animation"></div>
-                </div>
-
-                <!-- ACG购物项 -->
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 侧边栏骨架屏 - 底部菜单 -->
-          <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color">
-            <div class="flex-bottom">
-              <div class="skeleton-sidebar-menu">
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-                <div class="skeleton-sidebar-item">
-                  <div class="skeleton-sidebar-icon skeleton-animation"></div>
-                  <div class="skeleton-sidebar-text skeleton-animation"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="sidebar-skeleton" class="sidebar-menu flex-fill" data-skeleton-type="sidebar"></div>
+          <div id="sidebar-bottom-skeleton" class="border-top py-2 border-color" data-skeleton-type="sidebar-bottom"></div>
 
           <!-- 实际侧边栏菜单 -->
           <div id="sidebar-content" class="sidebar-menu flex-fill skeleton-hidden">
@@ -193,49 +101,52 @@
         </div>
       </div>
       <div class="main-content flex-fill">
-        <div class="custom-header big sticky header">
-          <div class="custom-header-inner">
-            <a href="../index.html" class="custom-logo mobile-only">
+        <div class="navbar big sticky header">
+          <div class="navbar-inner">
+            <a href="../" class="navbar-logo mobile-only">
               <img
                 loading="lazy"
-                src="../assets/images/favicon.png"
-                class="logo-light"
-                alt="MyACGN"
-              />
-              <img
-                loading="lazy"
-                src="../assets/images/favicon.png"
-                class="logo-dark"
+                src="../assets/images/20210727002253-59085.jpeg"
+                height="40"
                 alt="MyACGN"
               />
             </a>
 
-            <div class="header-left">
-              <div class="header-mini-btn desktop-only">
+            <div class="navbar-left">
+              <div class="navbar-btn desktop-only">
                 <label>
                   <input class="mini-button" type="checkbox" checked />
                   <svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path class="line--1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
-                    <path class="line--2" d="M0 50h80"></path>
-                    <path class="line--3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
+                    <path class="line-1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
+                    <path class="line-2" d="M0 50h80"></path>
+                    <path class="line-3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
                   </svg>
                 </label>
               </div>
 
-              <div class="site-menu page-header-list"></div>
+              <a
+                href="../announcements/index.html"
+                class="btn navbar-announcement"
+                rel="announcement"
+              >
+                公告
+              </a>
+
+
+              <div class="navbar-menu navbar-list"></div>
             </div>
 
-            <div class="header-right">
-              <div class="hitokoto-container desktop-only">
-                <div class="hitokoto-text overflowClip_1">
+            <div class="navbar-right">
+              <div class="navbar-hitokoto desktop-only">
+                <div class="navbar-hitokoto-text overflowClip_1">
                   <span class="hitokoto"></span>
                 </div>
               </div>
 
-              <div class="mobile-menu mobile-only">
+              <div class="navbar-mobile mobile-only">
                 <a
                   href="javascript:/"
-                  class="sidebar-switch"
+                  class="navbar-toggle"
                   id="sidebar-toggle"
                 >
                   <i class="iconfont icon-classification icon-2x"></i>
@@ -245,79 +156,7 @@
           </div>
         </div>
 
-        <div id="skeleton-loading" class="content skeleton-container">
-          <div class="skeleton-category">
-            <div class="skeleton-title skeleton-animation"></div>
-            <div class="row">
-              <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div class="skeleton-card-inner">
-                  <div class="skeleton-card-content">
-                    <div class="skeleton-avatar skeleton-animation"></div>
-                    <div class="skeleton-text-group">
-                      <div class="skeleton-text-line skeleton-animation"></div>
-                      <div class="skeleton-text-line short skeleton-animation"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div class="skeleton-card-inner">
-                  <div class="skeleton-card-content">
-                    <div class="skeleton-avatar skeleton-animation"></div>
-                    <div class="skeleton-text-group">
-                      <div class="skeleton-text-line skeleton-animation"></div>
-                      <div class="skeleton-text-line short skeleton-animation"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div class="skeleton-card-inner">
-                  <div class="skeleton-card-content">
-                    <div class="skeleton-avatar skeleton-animation"></div>
-                    <div class="skeleton-text-group">
-                      <div class="skeleton-text-line skeleton-animation"></div>
-                      <div class="skeleton-text-line short skeleton-animation"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div class="skeleton-card-inner">
-                  <div class="skeleton-card-content">
-                    <div class="skeleton-avatar skeleton-animation"></div>
-                    <div class="skeleton-text-group">
-                      <div class="skeleton-text-line skeleton-animation"></div>
-                      <div class="skeleton-text-line short skeleton-animation"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div class="skeleton-card-inner">
-                  <div class="skeleton-card-content">
-                    <div class="skeleton-avatar skeleton-animation"></div>
-                    <div class="skeleton-text-group">
-                      <div class="skeleton-text-line skeleton-animation"></div>
-                      <div class="skeleton-text-line short skeleton-animation"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-                <div class="skeleton-card-inner">
-                  <div class="skeleton-card-content">
-                    <div class="skeleton-avatar skeleton-animation"></div>
-                    <div class="skeleton-text-group">
-                      <div class="skeleton-text-line skeleton-animation"></div>
-                      <div class="skeleton-text-line short skeleton-animation"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="skeleton-loading" class="content skeleton-container" data-skeleton-type="home"></div>
 
         <div id="sites-container" class="content skeleton-hidden">
           <h4 class="text-gray text-lg mb-4">

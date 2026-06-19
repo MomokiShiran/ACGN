@@ -4,57 +4,64 @@
  * Custom Header Components
  */
 
-/* 自定义顶部导航栏 */
-.custom-header {
+/* 顶部导航栏 */
+.navbar {
   background: var(--header-bg);
   box-shadow: var(--shadow-sm);
   transition: background-color var(--transition-normal);
 }
-.custom-header-inner {
+.navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 74px;
-  padding: 0 16px;
+  height: 60px;
+  padding: 0 12px;
+  gap: 8px;
 }
-.custom-logo {
+.navbar-logo {
   display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
 }
-.custom-logo img {
-  max-height: 40px;
+.navbar-logo img {
+  max-height: 36px;
+  width: auto;
+  display: block;
 }
-.logo-dark {
-  display: none;
-}
-.header-left {
+.navbar-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
 }
-.site-menu {
+.navbar-menu {
   margin: 0;
   padding: 0;
 }
-.header-right {
+.navbar-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 /* 一言容器 */
-.hitokoto-container {
+.navbar-hitokoto {
   display: none;
 }
-.hitokoto-text {
+.navbar-hitokoto-text {
   font-size: var(--font-size-md);
   color: var(--text-muted);
 }
 
-/* 移动端菜单按钮 */
-.mobile-menu {
+/* 移动端菜单与侧边栏开关 */
+.navbar-mobile {
   display: none;
 }
-.sidebar-switch {
+.navbar-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,82 +69,27 @@
   padding: 8px;
   color: var(--text-muted);
 }
-.sidebar-switch:hover {
+.navbar-toggle:hover {
   color: var(--primary);
 }
 
-
-
-/* 公告容器 */
-.bulletin-section {
-  margin: 0 12px 16px;
-}
-.bulletin-container {
-  background: var(--bg-surface);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  padding: 10px 16px;
-  margin: 8px 0;
-}
-.bulletin-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-muted);
-  font-size: var(--font-size-sm);
-}
-.bulletin-icon {
-  flex-shrink: 0;
-  line-height: 30px;
-}
-.bulletin-scroll {
-  flex: 1;
-  overflow: hidden;
-  height: 30px;
-  line-height: 30px;
-}
-.bulletin-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.bulletin-item {
-  white-space: nowrap;
-}
-.bulletin-link {
-  color: var(--text-muted);
-  text-decoration: none;
-}
-.bulletin-link:hover {
-  color: var(--primary);
-}
-
-/* 原有的菜单按钮样式保留 */
-.navbar-brand-light,
-.logo-light {
-  max-height: 40px;
-}
-.navbar-brand-dark,
-.logo-dark {
-  max-height: 40px;
-  display: none;
-}
-.page-header-list {
+/* 菜单按钮与 SVG 动画 */
+.navbar-list {
   margin: 0;
   padding: 0;
 }
-.header-mini-btn {
+.navbar-btn {
   height: 74px;
   width: 40px;
 }
-.header-mini-btn svg {
+.navbar-btn svg {
   margin: 0 -20px;
   height: 74px;
 }
-.header-mini-btn input[type='checkbox'] {
+.navbar-btn input[type='checkbox'] {
   display: none;
 }
-.header-mini-btn path {
+.navbar-btn path {
   fill: none;
   stroke: #888;
   stroke-width: 3;
@@ -147,121 +99,67 @@
   --offset: -38;
   stroke-dasharray: var(--length) var(--total-length);
   stroke-dashoffset: var(--offset);
-  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition:
+    all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+    stroke var(--transition-fast);
 }
-.header-mini-btn circle {
-  fill: #fff3;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-  cursor: pointer;
-}
-.header-mini-btn label {
+.navbar-btn label {
   display: block;
   top: 0;
   right: 0;
   cursor: pointer;
 }
-.header-mini-btn label:hover circle {
-  opacity: 1;
-}
-.header-mini-btn input:checked + svg .line--1,
-.header-mini-btn input:checked + svg .line--3 {
+.navbar-btn input:checked + svg .line-1,
+.navbar-btn input:checked + svg .line-3 {
   --length: 12.602325267;
 }
-.header-mini-btn .line--1,
-.header-mini-btn .line--3 {
+.navbar-btn .line-1,
+.navbar-btn .line-3 {
   --total-length: 126.38166809082031;
 }
-.header-mini-btn .line--2 {
+.navbar-btn .line-2 {
   --total-length: 80;
 }
-.header-mini-btn path {
-  transition:
-    all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
-    stroke var(--transition-fast);
-}
-.header-mini-btn label:hover path {
+.navbar-btn label:hover path {
   stroke: var(--primary);
 }
-.bulletin {
-  box-sizing: border-box;
-  height: 25px;
-  line-height: 25px;
-  overflow: hidden;
-}
 
-/* Header Big */
-.custom-header.big {
+/* 横幅区 */
+.navbar.big {
   backdrop-filter: var(--header-blur);
   background: var(--header-bg);
 }
-.header-big {
+.navbar-banner {
   position: relative;
   margin-top: -75px;
   padding: 100px 0 60px;
 }
-@media screen and (min-width: 768px) {
-  .header-big {
-    padding: 170px 0 110px;
-  }
-}
 
-/* 响应式样式 */
+/* 响应式样式：desktop-only / mobile-only 见 utilities.css */
 @media (min-width: 768px) {
-  .desktop-only {
-    display: block;
-  }
-  .mobile-only {
-    display: none;
-  }
-  .custom-logo {
-    display: none;
-  }
-  .hitokoto-container {
-    display: block;
-  }
-  .bulletin-section {
-    margin: 0 0 16px;
-  }
-  .bulletin-container {
-    padding: 8px 16px;
-  }
+  .navbar-inner { height: 74px; padding: 0 16px; }
+  .navbar-logo { display: none !important; }
+  .navbar-logo img { max-height: 40px; }
+  .navbar-hitokoto { display: block; }
+  .navbar-banner { padding: 170px 0 110px; }
 }
 @media (max-width: 767.98px) {
-  .desktop-only {
-    display: none;
-  }
-  .mobile-only {
-    display: block;
-  }
-  .custom-logo {
-    display: flex;
-  }
-  .mobile-menu {
-    display: block;
-  }
-  /* 移动端侧边栏样式 */
-  .sidebar-nav {
-    background: transparent !important;
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
-    position: fixed;
-    z-index: 1090 !important;
-    display: none;
-    padding-left: 0 !important;
-  }
-  .sidebar-nav.show {
-    display: block;
-  }
-  .sidebar-nav .sidebar-nav-inner {
-    position: fixed;
-    height: 100%;
-    transition: transform var(--transition-fast);
-    transform: translateX(-100%);
-    width: 17.5rem;
-  }
-  .sidebar-nav.show .sidebar-nav-inner {
-    transform: translateX(0);
-  }
+  .navbar-inner { height: 56px; padding: 0 12px; }
+  .navbar-logo.mobile-only,
+  a.navbar-logo { display: flex !important; }
+  .navbar-logo img { max-height: 32px; }
+  .navbar-mobile { display: block !important; }
+}
+
+/* 公告按钮 */
+.navbar-announcement {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+}
+.navbar-announcement:hover {
+  color: var(--primary);
 }

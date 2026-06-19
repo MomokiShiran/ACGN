@@ -10,7 +10,7 @@
 }
 
 .skeleton-category {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .skeleton-title {
@@ -18,15 +18,16 @@
   height: 24px;
   border-radius: 4px;
   margin-bottom: 16px;
+  background: var(--bg-gray);
 }
 
-/* 骨架屏卡片样式 */
+/* 骨架屏卡片样式 - 贴近实际 url-card 结构 */
 .skeleton-card-inner {
-  background: var(--bg-white);
-  border-radius: var(--radius-lg);
-  padding: 16px;
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  padding: 0.9375rem;
   box-shadow: var(--shadow-sm);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-4);
 }
 
 .skeleton-card-content {
@@ -37,23 +38,27 @@
 .skeleton-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  margin-right: 12px;
+  border-radius: var(--radius-md);
+  margin-right: 0.5rem;
   flex-shrink: 0;
+  background: var(--bg-gray);
 }
 
 .skeleton-text-group {
   flex: 1;
+  overflow: hidden;
 }
 
 .skeleton-text-line {
-  height: 16px;
+  height: 14px;
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  background: var(--bg-gray);
 }
 
 .skeleton-text-line.short {
   width: 60%;
+  height: 12px;
 }
 
 .skeleton-text-line:last-child {
@@ -68,16 +73,19 @@
     margin-bottom: 12px;
   }
   .skeleton-card-inner {
-    padding: 12px;
+    padding: 0.75rem;
   }
   .skeleton-avatar {
     width: 36px;
     height: 36px;
-    margin-right: 10px;
+    margin-right: 0.5rem;
   }
   .skeleton-text-line {
-    height: 14px;
-    margin-bottom: 6px;
+    height: 12px;
+    margin-bottom: 4px;
+  }
+  .skeleton-text-line.short {
+    height: 10px;
   }
   .skeleton-article {
     padding: 16px;
@@ -136,37 +144,16 @@
 
 @media (max-width: 480px) {
   .skeleton-card-inner {
-    padding: 10px;
+    padding: 0.625rem;
   }
   .skeleton-avatar {
     width: 32px;
     height: 32px;
-    margin-right: 8px;
+    margin-right: 0.5rem;
   }
   .skeleton-text-line {
-    height: 12px;
-    margin-bottom: 5px;
-  }
-}
-
-/* 骨架屏动画 */
-.skeleton-animation {
-  background: linear-gradient(
-    90deg,
-    var(--bg-gray, #f0f0f0) 25%,
-    var(--bg-light, #e0e0e0) 50%,
-    var(--bg-gray, #f0f0f0) 75%
-  );
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.5s ease-in-out infinite;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
+    height: 10px;
+    margin-bottom: 3px;
   }
 }
 
@@ -189,29 +176,29 @@
   border-radius: 4px;
   margin-right: 12px;
   flex-shrink: 0;
+  background: var(--bg-gray);
 }
 
 .skeleton-sidebar-text {
   height: 16px;
   border-radius: 4px;
   flex: 1;
-}
-
-.skeleton-sidebar-text.short {
-  width: 16px;
-  flex: none;
-  margin: auto 24px auto auto;
+  background: var(--bg-gray);
 }
 
 .skeleton-sidebar-divider {
   height: 1px;
   margin: 8px 0;
   border-radius: 1px;
+  background: var(--bg-gray);
 }
 
 /* 文章详情页骨架屏 */
 .skeleton-article {
   padding: 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 .skeleton-article-title {
@@ -219,6 +206,7 @@
   height: 32px;
   border-radius: 4px;
   margin-bottom: 16px;
+  background: var(--bg-gray);
 }
 
 .skeleton-article-meta {
@@ -226,6 +214,7 @@
   height: 16px;
   border-radius: 4px;
   margin-bottom: 32px;
+  background: var(--bg-gray);
 }
 
 .skeleton-article-content {
@@ -236,6 +225,7 @@
   height: 16px;
   border-radius: 4px;
   margin-bottom: 12px;
+  background: var(--bg-gray);
 }
 
 .skeleton-article-line.short {
@@ -248,10 +238,10 @@
 
 /* 公告列表骨架屏 */
 .skeleton-announcement-card {
-  background: var(--bg-white);
+  background: var(--bg-card);
   border-radius: var(--radius-lg);
   padding: 20px;
-  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
 }
 
 .skeleton-announcement-title {
@@ -259,6 +249,7 @@
   height: 20px;
   border-radius: 4px;
   margin-bottom: 12px;
+  background: var(--bg-gray);
 }
 
 .skeleton-announcement-meta {
@@ -266,6 +257,7 @@
   height: 14px;
   border-radius: 4px;
   margin-bottom: 16px;
+  background: var(--bg-gray);
 }
 
 .skeleton-announcement-desc {
@@ -273,6 +265,7 @@
   height: 14px;
   border-radius: 4px;
   margin-bottom: 8px;
+  background: var(--bg-gray);
 }
 
 .skeleton-announcement-desc.short {
@@ -282,6 +275,9 @@
 /* 网站详情页骨架屏 */
 .skeleton-site-detail {
   padding: 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 .skeleton-site-header {
@@ -300,6 +296,7 @@
   width: 90%;
   height: 90%;
   border-radius: var(--radius-xl);
+  background: var(--bg-gray);
 }
 
 .skeleton-site-info {
@@ -311,6 +308,7 @@
   height: 28px;
   border-radius: 4px;
   margin-bottom: 12px;
+  background: var(--bg-gray);
 }
 
 .skeleton-site-url {
@@ -318,12 +316,14 @@
   height: 16px;
   border-radius: 4px;
   margin-bottom: 12px;
+  background: var(--bg-gray);
 }
 
 .skeleton-site-desc {
   width: 100%;
   height: 16px;
   border-radius: 4px;
+  background: var(--bg-gray);
 }
 
 .skeleton-site-tags {
@@ -336,10 +336,12 @@
   width: 80px;
   height: 30px;
   border-radius: var(--radius-xl);
+  background: var(--bg-gray);
 }
 
 .skeleton-btn {
   width: 120px;
   height: 38px;
   border-radius: var(--radius-xl);
+  background: var(--bg-gray);
 }

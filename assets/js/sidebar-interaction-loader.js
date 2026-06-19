@@ -6,7 +6,6 @@ import { qs, qsa, debounce } from './utils.js';
 
 let isMin = false;
 let isMobileMin = false;
-let sidebarPopupTimeout = null;
 
 // 显示移动端侧边栏
 const showSidebar = () => {
@@ -28,7 +27,7 @@ const hideSidebar = () => {
 
 // 侧边栏最小化
 export const triggerLsmMini = (noAnim = false) => {
-  const checkbox = qs('.header-mini-btn input[type="checkbox"]');
+  const checkbox = qs('.navbar-btn input[type="checkbox"]');
   const sidebar = qs('.sidebar-nav');
   if (!sidebar) return;
 
@@ -62,7 +61,7 @@ export const triggerLsmMini = (noAnim = false) => {
 export const triggerResizable = (noAnim = false) => {
   const winWidth = window.innerWidth;
   if (!isMin && winWidth > 767.98 && winWidth < 1024) {
-    const checkbox = qs('.header-mini-btn input[type="checkbox"]');
+    const checkbox = qs('.navbar-btn input[type="checkbox"]');
     if (checkbox) checkbox.checked = false;
     triggerLsmMini(noAnim);
     isMin = true;
@@ -71,7 +70,7 @@ export const triggerResizable = (noAnim = false) => {
       isMobileMin = false;
     }
   } else if ((isMin && winWidth >= 1024) || (isMobileMin && !isMin && winWidth >= 1024)) {
-    const checkbox = qs('.header-mini-btn input[type="checkbox"]');
+    const checkbox = qs('.navbar-btn input[type="checkbox"]');
     if (checkbox) checkbox.checked = true;
     triggerLsmMini(noAnim);
     isMin = false;
@@ -106,58 +105,6 @@ export const initSidebarInteraction = () => {
   }
 
 
-
-  // 迷你侧边栏hover
-  document.addEventListener('mouseover', e => {
-    const sidebarNav = qs('.sidebar-nav.mini-sidebar');
-    if (!sidebarNav) return;
-
-    const items = qsa(
-      '.sidebar-menu ul:first-of-type > li, .flex-bottom ul:first-of-type > li',
-      sidebarNav
-    );
-    let target = null;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].contains(e.target)) {
-        target = items[i];
-        break;
-      }
-    }
-
-    if (target) {
-      const offset = target.closest('.flex-bottom') ? -3 : 2;
-      let popup = qs('.second.sidebar-popup');
-      if (!popup) {
-        popup = document.createElement('div');
-        popup.className = 'second.sidebar-popup sidebar-menu-inner text-sm';
-        popup.innerHTML = '<div></div>';
-        document.body.appendChild(popup);
-      }
-      const inner = popup.querySelector('div');
-      if (inner) inner.innerHTML = target.innerHTML;
-      popup.style.display = 'block';
-      const top = target.getBoundingClientRect().top + offset;
-      const popupHeight = popup.offsetHeight;
-      popup.style.top = `${window.innerHeight - top <= 0 ? window.innerHeight - popupHeight - 8 : top}px`;
-    }
-  });
-
-  document.addEventListener('mouseout', e => {
-    const sidebarNav = qs('.sidebar-nav.mini-sidebar');
-    const firstMenu = sidebarNav ? qs('.sidebar-menu ul:first-of-type', sidebarNav) : null;
-    const popup = qs('.second.sidebar-popup');
-
-    const overMenu = firstMenu && firstMenu.contains(e.relatedTarget);
-    const overPopup = popup && popup.contains(e.relatedTarget);
-
-    if (!overMenu && !overPopup) {
-      clearTimeout(sidebarPopupTimeout);
-      sidebarPopupTimeout = setTimeout(() => {
-        const popupEl = qs('.second.sidebar-popup');
-        if (popupEl) popupEl.style.display = 'none';
-      }, 100);
-    }
-  });
 
   // 事件监听
   document.addEventListener('click', e => {
