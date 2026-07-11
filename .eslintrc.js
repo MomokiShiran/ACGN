@@ -2,10 +2,14 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jquery: true,
+    node: true,
   },
-  extends: ['eslint:recommended', 'prettier'],
-  plugins: ['prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    'prettier',
+  ],
+  plugins: ['vue', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -14,11 +18,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'no-undef': 'warn',
     'no-unused-vars': 'warn',
-    'no-console': 'off',
+    'no-console': 'warn',
+    'vue/multi-word-component-names': 'off',
   },
-  globals: {
-    jQuery: 'readonly',
-    $: 'readonly',
-    bootstrap: 'readonly',
-  },
-};
+}

@@ -1,13 +1,16 @@
 {
   "name": "acgn",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "description": "ACG二次元导航盒子",
-  "main": "index.html",
+  "type": "module",
   "scripts": {
-    "lint": "eslint assets/js/*.js",
-    "lint:fix": "eslint assets/js/*.js --fix",
-    "format": "prettier --write '**/*.{js,json,md,css,scss,html}'",
-    "format:check": "prettier --check '**/*.{js,json,md,css,scss,html}'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write 'src/**/*.{vue,js,json,css}'",
+    "format:check": "prettier --check 'src/**/*.{vue,js,json,css}'"
   },
   "keywords": [
     "acg",
@@ -16,8 +19,16 @@
   ],
   "author": "",
   "license": "AGPL-3.0",
+  "dependencies": {
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0",
+    "pinia": "^3.0.0"
+  },
   "devDependencies": {
+    "vite": "^5.4.0",
+    "@vitejs/plugin-vue": "^5.2.0",
     "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "prettier": "^3.2.5"
