@@ -7,7 +7,7 @@
         <div class="text-muted text-xs mb-4">
           {{ announcement.date }} · {{ announcement.author }} · {{ announcement.views }} 浏览
         </div>
-        <div class="announcement-content" v-html="announcement.content"></div>
+        <div class="announcement-content" style="white-space: pre-line">{{ announcement.content }}</div>
       </div>
     </div>
   </div>

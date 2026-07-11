@@ -17,5 +17,6 @@ import TheNavbar from './components/layout/TheNavbar.vue'
 import TheFooter from './components/layout/TheFooter.vue'
 import { useSidebar } from './composables/useSidebar'
 
-useSidebar()
+const { initInteraction } = useSidebar()
+initInteraction()
 </script>
