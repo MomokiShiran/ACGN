@@ -27,14 +27,14 @@
                   </a>
                   <ul class="sidebar-submenu">
                     <li v-for="sub in cat.children" :key="sub.id" class="sidebar-item">
-                      <router-link :to="'/#' + sub.id" class="sidebar-menu-link">
+                      <router-link :to="{ path: '/', hash: '#' + sub.id }" class="sidebar-menu-link">
                         <span class="sidebar-menu-text">{{ sub.name }}</span>
                       </router-link>
                     </li>
                   </ul>
                 </li>
                 <li v-else class="sidebar-item">
-                  <router-link :to="'/#' + cat.id" class="sidebar-menu-link">
+                  <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
                     <i :class="cat.icon || 'fas fa-link'" class="icon-fw icon-lg me-2"></i>
                     <span class="sidebar-menu-text">{{ cat.name }}</span>
                   </router-link>
