@@ -7,7 +7,7 @@ const iconMap = Object.fromEntries(
 
 export function resolveIcon(icon) {
   if (!icon) return defaultIcon
-  if (/^(?:https?:)?\/\//.test(icon)) return icon
+  if (/^(?:https?:)?\/\//.test(icon) || icon.startsWith('/')) return icon
   return iconMap[icon.split('/').pop()] || defaultIcon
 }
 
