@@ -22,12 +22,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { useFriendsStore } from '@/stores/friends'
 
 const friendsStore = useFriendsStore()
-
-onMounted(() => {
-  friendsStore.fetchLinks()
-})
 </script>

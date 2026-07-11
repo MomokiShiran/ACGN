@@ -26,12 +26,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { useAnnouncementsStore } from '@/stores/announcements'
 
 const store = useAnnouncementsStore()
-
-onMounted(() => {
-  store.fetchAnnouncements()
-})
 </script>

@@ -22,8 +22,7 @@ const route = useRoute()
 const store = useAnnouncementsStore()
 const announcement = ref(null)
 
-onMounted(async () => {
-  await store.fetchAnnouncements()
+onMounted(() => {
   announcement.value = store.findById(route.params.id)
   if (announcement.value) {
     document.title = `${announcement.value.title} | MyACGN`

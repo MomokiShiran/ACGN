@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import sitesData from '@data/sites.json'
-import sitetrashData from '@data/sitetrash.json'
+import sitesData from '@/data/sites.json'
+import sitetrashData from '@/data/sitetrash.json'
 
 export const useSitesStore = defineStore('sites', () => {
   const categories = ref(sitesData.categories)

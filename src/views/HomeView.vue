@@ -28,16 +28,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useSitesStore } from '@/stores/sites'
-import { useFriendsStore } from '@/stores/friends'
 import SearchBar from '@/components/SearchBar.vue'
 import CategorySection from '@/components/CategorySection.vue'
 import FriendLinks from '@/components/FriendLinks.vue'
 import SiteCard from '@/components/SiteCard.vue'
 
 const store = useSitesStore()
-const friendsStore = useFriendsStore()
 const keyword = ref('')
 
 const searchResults = computed(() => {
@@ -52,8 +50,4 @@ const handleSearch = (val) => {
 const clearSearch = () => {
   keyword.value = ''
 }
-
-onMounted(() => {
-  friendsStore.fetchLinks()
-})
 </script>
