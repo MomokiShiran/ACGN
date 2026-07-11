@@ -12,7 +12,7 @@
           "description": "全年龄动漫图片，显示403说明你IP被封了。",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/aniimg.com.png",
+          "icon": "./aniimg.com.png",
           "disabledAt": "2026-05-14 00:00:00",
           "createdAt": "2025-01-01 00:00:00"
         },

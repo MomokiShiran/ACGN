@@ -38,6 +38,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSitesStore } from '@/stores/sites'
+import { resolveIcon, defaultIcon } from '@/composables/useSiteIcon'
 
 const route = useRoute()
 const store = useSitesStore()
@@ -45,27 +46,14 @@ const store = useSitesStore()
 const site = ref(null)
 const categoryName = ref('')
 
-import defaultIcon from '@/assets/images/favicon.png'
-
-const DEFAULT_ICON = defaultIcon
-
-const faviconUrl = computed(() => {
-  if (!site.value?.icon) return DEFAULT_ICON
-  if (/^(?:https?:)?\/\//.test(site.value.icon) || site.value.icon.startsWith('/')) {
-    return site.value.icon
-  }
-  return '/' + site.value.icon.replace(/^\.\/?/, '')
-})
+const faviconUrl = computed(() => resolveIcon(site.value?.icon))
+const onImgError = (e) => { e.target.src = defaultIcon }
 
 const qrTooltip = computed(() => {
   if (!site.value?.url) return ''
   const url = encodeURIComponent(site.value.url)
   return `<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${url}' width='150'>`
 })
-
-const onImgError = (e) => {
-  e.target.src = DEFAULT_ICON
-}
 
 onMounted(() => {
   const id = route.query.id

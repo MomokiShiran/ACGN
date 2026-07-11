@@ -12,7 +12,7 @@
           "description": "壁纸分享平台，提供高质量二次元壁纸下载",
           "category": "term-2",
           "isNew": true,
-          "icon": "assets/images/sites/www.2dwallpapers.com.png",
+          "icon": "./www.2dwallpapers.com.png",
           "disabledAt": "",
           "createdAt": "2026-05-11 00:00:00"
         },
@@ -23,7 +23,7 @@
           "description": "pixiv帮助中文站",
           "category": "term-2",
           "isNew": true,
-          "icon": "assets/images/sites/help.pixiv.digital.png",
+          "icon": "./help.pixiv.digital.png",
           "disabledAt": "",
           "createdAt": "2026-05-08 00:00:00"
         },
@@ -34,7 +34,7 @@
           "description": "壁纸站，需登录查看全部内容，图片较多",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/wallhaven.cc.png",
+          "icon": "./wallhaven.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -45,7 +45,7 @@
           "description": "某个人站，每天会搬运P站排名前50图",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/pic.tjsky.net.png",
+          "icon": "./pic.tjsky.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -56,7 +56,7 @@
           "description": "18R很全动漫图片，显示403说明你IP被封了。",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/hentai-img.com.png",
+          "icon": "./hentai-img.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -67,7 +67,7 @@
           "description": "全年龄的动漫图片和壁纸",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/anime-pictures.net.png",
+          "icon": "./anime-pictures.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -78,7 +78,7 @@
           "description": "日本著名i社角色卡下载站",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/illusioncards.booru.org.png",
+          "icon": "./illusioncards.booru.org.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -90,7 +90,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "需要注册账号才能浏览所有图片，游客模式受限浏览。",
-          "icon": "assets/images/sites/chan.sankakucomplex.com.png",
+          "icon": "./chan.sankakucomplex.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -102,7 +102,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "Safebooru",
-          "icon": "assets/images/sites/safebooru.org.png",
+          "icon": "./safebooru.org.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -114,7 +114,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "yande.re",
-          "icon": "assets/images/sites/yande.re.png",
+          "icon": "./yande.re.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -126,7 +126,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "Danbooru",
-          "icon": "assets/images/sites/danbooru.donmai.us.png",
+          "icon": "./danbooru.donmai.us.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -138,7 +138,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "Gelbooru",
-          "icon": "assets/images/sites/gelbooru.com.png",
+          "icon": "./gelbooru.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -150,7 +150,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "TBIB",
-          "icon": "assets/images/sites/tbib.org.png",
+          "icon": "./tbib.org.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -162,7 +162,7 @@
           "category": "term-2",
           "isNew": false,
           "detail": "konachan",
-          "icon": "assets/images/sites/konachan.com.png",
+          "icon": "./konachan.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -173,7 +173,7 @@
           "description": "pixiv是提供插画等作品的投稿、阅览服务的「插画交流网站」。这里有各种各样不同风格的投稿作品，我们还会举办官方、用户企画的各种比赛。",
           "category": "term-2",
           "isNew": false,
-          "icon": "assets/images/sites/www.pixiv.net.png",
+          "icon": "./www.pixiv.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }
@@ -202,7 +202,7 @@
           "description": "无广告，免费无须注册，高速播放，当季动画同步更新",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/kimani.tv.png",
+          "icon": "./kimani.tv.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -213,7 +213,7 @@
           "description": "画质一般，内容较全",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/eacg.net.png",
+          "icon": "./eacg.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -224,7 +224,7 @@
           "description": "某不知名小站，但更新勤快",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/www.opacg.com.png",
+          "icon": "./www.opacg.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -235,7 +235,7 @@
           "description": "需要登入后才能观看，实时更新新番！",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/ebb.io.png",
+          "icon": "./ebb.io.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -247,7 +247,7 @@
           "category": "term-3",
           "isNew": false,
           "detail": "仅限台湾观看",
-          "icon": "assets/images/sites/ani.gamer.com.tw.png",
+          "icon": "./ani.gamer.com.tw.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -259,7 +259,7 @@
           "category": "term-3",
           "isNew": false,
           "detail": "这个应该是盗版网站，创始人都被抓了。",
-          "icon": "assets/images/sites/www.dilidili8.cc.png",
+          "icon": "./www.dilidili8.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -270,7 +270,7 @@
           "description": "日本bilibili",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/anime.nicovideo.jp.png",
+          "icon": "./anime.nicovideo.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -281,7 +281,7 @@
           "description": "AcFun弹幕视频网 - 认真你就输啦 (?ω?)ノ- ( ゜- ゜)つロ",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/www.acfun.cn.png",
+          "icon": "./www.acfun.cn.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -292,7 +292,7 @@
           "description": "bilibili是国内知名的视频弹幕网站，这里有最及时的动漫新番，最棒的ACG氛围，最有创意的Up主。大家可以在这里找到许多欢乐。",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/www.bilibili.com.png",
+          "icon": "./www.bilibili.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -303,7 +303,7 @@
           "description": "AGE动漫专注于整理高质量动漫资源，提供百度网盘下载。",
           "category": "term-3",
           "isNew": false,
-          "icon": "assets/images/sites/www.agefans.cc.png",
+          "icon": "./www.agefans.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }
@@ -321,7 +321,7 @@
           "description": "漫画站",
           "category": "term-12",
           "isNew": true,
-          "icon": "assets/images/sites/mangacopy.com.png",
+          "icon": "./mangacopy.com.png",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -333,7 +333,7 @@
           "category": "term-12",
           "isNew": false,
           "detail": "感谢开心就好的投稿",
-          "icon": "assets/images/sites/www.52hah.com.png",
+          "icon": "./www.52hah.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -344,7 +344,7 @@
           "description": "更新较快，加载时间短，包含国漫日漫",
           "category": "term-12",
           "isNew": false,
-          "icon": "assets/images/sites/www.colamanhua.com.png",
+          "icon": "./www.colamanhua.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -356,7 +356,7 @@
           "category": "term-12",
           "isNew": false,
           "detail": "免费无广告的漫画平台（ps：有时候可能打不开。------感谢由德皇威廉九世提供该网站",
-          "icon": "assets/images/sites/www.iewoai.com.png",
+          "icon": "./www.iewoai.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -367,7 +367,7 @@
           "description": "可以找到相对齐全的冷门漫画或限制级漫画，但有的不能看，有的没更新",
           "category": "term-12",
           "isNew": false,
-          "icon": "assets/images/sites/www.2animx.com.png",
+          "icon": "./www.2animx.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -379,7 +379,7 @@
           "category": "term-12",
           "isNew": false,
           "detail": "备份：https://tw.manhuagui.com/",
-          "icon": "assets/images/sites/www.manhuagui.com.png",
+          "icon": "./www.manhuagui.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -390,7 +390,7 @@
           "description": "含日漫，更新很频繁，和正版速度基本一致",
           "category": "term-12",
           "isNew": false,
-          "icon": "assets/images/sites/www.guoman8.cc.png",
+          "icon": "./www.guoman8.cc.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -401,7 +401,7 @@
           "description": "部分长久未更新",
           "category": "term-12",
           "isNew": false,
-          "icon": "assets/images/sites/www.mangabz.com.png",
+          "icon": "./www.mangabz.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -412,7 +412,7 @@
           "description": "需要开全局代理，部分漫画更新很慢",
           "category": "term-12",
           "isNew": false,
-          "icon": "assets/images/sites/www.dm5.com.png",
+          "icon": "./www.dm5.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -423,7 +423,7 @@
           "description": "B站正版漫画",
           "category": "term-12",
           "isNew": false,
-          "icon": "assets/images/sites/manga.bilibili.com.png",
+          "icon": "./manga.bilibili.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -435,7 +435,7 @@
           "category": "term-12",
           "isNew": false,
           "detail": "描述：搜漫连接了全网多个资源丰富的漫画源，为漫画爱好者提供最新最全的漫画资源搜索服务，带你享受一站式看遍全网漫画的极致体验。",
-          "icon": "assets/images/sites/www.soman.com.png",
+          "icon": "./www.soman.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -446,7 +446,7 @@
           "description": "漫画平台，包含多种语言版本的漫画内容",
           "category": "term-12",
           "isNew": true,
-          "icon": "assets/images/sites/www.webtoons.com.ico",
+          "icon": "./www.webtoons.com.ico",
           "disabledAt": "",
           "createdAt": "2026-05-17 00:00:00"
         }
@@ -475,7 +475,7 @@
           "description": "松鼠症倉庫【發佈頁】",
           "category": "term-5",
           "isNew": false,
-          "icon": "assets/images/sites/riven.cfd.png",
+          "icon": "./riven.cfd.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -486,7 +486,7 @@
           "description": "日韩本子都有，可预览",
           "category": "term-5",
           "isNew": false,
-          "icon": "assets/images/sites/www.wnacg.com.png",
+          "icon": "./www.wnacg.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -498,7 +498,7 @@
           "category": "term-5",
           "isNew": false,
           "detail": "nhentai安卓客户端：https://github.com/Dar9586/NClientV2",
-          "icon": "assets/images/sites/nhentai.net.png",
+          "icon": "./nhentai.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -510,7 +510,7 @@
           "category": "term-5",
           "isNew": false,
           "detail": "不要用日本IP。否则上不去",
-          "icon": "assets/images/sites/jmcomic1.bet.png",
+          "icon": "./jmcomic1.bet.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -521,7 +521,7 @@
           "description": "英文界面，本子较全",
           "category": "term-5",
           "isNew": false,
-          "icon": "assets/images/sites/asmhentai.com.png",
+          "icon": "./asmhentai.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -533,7 +533,7 @@
           "category": "term-5",
           "isNew": false,
           "detail": "ipb_member_id=5113267",
-          "icon": "assets/images/sites/exhentai.org.png",
+          "icon": "./exhentai.org.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -563,7 +563,7 @@
           "category": "term-8",
           "isNew": false,
           "detail": "在线日本动漫里番",
-          "icon": "assets/images/sites/latinohentai.com.png",
+          "icon": "./latinohentai.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -575,7 +575,7 @@
           "category": "term-8",
           "isNew": false,
           "detail": "--------感谢匿名用户提供此网站",
-          "icon": "assets/images/sites/www.acgndmku.com.png",
+          "icon": "./www.acgndmku.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -586,7 +586,7 @@
           "description": "里番全汉化，画质清晰，无需登录",
           "category": "term-8",
           "isNew": false,
-          "icon": "assets/images/sites/h-ciyuan.com.png",
+          "icon": "./h-ciyuan.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -597,7 +597,7 @@
           "description": "无广告|英文字幕",
           "category": "term-8",
           "isNew": false,
-          "icon": "assets/images/sites/hentai.tv.png",
+          "icon": "./hentai.tv.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -608,7 +608,7 @@
           "description": "💡最高1080P|英文字幕",
           "category": "term-8",
           "isNew": false,
-          "icon": "assets/images/sites/muchohentai.com.png",
+          "icon": "./muchohentai.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -619,7 +619,7 @@
           "description": "英文字幕|很全|画质无法调，学英语的可以看",
           "category": "term-8",
           "isNew": false,
-          "icon": "assets/images/sites/hentaimama.io.png",
+          "icon": "./hentaimama.io.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -630,7 +630,7 @@
           "description": "中文繁体字幕，连下个月预告都有",
           "category": "term-8",
           "isNew": false,
-          "icon": "assets/images/sites/avbebe.com.png",
+          "icon": "./avbebe.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -642,7 +642,7 @@
           "category": "term-8",
           "isNew": false,
           "detail": "需要港澳台ip的科学上网",
-          "icon": "assets/images/sites/hanime1.me.png",
+          "icon": "./hanime1.me.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -654,7 +654,7 @@
           "category": "term-8",
           "isNew": false,
           "detail": "广告有点多。。。不推荐",
-          "icon": "assets/images/sites/hentaianimezone.com.png",
+          "icon": "./hentaianimezone.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }
@@ -670,7 +670,7 @@
           "name": "ANIBT",
           "url": "https://anibt.net/",
           "description": "动漫资源站",
-          "icon": "assets/images/sites/anibt.net.png",
+          "icon": "./anibt.net.png",
           "category": "term-6",
           "isNew": true,
           "disabledAt": "",
@@ -683,7 +683,7 @@
           "description": "二次元资源分享",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/aqua-aria.company.png",
+          "icon": "./aqua-aria.company.png",
           "disabledAt": "",
           "createdAt": "2026-05-07 00:00:00"
         },
@@ -695,7 +695,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "萌萌御所，一个致力于优秀ACG资源的整理发布平台，搜集整理各类里番、Galgame、同人音声、同人动画、音乐，萌图，动漫等二次元资源。-------由匿名用户提供。",
-          "icon": "assets/images/sites/mmys.us.ico",
+          "icon": "./mmys.us.ico",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -706,7 +706,7 @@
           "description": "免费ACG综合资源，但需要做任务赚积分下载",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/www.vikacg.com.png",
+          "icon": "./www.vikacg.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -717,7 +717,7 @@
           "description": "建议英语四级，ACG综合资源下载",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/f95zone.to.png",
+          "icon": "./f95zone.to.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -729,7 +729,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "萌新指南",
-          "icon": "assets/images/sites/www.hentaiclub.net.png",
+          "icon": "./www.hentaiclub.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -740,7 +740,7 @@
           "description": "本子里番色图游戏综合资源博客",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/i.iacg.site.png",
+          "icon": "./i.iacg.site.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -751,7 +751,7 @@
           "description": "18R二次元3d游戏下载|Ads下载|需要梯子|",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/hentaibanchi.com.png",
+          "icon": "./hentaibanchi.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -762,7 +762,7 @@
           "description": "早期核心gal玩家聚集地",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/bbs.sumisora.net.png",
+          "icon": "./bbs.sumisora.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -773,7 +773,7 @@
           "description": "Key社游戏专门论坛",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/www.keyfc.net.png",
+          "icon": "./www.keyfc.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -784,7 +784,7 @@
           "description": "论坛出了几位良心的汉化者而出名",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/bbs2.seikuu.com.png",
+          "icon": "./bbs2.seikuu.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -795,7 +795,7 @@
           "description": "综合类玩家社区",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/bbs.nga.cn.png",
+          "icon": "./bbs.nga.cn.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -806,7 +806,7 @@
           "description": "小众综合ACG资源网站",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/hmoe.top.png",
+          "icon": "./hmoe.top.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -817,7 +817,7 @@
           "description": "人气很高，论坛非常活跃",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/www.tsdm39.com.png",
+          "icon": "./www.tsdm39.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -828,7 +828,7 @@
           "description": "以发布冷门日系游戏为主，邀请注册制度",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/gmgard.com.png",
+          "icon": "./gmgard.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -839,7 +839,7 @@
           "description": "面码藏宝库，现阶段还不需要邀请码。",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/www.acgcbk.vip.png",
+          "icon": "./www.acgcbk.vip.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -850,7 +850,7 @@
           "description": "日本著名原创R18-MMD鉴赏交流平台",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/ecchi.iwara.tv.png",
+          "icon": "./ecchi.iwara.tv.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -862,7 +862,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "密码是⑨，手打无效，要复制粘贴。",
-          "icon": "assets/images/sites/blog.reimu.net.png",
+          "icon": "./blog.reimu.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -874,7 +874,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "特殊码：https://www.ymgal.game/specialcode",
-          "icon": "assets/images/sites/www.ymgal.games.png",
+          "icon": "./www.ymgal.games.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -886,7 +886,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "已关闭注册。",
-          "icon": "assets/images/sites/www.spring-plus.net.png",
+          "icon": "./www.spring-plus.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -898,7 +898,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "2DJGAME-MikoconEntrance",
-          "icon": "assets/images/sites/bbs4.2djgame.net.png",
+          "icon": "./bbs4.2djgame.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -910,7 +910,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "不要用日本IP。",
-          "icon": "assets/images/sites/www.mikocon.com.png",
+          "icon": "./www.mikocon.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -922,7 +922,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "FapForFun",
-          "icon": "assets/images/sites/fapforfun.net.png",
+          "icon": "./fapforfun.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -933,7 +933,7 @@
           "description": "绅士仓库",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/cangku.moe.png",
+          "icon": "./cangku.moe.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -944,7 +944,7 @@
           "description": "绯月是一个以动漫、游戏、音乐、绘画等为主题的论坛。",
           "category": "term-6",
           "isNew": false,
-          "icon": "assets/images/sites/bbs.kfmax.com.png",
+          "icon": "./bbs.kfmax.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -956,7 +956,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "ZODGAME,zodgame,游戏论坛,illusion,gal,汉化",
-          "icon": "assets/images/sites/zodgame.xyz.png",
+          "icon": "./zodgame.xyz.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -968,7 +968,7 @@
           "category": "term-6",
           "isNew": false,
           "detail": "对应的冒牌货：https://llss.at/wp/",
-          "icon": "assets/images/sites/hacg.me.png",
+          "icon": "./hacg.me.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -979,7 +979,7 @@
           "description": "ACGN综合论坛，包含资源分享、讨论区等",
           "category": "term-6",
           "isNew": true,
-          "icon": "assets/images/sites/bbs.imoutolove.me.ico",
+          "icon": "./bbs.imoutolove.me.ico",
           "disabledAt": "",
           "createdAt": "2026-05-17 00:00:00"
         }
@@ -997,7 +997,7 @@
           "description": "导航处有时间馆功能，很有特色",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/gallibrary.pw.png",
+          "icon": "./gallibrary.pw.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1008,7 +1008,7 @@
           "description": "手办维基|手办大全",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/www.hpoi.net.png",
+          "icon": "./www.hpoi.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1019,7 +1019,7 @@
           "description": "番剧图书馆（包含里番），英文界面",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/myanimelist.net.png",
+          "icon": "./myanimelist.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1031,7 +1031,7 @@
           "category": "term-9",
           "isNew": false,
           "detail": "关于",
-          "icon": "assets/images/sites/steamgalgame.com.png",
+          "icon": "./steamgalgame.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1042,7 +1042,7 @@
           "description": "萌系游戏大赏是日本一个评选成人向美少女游戏的奖项，由萌系游戏大赏实行委员会主办。",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/moe-gameaward.com.png",
+          "icon": "./moe-gameaward.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1054,7 +1054,7 @@
           "category": "term-9",
           "isNew": false,
           "detail": "原作者链接：https://home.gamer.com.tw/creationDetail.php?sn=1972708",
-          "icon": "assets/images/sites/docs.google.com.png",
+          "icon": "./docs.google.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1066,7 +1066,7 @@
           "category": "term-9",
           "isNew": false,
           "detail": "中文GalGame资料站",
-          "icon": "assets/images/sites/www.cngal.org.png",
+          "icon": "./www.cngal.org.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1078,7 +1078,7 @@
           "category": "term-9",
           "isNew": false,
           "detail": "Bangumi番组计划：专注于动漫、音乐、游戏领域，帮助你分享、发现与结识同好的ACG网络",
-          "icon": "assets/images/sites/bgm.tv.png",
+          "icon": "./bgm.tv.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1090,7 +1090,7 @@
           "category": "term-9",
           "isNew": false,
           "detail": "目前科学上网可以进去",
-          "icon": "assets/images/sites/erogamescape.dyndns.org.png",
+          "icon": "./erogamescape.dyndns.org.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1101,7 +1101,7 @@
           "description": "欧美著名acg音乐图书馆",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/vgmdb.net.png",
+          "icon": "./vgmdb.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1112,7 +1112,7 @@
           "description": "欧美著名日本动漫图书馆&amp;评分网站",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/anidb.net.png",
+          "icon": "./anidb.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1124,7 +1124,7 @@
           "category": "term-9",
           "isNew": false,
           "detail": "全称：thevisualnoveldatabase",
-          "icon": "assets/images/sites/vndb.org.ico",
+          "icon": "./vndb.org.ico",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1135,7 +1135,7 @@
           "description": "著名galgame日文版攻略和存档大全",
           "category": "term-9",
           "isNew": false,
-          "icon": "assets/images/sites/seiya-saiga.com.png",
+          "icon": "./seiya-saiga.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }
@@ -1153,7 +1153,7 @@
           "description": "Galgame搜索站",
           "category": "term-7",
           "isNew": true,
-          "icon": "assets/images/sites/searchgal.homes.svg",
+          "icon": "./searchgal.homes.svg",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -1164,7 +1164,7 @@
           "description": "Galgame资源站",
           "category": "term-7",
           "isNew": true,
-          "icon": "assets/images/sites/www.hikarinagi.org.png",
+          "icon": "./www.hikarinagi.org.png",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -1175,7 +1175,7 @@
           "description": "Galgame资源站",
           "category": "term-7",
           "isNew": true,
-          "icon": "assets/images/sites/www.kungal.com.ico",
+          "icon": "./www.kungal.com.ico",
           "disabledAt": "",
           "createdAt": "2026-05-14 00:00:00"
         },
@@ -1186,7 +1186,7 @@
           "description": "提供GalGame汉硬直链下载，资源较多",
           "category": "term-7",
           "isNew": false,
-          "icon": "assets/images/sites/lzacg.one.png",
+          "icon": "./lzacg.one.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1197,7 +1197,7 @@
           "description": "人气较小，但更新勤快",
           "category": "term-7",
           "isNew": false,
-          "icon": "assets/images/sites/www.gogalgame.com.png",
+          "icon": "./www.gogalgame.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1208,7 +1208,7 @@
           "description": "含有原创和转载的机翻。",
           "category": "term-7",
           "isNew": false,
-          "icon": "assets/images/sites/acgngames.net.png",
+          "icon": "./acgngames.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1220,7 +1220,7 @@
           "category": "term-7",
           "isNew": false,
           "detail": "带站长入坑之站。弟弟yyds",
-          "icon": "assets/images/sites/www.ttloli.com.png",
+          "icon": "./www.ttloli.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1232,7 +1232,7 @@
           "category": "term-7",
           "isNew": false,
           "detail": "需要科学上网（全局）。",
-          "icon": "assets/images/sites/www.fufugal.com.png",
+          "icon": "./www.fufugal.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }
@@ -1260,7 +1260,7 @@
           "description": "支持下载轻小说epub版和漫画",
           "category": "term-18",
           "isNew": false,
-          "icon": "assets/images/sites/vol.moe.png",
+          "icon": "./vol.moe.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1271,7 +1271,7 @@
           "description": "日语正版轻小说在线阅读",
           "category": "term-18",
           "isNew": false,
-          "icon": "assets/images/sites/kakuyomu.jp.png",
+          "icon": "./kakuyomu.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1282,7 +1282,7 @@
           "description": "付费正版日轻小说",
           "category": "term-18",
           "isNew": false,
-          "icon": "assets/images/sites/book.sfacg.com.png",
+          "icon": "./book.sfacg.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1293,7 +1293,7 @@
           "description": "国内创办较早的轻小说纯原创平台",
           "category": "term-18",
           "isNew": false,
-          "icon": "assets/images/sites/www.linovel.net.png",
+          "icon": "./www.linovel.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1304,7 +1304,7 @@
           "description": "国内著名轻小说阅读及下载的文库",
           "category": "term-18",
           "isNew": false,
-          "icon": "assets/images/sites/www.wenku8.net.png",
+          "icon": "./www.wenku8.net.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1333,7 +1333,7 @@
           "category": "term-4",
           "isNew": false,
           "detail": "【推荐】新番资源推送速度快----由MGood投稿推荐",
-          "icon": "assets/images/sites/fitacg.com.png",
+          "icon": "./fitacg.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1354,7 +1354,7 @@
           "description": "部分番剧有4K资源，非常齐全",
           "category": "term-4",
           "isNew": false,
-          "icon": "assets/images/sites/share.acgnx.se.png",
+          "icon": "./share.acgnx.se.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1375,7 +1375,7 @@
           "description": "知名动漫bt下载资源站",
           "category": "term-4",
           "isNew": false,
-          "icon": "assets/images/sites/acg.rip.png",
+          "icon": "./acg.rip.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1395,7 +1395,7 @@
           "url": "https://www.dongmanhuayuan.com",
           "description": "动漫下载资源站",
           "category": "term-4",
-          "icon": "assets/images/sites/dongmanhuayuan.com.ico",
+          "icon": "./dongmanhuayuan.com.ico",
           "isNew": true,
           "disabledAt": "",
           "createdAt": "2026-05-26 00:00:00"
@@ -1417,7 +1417,7 @@
           "description": "蜜柑计划：新一代的动漫下载站",
           "category": "term-4",
           "isNew": false,
-          "icon": "assets/images/sites/mikanani.me.png",
+          "icon": "./mikanani.me.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1438,7 +1438,7 @@
           "description": "动漫花园资源网是一个动漫爱好者交流的平台,提供最及时,最全面的动画,漫画,动漫音乐,动漫下载,BT,ED,动漫游戏,资讯,分享,交流,讨论.",
           "category": "term-4",
           "isNew": false,
-          "icon": "assets/images/sites/dmhy.anoneko.com.png",
+          "icon": "./dmhy.anoneko.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }
@@ -1456,7 +1456,7 @@
           "description": "日本官方最全漫画电子版购买平台",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/www.cmoa.jp.png",
+          "icon": "./www.cmoa.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1467,7 +1467,7 @@
           "description": "日本知名ACG网上购物平台",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/www.digiket.com.png",
+          "icon": "./www.digiket.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1478,7 +1478,7 @@
           "description": "日本著名中古店",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/www.suruga-ya.jp.png",
+          "icon": "./www.suruga-ya.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1489,7 +1489,7 @@
           "description": "日本知名ACG网上购物平台",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/a.sofmap.com.png",
+          "icon": "./a.sofmap.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1500,7 +1500,7 @@
           "description": "日本知名ACG网上购物平台",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/gyutto.com.png",
+          "icon": "./gyutto.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1511,7 +1511,7 @@
           "description": "以手办为主的网购平台",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/www.amiami.jp.png",
+          "icon": "./www.amiami.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1522,7 +1522,7 @@
           "description": "虎の穴，日本著名ACG购买平台",
           "category": "term-14",
           "isNew": false,
-          "icon": "assets/images/sites/ec.toranoana.jp.png",
+          "icon": "./ec.toranoana.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1534,7 +1534,7 @@
           "category": "term-14",
           "isNew": false,
           "detail": "不支持国内支付",
-          "icon": "assets/images/sites/www.melonbooks.co.jp.png",
+          "icon": "./www.melonbooks.co.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1546,7 +1546,7 @@
           "category": "term-14",
           "isNew": false,
           "detail": "不支持国内支付。",
-          "icon": "assets/images/sites/games.dmm.co.jp.png",
+          "icon": "./games.dmm.co.jp.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1558,7 +1558,7 @@
           "category": "term-14",
           "isNew": false,
           "detail": "支持支付宝，不支持微信支付。",
-          "icon": "assets/images/sites/www.dlsite.com.png",
+          "icon": "./www.dlsite.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         },
@@ -1570,7 +1570,7 @@
           "category": "term-14",
           "isNew": false,
           "detail": "不支持支付宝/微信支付。",
-          "icon": "assets/images/sites/www.getchu.com.png",
+          "icon": "./www.getchu.com.png",
           "disabledAt": "",
           "createdAt": "2025-01-01 00:00:00"
         }

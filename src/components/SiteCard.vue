@@ -43,6 +43,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import { resolveIcon, defaultIcon } from '@/composables/useSiteIcon'
 
 const props = defineProps({
   site: {
@@ -51,19 +52,6 @@ const props = defineProps({
   },
 })
 
-import defaultIcon from '@/assets/images/favicon.png'
-
-const DEFAULT_ICON = defaultIcon
-
-const iconUrl = computed(() => {
-  if (!props.site.icon) return DEFAULT_ICON
-  if (/^(?:https?:)?\/\//.test(props.site.icon) || props.site.icon.startsWith('/')) {
-    return props.site.icon
-  }
-  return '/' + props.site.icon.replace(/^\.\/?/, '')
-})
-
-const onImgError = (e) => {
-  e.target.src = DEFAULT_ICON
-}
+const iconUrl = computed(() => resolveIcon(props.site.icon))
+const onImgError = (e) => { e.target.src = defaultIcon }
 </script>
