@@ -1,24 +1,39 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 const isMobileOpen = ref(false)
 const isMinimized = ref(false)
-const isMobileMin = ref(false)
+const expandedSubs = reactive(new Set())
+
+let sidebarEl = null
+let checkboxEl = null
 
 export function useSidebar() {
+  const registerSidebar = (el) => {
+    sidebarEl = el
+  }
+
+  const registerCheckbox = (el) => {
+    checkboxEl = el
+  }
+
+  const toggleSub = (id) => {
+    if (expandedSubs.has(id)) {
+      expandedSubs.delete(id)
+    } else {
+      expandedSubs.add(id)
+    }
+  }
+
   const show = () => {
-    const sidebar = document.querySelector('.sidebar')
-    if (sidebar) {
-      sidebar.classList.add('show')
-      document.body.style.overflow = 'hidden'
+    if (sidebarEl) {
+      sidebarEl.classList.add('show')
       isMobileOpen.value = true
     }
   }
 
   const hide = () => {
-    const sidebar = document.querySelector('.sidebar')
-    if (sidebar) {
-      sidebar.classList.remove('show')
-      document.body.style.overflow = ''
+    if (sidebarEl) {
+      sidebarEl.classList.remove('show')
       isMobileOpen.value = false
     }
   }
@@ -32,36 +47,26 @@ export function useSidebar() {
   }
 
   const triggerMini = (noAnim = false) => {
-    const checkbox = document.querySelector('.navbar-btn input[type="checkbox"]')
-    const sidebar = document.querySelector('.sidebar-nav')
-    if (!sidebar) return
+    if (!sidebarEl) return
 
-    const isChecked = checkbox?.checked ?? true
+    const isChecked = checkboxEl ? checkboxEl.checked : true
     const width = isChecked ? 150 : 60
 
     if (isChecked) {
-      sidebar.classList.remove('mini-sidebar')
-      document.querySelectorAll('.sidebar-menu ul ul').forEach((el) => {
-        el.style.display = 'none'
-      })
+      sidebarEl.classList.remove('mini-sidebar')
     } else {
-      document.querySelectorAll('.sidebar-item.sidebar-show').forEach((el) => {
-        el.classList.remove('sidebar-show')
-      })
-      document.querySelectorAll('.sidebar-menu ul').forEach((el) => {
-        el.removeAttribute('style')
-      })
-      sidebar.classList.add('mini-sidebar')
+      expandedSubs.clear()
+      sidebarEl.classList.add('mini-sidebar')
     }
 
     if (noAnim) {
-      sidebar.style.width = `${width}px`
+      sidebarEl.style.width = `${width}px`
     } else {
-      const startWidth = parseInt(window.getComputedStyle(sidebar).width || '220', 10)
+      const startWidth = parseInt(sidebarEl.style.width || '150', 10)
       const startTime = performance.now()
       const animate = (time) => {
         const progress = Math.min((time - startTime) / 200, 1)
-        sidebar.style.width = `${startWidth + (width - startWidth) * progress}px`
+        sidebarEl.style.width = `${startWidth + (width - startWidth) * progress}px`
         if (progress < 1) requestAnimationFrame(animate)
       }
       requestAnimationFrame(animate)
@@ -73,28 +78,17 @@ export function useSidebar() {
   const handleResize = () => {
     const winWidth = window.innerWidth
     if (!isMinimized.value && winWidth > 767.98 && winWidth < 1024) {
-      const checkbox = document.querySelector('.navbar-btn input[type="checkbox"]')
-      if (checkbox) checkbox.checked = false
+      if (checkboxEl) checkboxEl.checked = false
       triggerMini(true)
       isMinimized.value = true
-      if (isMobileMin.value) {
-        document.querySelector('.sidebar')?.classList.add('mini-sidebar')
-        isMobileMin.value = false
-      }
-    } else if (
-      (isMinimized.value && winWidth >= 1024) ||
-      (isMobileMin.value && !isMinimized.value && winWidth >= 1024)
-    ) {
-      const checkbox = document.querySelector('.navbar-btn input[type="checkbox"]')
-      if (checkbox) checkbox.checked = true
+    } else if (isMinimized.value && winWidth >= 1024) {
+      if (checkboxEl) checkboxEl.checked = true
       triggerMini(true)
       isMinimized.value = false
-      isMobileMin.value = false
     } else if (winWidth < 767.98) {
-      const sidebar = document.querySelector('.sidebar')
-      if (sidebar?.classList.contains('mini-sidebar')) {
-        sidebar.classList.remove('mini-sidebar')
-        isMobileMin.value = true
+      if (sidebarEl?.classList.contains('mini-sidebar')) {
+        sidebarEl.classList.remove('mini-sidebar')
+        sidebarEl.style.width = ''
         isMinimized.value = false
       }
       hide()
@@ -102,24 +96,8 @@ export function useSidebar() {
   }
 
   const initInteraction = () => {
-    document.addEventListener('click', (e) => {
-      const menuLink = e.target.closest('.sidebar-menu-inner a')
-      if (menuLink && !document.querySelector('.sidebar-nav')?.classList.contains('mini-sidebar')) {
-        const li = menuLink.closest('.sidebar-item')
-        if (li) {
-          document.querySelectorAll('.sidebar-item', li).forEach((item) => {
-            item.classList.remove('sidebar-show')
-          })
-          const nextUl = menuLink.nextElementSibling
-          if (nextUl?.tagName === 'UL') {
-            const hidden = nextUl.style.display === 'none' || !nextUl.style.display
-            nextUl.style.display = hidden ? 'block' : 'none'
-            li.classList.toggle('sidebar-show', hidden)
-          }
-        }
-      }
-
-      const sidebar = document.querySelector('.sidebar')
+    const onClick = (e) => {
+      const sidebar = sidebarEl
       const isSidebarToggle = e.target.closest('#sidebar-toggle')
       const isSidebarInner = sidebar?.querySelector('.sidebar-nav-inner')?.contains(e.target)
 
@@ -133,34 +111,44 @@ export function useSidebar() {
           hide()
         }
       }
+    }
 
-      if (e.target.closest('.mini-button')) {
-        triggerMini()
-      }
-    })
-
-    document.addEventListener('keydown', (e) => {
+    const onKeydown = (e) => {
       if (e.key === 'Escape') {
-        const sidebar = document.querySelector('.sidebar')
-        if (sidebar?.classList.contains('show')) {
+        if (sidebarEl?.classList.contains('show')) {
           hide()
         }
       }
-    })
+    }
+
+    window.addEventListener('click', onClick)
+    window.addEventListener('keydown', onKeydown)
 
     let resizeTimer = null
-    window.addEventListener('resize', () => {
+    const onResize = () => {
       if (resizeTimer) clearTimeout(resizeTimer)
       resizeTimer = setTimeout(handleResize, 200)
-    })
+    }
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      window.removeEventListener('click', onClick)
+      window.removeEventListener('keydown', onKeydown)
+      window.removeEventListener('resize', onResize)
+      if (resizeTimer) clearTimeout(resizeTimer)
+    }
   }
 
   return {
     isMobileOpen,
     isMinimized,
+    expandedSubs,
+    registerSidebar,
+    registerCheckbox,
     show,
     hide,
     toggleMobile,
+    toggleSub,
     triggerMini,
     handleResize,
     initInteraction,

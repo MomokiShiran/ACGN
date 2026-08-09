@@ -4,9 +4,7 @@ import announcementsData from '@/data/announcements.json'
 
 export const useAnnouncementsStore = defineStore('announcements', () => {
   const announcements = ref(
-    (announcementsData.announcements || []).sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
-    )
+    (announcementsData.announcements || []).sort((a, b) => new Date(b.date) - new Date(a.date))
   )
 
   const findById = (id) => {

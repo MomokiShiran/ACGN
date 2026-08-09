@@ -1,22 +1,24 @@
 <template>
   <footer class="main-footer footer-type-1 text-xs">
     <div class="footer-tools d-flex flex-column">
-      <a href="javascript:;" class="btn rounded-circle go-up m-1" rel="go-top" @click="scrollToTop">
+      <button
+        ref="goUpRef"
+        type="button"
+        class="btn rounded-circle go-up m-1"
+        rel="go-top"
+        @click="scrollToTop"
+      >
         <i class="iconfont icon-to-up"></i>
-      </a>
-      <a href="javascript:;" class="btn rounded-circle switch-dark-mode m-1" @click="theme.toggle()">
+      </button>
+      <button type="button" class="btn rounded-circle switch-dark-mode m-1" @click="theme.toggle()">
         <i class="mode-ico iconfont" :class="theme.isDark.value ? 'icon-light' : 'icon-night'"></i>
-      </a>
+      </button>
     </div>
 
     <div class="footer-inner text-center">
       <div class="footer-text">
         © 2026 MyACGN &nbsp;&nbsp;Powered by
-        <a
-          href="https://github.com/MomokiShiran/ACGN"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer">
           <strong>ACGN</strong>
         </a>
         <span class="mx-2">|</span>
@@ -26,10 +28,7 @@
         <span class="mx-1">|</span>
         <router-link to="/privacy" class="text-muted">隐私政策</router-link>
       </div>
-      <div
-        class="footer-text mt-2 text-muted"
-        style="font-size: 11px; max-width: 800px; margin: 0 auto; line-height: 1.8"
-      >
+      <div class="footer-text mt-2 text-muted footer-note">
         <strong>联系方式：</strong>若有任何问题或合作，请发送邮件至
         <a href="mailto:help@acgn-world.com" class="text-muted">help@acgn-world.com</a>
         <br />
@@ -42,10 +41,12 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useTheme } from '@/composables/useTheme'
 
 const theme = useTheme()
+
+const goUpRef = ref(null)
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -55,8 +56,7 @@ let scrollTimer = null
 const handleScroll = () => {
   if (scrollTimer) return
   scrollTimer = setTimeout(() => {
-    const goUp = document.querySelector('.go-up')
-    if (goUp) goUp.style.display = window.scrollY >= 50 ? 'block' : 'none'
+    if (goUpRef.value) goUpRef.value.style.display = window.scrollY >= 50 ? 'block' : 'none'
     scrollTimer = null
   }, 50)
 }

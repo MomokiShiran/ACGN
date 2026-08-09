@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
+    "validate": "node scripts/validate-sites.js",
+    "test": "vitest run",
     "format": "prettier --write 'src/**/*.{vue,js,json,css}'",
     "format:check": "prettier --check 'src/**/*.{vue,js,json,css}'"
   },
@@ -20,17 +22,19 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
+    "@vueuse/head": "^2.0.0",
+    "pinia": "^3.0.0",
     "vue": "^3.5.0",
-    "vue-router": "^4.5.0",
-    "pinia": "^3.0.0"
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "vite": "^5.4.0",
     "@vitejs/plugin-vue": "^5.2.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "prettier": "^3.2.5"
+    "eslint-plugin-vue": "^9.0.0",
+    "prettier": "^3.2.5",
+    "vite": "^5.4.0",
+    "vitest": "^2.1.9"
   }
 }

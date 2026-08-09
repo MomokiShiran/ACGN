@@ -10,7 +10,9 @@
               MyACGN非常重视用户的隐私保护。本站是一个纯静态导航网站，大部分功能不需要用户注册或提供个人信息。
             </p>
             <p class="mt-2">
-              <strong>投稿表单数据收集：</strong>当您通过<router-link to="/postsite">投稿反馈</router-link>页面提交网站投稿、友链申请或问题反馈时，我们可能会收集您提供的以下信息：
+              <strong>投稿表单数据收集：</strong>当您通过<router-link to="/postsite"
+                >投稿反馈</router-link
+              >页面提交网站投稿、友链申请或问题反馈时，我们可能会收集您提供的以下信息：
             </p>
             <ul class="mt-2 mb-2">
               <li>网站名称、URL、简介等投稿相关信息</li>
@@ -27,9 +29,7 @@
             <ul class="mt-2 mb-2">
               <li>主题偏好（日间模式/夜间模式选择）</li>
             </ul>
-            <p>
-              这些数据仅存储在您的浏览器本地，不会发送到我们的服务器，也不会用于追踪用户行为。
-            </p>
+            <p>这些数据仅存储在您的浏览器本地，不会发送到我们的服务器，也不会用于追踪用户行为。</p>
           </div>
           <div class="mb-4">
             <h3 class="text-lg mb-2">3. 数据用途</h3>
@@ -40,9 +40,7 @@
               <li>处理您的反馈和建议</li>
               <li>提供个性化的浏览体验（如主题设置）</li>
             </ul>
-            <p>
-              我们不会将您的信息出售、出租或以其他方式披露给任何第三方，除非法律法规要求。
-            </p>
+            <p>我们不会将您的信息出售、出租或以其他方式披露给任何第三方，除非法律法规要求。</p>
           </div>
           <div class="mb-4">
             <h3 class="text-lg mb-2">4. 第三方服务</h3>
@@ -53,7 +51,8 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">5. 网站图标获取</h3>
             <p>
-              为了更好的展示效果，本站可能通过第三方服务（如 favicon.im）获取网站图标。此过程仅用于获取网站图标，不会收集用户信息。
+              为了更好的展示效果，本站可能通过第三方服务（如
+              favicon.im）获取网站图标。此过程仅用于获取网站图标，不会收集用户信息。
             </p>
           </div>
           <div class="mb-4">
@@ -77,7 +76,8 @@
               <li>要求删除您的信息</li>
             </ul>
             <p>
-              如需行使上述权利，请通过<router-link to="/postsite">投稿反馈</router-link>页面与我们联系。
+              如需行使上述权利，请通过<router-link to="/postsite">投稿反馈</router-link
+              >页面与我们联系。
             </p>
           </div>
           <div class="mb-4">
@@ -89,7 +89,9 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">10. 联系我们</h3>
             <p>
-              如果您对本隐私政策有任何疑问，或需要举报违规站点，请通过<router-link to="/postsite">投稿反馈</router-link>页面与我们联系，或发送邮件至
+              如果您对本隐私政策有任何疑问，或需要举报违规站点，请通过<router-link to="/postsite"
+                >投稿反馈</router-link
+              >页面与我们联系，或发送邮件至
               <a href="mailto:help@acgn-world.com">help@acgn-world.com</a>。
             </p>
           </div>
@@ -102,5 +104,4 @@
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>

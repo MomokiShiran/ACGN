@@ -9,6 +9,9 @@
 .url-card .url-body:hover {
   transform: translateY(var(--card-hover-y));
 }
+.url-card .url-body:active {
+  transform: translateY(var(--card-hover-y-minor));
+}
 .url-card .url-info {
   overflow: hidden;
   padding-right: var(--space-2);
@@ -98,4 +101,23 @@
 .no-hover-card.card:hover {
   transform: none !important;
   box-shadow: var(--shadow-sm) !important;
+}
+
+/* Site Detail */
+.site-detail .url-body {
+  padding: 20px;
+}
+.site-detail-avatar {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+.site-detail-avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.site-detail-desc {
+  line-height: 1.8;
 }

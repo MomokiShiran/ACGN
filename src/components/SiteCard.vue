@@ -1,24 +1,25 @@
 <template>
   <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
-    <div class="url-body default">
+    <div class="url-body">
       <router-link
         :to="'/sites/detail?id=' + site.id"
         target="_blank"
         class="card no-c mb-4"
-        :class="'site-' + site.id"
-        data-bs-toggle="tooltip"
-        data-bs-placement="bottom"
         :title="site.description"
         rel="noopener noreferrer"
       >
         <div class="card-body">
           <div class="url-content d-flex align-items-center">
-            <div class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center">
+            <div
+              class="url-img rounded-circle me-2 d-flex align-items-center justify-content-center"
+            >
               <img loading="lazy" :src="iconUrl" @error="onImgError" />
             </div>
             <div class="url-info flex-fill">
               <div class="text-sm overflowClip_1">
-                <span v-if="site.isNew" class="badge badge-danger text-ss me-1" title="新">New</span>
+                <span v-if="site.isNew" class="badge badge-danger text-ss me-1" title="新"
+                  >New</span
+                >
                 <strong>{{ site.name }}</strong>
               </div>
               <p class="overflowClip_1 m-0 text-muted text-xs">{{ site.description }}</p>
@@ -30,9 +31,7 @@
         :href="site.url"
         class="togo text-center text-muted"
         target="_blank"
-        data-bs-toggle="tooltip"
-        data-bs-placement="right"
-        title="直达"
+        :title="'直达 ' + site.name"
         rel="nofollow noopener noreferrer"
       >
         <i class="iconfont icon-goto"></i>
@@ -43,7 +42,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { resolveIcon, defaultIcon } from '@/composables/useSiteIcon'
+import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
 
 const props = defineProps({
   site: {
@@ -53,5 +52,5 @@ const props = defineProps({
 })
 
 const iconUrl = computed(() => resolveIcon(props.site.icon))
-const onImgError = (e) => { e.target.src = defaultIcon }
+const onImgError = handleIconError
 </script>

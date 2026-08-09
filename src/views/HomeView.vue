@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchBar v-model="keyword" @search="handleSearch" @clear="clearSearch" />
+    <SearchBar v-model="keyword" />
 
     <div v-if="!keyword.trim()" class="content customize-site">
       <template v-for="cat in store.flatCategories" :key="cat.id">
@@ -10,13 +10,15 @@
     </div>
 
     <div v-else class="content customize-site">
-      <div v-if="searchResults.length === 0" style="text-align: center; padding: 60px 20px; color: var(--text-muted, #888)">
-        <div style="font-size: 48px; margin-bottom: 12px">🔍</div>
+      <div v-if="searchResults.length === 0" class="search-empty">
+        <i class="search-empty-icon iconfont icon-search"></i>
         <div>没找到匹配的站点，试试其他关键字吧</div>
       </div>
       <div v-else>
         <h4 class="text-gray text-lg mb-4 d-flex flex-fill">
-          <i class="site-tag iconfont icon-tag icon-lg me-1"></i>搜索结果（{{ searchResults.length }}）
+          <i class="site-tag iconfont icon-tag icon-lg me-1"></i>搜索结果（{{
+            searchResults.length
+          }}）
         </h4>
         <div class="row">
           <SiteCard v-for="site in searchResults" :key="site.id" :site="site" />
@@ -42,12 +44,4 @@ const searchResults = computed(() => {
   if (!keyword.value.trim()) return []
   return store.searchSites(keyword.value)
 })
-
-const handleSearch = (val) => {
-  keyword.value = val
-}
-
-const clearSearch = () => {
-  keyword.value = ''
-}
 </script>

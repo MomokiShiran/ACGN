@@ -7,25 +7,37 @@
         <div class="text-muted text-xs mb-4">
           {{ announcement.date }} · {{ announcement.author }} · {{ announcement.views }} 浏览
         </div>
-        <div class="announcement-content" style="white-space: pre-line">{{ announcement.content }}</div>
+        <div class="announcement-content">
+          {{ announcement.content }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead } from '@vueuse/head'
 import { useAnnouncementsStore } from '@/stores/announcements'
+import { DEFAULT_TITLE, PAGE_TITLE_SUFFIX } from '@/constants/app'
 
 const route = useRoute()
 const store = useAnnouncementsStore()
 const announcement = ref(null)
 
+const pageTitle = computed(() =>
+  announcement.value ? `${announcement.value.title}${PAGE_TITLE_SUFFIX}` : DEFAULT_TITLE
+)
+useHead({ title: pageTitle })
+
 onMounted(() => {
   announcement.value = store.findById(route.params.id)
-  if (announcement.value) {
-    document.title = `${announcement.value.title} | MyACGN`
-  }
 })
 </script>
+
+<style scoped>
+.announcement-content {
+  white-space: pre-line;
+}
+</style>

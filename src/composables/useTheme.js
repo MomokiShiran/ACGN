@@ -1,10 +1,10 @@
-import { ref } from 'vue'
-
-const DARK = 'io-black-mode'
-const LIGHT = 'io-grey-mode'
-const STORAGE_KEY = 'io-theme-mode'
+import { ref, computed } from 'vue'
+import { DARK, LIGHT, STORAGE_KEY, DARK_THEME_COLOR, LIGHT_THEME_COLOR } from './themeConstants'
 
 const isDark = ref(false)
+
+const themeClass = computed(() => (isDark.value ? DARK : LIGHT))
+const themeColor = computed(() => (isDark.value ? DARK_THEME_COLOR : LIGHT_THEME_COLOR))
 
 export function useTheme() {
   const getStored = () => {
@@ -15,23 +15,7 @@ export function useTheme() {
   }
 
   const apply = (theme) => {
-    document.body.classList.remove(DARK, LIGHT)
-    document.body.classList.add(theme)
     isDark.value = theme === DARK
-
-    let meta = document.querySelector('meta[name="theme-color"]')
-    if (!meta) {
-      meta = document.createElement('meta')
-      meta.name = 'theme-color'
-      document.head.appendChild(meta)
-    }
-    meta.content = getComputedStyle(document.body).getPropertyValue('--theme-color').trim()
-
-    const icon = document.querySelector('.mode-ico')
-    if (icon) {
-      icon.classList.remove(isDark.value ? 'icon-night' : 'icon-light')
-      icon.classList.add(isDark.value ? 'icon-light' : 'icon-night')
-    }
   }
 
   const toggle = () => {
@@ -49,5 +33,5 @@ export function useTheme() {
     })
   }
 
-  return { isDark, toggle, init }
+  return { isDark, themeClass, themeColor, toggle, init }
 }

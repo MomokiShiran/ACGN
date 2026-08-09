@@ -70,7 +70,8 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">10. 联系方式</h3>
             <p>
-              如有任何问题、建议或举报，请通过<router-link to="/postsite">投稿反馈</router-link>页面与我们联系，或发送邮件至
+              如有任何问题、建议或举报，请通过<router-link to="/postsite">投稿反馈</router-link
+              >页面与我们联系，或发送邮件至
               <a href="mailto:help@acgn-world.com">help@acgn-world.com</a>。
             </p>
           </div>
@@ -83,5 +84,4 @@
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>

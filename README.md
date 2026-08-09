@@ -46,6 +46,7 @@ npm install
 ```bash
 npm run lint         # JS 代码检查
 npm run lint:fix     # 自动修复 JS 代码问题
+npm run validate     # 校验站点数据 (sites.json / sitetrash.json)
 npm run format       # 格式化所有文件 (JS/JSON/MD/CSS/HTML)
 npm run format:check # 检查所有文件格式
 ```

@@ -3,14 +3,16 @@
     <div class="content-search-box" id="search-box">
       <i class="iconfont icon-tag content-search-icon"></i>
       <input
+        ref="inputRef"
         type="text"
         class="content-search-input"
         id="search-input"
         :value="modelValue"
         placeholder="输入关键字搜索站点名称、描述..."
+        aria-label="搜索站点"
         autocomplete="off"
         @input="$emit('update:modelValue', $event.target.value)"
-        @keydown.enter="$event.target.blur()"
+        @keydown.enter="inputRef.blur()"
         @keydown.esc="clear"
       />
       <button
@@ -28,6 +30,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 defineProps({
   modelValue: {
     type: String,
@@ -35,10 +39,10 @@ defineProps({
   },
 })
 
-const emit = defineEmits(['update:modelValue', 'clear'])
+const inputRef = ref(null)
+const emit = defineEmits(['update:modelValue'])
 
 const clear = () => {
   emit('update:modelValue', '')
-  emit('clear')
 }
 </script>

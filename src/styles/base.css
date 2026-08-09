@@ -47,6 +47,26 @@ a:hover {
   color: var(--primary);
 }
 
+/* ============================================
+   Mobile touch - remove tap delay & highlight
+   ============================================ */
+
+a,
+button,
+input,
+label,
+.url-body,
+.navbar-toggle {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+a:active,
+.navbar-toggle:active,
+.sidebar-menu-link:active {
+  color: var(--primary);
+}
+
 p {
   color: var(--text);
   margin: 0;
@@ -96,6 +116,7 @@ body {
 .page-container {
   display: flex;
   flex-direction: row;
+  background: var(--bg);
 }
 
 .page-container > .flex-fill {

@@ -31,16 +31,22 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">4. 如何投稿</h3>
             <p>
-              如果您知道优质的ACG网站，欢迎通过<router-link to="/postsite">投稿反馈</router-link>页面提交给我们。我们会在审核后尽快添加到网站导航中。
+              如果您知道优质的ACG网站，欢迎通过<router-link to="/postsite">投稿反馈</router-link
+              >页面提交给我们。我们会在审核后尽快添加到网站导航中。
             </p>
           </div>
           <div class="mb-4">
             <h3 class="text-lg mb-2">5. 开源项目</h3>
             <p>
-              本项目基于开源项目开发，源代码已发布在 GitHub 上。如果您对技术细节感兴趣，或者想参与贡献代码，欢迎访问我们的仓库。
+              本项目基于开源项目开发，源代码已发布在 GitHub
+              上。如果您对技术细节感兴趣，或者想参与贡献代码，欢迎访问我们的仓库。
             </p>
             <p class="mt-2">
-              <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/MomokiShiran/ACGN"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i class="fab fa-github mr-2"></i>GitHub 仓库
               </a>
             </p>
@@ -61,7 +67,9 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">7. 联系我们</h3>
             <p>
-              如果您有任何问题、建议或合作意向，请通过<router-link to="/postsite">投稿反馈</router-link>页面与我们联系，或发送邮件至
+              如果您有任何问题、建议或合作意向，请通过<router-link to="/postsite"
+                >投稿反馈</router-link
+              >页面与我们联系，或发送邮件至
               <a href="mailto:help@acgn-world.com">help@acgn-world.com</a>。我们会尽快回复您的消息。
             </p>
           </div>
@@ -74,5 +82,4 @@
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>

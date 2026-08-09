@@ -71,8 +71,4 @@ const router = createRouter({
   },
 })
 
-router.afterEach((to) => {
-  document.title = to.meta?.title || 'MyACGN - ACG二次元导航盒子'
-})
-
 export default router

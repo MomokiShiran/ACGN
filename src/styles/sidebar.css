@@ -50,10 +50,18 @@
 .sidebar-menu-link {
   display: block;
   overflow: hidden;
+  padding: 0;
   padding-left: var(--space-3);
   line-height: 50px;
   max-height: 50px;
   color: var(--sidebar-text);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
   transition: all var(--transition-normal);
 }
 .sidebar-item {
@@ -87,7 +95,7 @@
   transform: scale(0.8) rotate(90deg);
 }
 .sidebar-show,
-.sidebar-item > a:hover {
+.sidebar-item > .sidebar-menu-link:hover {
   color: var(--primary);
   background: var(--sidebar-hover);
 }
@@ -137,18 +145,35 @@
     width: 100% !important;
     height: 100% !important;
     top: 0 !important;
+    left: 0 !important;
     position: fixed !important;
     z-index: 1090 !important;
-    display: none !important;
+    display: block !important;
     padding-left: 0 !important;
+    visibility: hidden;
+    transition: visibility var(--transition-fast);
+    pointer-events: none;
   }
-  .sidebar-nav.show { display: block !important; }
+  .sidebar-nav.show {
+    visibility: visible;
+    pointer-events: auto;
+  }
   .sidebar-nav .sidebar-nav-inner {
     position: fixed;
     height: 100%;
-    transition: transform var(--transition-fast);
-    transform: translateX(-100%);
     width: 17.5rem;
+    will-change: transform;
+    transition: transform var(--transition-fast) cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateX(-100%);
   }
-  .sidebar-nav.show .sidebar-nav-inner { transform: translateX(0); }
+  .sidebar-nav.show .sidebar-nav-inner {
+    transition: transform var(--transition-fast) cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+  }
+}
+
+/* 移动端抽屉打开时锁定背景滚动 */
+.page-container.drawer-open {
+  overflow: hidden;
+  height: 100vh;
 }

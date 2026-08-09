@@ -61,6 +61,18 @@
   color: var(--text);
 }
 
+.search-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted, #888);
+}
+.search-empty-icon {
+  display: block;
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
 .io-black-mode .content-search-box {
   background: #2a2a2a;
   border-color: #3a3a3a;

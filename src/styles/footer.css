@@ -51,6 +51,12 @@
   color: var(--bg-white) !important;
   border-radius: var(--radius-pill) !important;
 }
+.footer-note {
+  font-size: 11px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
 .friendlink-link {
   position: relative;
   display: inline-block;

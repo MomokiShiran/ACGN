@@ -2,6 +2,7 @@ import { ref } from 'vue'
 
 const HITOKOTO_API = 'https://v1.hitokoto.cn/'
 const text = ref('')
+const from = ref('')
 
 export function useHitokoto() {
   const fetchHitokoto = async () => {
@@ -18,13 +19,10 @@ export function useHitokoto() {
   const init = async () => {
     const hitokoto = await fetchHitokoto()
     if (hitokoto) {
-      let displayText = hitokoto.hitokoto || ''
-      if (hitokoto.from) {
-        displayText += ` —— <span style="color: #666;">${hitokoto.from}</span>`
-      }
-      text.value = displayText
+      text.value = hitokoto.hitokoto || ''
+      from.value = hitokoto.from || ''
     }
   }
 
-  return { text, init }
+  return { text, from, init }
 }
