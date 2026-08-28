@@ -254,18 +254,23 @@ function checkIconReferences(categoriesList, iconDir) {
     for (const ref of collectIconRefs(categories)) allRefs.add(ref)
   }
 
-  const localRefs = [...allRefs].filter((ref) => ref.startsWith('assets/images/sites/'))
-  const missing = localRefs.filter((ref) => !fs.existsSync(path.join(iconDir, path.basename(ref))))
+  const IMAGE_EXT_RE = /\.(png|ico|jpg|jpeg|gif|svg|webp)$/i
+  const URL_RE = /^(?:https?:)?\/\//
+  const localRefs = [...allRefs].filter(
+    (ref) => ref && !URL_RE.test(ref) && !ref.startsWith('/') && IMAGE_EXT_RE.test(ref)
+  )
+
+  const refBasenames = new Set(localRefs.map((ref) => ref.split('/').pop()).filter(Boolean))
+  const missing = [...refBasenames].filter((basename) => !fs.existsSync(path.join(iconDir, basename)))
   if (missing.length > 0) {
-    for (const ref of missing) {
-      console.error(`✗ 数据引用的图标文件不存在: '${ref}'`)
-    }
+    console.error(`✗ 以下数据引用的图标文件不存在:`)
+    for (const basename of missing) console.error(`   assets/images/sites/${basename}`)
   }
 
   let hasError = missing.length > 0
   if (fs.existsSync(iconDir)) {
-    const files = fs.readdirSync(iconDir).filter((f) => f.endsWith('.png'))
-    const orphan = files.filter((f) => !allRefs.has(`assets/images/sites/${f}`))
+    const files = fs.readdirSync(iconDir).filter((f) => /\.(png|ico)$/i.test(f))
+    const orphan = files.filter((f) => !refBasenames.has(f))
     if (orphan.length > 0) {
       hasError = true
       console.error(`✗ 以下站点图标未被任何数据引用（疑似孤儿，请删除）:`)
