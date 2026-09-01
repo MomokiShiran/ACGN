@@ -4,7 +4,12 @@
   </Teleport>
 
   <div v-if="isNested" class="iframe-warning" :class="themeClass">
-    <div class="warning-icon">⚠️</div>
+    <svg class="warning-icon" viewBox="0 0 24 24" width="56" height="56" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 5v5h2v-5h-2zm0 6v2h2v-2h-2z"
+      />
+    </svg>
     <div class="warning-title">检测到非法嵌套</div>
     <div class="warning-desc">本站禁止被 iframe 嵌套</div>
     <a href="https://github.com/MomokiShiran/ACGN" target="_top" class="warning-link"
@@ -24,29 +29,25 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { useHead } from '@vueuse/head'
+import { onMounted, onUnmounted } from 'vue'
 import TheSidebar from './components/layout/TheSidebar.vue'
 import TheNavbar from './components/layout/TheNavbar.vue'
 import TheFooter from './components/layout/TheFooter.vue'
 import { useSidebar } from './composables/useSidebar'
 import { useTheme } from './composables/useTheme'
-import { initIframeProtect } from './composables/useIframeProtect'
-import { DEFAULT_TITLE } from './constants/app'
+import { usePageTitle } from './composables/usePageTitle'
+import { isNested } from './composables/useIframeProtect'
 
-const isNested = initIframeProtect()
-
-const { isMobileOpen } = useSidebar()
-const { initInteraction } = useSidebar()
-
+const { isMobileOpen, initInteraction } = useSidebar()
 const { themeClass, themeColor } = useTheme()
 
-const route = useRoute()
-const pageTitle = computed(() => route.meta?.title || DEFAULT_TITLE)
-useHead({ title: pageTitle })
+usePageTitle()
 
+let cleanupInteraction = null
 onMounted(() => {
-  initInteraction()
+  cleanupInteraction = initInteraction()
+})
+onUnmounted(() => {
+  cleanupInteraction?.()
 })
 </script>

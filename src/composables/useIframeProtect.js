@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-const isNested = ref(false)
+export const isNested = ref(false)
 
 export function initIframeProtect() {
   try {

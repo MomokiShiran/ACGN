@@ -49,10 +49,9 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useHead } from '@vueuse/head'
 import { useSitesStore } from '@/stores/sites'
 import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
-import { DEFAULT_TITLE, PAGE_TITLE_SUFFIX } from '@/constants/app'
+import { usePageTitle } from '@/composables/usePageTitle'
 
 const route = useRoute()
 const store = useSitesStore()
@@ -63,10 +62,7 @@ const categoryName = ref('')
 const faviconUrl = computed(() => resolveIcon(site.value?.icon))
 const onImgError = handleIconError
 
-const pageTitle = computed(() =>
-  site.value ? `${site.value.name}${PAGE_TITLE_SUFFIX}` : DEFAULT_TITLE
-)
-useHead({ title: pageTitle })
+usePageTitle(computed(() => site.value?.name))
 
 const qrImageUrl = computed(() => {
   if (!site.value?.url) return ''

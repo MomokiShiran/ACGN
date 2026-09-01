@@ -26,11 +26,15 @@ export function useTheme() {
 
   const init = () => {
     apply(getStored())
-    window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    const media = window.matchMedia?.('(prefers-color-scheme: dark)')
+    if (!media) return () => {}
+    const onChange = (e) => {
       if (!localStorage.getItem(STORAGE_KEY)) {
         apply(e.matches ? DARK : LIGHT)
       }
-    })
+    }
+    media.addEventListener('change', onChange)
+    return () => media.removeEventListener('change', onChange)
   }
 
   return { isDark, themeClass, themeColor, toggle, init }

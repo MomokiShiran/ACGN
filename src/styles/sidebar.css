@@ -12,6 +12,10 @@
   z-index: 1081;
   position: sticky;
   top: 0;
+  transition: width var(--transition-normal);
+}
+.sidebar-nav.mini-sidebar {
+  width: 60px;
 }
 .sidebar-nav-inner {
   width: inherit;

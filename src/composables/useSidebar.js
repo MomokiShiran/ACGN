@@ -4,18 +4,7 @@ const isMobileOpen = ref(false)
 const isMinimized = ref(false)
 const expandedSubs = reactive(new Set())
 
-let sidebarEl = null
-let checkboxEl = null
-
 export function useSidebar() {
-  const registerSidebar = (el) => {
-    sidebarEl = el
-  }
-
-  const registerCheckbox = (el) => {
-    checkboxEl = el
-  }
-
   const toggleSub = (id) => {
     if (expandedSubs.has(id)) {
       expandedSubs.delete(id)
@@ -25,17 +14,11 @@ export function useSidebar() {
   }
 
   const show = () => {
-    if (sidebarEl) {
-      sidebarEl.classList.add('show')
-      isMobileOpen.value = true
-    }
+    isMobileOpen.value = true
   }
 
   const hide = () => {
-    if (sidebarEl) {
-      sidebarEl.classList.remove('show')
-      isMobileOpen.value = false
-    }
+    isMobileOpen.value = false
   }
 
   const toggleMobile = () => {
@@ -46,89 +29,58 @@ export function useSidebar() {
     }
   }
 
-  const triggerMini = (noAnim = false) => {
-    if (!sidebarEl) return
-
-    const isChecked = checkboxEl ? checkboxEl.checked : true
-    const width = isChecked ? 150 : 60
-
-    if (isChecked) {
-      sidebarEl.classList.remove('mini-sidebar')
-    } else {
-      expandedSubs.clear()
-      sidebarEl.classList.add('mini-sidebar')
-    }
-
-    if (noAnim) {
-      sidebarEl.style.width = `${width}px`
-    } else {
-      const startWidth = parseInt(sidebarEl.style.width || '150', 10)
-      const startTime = performance.now()
-      const animate = (time) => {
-        const progress = Math.min((time - startTime) / 200, 1)
-        sidebarEl.style.width = `${startWidth + (width - startWidth) * progress}px`
-        if (progress < 1) requestAnimationFrame(animate)
-      }
-      requestAnimationFrame(animate)
-    }
-
+  // isChecked=true 展开，false 折叠为 mini
+  const triggerMini = (isChecked) => {
+    if (isChecked === undefined) isChecked = isMinimized.value
     isMinimized.value = !isChecked
+    if (!isChecked) {
+      expandedSubs.clear()
+    }
   }
 
   const handleResize = () => {
     const winWidth = window.innerWidth
-    if (!isMinimized.value && winWidth > 767.98 && winWidth < 1024) {
-      if (checkboxEl) checkboxEl.checked = false
-      triggerMini(true)
-      isMinimized.value = true
-    } else if (isMinimized.value && winWidth >= 1024) {
-      if (checkboxEl) checkboxEl.checked = true
-      triggerMini(true)
+    if (winWidth < 767.98) {
       isMinimized.value = false
-    } else if (winWidth < 767.98) {
-      if (sidebarEl?.classList.contains('mini-sidebar')) {
-        sidebarEl.classList.remove('mini-sidebar')
-        sidebarEl.style.width = ''
-        isMinimized.value = false
-      }
       hide()
+    } else if (winWidth < 1024) {
+      if (!isMinimized.value) isMinimized.value = true
+    } else if (isMinimized.value) {
+      isMinimized.value = false
     }
   }
 
   const initInteraction = () => {
     const onClick = (e) => {
-      const sidebar = sidebarEl
       const isSidebarToggle = e.target.closest('#sidebar-toggle')
-      const isSidebarInner = sidebar?.querySelector('.sidebar-nav-inner')?.contains(e.target)
+      const isSidebarInner = e.target.closest('.sidebar-nav-inner') !== null
 
-      if (sidebar?.classList.contains('show') && !isSidebarToggle && !isSidebarInner) {
+      if (isMobileOpen.value && !isSidebarToggle && !isSidebarInner) {
         hide()
       }
 
       const link = e.target.closest('a')
       if (link && link.getAttribute('target') !== '_blank' && !isSidebarToggle) {
-        if (sidebar?.classList.contains('show')) {
+        if (isMobileOpen.value) {
           hide()
         }
       }
     }
 
     const onKeydown = (e) => {
-      if (e.key === 'Escape') {
-        if (sidebarEl?.classList.contains('show')) {
-          hide()
-        }
+      if (e.key === 'Escape' && isMobileOpen.value) {
+        hide()
       }
     }
-
-    window.addEventListener('click', onClick)
-    window.addEventListener('keydown', onKeydown)
 
     let resizeTimer = null
     const onResize = () => {
       if (resizeTimer) clearTimeout(resizeTimer)
       resizeTimer = setTimeout(handleResize, 200)
     }
+
+    window.addEventListener('click', onClick)
+    window.addEventListener('keydown', onKeydown)
     window.addEventListener('resize', onResize)
 
     return () => {
@@ -143,8 +95,6 @@ export function useSidebar() {
     isMobileOpen,
     isMinimized,
     expandedSubs,
-    registerSidebar,
-    registerCheckbox,
     show,
     hide,
     toggleMobile,

@@ -1,5 +1,9 @@
 <template>
-  <div id="sidebar" ref="sidebarElRef" class="sticky sidebar-nav sidebar">
+  <div
+    id="sidebar"
+    class="sticky sidebar-nav sidebar"
+    :class="{ show: isMobileOpen, 'mini-sidebar': isMinimized }"
+  >
     <div class="sidebar-nav-inner">
       <div class="sidebar-logo border-bottom border-color">
         <div class="logo overflow-hidden">
@@ -16,9 +20,9 @@
               <li
                 v-if="cat.children && cat.children.length > 0"
                 class="sidebar-item"
-                :class="{ 'sidebar-show': sidebar.expandedSubs.has(cat.id) }"
+                :class="{ 'sidebar-show': expandedSubs.has(cat.id) }"
               >
-                <button type="button" class="sidebar-menu-link" @click="sidebar.toggleSub(cat.id)">
+                <button type="button" class="sidebar-menu-link" @click="toggleSub(cat.id)">
                   <i :class="cat.icon || 'fas fa-toolbox'" class="icon-fw icon-lg me-2"></i>
                   <span class="sidebar-menu-text">{{ cat.name }}</span>
                   <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
@@ -65,7 +69,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
 import { useSitesStore } from '@/stores/sites'
 import { useSidebar } from '@/composables/useSidebar'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
@@ -73,10 +76,5 @@ import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
 const store = useSitesStore()
 const categories = store.categories
 
-const sidebar = useSidebar()
-const sidebarElRef = ref(null)
-
-onMounted(() => {
-  sidebar.registerSidebar(sidebarElRef.value)
-})
+const { isMobileOpen, isMinimized, expandedSubs, toggleSub } = useSidebar()
 </script>

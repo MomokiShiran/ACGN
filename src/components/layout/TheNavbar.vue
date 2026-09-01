@@ -9,11 +9,10 @@
         <div class="navbar-btn desktop-only">
           <label>
             <input
-              ref="miniButtonRef"
               class="mini-button"
               type="checkbox"
-              checked
-              @change="sidebar.triggerMini()"
+              :checked="!isMinimized"
+              @change="triggerMini($event.target.checked)"
             />
             <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <path class="line-1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
@@ -41,9 +40,9 @@
             type="button"
             class="navbar-toggle"
             id="sidebar-toggle"
-            :aria-label="sidebar.isMobileOpen.value ? '关闭菜单' : '打开菜单'"
-            :aria-expanded="sidebar.isMobileOpen.value"
-            @click="sidebar.toggleMobile"
+            :aria-label="isMobileOpen ? '关闭菜单' : '打开菜单'"
+            :aria-expanded="isMobileOpen"
+            @click="toggleMobile"
           >
             <i class="iconfont icon-classification icon-2x"></i>
           </button>
@@ -54,18 +53,15 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useSidebar } from '@/composables/useSidebar'
 import { useHitokoto } from '@/composables/useHitokoto'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
 
-const sidebar = useSidebar()
-const { text: hitokotoText, from: hitokotoFrom, init: initHitokoto } = useHitokoto()
-
-const miniButtonRef = ref(null)
+const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = useSidebar()
+const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = useHitokoto()
 
 onMounted(() => {
   initHitokoto()
-  sidebar.registerCheckbox(miniButtonRef.value)
 })
 </script>

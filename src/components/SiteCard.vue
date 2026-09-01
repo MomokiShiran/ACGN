@@ -2,7 +2,7 @@
   <div class="url-card col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2">
     <div class="url-body">
       <router-link
-        :to="'/sites/detail?id=' + site.id"
+        :to="{ name: 'SiteDetail', query: { id: site.id } }"
         target="_blank"
         class="card no-c mb-4"
         :title="site.description"
