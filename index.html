@@ -2,6 +2,18 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // 防主题闪白：绘制前按存储/系统偏好预置主题类（取值逻辑与 useDark 保持一致）
+      ;(function () {
+        var m = localStorage.getItem('io-theme-mode')
+        var dark =
+          m === 'dark' ||
+          ((m === null || m === 'auto') &&
+            window.matchMedia &&
+            matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.classList.add(dark ? 'io-black-mode' : 'io-grey-mode')
+      })()
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta
       name="viewport"
