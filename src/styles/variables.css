@@ -8,8 +8,9 @@
 
 :root {
   /* Primary Colors */
-  --primary: #f1404b;
-  --primary-accent: #db448b;
+  --primary: #d75a7f;
+  --primary-accent: #f7a8b8;
+  --primary-soft: rgba(215, 90, 127, 0.06);
 
   /* Text Colors */
   --text: #282a2d;
@@ -42,10 +43,10 @@
   /* Header & Sidebar */
   --header-bg: rgba(255, 255, 255, 0.7);
   --header-blur: blur(10px);
-  --sidebar-bg: #2c2e2f;
-  --sidebar-text: #888;
-  --sidebar-hover: rgba(0, 0, 0, 0.2);
-  --sidebar-active: rgba(0, 0, 0, 0.2);
+  --sidebar-bg: #fff5f7;
+  --sidebar-text: #9a8a8f;
+  --sidebar-hover: rgba(215, 90, 127, 0.08);
+  --sidebar-active: rgba(215, 90, 127, 0.12);
 
   /* Cards & Components */
   --card-bg: #fff;
@@ -100,8 +101,8 @@
   --radius-sm: 3px;
   --radius-md: 4px;
   --radius-lg: 5px;
-  --radius-xl: 6px;
-  --radius-2xl: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
   --radius-full: 50%;
   --radius-pill: 100px;
 
@@ -166,6 +167,9 @@
   --footer-btn-text: #aaa;
 
   --tooltip-bg: var(--bg-surface);
+
+  /* 夜间模式加深粉色底色，保证 hero 块在深色页面上可见 */
+  --primary-soft: rgba(215, 90, 127, 0.15);
 }
 
 /* ============================================

@@ -21,16 +21,15 @@ const flattenSites = (cats) => {
   return result
 }
 
-// 提取叶子分类用于首页展示：有 children 时取有站点的子分类，否则取自身（需有站点）
+// 提取首页展示的分类：有子分类时保留父分类（子分类由内容区横向二级菜单展示），否则取自身（需有站点）
 const flattenCategories = (cats) => {
   const result = []
   cats.forEach((cat) => {
     if (cat.children && cat.children.length > 0) {
-      cat.children.forEach((sub) => {
-        if (sub.sites && sub.sites.length > 0) {
-          result.push(sub)
-        }
-      })
+      const subs = cat.children.filter((sub) => sub.sites && sub.sites.length > 0)
+      if (subs.length > 0) {
+        result.push({ ...cat, children: subs })
+      }
     } else if (cat.sites && cat.sites.length > 0) {
       result.push(cat)
     }

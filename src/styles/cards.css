@@ -54,6 +54,12 @@
 .url-card .url-body:hover a.togo {
   opacity: 1;
 }
+/* 触屏设备无 hover，直达按钮常显 */
+@media (hover: none) {
+  .url-card a.togo {
+    opacity: 1;
+  }
+}
 .url-card-tag-link {
   font-size: 75%;
   padding: 0.125rem 0.4rem;
@@ -104,8 +110,68 @@
 }
 
 /* Site Detail */
-.site-detail .url-body {
-  padding: 20px;
+/* 返回首页按钮 */
+.site-detail-back {
+  display: flex;
+  margin-bottom: var(--space-3);
+}
+.site-detail-back .back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+.site-detail-back .back-btn:hover {
+  color: var(--primary);
+}
+
+/* 头部 hero 块与简介卡片共用的圆角 */
+.site-detail-hero,
+.site-detail-body {
+  border-radius: var(--radius-2xl);
+}
+/* 头部信息区：淡粉底 */
+.site-detail-hero {
+  background: var(--primary-soft);
+  padding: var(--space-5);
+}
+/* 站点简介：白色卡片 */
+.site-detail-body {
+  background: var(--card-bg);
+  padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+/* 标题共享样式 */
+.site-detail-name,
+.site-detail-body-title {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-dark);
+}
+.site-detail-name {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+}
+.site-detail-body-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-lg);
+}
+.site-detail-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+.site-detail-desc {
+  line-height: 1.8;
 }
 .site-detail-avatar {
   width: 80px;
@@ -118,6 +184,55 @@
   object-fit: cover;
   border-radius: 50%;
 }
-.site-detail-desc {
-  line-height: 1.8;
+
+/* 操作按钮：pill 主按钮 + 灰底次级按钮 */
+.site-detail-actions {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.site-detail .btn-cta {
+  border-radius: 999px;
+  padding: 8px 20px;
+}
+.site-detail .btn-ghost {
+  color: var(--primary);
+  background: var(--bg-gray);
+  border-color: var(--bg-gray);
+}
+.site-detail .btn-ghost:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+/* 页内展开的二维码 */
+.site-detail-qr {
+  margin-top: var(--space-3);
+}
+.site-detail-qr img {
+  width: 150px;
+  height: 150px;
+  padding: 6px;
+  /* 二维码保持白底保证可扫描性；边框用固定色，夜间模式下 --border 为 transparent */
+  background: #fff;
+  border: 1px solid rgba(136, 136, 136, 0.25);
+  border-radius: var(--radius-xl);
+}
+
+/* 相关站点 */
+.site-detail-related {
+  margin-top: var(--space-5);
+}
+
+/* 详情页移动端适配 */
+@media (max-width: 767.98px) {
+  .site-detail-avatar {
+    width: 56px;
+    height: 56px;
+  }
+  .site-detail-name {
+    font-size: var(--font-size-xl);
+  }
+  .site-detail-hero {
+    padding: var(--space-4);
+  }
 }

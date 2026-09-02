@@ -1,6 +1,6 @@
 import defaultIcon from '@/assets/images/favicon.png'
 
-const iconModules = import.meta.glob('@/assets/images/sites/*.png', {
+const iconModules = import.meta.glob('@/assets/images/sites/*.{png,ico,svg}', {
   eager: true,
   import: 'default',
 })

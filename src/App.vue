@@ -39,18 +39,16 @@ import { usePageTitle } from './composables/usePageTitle'
 import { isNested } from './composables/useIframeProtect'
 
 const { isMobileOpen, initInteraction } = useSidebar()
-const { themeClass, themeColor, init } = useTheme()
+const { themeClass, themeColor } = useTheme()
 
 usePageTitle()
 
 let cleanupInteraction = null
-const cleanupTheme = init()
 
 onMounted(() => {
   cleanupInteraction = initInteraction()
 })
 onUnmounted(() => {
-  cleanupTheme?.()
   cleanupInteraction?.()
 })
 </script>

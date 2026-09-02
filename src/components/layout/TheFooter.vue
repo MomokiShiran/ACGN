@@ -15,7 +15,7 @@
         type="button"
         class="btn rounded-circle switch-dark-mode m-1"
         :aria-label="isDark ? '切换到日间模式' : '切换到夜间模式'"
-        @click="toggle"
+        @click="toggle()"
       >
         <i class="mode-ico iconfont" :class="isDark ? 'icon-light' : 'icon-night'"></i>
       </button>

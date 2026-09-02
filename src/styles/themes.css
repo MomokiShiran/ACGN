@@ -34,8 +34,7 @@
   background: var(--bg-gray) !important;
 }
 
-/* Grey-mode sidebar active/hover contrast */
-.io-grey-mode .sidebar-item.sidebar-show,
+/* Grey-mode sidebar hover contrast */
 .io-grey-mode .sidebar-item > a:hover {
   color: var(--primary);
   background: var(--sidebar-hover);

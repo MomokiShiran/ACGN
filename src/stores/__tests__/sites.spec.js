@@ -38,11 +38,17 @@ describe('useSitesStore', () => {
     expect(store.findSiteById(99999999)).toBeNull()
   })
 
-  it('flatCategories returns non-empty categories with sites', () => {
+  it('flatCategories returns non-empty categories (leaf sites or children sites)', () => {
     const store = useSitesStore()
     expect(store.flatCategories.length).toBeGreaterThan(0)
     for (const cat of store.flatCategories) {
-      expect(cat.sites.length).toBeGreaterThan(0)
+      if (cat.children && cat.children.length > 0) {
+        for (const sub of cat.children) {
+          expect(sub.sites.length).toBeGreaterThan(0)
+        }
+      } else {
+        expect(cat.sites.length).toBeGreaterThan(0)
+      }
     }
   })
 })

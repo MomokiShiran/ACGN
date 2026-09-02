@@ -1,41 +1,21 @@
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
+// 全局单例状态：整个应用只有一个侧边栏，需要跨 App/TheNavbar/TheSidebar 共享
 const isMobileOpen = ref(false)
 const isMinimized = ref(false)
-const expandedSubs = reactive(new Set())
 
 export function useSidebar() {
-  const toggleSub = (id) => {
-    if (expandedSubs.has(id)) {
-      expandedSubs.delete(id)
-    } else {
-      expandedSubs.add(id)
-    }
-  }
-
-  const show = () => {
-    isMobileOpen.value = true
-  }
-
   const hide = () => {
     isMobileOpen.value = false
   }
 
   const toggleMobile = () => {
-    if (isMobileOpen.value) {
-      hide()
-    } else {
-      show()
-    }
+    isMobileOpen.value = !isMobileOpen.value
   }
 
   // isChecked=true 展开，false 折叠为 mini
   const triggerMini = (isChecked) => {
-    if (isChecked === undefined) isChecked = isMinimized.value
     isMinimized.value = !isChecked
-    if (!isChecked) {
-      expandedSubs.clear()
-    }
   }
 
   const handleResize = () => {
@@ -51,19 +31,13 @@ export function useSidebar() {
   }
 
   const initInteraction = () => {
+    // 移动端抽屉打开时：点击遮罩/外部区域或内部普通链接均关闭
     const onClick = (e) => {
-      const isSidebarToggle = e.target.closest('#sidebar-toggle')
-      const isSidebarInner = e.target.closest('.sidebar-nav-inner') !== null
-
-      if (isMobileOpen.value && !isSidebarToggle && !isSidebarInner) {
-        hide()
-      }
-
+      if (!isMobileOpen.value || e.target.closest('#sidebar-toggle')) return
+      const inSidebar = e.target.closest('.sidebar-nav-inner')
       const link = e.target.closest('a')
-      if (link && link.getAttribute('target') !== '_blank' && !isSidebarToggle) {
-        if (isMobileOpen.value) {
-          hide()
-        }
+      if (!inSidebar || (link && link.getAttribute('target') !== '_blank')) {
+        hide()
       }
     }
 
@@ -94,13 +68,8 @@ export function useSidebar() {
   return {
     isMobileOpen,
     isMinimized,
-    expandedSubs,
-    show,
-    hide,
     toggleMobile,
-    toggleSub,
     triggerMini,
-    handleResize,
     initInteraction,
   }
 }

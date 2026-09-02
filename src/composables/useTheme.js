@@ -1,41 +1,22 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
+import { useDark, useToggle } from '@vueuse/core'
 import { DARK, LIGHT, STORAGE_KEY, DARK_THEME_COLOR, LIGHT_THEME_COLOR } from './themeConstants'
 
-const isDark = ref(false)
+// useDark 声明式管理暗色模式：localStorage 持久化、系统偏好跟随、body 类名切换全部内置
+// selector 指向 body：主题变量需覆盖到 body 层级，
+// 否则 body 的 color/background/scrollbar 解析到的仍是浅色值并被未显式设色的后代继承
+const isDark = useDark({
+  selector: 'body',
+  storageKey: STORAGE_KEY,
+  valueDark: DARK,
+  valueLight: LIGHT,
+})
 
+const toggle = useToggle(isDark)
 const themeClass = computed(() => (isDark.value ? DARK : LIGHT))
 const themeColor = computed(() => (isDark.value ? DARK_THEME_COLOR : LIGHT_THEME_COLOR))
 
+// 全局单例状态：整个应用只有一个主题，跨 App/TheFooter 等组件共享
 export function useTheme() {
-  const getStored = () => {
-    return (
-      localStorage.getItem(STORAGE_KEY) ||
-      (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? DARK : LIGHT)
-    )
-  }
-
-  const apply = (theme) => {
-    isDark.value = theme === DARK
-  }
-
-  const toggle = () => {
-    const newTheme = isDark.value ? LIGHT : DARK
-    localStorage.setItem(STORAGE_KEY, newTheme)
-    apply(newTheme)
-  }
-
-  const init = () => {
-    apply(getStored())
-    const media = window.matchMedia?.('(prefers-color-scheme: dark)')
-    if (!media) return () => {}
-    const onChange = (e) => {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        apply(e.matches ? DARK : LIGHT)
-      }
-    }
-    media.addEventListener('change', onChange)
-    return () => media.removeEventListener('change', onChange)
-  }
-
-  return { isDark, themeClass, themeColor, toggle, init }
+  return { isDark, themeClass, themeColor, toggle }
 }

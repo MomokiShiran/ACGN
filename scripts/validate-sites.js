@@ -9,7 +9,7 @@ const sitesPath = path.join(__dirname, '../src/data/sites.json')
 const sitetrashPath = path.join(__dirname, '../src/data/sitetrash.json')
 
 const DATETIME_RE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/
-const ICON_RE = /^(?:https?:)?\/\/|\/|\.\/|assets\/images\/sites\//
+const ICON_RE = /^(?:(?:https?:)?\/\/|\/|\.\/|assets\/images\/sites\/)/
 
 function readAndParse(filePath) {
   try {

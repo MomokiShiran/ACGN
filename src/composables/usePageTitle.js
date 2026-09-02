@@ -1,5 +1,5 @@
 import { computed, unref } from 'vue'
-import { useHead } from '@vueuse/head'
+import { useTitle } from '@vueuse/core'
 import { useRoute } from 'vue-router'
 import { DEFAULT_TITLE, PAGE_TITLE_SUFFIX } from '@/constants/app'
 
@@ -12,6 +12,6 @@ export function usePageTitle(titleRef) {
     if (!raw) return DEFAULT_TITLE
     return `${raw}${PAGE_TITLE_SUFFIX}`
   })
-  useHead({ title: pageTitle })
+  useTitle(pageTitle)
   return pageTitle
 }

@@ -16,32 +16,12 @@
       <div class="sidebar-menu flex-fill">
         <div class="sidebar-menu-inner">
           <ul class="sidebar-nav-list" id="sidebar-nav-list">
-            <template v-for="cat in categories" :key="cat.id">
-              <li
-                v-if="cat.children && cat.children.length > 0"
-                class="sidebar-item"
-                :class="{ 'sidebar-show': expandedSubs.has(cat.id) }"
-              >
-                <button type="button" class="sidebar-menu-link" @click="toggleSub(cat.id)">
-                  <i :class="cat.icon || 'fas fa-toolbox'" class="icon-fw icon-lg me-2"></i>
-                  <span class="sidebar-menu-text">{{ cat.name }}</span>
-                  <i class="iconfont icon-arrow-r-m sidebar-more sidebar-more-icon text-sm"></i>
-                </button>
-                <ul class="sidebar-submenu">
-                  <li v-for="sub in cat.children" :key="sub.id" class="sidebar-item">
-                    <router-link :to="{ path: '/', hash: '#' + sub.id }" class="sidebar-menu-link">
-                      <span class="sidebar-menu-text">{{ sub.name }}</span>
-                    </router-link>
-                  </li>
-                </ul>
-              </li>
-              <li v-else class="sidebar-item">
-                <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
-                  <i :class="cat.icon || 'fas fa-link'" class="icon-fw icon-lg me-2"></i>
-                  <span class="sidebar-menu-text">{{ cat.name }}</span>
-                </router-link>
-              </li>
-            </template>
+            <li v-for="cat in categories" :key="cat.id" class="sidebar-item">
+              <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
+                <i :class="cat.icon || 'fas fa-link'" class="icon-fw icon-lg me-2"></i>
+                <span class="sidebar-menu-text">{{ cat.name }}</span>
+              </router-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -76,5 +56,5 @@ import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
 const store = useSitesStore()
 const categories = store.categories
 
-const { isMobileOpen, isMinimized, expandedSubs, toggleSub } = useSidebar()
+const { isMobileOpen, isMinimized } = useSidebar()
 </script>

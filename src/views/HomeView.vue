@@ -2,29 +2,31 @@
   <div>
     <SearchBar v-model="keyword" />
 
-    <div v-if="!keyword.trim()" class="content customize-site">
-      <template v-for="cat in store.flatCategories" :key="cat.id">
-        <CategorySection :category="cat" />
+    <div class="content customize-site">
+      <template v-if="!keyword.trim()">
+        <CategorySection v-for="cat in store.flatCategories" :key="cat.id" :category="cat" />
       </template>
-      <FriendLinks />
-    </div>
 
-    <div v-else class="content customize-site">
-      <div v-if="searchResults.length === 0" class="search-empty">
-        <i class="search-empty-icon iconfont icon-search"></i>
-        <div>没找到匹配的站点，试试其他关键字吧</div>
-      </div>
-      <div v-else>
-        <h4 class="text-gray text-lg mb-4 d-flex flex-fill">
-          <i class="site-tag iconfont icon-tag icon-lg me-1"></i>搜索结果（{{
-            searchResults.length
-          }}）
-        </h4>
-        <div class="row">
-          <SiteCard v-for="site in searchResults" :key="site.id" :site="site" />
+      <template v-else>
+        <div v-if="groupedResults.length === 0" class="search-empty">
+          <i class="search-empty-icon iconfont icon-search"></i>
+          <div>没找到匹配的站点，试试其他关键字吧</div>
         </div>
-        <FriendLinks />
-      </div>
+        <template v-else>
+          <h4 class="text-gray text-lg mb-4 d-flex flex-fill">
+            <i class="site-tag iconfont icon-tag icon-lg me-1"></i>搜索结果（{{
+              searchResults.length
+            }}）
+          </h4>
+          <CategorySection
+            v-for="group in groupedResults"
+            :key="group.category.id"
+            :category="{ ...group.category, sites: group.sites }"
+          />
+        </template>
+      </template>
+
+      <FriendLinks v-if="!keyword.trim()" />
     </div>
   </div>
 </template>
@@ -35,13 +37,23 @@ import { useSitesStore } from '@/stores/sites'
 import SearchBar from '@/components/SearchBar.vue'
 import CategorySection from '@/components/CategorySection.vue'
 import FriendLinks from '@/components/FriendLinks.vue'
-import SiteCard from '@/components/SiteCard.vue'
 
 const store = useSitesStore()
 const keyword = ref('')
 
-const searchResults = computed(() => {
-  if (!keyword.value.trim()) return []
-  return store.searchSites(keyword.value)
+const searchResults = computed(() => (keyword.value.trim() ? store.searchSites(keyword.value) : []))
+
+// 搜索结果按首页分类顺序分组展示（父分类含子分类名）
+const groupedResults = computed(() => {
+  const results = searchResults.value
+  return store.flatCategories
+    .map((cat) => {
+      const names = cat.children ? cat.children.map((sub) => sub.name) : [cat.name]
+      return {
+        category: cat,
+        sites: results.filter((site) => names.includes(site.categoryName)),
+      }
+    })
+    .filter((group) => group.sites.length > 0)
 })
 </script>

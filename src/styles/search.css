@@ -79,8 +79,13 @@
 }
 
 @media (max-width: 767.98px) {
+  /* 移动端吸附在导航栏（56px）下方 */
   .content-search-section {
-    padding: 14px 12px 0;
+    position: sticky;
+    top: 56px;
+    z-index: 10;
+    background: var(--bg);
+    padding: 10px 12px 8px;
   }
   .content-search-box {
     height: 40px;
