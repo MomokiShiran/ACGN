@@ -2,16 +2,22 @@
   <footer class="main-footer footer-type-1 text-xs">
     <div class="footer-tools d-flex flex-column">
       <button
-        ref="goUpRef"
+        v-show="showGoUp"
         type="button"
         class="btn rounded-circle go-up m-1"
         rel="go-top"
+        aria-label="返回顶部"
         @click="scrollToTop"
       >
         <i class="iconfont icon-to-up"></i>
       </button>
-      <button type="button" class="btn rounded-circle switch-dark-mode m-1" @click="theme.toggle()">
-        <i class="mode-ico iconfont" :class="theme.isDark.value ? 'icon-light' : 'icon-night'"></i>
+      <button
+        type="button"
+        class="btn rounded-circle switch-dark-mode m-1"
+        :aria-label="isDark ? '切换到日间模式' : '切换到夜间模式'"
+        @click="toggle"
+      >
+        <i class="mode-ico iconfont" :class="isDark ? 'icon-light' : 'icon-night'"></i>
       </button>
     </div>
 
@@ -44,9 +50,9 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useTheme } from '@/composables/useTheme'
 
-const theme = useTheme()
+const { isDark, toggle } = useTheme()
 
-const goUpRef = ref(null)
+const showGoUp = ref(false)
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -56,7 +62,7 @@ let scrollTimer = null
 const handleScroll = () => {
   if (scrollTimer) return
   scrollTimer = setTimeout(() => {
-    if (goUpRef.value) goUpRef.value.style.display = window.scrollY >= 50 ? 'block' : 'none'
+    showGoUp.value = window.scrollY >= 50
     scrollTimer = null
   }, 50)
 }
@@ -67,5 +73,9 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  if (scrollTimer) {
+    clearTimeout(scrollTimer)
+    scrollTimer = null
+  }
 })
 </script>

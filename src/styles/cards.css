@@ -58,7 +58,7 @@
   font-size: 75%;
   padding: 0.125rem 0.4rem;
   background: rgba(134, 134, 134, 0.1);
-  color: #888;
+  color: var(--text-muted);
   border-radius: var(--radius-pill);
   transition: var(--transition-normal);
 }

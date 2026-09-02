@@ -1,8 +1,6 @@
 <template>
-  <div class="content page">
-    <div class="panel card no-hover-card">
-      <div class="card-body">
-        <h1 class="h2 mb-4">关于本站</h1>
+  <ContentPageLayout panel-class="card no-hover-card">
+    <h1 class="h2 mb-4">关于本站</h1>
         <div class="panel-body">
           <div class="mb-4">
             <h3 class="text-lg mb-2">1. 网站简介</h3>
@@ -19,7 +17,7 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">3. 收录内容</h3>
             <p>本站收录的内容包括但不限于：</p>
-            <ul class="list-disc ml-4 mt-2">
+            <ul class="list-disc ms-4 mt-2">
               <li>图片、壁纸类网站</li>
               <li>在线漫画、动画网站</li>
               <li>游戏、资源分享社区</li>
@@ -47,7 +45,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fab fa-github mr-2"></i>GitHub 仓库
+                <i class="fab fa-github me-2"></i>GitHub 仓库
               </a>
             </p>
           </div>
@@ -77,9 +75,9 @@
             <p>最后更新时间：2026年7月11日</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+  </ContentPageLayout>
 </template>
 
-<script setup></script>
+<script setup>
+import ContentPageLayout from '@/components/ContentPageLayout.vue'
+</script>

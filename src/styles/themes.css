@@ -17,9 +17,7 @@
 
 /* Sidebar menu link colors in non-default themes */
 .io-grey-mode .flex-bottom-link,
-.io-grey-mode .sidebar-menu-link,
-.io-black-mode .flex-bottom-link,
-.io-black-mode .sidebar-menu-link {
+.io-black-mode .flex-bottom-link {
   color: var(--sidebar-text);
 }
 
@@ -40,24 +38,12 @@
 .io-grey-mode .sidebar-item.sidebar-show,
 .io-grey-mode .sidebar-item > a:hover {
   color: var(--primary);
-  background: var(--sidebar-active);
+  background: var(--sidebar-hover);
 }
 
 /* Disable card hover-lift on announcement-style cards in dark mode */
 .io-black-mode .url-card:hover,
-.io-black-mode .url-card:hover a,
-.io-black-mode .url-card:hover h1,
-.io-black-mode .url-card:hover h2,
-.io-black-mode .url-card:hover h3,
-.io-black-mode .url-card:hover h4,
-.io-black-mode .url-card:hover h5,
-.io-black-mode .url-card:hover h6,
-.io-black-mode .url-card:hover .h1,
-.io-black-mode .url-card:hover .h2,
-.io-black-mode .url-card:hover .h3,
-.io-black-mode .url-card:hover .h4,
-.io-black-mode .url-card:hover .h5,
-.io-black-mode .url-card:hover .h6 {
+.io-black-mode .url-card:hover :is(a, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
   transform: none !important;
   box-shadow: var(--shadow-sm) !important;
   color: var(--text) !important;

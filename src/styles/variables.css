@@ -36,6 +36,9 @@
   --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 30px 20px -20px rgba(0, 0, 0, 0.15);
 
+  /* Tooltip background (light mode; overridden in dark/grey themes) */
+  --tooltip-bg: rgba(0, 0, 0, 0.85);
+
   /* Header & Sidebar */
   --header-bg: rgba(255, 255, 255, 0.7);
   --header-blur: blur(10px);
@@ -162,6 +165,7 @@
   --footer-btn-bg: #363738;
   --footer-btn-text: #aaa;
 
+  --tooltip-bg: var(--bg-surface);
 }
 
 /* ============================================
@@ -190,4 +194,5 @@
   --input-bg: #f0f2f4;
   --input-border: #f0f2f4;
 
+  --tooltip-bg: var(--bg-surface);
 }

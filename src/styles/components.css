@@ -44,7 +44,7 @@
 
 /* Site Body */
 .siteico {
-  background: #e6e8ed;
+  background: var(--bg-gray);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-xl);
@@ -90,7 +90,7 @@
 }
 .site-body .btn:hover {
   color: var(--bg-white);
-  background: #202224;
+  background: var(--black);
 }
 .site-body .btn:active {
   box-shadow: unset;
@@ -167,7 +167,7 @@
   padding: 0.75rem 1rem;
   color: var(--bg-white);
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: var(--tooltip-bg);
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   line-height: 1.6;
@@ -213,7 +213,7 @@
   left: 50%;
   margin-left: -0.5rem;
   border-width: 0.5rem 0.5rem 0;
-  border-top-color: rgba(0, 0, 0, 0.85);
+  border-top-color: var(--tooltip-bg);
 }
 
 /* 提示框位置 - 底部 */
@@ -229,7 +229,7 @@
   left: 50%;
   margin-left: -0.5rem;
   border-width: 0 0.5rem 0.5rem;
-  border-bottom-color: rgba(0, 0, 0, 0.85);
+  border-bottom-color: var(--tooltip-bg);
 }
 
 /* 提示框位置 - 左侧 */
@@ -245,7 +245,7 @@
   right: 0;
   margin-top: -0.5rem;
   border-width: 0.5rem 0 0.5rem 0.5rem;
-  border-left-color: rgba(0, 0, 0, 0.85);
+  border-left-color: var(--tooltip-bg);
 }
 
 /* 提示框位置 - 右侧 */
@@ -261,5 +261,5 @@
   left: 0;
   margin-top: -0.5rem;
   border-width: 0.5rem 0.5rem 0.5rem 0;
-  border-right-color: rgba(0, 0, 0, 0.85);
+  border-right-color: var(--tooltip-bg);
 }

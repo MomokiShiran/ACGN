@@ -1,10 +1,8 @@
 <template>
-  <div class="content page">
-    <div class="panel site-content no-hover-card card transparent">
-      <div class="card-body">
-        <h4 class="text-gray text-lg mb-4">
-          <i class="iconfont icon-tag icon-lg me-1"></i>投稿 & 反馈
-        </h4>
+  <ContentPageLayout panel-class="site-content no-hover-card card transparent">
+    <h4 class="text-gray text-lg mb-4">
+      <i class="iconfont icon-tag icon-lg me-1"></i>投稿 & 反馈
+    </h4>
         <div class="mb-4">
           <p class="text-muted text-sm">
             感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。
@@ -20,9 +18,9 @@
             >
           </p>
         </div>
-      </div>
-    </div>
-  </div>
+  </ContentPageLayout>
 </template>
 
-<script setup></script>
+<script setup>
+import ContentPageLayout from '@/components/ContentPageLayout.vue'
+</script>

@@ -16,24 +16,26 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useHead } from '@vueuse/head'
 import { useAnnouncementsStore } from '@/stores/announcements'
-import { DEFAULT_TITLE, PAGE_TITLE_SUFFIX } from '@/constants/app'
+import { usePageTitle } from '@/composables/usePageTitle'
 
 const route = useRoute()
 const store = useAnnouncementsStore()
 const announcement = ref(null)
 
-const pageTitle = computed(() =>
-  announcement.value ? `${announcement.value.title}${PAGE_TITLE_SUFFIX}` : DEFAULT_TITLE
-)
-useHead({ title: pageTitle })
+usePageTitle(computed(() => announcement.value?.title))
 
-onMounted(() => {
-  announcement.value = store.findById(route.params.id)
-})
+watch(
+  () => route.params.id,
+  (id) => {
+    if (id) {
+      announcement.value = store.findById(id)
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <style scoped>

@@ -17,8 +17,8 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -var(--space-4);
-  margin-left: -var(--space-4);
+  margin-right: calc(-1 * var(--space-4));
+  margin-left: calc(-1 * var(--space-4));
 }
 
 .row > .col,

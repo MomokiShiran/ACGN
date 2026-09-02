@@ -102,8 +102,6 @@
 
 .mt-auto { margin-top: auto; }
 .mb-auto { margin-bottom: auto; }
-.ml-auto { margin-left: auto; }
-.mr-auto { margin-right: auto; }
 
 /* Spacing - padding */
 .p-0 { padding: 0; }
@@ -185,12 +183,7 @@
   white-space: nowrap;
 }
 
-/* Font size */
-.text-xs { font-size: var(--font-size-xs); }
-.text-sm { font-size: var(--font-size-sm); }
-.text-md { font-size: var(--font-size-md); }
-.text-lg { font-size: var(--font-size-xl); line-height: var(--line-height-normal); }
-.text-xl { font-size: var(--font-size-2xl); line-height: var(--line-height-normal); }
+/* Font size — base .text-xs/sm/md/lg/xl/.text-64 live in base.css (with !important); mobile overrides below */
 
 /* Size */
 .w-100 { width: 100%; }

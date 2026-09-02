@@ -1,8 +1,6 @@
 <template>
-  <div class="content page">
-    <div class="panel card no-hover-card">
-      <div class="card-body">
-        <h1 class="h2 mb-4">隐私政策</h1>
+  <ContentPageLayout panel-class="card no-hover-card">
+    <h1 class="h2 mb-4">隐私政策</h1>
         <div class="panel-body">
           <div class="mb-4">
             <h3 class="text-lg mb-2">1. 信息收集</h3>
@@ -99,9 +97,9 @@
             <p>最后更新时间：2026年7月11日</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+  </ContentPageLayout>
 </template>
 
-<script setup></script>
+<script setup>
+import ContentPageLayout from '@/components/ContentPageLayout.vue'
+</script>
