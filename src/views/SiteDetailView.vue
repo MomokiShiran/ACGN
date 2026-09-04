@@ -32,18 +32,6 @@
                 <i class="fas fa-external-link-alt"></i>
                 访问网站
               </a>
-              <button
-                v-if="qrImageUrl"
-                type="button"
-                class="btn btn-ghost btn-cta"
-                @click="showQr = !showQr"
-              >
-                <i class="fas fa-qrcode"></i>
-                {{ showQr ? '收起二维码' : '二维码' }}
-              </button>
-            </div>
-            <div v-if="showQr" class="site-detail-qr">
-              <img :src="qrImageUrl" :alt="site.name + ' 的二维码'" />
             </div>
           </div>
         </div>
@@ -77,7 +65,6 @@ const store = useSitesStore()
 
 const site = ref(null)
 const categoryName = ref('')
-const showQr = ref(false)
 
 const faviconUrl = computed(() => resolveIcon(site.value?.icon))
 const onImgError = handleIconError
@@ -93,12 +80,6 @@ const siteUrl = computed(() => {
 })
 
 usePageTitle(computed(() => site.value?.name))
-
-const qrImageUrl = computed(() => {
-  if (!site.value?.url) return ''
-  const url = encodeURIComponent(site.value.url)
-  return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${url}`
-})
 
 // 同分类相关站点：随机抽取最多 6 个（不固定），数量固定
 const relatedSites = computed(() => {
@@ -125,7 +106,6 @@ watch(
     // 重置为空，无效 id 时显示"未找到该网站"而非残留上一个站点的数据
     site.value = null
     categoryName.value = ''
-    showQr.value = false
     if (id) {
       const result = store.findSiteById(id)
       if (result) {
@@ -248,29 +228,6 @@ watch(
 }
 .btn-cta i {
   margin-right: var(--space-1);
-}
-.btn-ghost {
-  color: var(--primary);
-  background: var(--bg-gray);
-  border-color: var(--bg-gray);
-}
-.btn-ghost:hover {
-  color: #fff;
-  background: var(--primary);
-  border-color: var(--primary);
-}
-/* 页内展开的二维码 */
-.site-detail-qr {
-  margin-top: var(--space-3);
-}
-.site-detail-qr img {
-  width: 150px;
-  height: 150px;
-  padding: 6px;
-  /* 二维码保持白底保证可扫描性；边框用固定色，夜间模式下 --border 为 transparent */
-  background: #fff;
-  border: 1px solid rgba(136, 136, 136, 0.25);
-  border-radius: var(--radius-xl);
 }
 
 /* 相关站点 */

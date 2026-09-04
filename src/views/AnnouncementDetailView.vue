@@ -1,10 +1,10 @@
 <template>
-  <div class="content page">
+  <div class="content">
     <div v-if="!announcement" class="text-center text-muted py-4">公告未找到</div>
-    <div v-else class="panel site-content no-hover-card card transparent">
+    <div v-else class="site-content no-hover-card card transparent">
       <div class="card-body">
         <h4 class="text-gray text-lg mb-2">{{ announcement.title }}</h4>
-        <div class="text-muted text-xs mb-4">
+        <div class="text-muted mb-4">
           {{ announcement.date }} · {{ announcement.author }} · {{ announcement.views }} 浏览
         </div>
         <div class="announcement-content">

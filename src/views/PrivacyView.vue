@@ -93,7 +93,7 @@
               <a href="mailto:help@acgn-world.com">help@acgn-world.com</a>。
             </p>
           </div>
-          <div class="text-sm text-muted">
+          <div class="text-muted">
             <p>最后更新时间：2026年7月11日</p>
           </div>
         </div>

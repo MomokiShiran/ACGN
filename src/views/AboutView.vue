@@ -17,7 +17,7 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">3. 收录内容</h3>
             <p>本站收录的内容包括但不限于：</p>
-            <ul class="list-disc ms-4 mt-2">
+            <ul class="ms-4 mt-2">
               <li>图片、壁纸类网站</li>
               <li>在线漫画、动画网站</li>
               <li>游戏、资源分享社区</li>
@@ -52,7 +52,7 @@
           <div class="mb-4">
             <h3 class="text-lg mb-2">6. 友情链接</h3>
             <p>我们欢迎其他ACG相关网站与我们交换友情链接。友链申请示例：</p>
-            <div class="contextual-callout mt-3">
+            <div class="mt-3">
               <h6>友链申请示例</h6>
               <p>
                 本站名称：MyACGN<br />
@@ -71,7 +71,7 @@
               <a href="mailto:help@acgn-world.com">help@acgn-world.com</a>。我们会尽快回复您的消息。
             </p>
           </div>
-          <div class="text-sm text-muted">
+          <div class="text-muted">
             <p>最后更新时间：2026年7月11日</p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
-  <div class="content page">
-    <div class="panel" :class="panelClass">
+  <div class="content">
+    <div :class="panelClass">
       <div class="card-body">
         <slot />
       </div>

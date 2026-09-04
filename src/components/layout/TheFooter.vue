@@ -1,5 +1,5 @@
 <template>
-  <footer class="main-footer footer-type-1 text-xs">
+  <footer class="main-footer">
     <div class="footer-tools d-flex flex-column">
       <button
         v-show="showGoUp"

@@ -9,22 +9,14 @@
 
 /* Muted text tweaks */
 .io-black-mode .text-gray,
-.io-black-mode .text-muted,
-.io-black-mode .text-gray.text-lg,
-.io-black-mode .url-info .text-muted {
+.io-black-mode .text-muted {
   color: var(--text-muted) !important;
 }
 
 /* Component backgrounds for dark mode */
-.io-black-mode .modal-content,
 .io-black-mode .card,
-.io-black-mode .block,
 .io-black-mode .url-body {
   background-color: var(--card-bg);
-}
-
-.io-black-mode .bg-light {
-  background: var(--bg-gray) !important;
 }
 
 /* Grey-mode sidebar hover contrast */

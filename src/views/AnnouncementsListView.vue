@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="panel site-content no-hover-card card transparent">
+    <div class="site-content no-hover-card card transparent">
       <div class="card-body">
         <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>公告</h4>
         <div v-if="store.announcements.length === 0" class="text-center text-muted py-4">
@@ -12,10 +12,10 @@
               <router-link :to="{ name: 'AnnouncementDetail', params: { id: item.id } }" class="text-decoration-none">
                 <h5 class="card-title">{{ item.title }}</h5>
               </router-link>
-              <div class="text-muted text-xs mb-2">
+              <div class="text-muted mb-2">
                 {{ item.date }} · {{ item.author }} · {{ item.views }} 浏览
               </div>
-              <p class="card-text text-muted text-sm">{{ item.excerpt }}</p>
+              <p class="text-muted">{{ item.excerpt }}</p>
             </div>
           </div>
         </div>
