@@ -10,28 +10,26 @@
     <div v-else>
       <!-- 头部信息区：淡粉底大圆角 hero 块 -->
       <div class="site-detail-hero">
-        <div class="d-flex align-items-center">
-          <div
-            class="url-img rounded-circle me-3 d-flex align-items-center justify-content-center site-detail-avatar"
-          >
+        <div class="site-detail-head">
+          <div class="site-detail-avatar">
             <img :src="faviconUrl" :alt="site.name" @error="onImgError" />
           </div>
-          <div class="url-info flex-fill">
+          <div class="site-detail-info">
             <h1 class="site-detail-name">{{ site.name }}</h1>
-            <p class="site-detail-meta m-0 mb-2 text-muted text-xs">
-              <span class="badge badge-danger text-ss">{{ categoryName }}</span>
+            <p class="site-detail-meta">
+              <span class="badge badge-danger">{{ categoryName }}</span>
               <span v-if="site.createdAt">收录：{{ site.createdAt }}</span>
               <span v-if="siteUrl">{{ siteUrl }}</span>
             </p>
-            <p class="m-0 text-muted text-xs mb-2">{{ site.description }}</p>
-            <div class="site-detail-actions d-flex align-items-center">
+            <p class="site-detail-lead">{{ site.description }}</p>
+            <div class="site-detail-actions">
               <a
                 :href="site.url"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn btn-primary btn-cta"
               >
-                <i class="fas fa-external-link-alt me-1"></i>
+                <i class="fas fa-external-link-alt"></i>
                 访问网站
               </a>
               <button
@@ -40,7 +38,7 @@
                 class="btn btn-ghost btn-cta"
                 @click="showQr = !showQr"
               >
-                <i class="fas fa-qrcode me-1"></i>
+                <i class="fas fa-qrcode"></i>
                 {{ showQr ? '收起二维码' : '二维码' }}
               </button>
             </div>
@@ -53,13 +51,11 @@
       <!-- 站点简介 -->
       <div v-if="site.detail" class="site-detail-body">
         <h2 class="site-detail-body-title">站点简介</h2>
-        <p class="m-0 text-muted text-sm site-detail-desc">{{ site.detail }}</p>
+        <p class="site-detail-desc">{{ site.detail }}</p>
       </div>
       <!-- 相关站点 -->
       <div v-if="relatedSites.length" class="site-detail-related">
-        <h2 class="cat-section-title d-flex mb-4">
-          <i class="site-tag iconfont icon-tag icon-lg me-1"></i>相关站点
-        </h2>
+        <h2 class="cat-section-title"><i class="iconfont icon-tag icon-lg"></i>相关站点</h2>
         <div class="row">
           <SiteCard v-for="s in relatedSites" :key="s.id" :site="s" />
         </div>
@@ -141,3 +137,158 @@ watch(
   { immediate: true }
 )
 </script>
+
+<style scoped>
+/* 返回首页按钮 */
+.site-detail-back {
+  display: flex;
+  margin-bottom: var(--space-3);
+}
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+.back-btn:hover {
+  color: var(--primary);
+}
+
+/* 头部 hero 块与简介卡片共用的圆角 */
+.site-detail-hero,
+.site-detail-body {
+  border-radius: var(--radius-2xl);
+}
+/* 头部信息区：淡粉底 */
+.site-detail-hero {
+  background: var(--primary-soft);
+  padding: var(--space-5);
+}
+/* 站点简介：白色卡片 */
+.site-detail-body {
+  background: var(--card-bg);
+  padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+/* 标题共享样式 */
+.site-detail-name,
+.site-detail-body-title {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-dark);
+}
+.site-detail-name {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+}
+.site-detail-body-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-lg);
+}
+.site-detail-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+}
+.site-detail-lead {
+  margin: 0 0 var(--space-2);
+  color: var(--text-muted);
+}
+.site-detail-head {
+  display: flex;
+  align-items: center;
+}
+.site-detail-info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.site-detail-desc {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.site-detail-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-right: var(--space-3);
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.site-detail-avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* 操作按钮：pill 主按钮 + 灰底次级按钮 */
+.site-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-cta {
+  border-radius: 999px;
+  padding: 8px 20px;
+}
+.btn-cta i {
+  margin-right: var(--space-1);
+}
+.btn-ghost {
+  color: var(--primary);
+  background: var(--bg-gray);
+  border-color: var(--bg-gray);
+}
+.btn-ghost:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+/* 页内展开的二维码 */
+.site-detail-qr {
+  margin-top: var(--space-3);
+}
+.site-detail-qr img {
+  width: 150px;
+  height: 150px;
+  padding: 6px;
+  /* 二维码保持白底保证可扫描性；边框用固定色，夜间模式下 --border 为 transparent */
+  background: #fff;
+  border: 1px solid rgba(136, 136, 136, 0.25);
+  border-radius: var(--radius-xl);
+}
+
+/* 相关站点 */
+.site-detail-related {
+  margin-top: var(--space-5);
+}
+
+/* 详情页移动端适配 */
+@media (max-width: 767.98px) {
+  .site-detail-avatar {
+    width: 56px;
+    height: 56px;
+  }
+  .site-detail-name {
+    font-size: var(--font-size-xl);
+  }
+  .site-detail-hero {
+    padding: var(--space-4);
+  }
+}
+</style>

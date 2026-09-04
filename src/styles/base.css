@@ -334,6 +334,15 @@ a.text-muted:hover,
   transform: translateY(var(--card-hover-y-minor));
 }
 
+/* 内容管理页 / 静态面板类卡片不做悬浮抬升 */
+.site-content .card:hover,
+.site-content .block:hover,
+.no-hover-card:hover,
+.no-hover-card.card:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
 .card-body {
   flex: 1 1 auto;
   padding: var(--space-4);

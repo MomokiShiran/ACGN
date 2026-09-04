@@ -1,9 +1,7 @@
 <template>
   <div v-if="friendsStore.links.length > 0">
-    <h4 class="text-gray text-lg mb-4">
-      <i class="iconfont icon-book-mark-line icon-lg me-2" id="friendlink"></i>友情链接
-    </h4>
-    <div class="friendlink text-xs card no-hover-card">
+    <h4 class="friendlinks-title"><i class="iconfont icon-book-mark-line icon-lg"></i>友情链接</h4>
+    <div class="friendlinks-card card no-hover-card">
       <div class="card-body">
         <a
           v-for="link in friendsStore.links"
@@ -26,3 +24,25 @@ import { useFriendsStore } from '@/stores/friends'
 
 const friendsStore = useFriendsStore()
 </script>
+
+<style scoped>
+.friendlinks-title {
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--font-size-lg);
+}
+.friendlinks-title i {
+  margin-right: var(--space-2);
+}
+.friendlink-link {
+  position: relative;
+  display: inline-block;
+  margin: 0.25rem 0.5rem 0.25rem 0.25rem;
+}
+.friendlink-link::before {
+  content: '\2022';
+  display: inline-block;
+  position: relative;
+  margin-right: 5px;
+}
+</style>

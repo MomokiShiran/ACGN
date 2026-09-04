@@ -15,15 +15,8 @@
   color: var(--text-muted) !important;
 }
 
-/* Sidebar menu link colors in non-default themes */
-.io-grey-mode .flex-bottom-link,
-.io-black-mode .flex-bottom-link {
-  color: var(--sidebar-text);
-}
-
 /* Component backgrounds for dark mode */
 .io-black-mode .modal-content,
-.io-black-mode .flex-avatar,
 .io-black-mode .card,
 .io-black-mode .block,
 .io-black-mode .url-body {

@@ -1,21 +1,13 @@
 <template>
-  <div class="content page">
-    <div class="panel site-content no-hover-card card transparent">
-      <div class="card-body">
-        <h4 class="text-gray text-lg mb-4">
-          <i class="iconfont icon-tag icon-lg me-1"></i>失效归档
-        </h4>
-        <div class="row">
-          <SiteCard v-for="site in store.allTrashSites" :key="site.id" :site="site" />
-        </div>
-      </div>
-    </div>
+  <div class="content site-content">
+    <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>失效归档</h4>
+    <CategoryList :categories="store.flatTrashCategories" />
   </div>
 </template>
 
 <script setup>
 import { useSitesStore } from '@/stores/sites'
-import SiteCard from '@/components/SiteCard.vue'
+import CategoryList from '@/components/CategoryList.vue'
 
 const store = useSitesStore()
 </script>

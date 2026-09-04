@@ -79,3 +79,52 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<style scoped>
+.main-footer {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  margin: 0.5rem 1rem;
+}
+.footer-tools {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  z-index: var(--z-footer-tools);
+}
+.footer-tools .btn {
+  color: var(--footer-btn-text);
+  background: var(--footer-btn-bg);
+  width: var(--size-sm);
+  height: var(--size-sm);
+  font-size: var(--font-size-md);
+  text-align: center;
+  line-height: 40px;
+  padding: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: unset;
+  border-radius: var(--radius-full) !important;
+}
+.footer-tools .btn:hover {
+  color: var(--text);
+}
+.footer-note {
+  font-size: 11px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+@media (max-width: 767.98px) {
+  .main-footer .footer-text {
+    text-align: center;
+  }
+  .footer-tools {
+    bottom: 15px;
+    right: 10px;
+  }
+}
+</style>

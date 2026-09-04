@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h4 class="cat-section-title text-gray text-lg mb-4 d-flex flex-fill">
-      <i :id="category.id" class="site-tag iconfont icon-tag icon-lg me-1"></i>{{ category.name }}
+    <h4 class="cat-section-title">
+      <i :id="category.id" class="iconfont icon-tag icon-lg"></i>{{ category.name }}
     </h4>
     <!-- 横向二级菜单：有子分类时显示在标题下方 -->
-    <div v-if="subTabs.length" class="cat-subnav mb-4">
+    <div v-if="subTabs.length" class="cat-subnav">
       <button
         v-for="tab in subTabs"
         :key="tab.id"
@@ -52,3 +52,39 @@ const visibleSites = computed(() => {
   return pool.filter((site) => site.category === activeSub.value)
 })
 </script>
+
+<style scoped>
+/* 分类横向二级菜单 */
+.cat-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-4);
+}
+
+.cat-subnav-item {
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  cursor: pointer;
+  transition:
+    color var(--transition-normal),
+    background-color var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+.cat-subnav-item:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.cat-subnav-item.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+</style>

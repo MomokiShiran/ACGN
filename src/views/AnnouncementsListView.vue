@@ -1,8 +1,8 @@
 <template>
-  <div class="content page">
+  <div class="content">
     <div class="panel site-content no-hover-card card transparent">
       <div class="card-body">
-        <h4 class="text-gray text-lg mb-4"><i class="iconfont icon-tag icon-lg me-1"></i>公告</h4>
+        <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>公告</h4>
         <div v-if="store.announcements.length === 0" class="text-center text-muted py-4">
           暂无公告
         </div>

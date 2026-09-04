@@ -1,7 +1,7 @@
 <template>
   <ContentPageLayout panel-class="site-content no-hover-card card transparent">
-    <h4 class="text-gray text-lg mb-4">
-      <i class="iconfont icon-tag icon-lg me-1"></i>投稿 & 反馈
+    <h4 class="page-title">
+      <i class="iconfont icon-tag icon-lg"></i>投稿 & 反馈
     </h4>
         <div class="mb-4">
           <p class="text-muted text-sm">

@@ -52,3 +52,49 @@ onUnmounted(() => {
   cleanupInteraction?.()
 })
 </script>
+
+<style scoped>
+/* iframe 非法嵌套警告 */
+.iframe-warning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #fff;
+  text-align: center;
+  background: #1a1a2e;
+}
+.warning-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+.warning-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.warning-desc {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+.warning-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.warning-link:hover {
+  background: #0056b3;
+}
+
+/* 移动端抽屉打开时锁定背景滚动 */
+.page-container.drawer-open {
+  overflow: hidden;
+  height: 100vh;
+}
+</style>

@@ -61,8 +61,9 @@ export const useSitesStore = defineStore('sites', () => {
   const trashCategories = ref(sitetrashData.categories)
 
   const allSites = computed(() => flattenSites(categories.value))
-  const allTrashSites = computed(() => flattenSites(trashCategories.value))
   const flatCategories = computed(() => flattenCategories(categories.value))
+  // 失效归档同样按分类树分组（复用首页的分类展平规则，含子分类二级菜单）
+  const flatTrashCategories = computed(() => flattenCategories(trashCategories.value))
 
   const findSiteById = (id) => {
     const numId = Number(id)
@@ -88,8 +89,8 @@ export const useSitesStore = defineStore('sites', () => {
     categories,
     trashCategories,
     allSites,
-    allTrashSites,
     flatCategories,
+    flatTrashCategories,
     findSiteById,
     searchSites,
   }
