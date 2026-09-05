@@ -1,17 +1,21 @@
 <template>
   <div class="content">
-    <div v-if="!announcement" class="text-center text-muted py-4">公告未找到</div>
-    <div v-else class="site-content no-hover-card card transparent">
-      <div class="card-body">
-        <h4 class="text-gray text-lg mb-2">{{ announcement.title }}</h4>
-        <div class="text-muted mb-4">
-          {{ announcement.date }} · {{ announcement.author }} · {{ announcement.views }} 浏览
-        </div>
-        <div class="announcement-content">
-          {{ announcement.content }}
-        </div>
-      </div>
+    <div class="ann-back">
+      <router-link to="/announcements" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        返回公告列表
+      </router-link>
     </div>
+    <div v-if="!announcement" class="ann-empty">公告未找到</div>
+    <article v-else class="ann-detail">
+      <h1 class="ann-detail-title">{{ announcement.title }}</h1>
+      <p class="ann-detail-meta">
+        {{ announcement.date }} · {{ announcement.author }} · {{ announcement.views }} 浏览
+      </p>
+      <div class="ann-detail-content">
+        {{ announcement.content }}
+      </div>
+    </article>
   </div>
 </template>
 
@@ -39,7 +43,54 @@ watch(
 </script>
 
 <style scoped>
-.announcement-content {
+.ann-back {
+  display: flex;
+  margin-bottom: var(--space-3);
+}
+
+.ann-empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.ann-detail {
+  padding: var(--space-5);
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.ann-detail-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-dark);
+  line-height: var(--line-height-tight);
+}
+
+.ann-detail-meta {
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--bg-gray);
+  color: var(--text-muted);
+}
+
+.ann-detail-content {
+  color: var(--text-dark);
+  line-height: 1.8;
   white-space: pre-line;
+}
+
+@media (max-width: 767.98px) {
+  .ann-detail {
+    padding: var(--space-4);
+  }
+  .ann-detail-title {
+    font-size: var(--font-size-xl);
+  }
 }
 </style>
