@@ -11,3 +11,17 @@ import CategoryList from '@/components/CategoryList.vue'
 
 const store = useSitesStore()
 </script>
+
+<style scoped>
+/* 页面标题 */
+.page-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--font-size-lg);
+}
+.page-title > i {
+  margin-right: var(--space-1);
+}
+</style>

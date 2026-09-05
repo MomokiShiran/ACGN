@@ -119,10 +119,67 @@ watch(
 </script>
 
 <style scoped>
-/* 返回首页按钮（.back-btn 全局样式见 components.css） */
+/* 返回按钮 */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+.back-btn:hover {
+  color: var(--primary);
+}
 .site-detail-back {
   display: flex;
   margin-bottom: var(--space-3);
+}
+
+/* 弹性栅格容器（相关站点） */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * var(--space-4));
+  margin-left: calc(-1 * var(--space-4));
+}
+@media (min-width: 768px) {
+  .row {
+    margin-right: -0.75rem;
+    margin-left: -0.75rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+/* 分区标题：左侧主色圆角竖条 */
+.cat-section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-dark);
+}
+.cat-section-title::before {
+  content: '';
+  width: 4px;
+  height: 1.1em;
+  border-radius: 999px;
+  background: var(--primary);
+  margin-right: var(--space-2);
+}
+.cat-section-title > i {
+  margin-right: var(--space-1);
 }
 
 /* 头部 hero 块与简介卡片共用的圆角 */

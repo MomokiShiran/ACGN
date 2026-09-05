@@ -43,6 +43,23 @@ watch(
 </script>
 
 <style scoped>
+/* 返回按钮 */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+.back-btn:hover {
+  color: var(--primary);
+}
 .ann-back {
   display: flex;
   margin-bottom: var(--space-3);

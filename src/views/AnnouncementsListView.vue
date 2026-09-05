@@ -27,6 +27,18 @@ const store = useAnnouncementsStore()
 </script>
 
 <style scoped>
+/* 页面标题 */
+.page-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--font-size-lg);
+}
+.page-title > i {
+  margin-right: var(--space-1);
+}
+
 .ann-empty {
   padding: 60px 20px;
   text-align: center;
@@ -96,6 +108,7 @@ const store = useAnnouncementsStore()
   line-height: 1.8;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
