@@ -2,9 +2,11 @@ name: Validate sites.json
 
 on:
   pull_request:
-    branches: ["master"]
+    branches: ["master", "develop"]
     paths:
-      - "data/sites.json"
+      - "src/data/sites.json"
+      - "src/data/sitetrash.json"
+      - "scripts/validate-sites.js"
 
 jobs:
   validate:
@@ -20,11 +22,11 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Run sites.json validation
-        run: node scripts/validate-sites.js
+        run: npm run validate
 
       - name: Format check
-        run: |
-          if [ -f "package.json" ]; then
-            npm run format:check 2>/dev/null || echo "Format check script not found, skipping"
-          fi
+        run: npm run format:check

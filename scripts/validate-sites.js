@@ -1,263 +1,321 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const sitesPath = path.join(__dirname, '../data/sites.json');
-const sitetrashPath = path.join(__dirname, '../data/sitetrash.json');
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const sitesPath = path.join(__dirname, '../src/data/sites.json')
+const sitetrashPath = path.join(__dirname, '../src/data/sitetrash.json')
+
+const DATETIME_RE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/
+const ICON_RE = /^(?:(?:https?:)?\/\/|\/|\.\/|assets\/images\/sites\/)/
 
 function readAndParse(filePath) {
   try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const data = JSON.parse(content);
+    const content = fs.readFileSync(filePath, 'utf8')
 
-    if (!data || typeof data !== 'object' || !Array.isArray(data.categories)) {
-      console.error(`✗ JSON 结构错误: 缺少 categories 数组 [${path.basename(filePath)}]`);
-      process.exit(1);
+    if (content.includes('\uFFFD')) {
+      console.error(`✗ 文件包含乱码字符 (U+FFFD) [${path.basename(filePath)}]`)
+      process.exit(1)
     }
 
-    console.log(`✓ JSON 格式正确 [${path.basename(filePath)}]`);
-    return data.categories;
+    const data = JSON.parse(content)
+
+    if (!data || typeof data !== 'object' || !Array.isArray(data.categories)) {
+      console.error(`✗ JSON 结构错误: 缺少 categories 数组 [${path.basename(filePath)}]`)
+      process.exit(1)
+    }
+
+    console.log(`✓ JSON 格式正确 [${path.basename(filePath)}]`)
+    return data.categories
   } catch (error) {
-    console.error(`✗ JSON 格式错误 [${path.basename(filePath)}]:`, error.message);
-    process.exit(1);
+    console.error(`✗ JSON 格式错误 [${path.basename(filePath)}]:`, error.message)
+    process.exit(1)
   }
 }
 
 function validateRequiredFields(categories, fileName) {
-  const requiredFields = ['id', 'name', 'icon'];
+  const requiredFields = ['id', 'name', 'icon']
   // sitetrash.json 中的站点URL是可选的（失效站点可能没有URL）
-  const siteRequiredFields = fileName === 'sitetrash.json' ? ['id', 'name'] : ['id', 'name', 'url'];
-  let hasError = false;
+  const siteRequiredFields = fileName === 'sitetrash.json' ? ['id', 'name'] : ['id', 'name', 'url']
+  let hasError = false
 
-  for (const category of categories) {
-    // 检查分类必填字段
+  const checkCategory = (category, label) => {
     for (const field of requiredFields) {
       if (!category[field]) {
         console.error(
           `✗ 分类缺少必填字段 '${field}' [${fileName}]:`,
-          category.name || category.id || '未知'
-        );
-        hasError = true;
+          category.name || category.id || label
+        )
+        hasError = true
       }
-    }
-
-    // 检查子分类（如果有）
-    if (category.children && Array.isArray(category.children)) {
-      for (const subCategory of category.children) {
-        for (const field of requiredFields) {
-          if (!subCategory[field]) {
-            console.error(
-              `✗ 子分类缺少必填字段 '${field}' [${fileName}]:`,
-              subCategory.name || subCategory.id || '未知'
-            );
-            hasError = true;
-          }
-        }
-
-        // 检查子分类的站点
-        if (subCategory.sites && Array.isArray(subCategory.sites)) {
-          validateSiteFields(
-            subCategory.sites,
-            `${category.name} -> ${subCategory.name}`,
-            fileName
-          );
-        }
-      }
-    }
-
-    // 检查站点必填字段（非嵌套分类）
-    if (category.sites && Array.isArray(category.sites) && !category.children) {
-      validateSiteFields(category.sites, category.name, fileName);
     }
   }
 
-  function validateSiteFields(sites, categoryName, fileName) {
+  const checkSites = (sites, categoryName, categoryId) => {
     for (const site of sites) {
       for (const field of siteRequiredFields) {
         if (!site[field]) {
           console.error(
             `✗ 站点缺少必填字段 '${field}' [${fileName} -> ${categoryName}]:`,
             site.name || site.id || '未知'
-          );
-          hasError = true;
+          )
+          hasError = true
         }
+      }
+
+      if (categoryId && site.category && site.category !== categoryId) {
+        console.error(
+          `✗ 站点 category 与所属分类不一致 [${fileName} -> ${categoryName}]:`,
+          `${site.name || site.id} 的 category='${site.category}'，应为 '${categoryId}'`
+        )
+        hasError = true
+      }
+
+      if (site.disabledAt && !DATETIME_RE.test(site.disabledAt)) {
+        console.error(
+          `✗ 站点 disabledAt 格式错误 [${fileName} -> ${categoryName}]:`,
+          `${site.name || site.id} 的值 '${site.disabledAt}'，应为空字符串或时间 (YYYY-MM-DD HH:mm:ss)`
+        )
+        hasError = true
+      }
+
+      if (site.icon && !ICON_RE.test(site.icon)) {
+        console.error(
+          `✗ 站点 icon 格式异常 [${fileName} -> ${categoryName}]:`,
+          `${site.name || site.id} 的值 '${site.icon}'，应为 URL、/ 开头、./ 开头或 assets/images/sites/ 相对路径`
+        )
+        hasError = true
       }
     }
   }
 
-  if (!hasError) {
-    console.log(`✓ 所有必填字段完整 [${fileName}]`);
+  for (const category of categories) {
+    checkCategory(category)
+
+    if (category.children && Array.isArray(category.children)) {
+      for (const subCategory of category.children) {
+        checkCategory(subCategory)
+
+        if (subCategory.sites && Array.isArray(subCategory.sites)) {
+          checkSites(subCategory.sites, `${category.name} -> ${subCategory.name}`, subCategory.id)
+        }
+      }
+    }
+
+    if (category.sites && Array.isArray(category.sites) && !category.children) {
+      checkSites(category.sites, category.name, category.id)
+    }
   }
 
-  return hasError;
+  if (!hasError) {
+    console.log(`✓ 所有必填字段及格式完整 [${fileName}]`)
+  }
+
+  return hasError
 }
 
 function checkDuplicateUrls(categories, fileName) {
-  const urlMap = new Map();
-  let hasDuplicate = false;
+  const urlMap = new Map()
+  let hasDuplicate = false
 
   function checkSites(sites, categoryName) {
     for (const site of sites) {
       if (site.url) {
-        const normalizedUrl = site.url.toLowerCase().replace(/\/$/, '');
+        const normalizedUrl = site.url.toLowerCase().replace(/\/$/, '')
         if (urlMap.has(normalizedUrl)) {
           console.error(
             `✗ 重复链接: '${site.url}' [${fileName} -> ${categoryName}] 和 [${urlMap.get(normalizedUrl)}]`
-          );
-          hasDuplicate = true;
+          )
+          hasDuplicate = true
         } else {
-          urlMap.set(normalizedUrl, `${fileName} -> ${categoryName}`);
+          urlMap.set(normalizedUrl, `${fileName} -> ${categoryName}`)
         }
       }
     }
   }
 
   for (const category of categories) {
-    // 非嵌套分类的站点
     if (category.sites && Array.isArray(category.sites) && !category.children) {
-      checkSites(category.sites, category.name);
+      checkSites(category.sites, category.name)
     }
 
-    // 嵌套子分类的站点
     if (category.children && Array.isArray(category.children)) {
       for (const subCategory of category.children) {
         if (subCategory.sites && Array.isArray(subCategory.sites)) {
-          checkSites(subCategory.sites, `${category.name} -> ${subCategory.name}`);
+          checkSites(subCategory.sites, `${category.name} -> ${subCategory.name}`)
         }
       }
     }
   }
 
   if (!hasDuplicate) {
-    console.log(`✓ 无重复链接 [${fileName}]`);
+    console.log(`✓ 无重复链接 [${fileName}]`)
   }
 
-  return hasDuplicate;
+  return hasDuplicate
 }
 
 function checkDuplicateIds(categories, fileName) {
-  const idSet = new Set();
-  let hasDuplicate = false;
+  const idSet = new Set()
+  let hasDuplicate = false
+
+  const checkId = (id, label) => {
+    const key = String(id)
+    if (idSet.has(key)) {
+      console.error(`✗ 重复ID: '${id}' [${fileName} -> ${label}]`)
+      hasDuplicate = true
+    }
+    idSet.add(key)
+  }
 
   for (const category of categories) {
-    if (idSet.has(category.id)) {
-      console.error(`✗ 重复分类ID: '${category.id}' [${fileName}]`);
-      hasDuplicate = true;
-    }
-    idSet.add(category.id);
+    checkId(category.id, category.name || category.id)
 
-    // 嵌套子分类
     if (category.children && Array.isArray(category.children)) {
       for (const subCategory of category.children) {
-        if (idSet.has(subCategory.id)) {
-          console.error(`✗ 重复分类ID: '${subCategory.id}' [${fileName}]`);
-          hasDuplicate = true;
-        }
-        idSet.add(subCategory.id);
+        checkId(subCategory.id, `${category.name} -> ${subCategory.name}`)
 
         if (subCategory.sites && Array.isArray(subCategory.sites)) {
           for (const site of subCategory.sites) {
-            const siteId = String(site.id);
-            if (idSet.has(siteId)) {
-              console.error(`✗ 重复站点ID: '${site.id}' [${fileName}]`);
-              hasDuplicate = true;
-            }
-            idSet.add(siteId);
+            checkId(site.id, `${category.name} -> ${subCategory.name} -> ${site.name}`)
           }
         }
       }
     }
 
-    // 非嵌套分类的站点
     if (category.sites && Array.isArray(category.sites) && !category.children) {
       for (const site of category.sites) {
-        const siteId = String(site.id);
-        if (idSet.has(siteId)) {
-          console.error(`✗ 重复站点ID: '${site.id}' [${fileName}]`);
-          hasDuplicate = true;
-        }
-        idSet.add(siteId);
+        checkId(site.id, `${category.name} -> ${site.name}`)
       }
     }
   }
 
   if (!hasDuplicate) {
-    console.log(`✓ 无重复ID [${fileName}]`);
+    console.log(`✓ 无重复ID [${fileName}]`)
   }
 
-  return hasDuplicate;
+  return hasDuplicate
 }
 
 function checkUrlFormat(categories, fileName) {
-  const urlRegex = /^https?:\/\/[^\s]+$/;
-  let hasError = false;
+  const urlRegex = /^https?:\/\/[^\s]+$/
+  let hasError = false
 
   function checkUrls(sites, categoryName) {
     for (const site of sites) {
       if (site.url && !urlRegex.test(site.url)) {
         console.error(
           `✗ URL格式错误 [${fileName} -> ${categoryName}]: '${site.url}' (站点: ${site.name || site.id})`
-        );
-        hasError = true;
+        )
+        hasError = true
       }
     }
   }
 
   for (const category of categories) {
-    // 非嵌套分类的站点
     if (category.sites && Array.isArray(category.sites) && !category.children) {
-      checkUrls(category.sites, category.name);
+      checkUrls(category.sites, category.name)
     }
 
-    // 嵌套子分类的站点
     if (category.children && Array.isArray(category.children)) {
       for (const subCategory of category.children) {
         if (subCategory.sites && Array.isArray(subCategory.sites)) {
-          checkUrls(subCategory.sites, `${category.name} -> ${subCategory.name}`);
+          checkUrls(subCategory.sites, `${category.name} -> ${subCategory.name}`)
         }
       }
     }
   }
 
   if (!hasError) {
-    console.log(`✓ URL格式正确 [${fileName}]`);
+    console.log(`✓ URL格式正确 [${fileName}]`)
   }
 
-  return hasError;
+  return hasError
+}
+
+function collectIconRefs(categories) {
+  const refs = new Set()
+  const walk = (list) => {
+    for (const cat of list) {
+      if (cat.icon) refs.add(cat.icon)
+      if (cat.sites) for (const site of cat.sites) if (site.icon) refs.add(site.icon)
+      if (cat.children && Array.isArray(cat.children)) walk(cat.children)
+    }
+  }
+  walk(categories)
+  return refs
+}
+
+function checkIconReferences(categoriesList, iconDir) {
+  const allRefs = new Set()
+  for (const categories of categoriesList) {
+    for (const ref of collectIconRefs(categories)) allRefs.add(ref)
+  }
+
+  const IMAGE_EXT_RE = /\.(png|ico|jpg|jpeg|gif|svg|webp)$/i
+  const URL_RE = /^(?:https?:)?\/\//
+  const localRefs = [...allRefs].filter(
+    (ref) => ref && !URL_RE.test(ref) && !ref.startsWith('/') && IMAGE_EXT_RE.test(ref)
+  )
+
+  const refBasenames = new Set(localRefs.map((ref) => ref.split('/').pop()).filter(Boolean))
+  const missing = [...refBasenames].filter((basename) => !fs.existsSync(path.join(iconDir, basename)))
+  if (missing.length > 0) {
+    console.error(`✗ 以下数据引用的图标文件不存在:`)
+    for (const basename of missing) console.error(`   assets/images/sites/${basename}`)
+  }
+
+  let hasError = missing.length > 0
+  if (fs.existsSync(iconDir)) {
+    const files = fs.readdirSync(iconDir).filter((f) => /\.(png|ico)$/i.test(f))
+    const orphan = files.filter((f) => !refBasenames.has(f))
+    if (orphan.length > 0) {
+      hasError = true
+      console.error(`✗ 以下站点图标未被任何数据引用（疑似孤儿，请删除）:`)
+      for (const f of orphan) console.error(`   assets/images/sites/${f}`)
+    }
+  }
+
+  if (!hasError) {
+    console.log(`✓ 图标引用完整，无缺失文件、无孤儿图标`)
+  }
+  return hasError
 }
 
 function validateFile(filePath) {
-  const fileName = path.basename(filePath);
-  console.log(`\n开始校验 ${fileName}...`);
+  const fileName = path.basename(filePath)
+  console.log(`\n开始校验 ${fileName}...`)
 
-  const categories = readAndParse(filePath);
-  const fieldError = validateRequiredFields(categories, fileName);
-  const urlDuplicate = checkDuplicateUrls(categories, fileName);
-  const idDuplicate = checkDuplicateIds(categories, fileName);
-  const urlFormatError = checkUrlFormat(categories, fileName);
+  const categories = readAndParse(filePath)
+  const fieldError = validateRequiredFields(categories, fileName)
+  const urlDuplicate = checkDuplicateUrls(categories, fileName)
+  const idDuplicate = checkDuplicateIds(categories, fileName)
+  const urlFormatError = checkUrlFormat(categories, fileName)
 
-  return fieldError || urlDuplicate || idDuplicate || urlFormatError;
+  return { categories, hasError: fieldError || urlDuplicate || idDuplicate || urlFormatError }
 }
 
 function main() {
-  let hasError = false;
+  let hasError = false
 
-  console.log('开始校验...');
+  console.log('开始校验...')
 
-  // 先校验 sites.json
-  hasError = validateFile(sitesPath) || hasError;
+  const sitesResult = validateFile(sitesPath)
+  const trashResult = validateFile(sitetrashPath)
+  hasError = sitesResult.hasError || trashResult.hasError
 
-  // 再校验 sitetrash.json
-  hasError = validateFile(sitetrashPath) || hasError;
+  const iconDir = path.join(__dirname, '../src/assets/images/sites')
+  hasError = checkIconReferences([sitesResult.categories, trashResult.categories], iconDir) || hasError
 
-  console.log('\n校验完成！');
+  console.log('\n校验完成！')
 
   if (hasError) {
-    process.exit(1);
+    process.exit(1)
   } else {
-    console.log('✓ 所有校验通过！');
+    console.log('✓ 所有校验通过！')
   }
 }
 
-main();
+main()

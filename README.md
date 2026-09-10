@@ -1,68 +1,73 @@
-# MyACGN
+# ACGN
 
-> ACG二次元导航盒子，收录ACG二次元相关的优质网站
+> ACGN 二次元导航盒子，收录 ACGN 二次元相关的优质网站
 
-欢迎来到MyACGN盒子~
+欢迎来到 ACGN ～
 
-**投稿和申请友链请通过[投稿和申请友链](/postsite/) 申请，提交前请仔细阅读要求是否满足收录条件。**
+**投稿和申请友链请通过[投稿页面](#/postsite) 提交，提交前请仔细阅读收录条件。**(未实现)
 
-**如涉及网站隐私，防护安全等问题，请贵站站长或个人及时联系邮箱 help@acgn-world.com 我们将在第一时间紧急处理！**
+**也可以直接在 GitHub 上编辑（PR 目标分支：`develop`）：**
+- [编辑 sites.json](https://github.com/MomokiShiran/ACGN/edit/develop/src/data/sites.json) — 添加/修改网站条目
+- [上传站点图标](https://github.com/MomokiShiran/ACGN/tree/develop/src/assets/images/sites) — 添加图标文件
 
-感谢大家一路的支持！！(❁´◡`❁)
+**如涉及网站隐私、防护安全等问题，请贵站站长或个人及时联系邮箱 help@acgn-world.com 我们将在第一时间紧急处理！**
+
+感谢大家一路的支持！
 
 ## 快速开始
 
 ### 本地运行
 
-1. 克隆项目
-
 ```bash
+# 克隆
 git clone https://github.com/MomokiShiran/ACGN.git
 cd ACGN
-```
 
-2. 启动本地服务器
-
-```bash
-# 使用 Python
-python -m http.server 8000
-
-# 或使用 Node.js
-npx http-server
-```
-
-3. 访问 `http://localhost:8000`
-
-### 开发环境
-
-如果想要参与开发，建议安装开发依赖：
-
-```bash
+# 安装依赖
 npm install
+
+# 启动开发服务器
+npm run dev
+# 访问 http://localhost:5173/ACGN/
 ```
 
-可用命令：
+### 生产构建
 
 ```bash
+npm run build      # 构建产物输出到 dist/
+npm run preview    # 本地预览构建产物
+```
+
+### 常用命令
+
+```bash
+npm run dev          # 启动开发服务器
+npm run build        # 生产构建
+npm run preview      # 预览构建产物
+npm run test         # 运行单元测试 (Vitest)
 npm run lint         # JS 代码检查
 npm run lint:fix     # 自动修复 JS 代码问题
-npm run format       # 格式化所有文件 (JS/JSON/MD/CSS/HTML)
-npm run format:check # 检查所有文件格式
+npm run validate     # 校验站点数据 (sites.json / sitetrash.json)
+npm run format       # 格式化 src/ 下的 Vue/JS/JSON/CSS 文件
+npm run format:check # 检查上述文件格式
 ```
 
 ## 技术栈
 
-- **HTML5** - 页面结构
-- **CSS3** - 样式框架
-- **现代 JavaScript** - 交互逻辑
-- **JSON** - 数据存储
-- **ESLint** + **Prettier** - 代码规范工具
+- **Vue 3** — 前端框架（组合式 API + SFC）
+- **Vite** — 构建工具与开发服务器
+- **Vue Router 4** — Hash 模式路由
+- **Pinia** — 状态管理
+- **CSS3 + CSS 变量** — 全局样式表 + 组件 scoped 样式
+- **JSON** — 数据存储
+- **Vitest** — 单元测试
+- **ESLint + Prettier** — 代码规范工具
 
-## 版本历史
+## 版本
 
-当前版本: **1.9.0**
+当前版本 **2.0.0**
 
-查看完整版本历史请访问 [CHANGELOG.md](CHANGELOG.md)
+查看完整更新历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
 ## 贡献
 
@@ -70,7 +75,7 @@ npm run format:check # 检查所有文件格式
 
 ## 致谢
 
-- [acg](https://github.com/zjgsuzjx/acg) - 原项目
+- [acg](https://github.com/zjgsuzjx/acg) — 原项目
 - [WebStack](https://github.com/owen0o0/WebStack)
 
 ---

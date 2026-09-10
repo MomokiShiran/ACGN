@@ -1,0 +1,2 @@
+# 手写样式保持原有格式，不参与 Prettier 重排
+src/styles/

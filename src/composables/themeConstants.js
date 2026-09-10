@@ -1,0 +1,5 @@
+export const DARK = 'io-black-mode'
+export const LIGHT = 'io-grey-mode'
+export const STORAGE_KEY = 'io-theme-mode'
+export const DARK_THEME_COLOR = '--black'
+export const LIGHT_THEME_COLOR = '--white'
