@@ -1,12 +1,12 @@
 # 贡献指南
 
-欢迎参与 MyACG 项目的贡献！我们欢迎各种形式的贡献，包括但不限于：提交问题、修复bug、新增功能、改进文档、添加新站点等。
+欢迎参与 MyACGN 项目的贡献！我们欢迎各种形式的贡献，包括但不限于：提交问题、修复 Bug、新增功能、改进文档、添加新站点等。
 
 ## 如何贡献
 
 ### 1. 提交问题 (Issues)
 
-如果您发现了bug或有新功能建议，请：
+如果您发现了 Bug 或有新功能建议，请：
 
 1. 先搜索已有的 Issues，避免重复
 2. 使用清晰的标题和描述
@@ -34,7 +34,7 @@
 
 4. **进行修改**
    - 遵循项目的代码风格（ESLint + Prettier）
-   - 确保代码可以正常运行
+   - 确保 `npm run lint` 和 `npm run build` 通过
    - 添加必要的注释
 
 5. **提交更改**
@@ -50,33 +50,22 @@
    git push origin feature/your-feature-name
    ```
 
-7. **创建 Pull Request**
-   - 提供清晰的标题和描述
-   - 说明解决了什么问题
-   - 关联相关的 Issue（如果有）
+7. **创建 Pull Request** — 目标分支选择 `develop`
 
 ### 3. 提交规范
 
-#### 提交格式
+提交格式为 `<类型>: <简洁中文描述>`，类型前缀使用英文小写：
 
-示例：
-
-```bash
-feat: xxxxxxx
-```
-
-#### Type 类型
-
-| 类型       | 说明                       |
-| ---------- | -------------------------- |
-| `feat`     | 新功能                     |
-| `fix`      | 修复bug                    |
-| `docs`     | 文档更新                   |
-| `style`    | 代码格式调整（不影响功能） |
-| `refactor` | 重构                       |
-| `perf`     | 性能优化                   |
-| `test`     | 测试相关                   |
-| `chore`    | 构建/工具相关              |
+| 类型       | 使用场景                      |
+| ---------- | ----------------------------- |
+| `feat`     | 新功能、新页面、新组件、站点数据更新 |
+| `fix`      | Bug 修复、问题修正            |
+| `style`    | UI/样式调整（不影响功能逻辑） |
+| `refactor` | 代码重构（无功能变更）        |
+| `perf`     | 性能优化、体验改进            |
+| `docs`     | 文档更新、注释补充            |
+| `chore`    | 脚本、构建配置、开发工具改动  |
+| `test`     | 测试相关改动                  |
 
 ## 开发指南
 
@@ -84,64 +73,72 @@ feat: xxxxxxx
 
 ```
 ACGN/
-├── .github/              # GitHub 配置
-│   └── workflows/        # Actions 工作流
-├── about/                # 关于页面
-├── announcements/        # 公告页面
-│   ├── index.html        # 公告列表
-│   └── detail.html       # 公告详情
-├── assets/               # 静态资源
-│   ├── css/              # 样式文件
-│   │   ├── grid.css      # 自定义网格系统
-│   │   ├── header.css    # 自定义顶部导航栏
-│   │   ├── components.css # 自定义组件（Tooltip等）
-│   │   ├── common.css    # 通用工具类
-│   │   ├── themes.css    # 主题变量
-│   │   └── ...           # 其他样式
-│   ├── fonts/            # 字体文件（Font Awesome）
-│   ├── images/           # 图片资源
-│   │   └── sites/        # 网站图标
-│   └── js/               # JavaScript 文件
-│       ├── tooltips-loader.js  # 自定义Tooltip模块
-│       ├── sidebar-interaction-loader.js # 侧边栏交互
-│       ├── ui-loader.js  # UI加载器
-│       └── ...           # 其他模块
-├── data/                 # 数据文件
-│   ├── sites.json        # 网站数据（主文件）
-│   ├── sitetrash.json    # 失效网站归档
-│   └── announcements.json # 公告数据
-├── disclaimer/           # 免责声明页面
-├── docs/                 # 文档
-├── friends/              # 友情链接页面
-├── postsite/             # 投稿反馈页面
-├── privacy/              # 隐私政策页面
-├── scripts/              # 脚本工具
-│   └── update-isnew.js   # 更新 isNew 状态脚本
-├── sites/                # 网站详情页（动态模板）
-│   └── detail.html       # 网站详情模板
-├── sitetrash/            # 失效归档页面
-├── src/                  # 源代码
-├── tests/                # 测试文件
-├── __tests__/            # 测试用例
-├── 404.html              # 404 页面
-├── index.html            # 主页
-├── .eslintrc.js          # ESLint 配置
-├── .prettierrc           # Prettier 配置
-├── package.json          # 项目配置
-├── README.md             # 项目说明
-└── CONTRIBUTING.md       # 贡献指南
+├── .github/               # GitHub Actions 工作流
+├── scripts/               # Node 脚本（站点数据校验等）
+├── src/
+│   ├── assets/            # 静态资源
+│   │   ├── fonts/         # FontAwesome 字体
+│   │   └── images/sites/  # 网站图标
+│   ├── components/        # 可复用组件
+│   │   ├── layout/        # 布局组件（侧边栏/顶栏/页脚）
+│   │   ├── CategoryList.vue
+│   │   ├── CategorySection.vue
+│   │   ├── ContentPageLayout.vue
+│   │   ├── LegalNav.vue
+│   │   ├── SearchBar.vue
+│   │   └── SiteCard.vue
+│   ├── composables/       # Vue 组合式函数
+│   │   ├── useTheme.js
+│   │   ├── useSidebar.js
+│   │   ├── useSiteIcon.js
+│   │   ├── usePageTitle.js
+│   │   ├── useIframeProtect.js
+│   │   └── useHitokoto.js
+│   ├── constants/         # 常量与配置
+│   ├── data/              # JSON 数据
+│   │   ├── announcements.json
+│   │   ├── friends.json
+│   │   ├── sites.json
+│   │   └── sitetrash.json
+│   ├── router/            # Vue Router 配置
+│   ├── stores/            # Pinia 状态管理
+│   │   └── __tests__/     # 单元测试
+│   ├── styles/            # 全局样式（main.css）
+│   ├── views/             # 页面组件
+│   │   ├── HomeView.vue
+│   │   ├── SiteDetailView.vue
+│   │   ├── SiteTrashView.vue
+│   │   ├── AnnouncementsListView.vue
+│   │   ├── AnnouncementDetailView.vue
+│   │   ├── PostSiteView.vue
+│   │   ├── AboutView.vue
+│   │   ├── DisclaimerView.vue
+│   │   ├── PrivacyView.vue
+│   │   └── NotFoundView.vue
+│   ├── App.vue            # 根组件
+│   └── main.js            # 应用入口
+├── .eslintrc.js
+├── .prettierrc
+├── index.html             # Vite HTML 入口
+├── package.json
+├── vite.config.js
+├── README.md
+└── CONTRIBUTING.md
 ```
 
 ### 技术栈
 
-| 分类 | 技术 | 说明 |
-|------|------|------|
-| 页面结构 | HTML5 | 语义化标记 |
-| 样式 | CSS3 | 响应式设计 |
-| 交互 | JavaScript (ES Module) | 原生 JS，无 jQuery |
-| 数据 | JSON | 轻量级数据存储 |
-| 代码规范 | ESLint + Prettier | 代码质量保证 |
-| CI/CD | GitHub Actions | 自动验证与部署 |
+| 分类  | 技术              | 说明                          |
+| ----- | ----------------- | ----------------------------- |
+| 框架  | Vue 3             | 组合式 API              |
+| 构建  | Vite              | 开发服务器与生产构建          |
+| 路由  | Vue Router 4      | Hash 模式                     |
+| 状态  | Pinia             | 集中管理站点、公告、友链数据  |
+| 样式  | CSS3 + CSS 变量   | 全局样式表 + 组件 scoped 样式 |
+| 数据  | JSON              | 轻量级数据存储                |
+| 规范  | ESLint + Prettier | 代码质量与格式                |
+| 测试  | Vitest            | 单元测试                      |
+| CI/CD | GitHub Actions    | 数据校验 + 自动构建部署       |
 
 ### 开发命令
 
@@ -149,41 +146,59 @@ ACGN/
 # 安装依赖
 npm install
 
+# 启动开发服务器（http://localhost:5173/ACGN/）
+npm run dev
+
+# 生产构建（产物输出到 dist/）
+npm run build
+
+# 本地预览构建产物
+npm run preview
+
 # 代码检查
 npm run lint
 
-# 代码格式化
+# 自动修复代码问题
+npm run lint:fix
+
+# 站点数据校验（sites.json / sitetrash.json）
+npm run validate
+
+# 格式化 src/ 下的文件
 npm run format
 
-# 运行本地服务器
-python -m http.server 8000
+# 检查格式（CI 用）
+npm run format:check
+
+# 运行单元测试
+npm run test
 ```
 
 ## 数据管理
 
 ### 网站数据结构
 
-网站数据存储在 `data/sites.json`，结构如下：
+网站与分类数据存储在 `src/data/sites.json`，结构如下：
 
 ```json
 {
   "categories": [
     {
-      "id": "term-3",
-      "name": "在线动漫",
-      "icon": "fas fa-play-circle",
+      "id": "term-x",
+      "name": "分类名称",
+      "icon": "fas fa-star",
       "sites": [
         {
-          "id": 101,
+          "id": 1,
           "name": "网站名称",
           "url": "https://example.com",
           "description": "网站描述（简洁明了）",
-          "category": "term-3",
+          "category": "term-x",
+          "detail": "站点详细介绍（可选）",
           "isNew": false,
-          "detail": "详细信息（可选）",
-          "icon": "assets/images/sites/example.com.png",
+          "icon": "./example.com.png",
           "disabledAt": "",
-          "createdAt": "2024-01-01 00:00:00"
+          "createdAt": "2026-01-01 00:00:00"
         }
       ]
     }
@@ -191,38 +206,36 @@ python -m http.server 8000
 }
 ```
 
-#### 字段说明
+#### 站点字段说明
 
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `id` | number | 是 | 唯一标识，自增 |
-| `name` | string | 是 | 网站名称 |
-| `url` | string | 是 | 完整 URL（含 http/https） |
-| `description` | string | 是 | 网站描述（50字以内） |
-| `category` | string | 是 | 分类 ID（如 term-3） |
-| `detail` | string | 否 | 详细信息（可选，如联系邮箱、网站描述等） |
-| `isNew` | boolean | 是 | 是否新站点（30天内为 true） |
-| `icon` | string | 否 | 图标路径 |
-| `disabledAt` | string | 是 | 失效日期（空表示正常） |
-| `createdAt` | string | 是 | 创建时间 |
+| 字段          | 类型    | 必填 | 说明                             |
+| ------------- | ------- | ---- | -------------------------------- |
+| `id`          | number  | 是   | 唯一标识，自增                   |
+| `name`        | string  | 是   | 网站名称                         |
+| `url`         | string  | 是   | 完整 URL（含 http/https）        |
+| `description` | string  | 是   | 网站描述（50 字以内）            |
+| `category`    | string  | 是   | 分类 ID（如 `term-2`）           |
+| `detail`      | string  | 否   | 站点详细介绍（详情页展示）       |
+| `isNew`       | boolean | 是   | 是否新站点                       |
+| `icon`        | string  | 否   | 图标文件名                       |
+| `disabledAt`  | string  | 是   | 失效日期（空字符串表示正常运行） |
+| `createdAt`   | string  | 是   | 收录日期                         |
 
 ### 公告数据
 
-公告数据存储在 `data/announcements.json`，结构如下：
+公告数据存储在 `src/data/announcements.json`，结构如下：
 
 ```json
 {
   "announcements": [
     {
-      "id": 64,
+      "id": 1,
       "title": "公告标题",
-      "date": "2021-05-31",
-      "author": "作者",
-      "views": 1257,
-      "comments": 6,
-      "likes": 8,
-      "excerpt": "摘要",
-      "content": "<p>HTML内容</p>"
+      "date": "2026-01-01",
+      "author": "站长",
+      "views": 0,
+      "excerpt": "公告摘要",
+      "content": "<p>HTML 正文内容</p>"
     }
   ]
 }
@@ -230,20 +243,26 @@ python -m http.server 8000
 
 ### 失效归档
 
-失效网站移至 `data/sitetrash.json`，保留原有信息以便后续恢复。
+失效网站移至 `src/data/sitetrash.json`，保留原有信息以便后续恢复。
 
 ## 添加新网站
 
 ### 方式一：通过投稿页面
 
-访问 [投稿页面](/postsite/) 提交网站信息，我们会审核后添加。
+访问 [投稿页面](#/postsite) 提交网站信息，我们会审核后添加。(未实现)
 
 ### 方式二：直接贡献代码
 
-1. 在 `data/sites.json` 中添加网站信息
-2. 如有需要，添加网站图标到 `assets/images/sites/`
-3. 确保网站符合收录标准
-4. 提交 Pull Request
+1. 在 `src/data/sites.json` 对应分类的 `sites` 数组末尾添加新条目
+2. 如有需要，将图标放入 `src/assets/images/sites/`
+3. 运行 `npm run validate` 确保数据合规
+4. 提交 Pull Request 到 `develop` 分支
+
+### 方式三：GitHub 网页编辑（无需克隆）
+
+1. 打开 [sites.json 编辑页](https://github.com/MomokiShiran/ACGN/edit/develop/src/data/sites.json)，直接在 GitHub 上修改并提交
+2. 打开 [站点图标目录](https://github.com/MomokiShiran/ACGN/tree/develop/src/assets/images/sites)，上传新图标文件
+3. GitHub 会自动创建 Fork 和分支，提交后发起 Pull Request
 
 ### 网站收录标准
 
@@ -254,12 +273,13 @@ python -m http.server 8000
 
 ## 移动网站到失效归档
 
-当网站失效时，需要将其移到失效归档：
+当网站失效时：
 
-1. 从 `data/sites.json` 中删除网站信息
-2. 将网站信息添加到 `data/sitetrash.json` 对应分类中
+1. 从 `src/data/sites.json` 中删除该站点
+2. 将完整条目添加到 `src/data/sitetrash.json` 对应分类
 3. 设置 `disabledAt` 字段为失效日期
+4. 运行 `npm run validate`
 
 ---
 
-感谢您对 MyACG 项目的支持！
+感谢您对 MyACGN 项目的支持！
