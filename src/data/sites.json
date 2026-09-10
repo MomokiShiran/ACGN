@@ -1147,6 +1147,17 @@
       "icon": "far fa-registered",
       "sites": [
         {
+          "id": 479,
+          "name": "SakuGAL",
+          "url": "https://sakugal.com",
+          "description": "免费galgame资源分享-珍惜每一段恋之故事，每日更新",
+          "category": "term-7",
+          "isNew": true,
+          "icon": "./sakugal.com.ico",
+          "disabledAt": "",
+          "createdAt": "2026-09-08 00:00:00"
+        },
+        {
           "id": 461,
           "name": "SearchGal",
           "url": "https://searchgal.homes",
