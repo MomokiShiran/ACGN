@@ -13,13 +13,4 @@ export default defineConfig({
   css: {
     devSourcemap: true,
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['vue', 'vue-router', 'pinia'],
-        },
-      },
-    },
-  },
 })
