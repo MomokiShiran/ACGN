@@ -43,7 +43,7 @@
       </div>
       <!-- 相关站点 -->
       <div v-if="relatedSites.length" class="site-detail-related">
-        <h2 class="cat-section-title"><i class="iconfont icon-tag icon-lg"></i>相关站点</h2>
+        <h2 class="cat-section-title"><i class="fas fa-tag fa-lg"></i>相关站点</h2>
         <div class="row">
           <SiteCard v-for="s in relatedSites" :key="s.id" :site="s" />
         </div>
@@ -178,7 +178,7 @@ watch(
   background: var(--primary);
   margin-right: var(--space-2);
 }
-.cat-section-title > i {
+.cat-section-title i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 
@@ -267,7 +267,7 @@ watch(
   border-radius: 999px;
   padding: 8px 20px;
 }
-.btn-cta i {
+.btn-cta i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 

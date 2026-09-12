@@ -1,6 +1,6 @@
 <template>
   <div v-if="friendsStore.links.length > 0">
-    <h4 class="friendlinks-title"><i class="iconfont icon-book-mark-line icon-lg"></i>友情链接</h4>
+    <h4 class="friendlinks-title"><i class="fas fa-bookmark fa-lg"></i>友情链接</h4>
     <div class="friendlinks-card card no-hover-card">
       <div class="card-body">
         <a
@@ -31,7 +31,7 @@ const friendsStore = useFriendsStore()
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.friendlinks-title i {
+.friendlinks-title i[class*='fa-'] {
   margin-right: var(--space-2);
 }
 .friendlink-link {

@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>投稿 & 反馈</h4>
+    <h4 class="page-title"><i class="fas fa-tag fa-lg"></i>投稿 & 反馈</h4>
     <div class="postsite-card">
       <p class="text-muted">感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。</p>
       <p class="text-muted">
@@ -17,6 +17,8 @@
   </div>
 </template>
 
+<script setup></script>
+
 <style scoped>
 /* 页面标题 */
 .page-title {
@@ -26,7 +28,7 @@
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.page-title > i {
+.page-title i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 

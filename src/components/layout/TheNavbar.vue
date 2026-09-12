@@ -44,7 +44,7 @@
             :aria-expanded="isMobileOpen"
             @click="toggleMobile"
           >
-            <i class="iconfont icon-classification icon-2x"></i>
+            <i class="fas fa-th-large fa-2x"></i>
           </button>
         </div>
       </div>

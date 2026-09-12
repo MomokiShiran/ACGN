@@ -30,7 +30,7 @@
         :title="'直达 ' + site.name"
         rel="nofollow noopener noreferrer"
       >
-        <i class="iconfont icon-goto"></i>
+        <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>

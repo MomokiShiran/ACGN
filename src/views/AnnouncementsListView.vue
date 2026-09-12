@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>公告</h4>
+    <h4 class="page-title"><i class="fas fa-tag fa-lg"></i>公告</h4>
     <div v-if="store.announcements.length === 0" class="ann-empty">暂无公告</div>
     <div v-else class="ann-list">
       <router-link
@@ -35,7 +35,7 @@ const store = useAnnouncementsStore()
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.page-title > i {
+.page-title i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 

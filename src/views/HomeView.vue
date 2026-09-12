@@ -7,12 +7,12 @@
 
       <template v-else>
         <div v-if="groupedResults.length === 0" class="search-empty">
-          <i class="search-empty-icon iconfont icon-search"></i>
+          <i class="fas fa-search search-empty-icon"></i>
           <div>没找到匹配的站点，试试其他关键字吧</div>
         </div>
         <template v-else>
           <h4 class="search-results-title">
-            <i class="iconfont icon-tag icon-lg"></i>搜索结果（{{ searchResults.length }}）
+            <i class="fas fa-tag fa-lg"></i>搜索结果（{{ searchResults.length }}）
           </h4>
           <CategoryList :categories="groupedResults" />
         </template>
@@ -55,7 +55,7 @@ const groupedResults = computed(() => {
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.search-results-title i {
+.search-results-title i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 .search-empty {

@@ -1,7 +1,7 @@
 <template>
   <div class="content-search-section">
     <div class="content-search-box" id="search-box">
-      <i class="iconfont icon-tag content-search-icon"></i>
+      <i class="fas fa-tag content-search-icon"></i>
       <input
         ref="inputRef"
         type="text"
@@ -80,9 +80,14 @@ const clear = () => {
   position: absolute;
   left: 16px;
   top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
+  transform: translateY(-50%) rotate(135deg);
+  color: var(--bg-surface);
+  -webkit-text-stroke: 1.5px #000;
   font-size: 16px;
+}
+.io-black-mode .content-search-icon {
+  color: var(--bg-surface);
+  -webkit-text-stroke: 1.5px #fff;
 }
 
 .content-search-input {

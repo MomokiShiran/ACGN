@@ -1,6 +1,6 @@
 <template>
   <div class="content site-content">
-    <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>失效归档</h4>
+    <h4 class="page-title"><i class="fas fa-tag fa-lg"></i>失效归档</h4>
     <CategoryList :categories="store.flatTrashCategories" />
   </div>
 </template>
@@ -21,7 +21,7 @@ const store = useSitesStore()
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.page-title > i {
+.page-title i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 </style>

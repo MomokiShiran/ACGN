@@ -18,7 +18,7 @@
           <ul class="sidebar-nav-list" id="sidebar-nav-list">
             <li v-for="cat in categories" :key="cat.id" class="sidebar-item">
               <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
-                <i :class="cat.icon || 'fas fa-link'" class="icon-fw icon-lg me-2"></i>
+                <i :class="cat.icon || 'fas fa-link'" class="fa-fw fa-lg me-2"></i>
                 <span class="sidebar-menu-text">{{ cat.name }}</span>
               </router-link>
             </li>
@@ -30,13 +30,13 @@
         <ul class="sidebar-nav-list">
           <li class="sidebar-item">
             <router-link to="/sitetrash" class="sidebar-menu-link">
-              <i class="fas fa-trash icon-fw icon-lg me-2"></i>
+              <i class="fas fa-trash fa-fw fa-lg me-2"></i>
               <span class="sidebar-menu-text">失效归档</span>
             </router-link>
           </li>
           <li class="sidebar-item">
             <router-link to="/postsite" class="sidebar-menu-link">
-              <i class="fas fa-link icon-fw icon-lg me-2"></i>
+              <i class="fas fa-link fa-fw fa-lg me-2"></i>
               <span class="sidebar-menu-text">投稿&反馈</span>
             </router-link>
           </li>

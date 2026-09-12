@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h4 class="cat-section-title">
-      <i :id="category.id" class="iconfont icon-tag icon-lg"></i>{{ category.name }}
-    </h4>
+    <h4 class="cat-section-title"><i class="fas fa-tag fa-lg"></i>{{ category.name }}</h4>
     <!-- 横向二级菜单：有子分类时显示在标题下方 -->
     <div v-if="subTabs.length" class="cat-subnav">
       <button
@@ -91,7 +89,7 @@ const visibleSites = computed(() => {
   background: var(--primary);
   margin-right: var(--space-2);
 }
-.cat-section-title > i {
+.cat-section-title > i[class*='fa-'] {
   margin-right: var(--space-1);
 }
 

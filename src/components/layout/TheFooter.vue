@@ -9,7 +9,7 @@
         aria-label="返回顶部"
         @click="scrollToTop"
       >
-        <i class="iconfont icon-to-up"></i>
+        <i class="fas fa-arrow-up"></i>
       </button>
       <button
         type="button"
@@ -17,7 +17,7 @@
         :aria-label="isDark ? '切换到日间模式' : '切换到夜间模式'"
         @click="toggle()"
       >
-        <i class="mode-ico iconfont" :class="isDark ? 'icon-light' : 'icon-night'"></i>
+        <i :class="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
       </button>
     </div>
 
