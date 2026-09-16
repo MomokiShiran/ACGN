@@ -4,7 +4,6 @@ import App from './App.vue'
 import router from './router'
 import { initIframeProtect } from './composables/useIframeProtect'
 import './styles/main.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
 
 initIframeProtect()
 

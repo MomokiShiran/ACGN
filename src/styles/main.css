@@ -190,7 +190,7 @@
   --header-bg: #fff;
   --sidebar-bg: #fff;
   --sidebar-text: #515c6b;
-  --sidebar-hover: var(--primary);
+  --sidebar-hover: rgba(215, 90, 127, 0.08);
   --sidebar-active: transparent;
 
   --input-bg: #f0f2f4;
@@ -507,17 +507,6 @@ a.text-muted:hover,
   box-shadow: unset !important;
 }
 
-/* tag 图标：旋转 135°，浅色模式白芯黑描边 */
-.fa-tag {
-  transform: rotate(135deg);
-  color: #fff;
-  -webkit-text-stroke: 1.5px #000;
-}
-.io-black-mode .fa-tag {
-  color: #000;
-  -webkit-text-stroke: 1.5px #fff;
-}
-
 small { font-size: 80%; }
 
 h2 { font-size: 2rem; }
@@ -609,9 +598,8 @@ h6 { font-size: 1rem; }
 
 /* Keep secondary arrows muted */
 .io-black-mode .togo,
-.io-black-mode .togo:hover,
-.io-black-mode .togo i[class*='fa-'] {
-  color: var(--text-muted) !important;
+.io-black-mode .togo:hover {
+  opacity: 0.3;
 }
 
 /* Footer tool button hover contrast */

@@ -18,7 +18,7 @@
           <ul class="sidebar-nav-list" id="sidebar-nav-list">
             <li v-for="cat in categories" :key="cat.id" class="sidebar-item">
               <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
-                <i :class="cat.icon || 'fas fa-link'" class="fa-fw fa-lg me-2"></i>
+                <img :src="resolveNavIcon(cat.icon)" class="sidebar-cat-icon" alt="" @error="handleIconError" />
                 <span class="sidebar-menu-text">{{ cat.name }}</span>
               </router-link>
             </li>
@@ -30,13 +30,13 @@
         <ul class="sidebar-nav-list">
           <li class="sidebar-item">
             <router-link to="/sitetrash" class="sidebar-menu-link">
-              <i class="fas fa-trash fa-fw fa-lg me-2"></i>
+              <img class="sidebar-cat-icon" :src="trashIcon" alt="" />
               <span class="sidebar-menu-text">失效归档</span>
             </router-link>
           </li>
           <li class="sidebar-item">
             <router-link to="/postsite" class="sidebar-menu-link">
-              <i class="fas fa-link fa-fw fa-lg me-2"></i>
+              <img class="sidebar-cat-icon" :src="linkIcon" alt="" />
               <span class="sidebar-menu-text">投稿&反馈</span>
             </router-link>
           </li>
@@ -49,7 +49,10 @@
 <script setup>
 import { useSitesStore } from '@/stores/sites'
 import { useSidebar } from '@/composables/useSidebar'
+import { resolveNavIcon, handleIconError } from '@/composables/useSiteIcon'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
+import trashIcon from '@/assets/icons/trash.svg'
+import linkIcon from '@/assets/icons/link.svg'
 
 const store = useSitesStore()
 const categories = store.categories
@@ -149,6 +152,13 @@ const { isMobileOpen, isMinimized } = useSidebar()
 .sidebar-nav-list {
   margin: 0;
   padding: 0;
+}
+.sidebar-cat-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: var(--space-2);
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 .mini-sidebar .sidebar-menu-text {
   display: none;

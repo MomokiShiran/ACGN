@@ -44,7 +44,7 @@
             :aria-expanded="isMobileOpen"
             @click="toggleMobile"
           >
-            <i class="fas fa-th-large fa-2x"></i>
+            <img class="navbar-toggle-icon" aria-hidden="true" :src="menuIcon" alt="" />
           </button>
         </div>
       </div>
@@ -57,6 +57,7 @@ import { onMounted } from 'vue'
 import { useSidebar } from '@/composables/useSidebar'
 import { useHitokoto } from '@/composables/useHitokoto'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
+import menuIcon from '@/assets/icons/menu.svg'
 
 const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = useSidebar()
 const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = useHitokoto()
@@ -133,6 +134,10 @@ onMounted(() => {
 }
 .navbar-toggle:hover {
   color: var(--primary);
+}
+.navbar-toggle-icon {
+  width: 24px;
+  height: 24px;
 }
 
 /* 菜单按钮与 SVG 动画 */

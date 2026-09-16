@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h4 class="cat-section-title"><i class="fas fa-tag fa-lg"></i>{{ category.name }}</h4>
+  <div :id="category.id">
+    <h4 class="cat-section-title"><img class="title-tag-icon" :src="tagIcon" alt="" />{{ category.name }}</h4>
     <!-- 横向二级菜单：有子分类时显示在标题下方 -->
     <div v-if="subTabs.length" class="cat-subnav">
       <button
@@ -23,6 +23,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import SiteCard from './SiteCard.vue'
+import tagIcon from '@/assets/icons/tag.svg'
 
 const props = defineProps({
   category: {
@@ -89,8 +90,11 @@ const visibleSites = computed(() => {
   background: var(--primary);
   margin-right: var(--space-2);
 }
-.cat-section-title > i[class*='fa-'] {
+.cat-section-title > img.title-tag-icon {
+  width: 16px;
+  height: 16px;
   margin-right: var(--space-1);
+  transform: rotate(135deg);
 }
 
 /* 分类横向二级菜单 */

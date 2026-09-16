@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h4 class="page-title"><i class="fas fa-tag fa-lg"></i>公告</h4>
+    <h4 class="page-title"><img class="page-title-icon" :src="tagIcon" alt="" />公告</h4>
     <div v-if="store.announcements.length === 0" class="ann-empty">暂无公告</div>
     <div v-else class="ann-list">
       <router-link
@@ -11,7 +11,7 @@
       >
         <div class="ann-item-head">
           <h5 class="ann-item-title">{{ item.title }}</h5>
-          <i class="fas fa-angle-right ann-item-arrow"></i>
+          <img class="ann-item-arrow" aria-hidden="true" :src="angleRightIcon" alt="" />
         </div>
         <p class="ann-item-meta">{{ item.date }} · {{ item.author }} · {{ item.views }} 浏览</p>
         <p class="ann-item-excerpt">{{ item.excerpt }}</p>
@@ -22,6 +22,8 @@
 
 <script setup>
 import { useAnnouncementsStore } from '@/stores/announcements'
+import tagIcon from '@/assets/icons/tag.svg'
+import angleRightIcon from '@/assets/icons/angle-right.svg'
 
 const store = useAnnouncementsStore()
 </script>
@@ -35,8 +37,11 @@ const store = useAnnouncementsStore()
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.page-title i[class*='fa-'] {
+.page-title img.page-title-icon {
+  width: 16px;
+  height: 16px;
   margin-right: var(--space-1);
+  transform: rotate(135deg);
 }
 
 .ann-empty {

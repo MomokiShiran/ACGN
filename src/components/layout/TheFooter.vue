@@ -9,7 +9,7 @@
         aria-label="返回顶部"
         @click="scrollToTop"
       >
-        <i class="fas fa-arrow-up"></i>
+        <img class="footer-btn-icon" aria-hidden="true" :src="arrowUpIcon" alt="" />
       </button>
       <button
         type="button"
@@ -17,13 +17,13 @@
         :aria-label="isDark ? '切换到日间模式' : '切换到夜间模式'"
         @click="toggle()"
       >
-        <i :class="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
+        <img class="footer-btn-icon" aria-hidden="true" :src="isDark ? sunIcon : moonIcon" alt="" />
       </button>
     </div>
 
     <div class="footer-inner text-center">
       <div class="footer-text">
-        © 2026 MyACGN &nbsp;&nbsp;Powered by
+        © 2026 ACGN &nbsp;&nbsp;Powered by
         <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer">
           <strong>ACGN</strong>
         </a>
@@ -49,6 +49,9 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useTheme } from '@/composables/useTheme'
+import arrowUpIcon from '@/assets/icons/arrow-up.svg'
+import sunIcon from '@/assets/icons/sun.svg'
+import moonIcon from '@/assets/icons/moon.svg'
 
 const { isDark, toggle } = useTheme()
 
@@ -111,6 +114,10 @@ onUnmounted(() => {
 }
 .footer-tools .btn:hover {
   color: var(--text);
+}
+.footer-btn-icon {
+  width: 18px;
+  height: 18px;
 }
 .footer-note {
   font-size: 11px;

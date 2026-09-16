@@ -2,7 +2,7 @@
   <div class="content">
     <div class="ann-back">
       <router-link to="/announcements" class="back-btn">
-        <i class="fas fa-arrow-left"></i>
+        <img class="back-icon" :src="arrowLeftIcon" alt="" />
         返回公告列表
       </router-link>
     </div>
@@ -24,6 +24,7 @@ import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAnnouncementsStore } from '@/stores/announcements'
 import { usePageTitle } from '@/composables/usePageTitle'
+import arrowLeftIcon from '@/assets/icons/arrow-left.svg'
 
 const route = useRoute()
 const store = useAnnouncementsStore()
