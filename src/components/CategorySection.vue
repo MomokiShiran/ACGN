@@ -1,6 +1,8 @@
 <template>
   <div :id="category.id">
-    <h4 class="cat-section-title"><img class="title-tag-icon" :src="tagIcon" alt="" />{{ category.name }}</h4>
+    <h4 class="cat-section-title">
+      <img class="title-tag-icon" :src="tagIcon" alt="" />{{ category.name }}
+    </h4>
     <!-- 横向二级菜单：有子分类时显示在标题下方 -->
     <div v-if="subTabs.length" class="cat-subnav">
       <button

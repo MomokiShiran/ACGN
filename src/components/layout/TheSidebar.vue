@@ -18,7 +18,12 @@
           <ul class="sidebar-nav-list" id="sidebar-nav-list">
             <li v-for="cat in categories" :key="cat.id" class="sidebar-item">
               <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
-                <img :src="resolveNavIcon(cat.icon)" class="sidebar-cat-icon" alt="" @error="handleIconError" />
+                <img
+                  :src="resolveNavIcon(cat.icon)"
+                  class="sidebar-cat-icon"
+                  alt=""
+                  @error="handleIconError"
+                />
                 <span class="sidebar-menu-text">{{ cat.name }}</span>
               </router-link>
             </li>

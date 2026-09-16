@@ -12,7 +12,9 @@
         </div>
         <template v-else>
           <h4 class="search-results-title">
-            <img class="results-title-icon" :src="tagIcon" alt="" />搜索结果（{{ searchResults.length }}）
+            <img class="results-title-icon" :src="tagIcon" alt="" />搜索结果（{{
+              searchResults.length
+            }}）
           </h4>
           <CategoryList :categories="groupedResults" />
         </template>

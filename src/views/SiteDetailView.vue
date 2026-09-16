@@ -43,7 +43,9 @@
       </div>
       <!-- 相关站点 -->
       <div v-if="relatedSites.length" class="site-detail-related">
-        <h2 class="cat-section-title"><img class="title-tag-icon" :src="tagIcon" alt="" />相关站点</h2>
+        <h2 class="cat-section-title">
+          <img class="title-tag-icon" :src="tagIcon" alt="" />相关站点
+        </h2>
         <div class="row">
           <SiteCard v-for="s in relatedSites" :key="s.id" :site="s" />
         </div>
