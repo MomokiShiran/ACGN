@@ -235,11 +235,22 @@ function checkUrlFormat(categories, fileName) {
   return hasError
 }
 
-function collectIconRefs(categories) {
+function collectCategoryIconRefs(categories) {
   const refs = new Set()
   const walk = (list) => {
     for (const cat of list) {
       if (cat.icon) refs.add(cat.icon)
+      if (cat.children && Array.isArray(cat.children)) walk(cat.children)
+    }
+  }
+  walk(categories)
+  return refs
+}
+
+function collectSiteIconRefs(categories) {
+  const refs = new Set()
+  const walk = (list) => {
+    for (const cat of list) {
       if (cat.sites) for (const site of cat.sites) if (site.icon) refs.add(site.icon)
       if (cat.children && Array.isArray(cat.children)) walk(cat.children)
     }
@@ -248,15 +259,10 @@ function collectIconRefs(categories) {
   return refs
 }
 
-function checkIconReferences(categoriesList, iconDir) {
-  const allRefs = new Set()
-  for (const categories of categoriesList) {
-    for (const ref of collectIconRefs(categories)) allRefs.add(ref)
-  }
-
+function checkLocalRefs(refs, iconDir, dirLabel) {
   const IMAGE_EXT_RE = /\.(png|ico|jpg|jpeg|gif|svg|webp)$/i
   const URL_RE = /^(?:https?:)?\/\//
-  const localRefs = [...allRefs].filter(
+  const localRefs = [...refs].filter(
     (ref) => ref && !URL_RE.test(ref) && !ref.startsWith('/') && IMAGE_EXT_RE.test(ref)
   )
 
@@ -264,18 +270,51 @@ function checkIconReferences(categoriesList, iconDir) {
   const missing = [...refBasenames].filter((basename) => !fs.existsSync(path.join(iconDir, basename)))
   if (missing.length > 0) {
     console.error(`✗ 以下数据引用的图标文件不存在:`)
-    for (const basename of missing) console.error(`   assets/images/sites/${basename}`)
+    for (const basename of missing) console.error(`   ${dirLabel}/${basename}`)
+  }
+  return missing.length > 0
+}
+
+function checkIconReferences(categoriesList, siteIconDir, navIconDir) {
+  const allSiteRefs = new Set()
+  const allNavRefs = new Set()
+  for (const categories of categoriesList) {
+    for (const ref of collectSiteIconRefs(categories)) allSiteRefs.add(ref)
+    for (const ref of collectCategoryIconRefs(categories)) allNavRefs.add(ref)
   }
 
-  let hasError = missing.length > 0
-  if (fs.existsSync(iconDir)) {
-    const files = fs.readdirSync(iconDir).filter((f) => /\.(png|ico)$/i.test(f))
-    const orphan = files.filter((f) => !refBasenames.has(f))
+  let hasError = checkLocalRefs(allSiteRefs, siteIconDir, 'assets/images/sites')
+
+  const IMAGE_EXT_RE = /\.(png|ico|jpg|jpeg|gif|svg|webp)$/i
+  const URL_RE = /^(?:https?:)?\/\//
+  const siteRefBasenames = new Set(
+    [...allSiteRefs]
+      .filter((ref) => ref && !URL_RE.test(ref) && !ref.startsWith('/') && IMAGE_EXT_RE.test(ref))
+      .map((ref) => ref.split('/').pop())
+      .filter(Boolean)
+  )
+
+  if (fs.existsSync(siteIconDir)) {
+    const files = fs.readdirSync(siteIconDir).filter((f) => /\.(png|ico)$/i.test(f))
+    const orphan = files.filter((f) => !siteRefBasenames.has(f))
     if (orphan.length > 0) {
       hasError = true
       console.error(`✗ 以下站点图标未被任何数据引用（疑似孤儿，请删除）:`)
       for (const f of orphan) console.error(`   assets/images/sites/${f}`)
     }
+  }
+
+  const navLocalRefs = [...allNavRefs].filter(
+    (ref) => ref && !URL_RE.test(ref) && !ref.startsWith('/') && path.extname(ref).toLowerCase() === '.svg'
+  )
+  const navRefBasenames = new Set(navLocalRefs.map((ref) => ref.split('/').pop()).filter(Boolean))
+  const navMissing = [...navRefBasenames].filter(
+    (basename) => !fs.existsSync(path.join(navIconDir, basename))
+  )
+  if (navMissing.length > 0) {
+    hasError = true
+    console.error(`✗ 以下分类图标文件不存在:`)
+    for (const basename of navMissing) console.error(`   assets/icons/${basename}`)
   }
 
   if (!hasError) {
@@ -307,7 +346,8 @@ function main() {
   hasError = sitesResult.hasError || trashResult.hasError
 
   const iconDir = path.join(__dirname, '../src/assets/images/sites')
-  hasError = checkIconReferences([sitesResult.categories, trashResult.categories], iconDir) || hasError
+  const navIconDir = path.join(__dirname, '../src/assets/icons')
+  hasError = checkIconReferences([sitesResult.categories, trashResult.categories], iconDir, navIconDir) || hasError
 
   console.log('\n校验完成！')
 
