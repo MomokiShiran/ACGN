@@ -3,7 +3,7 @@
     {
       "id": "term-2",
       "name": "次元美图",
-      "icon": "fas fa-image",
+      "icon": "./image.svg",
       "sites": [
         {
           "id": 158,
@@ -61,7 +61,7 @@
     {
       "id": "term-3",
       "name": "在线动漫",
-      "icon": "fas fa-play-circle",
+      "icon": "./play.svg",
       "sites": [
         {
           "id": 169,
@@ -234,7 +234,7 @@
     {
       "id": "term-12",
       "name": "在线漫画",
-      "icon": "fab fa-stack-overflow",
+      "icon": "./manga.svg",
       "sites": [
         {
           "id": 66,
@@ -292,7 +292,7 @@
     {
       "id": "term-5",
       "name": "在线本子",
-      "icon": "fas fa-book",
+      "icon": "./book.svg",
       "sites": [
         {
           "id": 1011,
@@ -340,7 +340,7 @@
     {
       "id": "term-8",
       "name": "在线里番",
-      "icon": "fas fa-audio-description",
+      "icon": "./audio.svg",
       "sites": [
         {
           "id": 1020,
@@ -387,7 +387,7 @@
     {
       "id": "term-6",
       "name": "ACG资源社区",
-      "icon": "fas fa-users",
+      "icon": "./users.svg",
       "sites": [
         {
           "id": 1001,
@@ -578,7 +578,7 @@
     {
       "id": "term-9",
       "name": "ACG图书馆",
-      "icon": "fas fa-university",
+      "icon": "./university.svg",
       "sites": [
         {
           "id": 50,
@@ -595,7 +595,7 @@
     {
       "id": "term-7",
       "name": "Galgame",
-      "icon": "far fa-registered",
+      "icon": "./game.svg",
       "sites": [
         {
           "id": 1008,
@@ -675,30 +675,30 @@
     {
       "id": "term-18",
       "name": "轻小说",
-      "icon": "fab fa-envira",
+      "icon": "./ai.svg",
       "sites": []
     },
     {
       "id": "term-4",
       "name": "动漫下载",
-      "icon": "fas fa-download",
+      "icon": "./download.svg",
       "sites": []
     },
     {
       "id": "term-14",
       "name": "ACG购物",
-      "icon": "fas fa-shopping-bag",
+      "icon": "./shopping-bag.svg",
       "sites": []
     },
     {
       "id": "tool-collection",
       "name": "工具大全",
-      "icon": "fas fa-toolbox",
+      "icon": "./toolbox.svg",
       "children": [
         {
           "id": "term-11",
           "name": "BT下载站",
-          "icon": "fas fa-download",
+          "icon": "./download.svg",
           "sites": [
             {
               "id": 1003,
@@ -725,25 +725,25 @@
         {
           "id": "term-15",
           "name": "BT下载软件",
-          "icon": "fas fa-download",
+          "icon": "./download.svg",
           "sites": []
         },
         {
           "id": "term-17",
           "name": "Telegram频道",
-          "icon": "fab fa-telegram",
+          "icon": "./telegram.svg",
           "sites": []
         },
         {
           "id": "term-13",
           "name": "图源搜索工具",
-          "icon": "fas fa-search",
+          "icon": "./search.svg",
           "sites": []
         },
         {
           "id": "term-16",
           "name": "进阶ACG必备",
-          "icon": "fas fa-tools",
+          "icon": "./tools.svg",
           "sites": [
             {
               "id": 146,
@@ -760,7 +760,7 @@
         {
           "id": "term-22",
           "name": "付费网盘资源下载",
-          "icon": "fas fa-cloud-download-alt",
+          "icon": "./cloud-download.svg",
           "sites": [
             {
               "id": 1017,
@@ -777,7 +777,7 @@
         {
           "id": "term-21",
           "name": "其它小工具",
-          "icon": "fas fa-wrench",
+          "icon": "./tools.svg",
           "sites": []
         }
       ]

@@ -47,7 +47,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fab fa-github me-2"></i>GitHub 仓库
+              <img class="about-icon" :src="githubIcon" alt="" />GitHub 仓库
             </a>
           </p>
         </div>
@@ -84,4 +84,14 @@
 <script setup>
 import ContentPageLayout from '@/components/ContentPageLayout.vue'
 import LegalNav from '@/components/LegalNav.vue'
+import githubIcon from '@/assets/icons/github.svg'
 </script>
+
+<style scoped>
+.about-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: var(--space-2);
+  vertical-align: middle;
+}
+</style>

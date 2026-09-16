@@ -7,12 +7,14 @@
 
       <template v-else>
         <div v-if="groupedResults.length === 0" class="search-empty">
-          <i class="search-empty-icon iconfont icon-search"></i>
+          <img class="search-empty-icon" aria-hidden="true" :src="searchIcon" alt="" />
           <div>没找到匹配的站点，试试其他关键字吧</div>
         </div>
         <template v-else>
           <h4 class="search-results-title">
-            <i class="iconfont icon-tag icon-lg"></i>搜索结果（{{ searchResults.length }}）
+            <img class="results-title-icon" :src="tagIcon" alt="" />搜索结果（{{
+              searchResults.length
+            }}）
           </h4>
           <CategoryList :categories="groupedResults" />
         </template>
@@ -29,6 +31,8 @@ import { useSitesStore } from '@/stores/sites'
 import SearchBar from '@/components/SearchBar.vue'
 import CategoryList from '@/components/CategoryList.vue'
 import FriendLinks from '@/components/FriendLinks.vue'
+import tagIcon from '@/assets/icons/tag.svg'
+import searchIcon from '@/assets/icons/search.svg'
 
 const store = useSitesStore()
 const keyword = ref('')
@@ -55,8 +59,11 @@ const groupedResults = computed(() => {
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.search-results-title i {
+.search-results-title img.results-title-icon {
+  width: 16px;
+  height: 16px;
   margin-right: var(--space-1);
+  transform: rotate(135deg);
 }
 .search-empty {
   text-align: center;

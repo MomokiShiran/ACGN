@@ -2,7 +2,7 @@
   <div class="content customize-site">
     <div class="site-detail-back">
       <router-link to="/" class="back-btn">
-        <i class="fas fa-arrow-left"></i>
+        <img class="back-icon" :src="arrowLeftIcon" alt="" />
         返回首页
       </router-link>
     </div>
@@ -29,7 +29,7 @@
                 rel="noopener noreferrer"
                 class="btn btn-primary btn-cta"
               >
-                <i class="fas fa-external-link-alt"></i>
+                <img class="cta-icon" :src="externalLinkIcon" alt="" />
                 访问网站
               </a>
             </div>
@@ -43,7 +43,9 @@
       </div>
       <!-- 相关站点 -->
       <div v-if="relatedSites.length" class="site-detail-related">
-        <h2 class="cat-section-title"><i class="iconfont icon-tag icon-lg"></i>相关站点</h2>
+        <h2 class="cat-section-title">
+          <img class="title-tag-icon" :src="tagIcon" alt="" />相关站点
+        </h2>
         <div class="row">
           <SiteCard v-for="s in relatedSites" :key="s.id" :site="s" />
         </div>
@@ -59,6 +61,9 @@ import { useSitesStore } from '@/stores/sites'
 import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
 import { usePageTitle } from '@/composables/usePageTitle'
 import SiteCard from '@/components/SiteCard.vue'
+import arrowLeftIcon from '@/assets/icons/arrow-left.svg'
+import externalLinkIcon from '@/assets/icons/external-link.svg'
+import tagIcon from '@/assets/icons/tag.svg'
 
 const route = useRoute()
 const store = useSitesStore()
@@ -178,8 +183,11 @@ watch(
   background: var(--primary);
   margin-right: var(--space-2);
 }
-.cat-section-title > i {
+.cat-section-title > img.title-tag-icon {
+  width: 16px;
+  height: 16px;
   margin-right: var(--space-1);
+  transform: rotate(135deg);
 }
 
 /* 头部 hero 块与简介卡片共用的圆角 */
@@ -267,7 +275,9 @@ watch(
   border-radius: 999px;
   padding: 8px 20px;
 }
-.btn-cta i {
+.btn-cta img.cta-icon {
+  width: 16px;
+  height: 16px;
   margin-right: var(--space-1);
 }
 

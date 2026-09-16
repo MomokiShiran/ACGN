@@ -30,7 +30,7 @@
         :title="'直达 ' + site.name"
         rel="nofollow noopener noreferrer"
       >
-        <i class="iconfont icon-goto"></i>
+        <img class="togo-arrow" :src="arrowRightIcon" alt="" />
       </a>
     </div>
   </div>
@@ -39,6 +39,7 @@
 <script setup>
 import { computed } from 'vue'
 import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
+import arrowRightIcon from '@/assets/icons/arrow-right.svg'
 
 const props = defineProps({
   site: {
@@ -179,5 +180,10 @@ a.togo {
 .site-content .url-body:active {
   transform: none !important;
   box-shadow: none !important;
+}
+
+.togo-arrow {
+  width: 16px;
+  height: 16px;
 }
 </style>

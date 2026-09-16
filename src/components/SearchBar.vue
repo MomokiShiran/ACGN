@@ -1,7 +1,7 @@
 <template>
   <div class="content-search-section">
     <div class="content-search-box" id="search-box">
-      <i class="iconfont icon-tag content-search-icon"></i>
+      <img class="content-search-icon" :src="tagIcon" alt="" />
       <input
         ref="inputRef"
         type="text"
@@ -31,6 +31,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import tagIcon from '@/assets/icons/tag.svg'
 
 defineProps({
   modelValue: {
@@ -80,9 +81,9 @@ const clear = () => {
   position: absolute;
   left: 16px;
   top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  font-size: 16px;
+  transform: translateY(-50%) rotate(135deg);
+  width: 16px;
+  height: 16px;
 }
 
 .content-search-input {

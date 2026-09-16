@@ -1,6 +1,6 @@
 <template>
   <div v-if="friendsStore.links.length > 0">
-    <h4 class="friendlinks-title"><i class="iconfont icon-book-mark-line icon-lg"></i>友情链接</h4>
+    <h4 class="friendlinks-title"><img class="title-icon" :src="bookmarkIcon" alt="" />友情链接</h4>
     <div class="friendlinks-card card no-hover-card">
       <div class="card-body">
         <a
@@ -21,6 +21,7 @@
 
 <script setup>
 import { useFriendsStore } from '@/stores/friends'
+import bookmarkIcon from '@/assets/icons/bookmark.svg'
 
 const friendsStore = useFriendsStore()
 </script>
@@ -31,8 +32,11 @@ const friendsStore = useFriendsStore()
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.friendlinks-title i {
+.friendlinks-title > img.title-icon {
+  width: 18px;
+  height: 18px;
   margin-right: var(--space-2);
+  vertical-align: middle;
 }
 .friendlink-link {
   position: relative;

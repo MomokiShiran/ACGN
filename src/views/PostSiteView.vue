@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h4 class="page-title"><i class="iconfont icon-tag icon-lg"></i>投稿 & 反馈</h4>
+    <h4 class="page-title"><img class="page-title-icon" :src="tagIcon" alt="" />投稿 & 反馈</h4>
     <div class="postsite-card">
       <p class="text-muted">感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。</p>
       <p class="text-muted">
@@ -17,6 +17,10 @@
   </div>
 </template>
 
+<script setup>
+import tagIcon from '@/assets/icons/tag.svg'
+</script>
+
 <style scoped>
 /* 页面标题 */
 .page-title {
@@ -26,8 +30,11 @@
   color: var(--text-muted);
   font-size: var(--font-size-lg);
 }
-.page-title > i {
+.page-title img.page-title-icon {
+  width: 16px;
+  height: 16px;
   margin-right: var(--space-1);
+  transform: rotate(135deg);
 }
 
 .postsite-card {
