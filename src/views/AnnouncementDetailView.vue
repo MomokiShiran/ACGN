@@ -35,6 +35,8 @@ usePageTitle(computed(() => announcement.value?.title))
 watch(
   () => route.params.id,
   (id) => {
+    // 重置为空，无效 id 时显示"公告未找到"而非残留上一条公告的数据
+    announcement.value = null
     if (id) {
       announcement.value = store.findById(id)
     }
