@@ -72,8 +72,8 @@ const clear = () => {
 .content-search-box:focus-within {
   border-color: var(--primary);
 }
-/* 夜间模式 --border 为 transparent，恢复可见边框（.io-black-mode 在 <html> 上，属祖先选择器） */
-.io-black-mode .content-search-box {
+/* 夜间模式 --border 为 transparent，恢复可见边框（.dark 在 <html> 上，属祖先选择器） */
+.dark .content-search-box {
   border-color: var(--bg-gray);
 }
 

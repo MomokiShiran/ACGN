@@ -8,7 +8,7 @@
         var classList = document.documentElement.classList
         var stored
         try {
-          stored = localStorage.getItem('io-theme-mode')
+          stored = localStorage.getItem('theme-mode')
         } catch (e) {
           stored = null
         }
@@ -16,7 +16,7 @@
         if (!isDark && stored !== 'light' && window.matchMedia) {
           isDark = matchMedia('(prefers-color-scheme: dark)').matches
         }
-        classList.add(isDark ? 'io-black-mode' : 'io-grey-mode')
+        classList.add(isDark ? 'dark' : 'light')
       })()
     </script>
     <style>
@@ -24,7 +24,7 @@
       html {
         background-color: #f9f9f9;
       }
-      html.io-black-mode {
+      html.dark {
         background-color: #1b1d1f;
       }
     </style>

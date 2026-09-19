@@ -132,7 +132,7 @@
    Dark mode overrides
    ============================================ */
 
-.io-black-mode {
+.dark {
   --text: #c6c9cf;
   --text-muted: #bbb;
   --text-dark: #e8eaed;
@@ -174,7 +174,7 @@
    Grey mode overrides
    ============================================ */
 
-.io-grey-mode {
+.light {
   --text: #515c6b;
   --text-muted: #515c6b;
   --text-dark: #3a434e;
@@ -495,7 +495,7 @@ a.text-muted:hover,
   border-color: #f5c6cb;
 }
 
-.io-black-mode .alert-danger {
+.dark .alert-danger {
   color: #f8d7da;
   background-color: #5a1a1f;
   border-color: #721c24;
@@ -564,44 +564,44 @@ h6 { font-size: 1rem; }
    ============================================ */
 
 /* Muted text tweaks */
-.io-black-mode .text-muted {
+.dark .text-muted {
   color: var(--text-muted) !important;
 }
 
 /* Component backgrounds for dark mode */
-.io-black-mode .card,
-.io-black-mode .url-body {
+.dark .card,
+.dark .url-body {
   background-color: var(--card-bg);
 }
 
 /* Grey-mode sidebar hover contrast */
-.io-grey-mode .sidebar-item > a:hover {
+.light .sidebar-item > a:hover {
   color: var(--primary);
   background: var(--sidebar-hover);
 }
 
 /* Disable card hover-lift on announcement-style cards in dark mode */
-.io-black-mode .url-card:hover,
-.io-black-mode .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
+.dark .url-card:hover,
+.dark .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
   transform: none !important;
   box-shadow: var(--shadow-sm) !important;
   color: var(--text) !important;
 }
 
 /* Link hover stays primary-colored */
-.io-black-mode .url-body a:hover,
-.io-black-mode .url-body:hover strong,
-.io-black-mode .footer-text a:hover,
-.io-black-mode .footer-text a:hover strong {
+.dark .url-body a:hover,
+.dark .url-body:hover strong,
+.dark .footer-text a:hover,
+.dark .footer-text a:hover strong {
   color: var(--primary) !important;
 }
 
 /* Keep secondary arrows muted */
-.io-black-mode .togo,
-.io-black-mode .togo:hover {
+.dark .togo,
+.dark .togo:hover {
   opacity: 0.3;
 }
 
 /* Footer tool button hover contrast */
-.io-black-mode .footer-tools .btn:hover { color: var(--bg-surface); }
-.io-grey-mode .footer-tools .btn:hover { color: var(--text-dark); }
+.dark .footer-tools .btn:hover { color: var(--bg-surface); }
+.light .footer-tools .btn:hover { color: var(--text-dark); }
