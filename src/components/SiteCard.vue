@@ -3,7 +3,6 @@
     <div class="url-body">
       <router-link
         :to="{ name: 'SiteDetail', query: { id: site.id } }"
-        target="_blank"
         class="url-card-link"
         :title="site.description"
         rel="noopener noreferrer"
