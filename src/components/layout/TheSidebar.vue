@@ -45,6 +45,15 @@
           >
             <img class="theme-icon" :src="themeIcons[item.value]" alt="" />
           </button>
+          <button
+            type="button"
+            class="theme-btn theme-btn-mini"
+            :aria-label="currentLabel"
+            :title="currentLabel"
+            @click="cycleTheme"
+          >
+            <img class="theme-icon" :src="themeIcons[mode]" alt="" />
+          </button>
         </div>
         <ul class="sidebar-nav-list">
           <li class="sidebar-item">
@@ -66,6 +75,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useSitesStore } from '@/stores/sites'
 import { useSidebar } from '@/composables/useSidebar'
 import { useTheme } from '@/composables/useTheme'
@@ -90,6 +100,15 @@ const themeIcons = {
   light: sunIcon,
   dark: moonIcon,
   auto: autoIcon,
+}
+
+// 当前模式标签（供迷你单钮 tooltip / aria）
+const currentLabel = computed(() => THEME_MODES.find((m) => m.value === mode.value)?.label ?? '')
+
+// 迷你侧栏单钮：点击按 浅色 → 深色 → 跟随系统 循环，图标跟随当前模式
+const cycleTheme = () => {
+  const idx = THEME_MODES.findIndex((m) => m.value === mode.value)
+  setMode(THEME_MODES[(idx + 1) % THEME_MODES.length].value)
 }
 </script>
 
@@ -206,10 +225,20 @@ const themeIcons = {
   width: 16px;
   height: 16px;
 }
+/* 迷你单钮默认隐藏，仅折叠态显示 */
+.theme-btn-mini {
+  display: none;
+}
 .mini-sidebar .sidebar-theme {
   flex-direction: column;
   gap: var(--space-1);
   padding: 0 var(--space-1) var(--space-2);
+}
+.mini-sidebar .theme-btn:not(.theme-btn-mini) {
+  display: none;
+}
+.mini-sidebar .theme-btn-mini {
+  display: flex;
 }
 .mini-sidebar .theme-btn {
   flex: none;
