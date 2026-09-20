@@ -55,7 +55,6 @@ watch(
   border-radius: 999px;
   background: var(--bg-surface);
   color: var(--text-muted);
-  box-shadow: var(--shadow-sm);
   font-size: var(--font-size-sm);
   text-decoration: none;
   transition: var(--transition-normal);
@@ -74,14 +73,12 @@ watch(
   color: var(--text-muted);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 
 .ann-detail {
   padding: var(--space-5);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 
 .ann-detail-title {

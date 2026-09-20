@@ -9,6 +9,5 @@
   color: var(--text-muted);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 </style>

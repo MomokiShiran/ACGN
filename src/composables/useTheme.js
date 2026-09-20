@@ -20,12 +20,13 @@ const mode = computed(() => colorMode.value)
 // 持久化源模式，可区分用户是否显式选了 auto
 const sourceMode = computed(() => colorMode.store.value)
 const themeClass = computed(() => (isDark.value ? DARK : LIGHT))
-const themeColor = computed(() => (isDark.value ? DARK_THEME_COLOR : LIGHT_THEME_COLOR))
 
 // 首帧底色由 index.html 内联脚本设置；此处随主题切换持续同步 html 内联背景，
 // 避免内联样式的残值让 html 背景停在后于主题色
 watchEffect(() => {
-  document.documentElement.style.backgroundColor = themeColor.value
+  document.documentElement.style.backgroundColor = isDark.value
+    ? DARK_THEME_COLOR
+    : LIGHT_THEME_COLOR
 })
 
 // 显式三态：'dark' | 'light' | 'auto'（auto 跟随系统偏好）
@@ -40,5 +41,5 @@ const toggle = () => {
 
 // 全局单例状态：整个应用只有一个主题，跨 App/TheFooter 等组件共享
 export function useTheme() {
-  return { isDark, mode, sourceMode, themeClass, themeColor, toggle, setMode }
+  return { isDark, mode, sourceMode, themeClass, toggle, setMode }
 }

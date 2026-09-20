@@ -33,10 +33,6 @@
   --scrollbar-track: rgba(0, 0, 0, 0.05);
   --scrollbar-width: 8px;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 30px 20px -20px rgba(0, 0, 0, 0.15);
-
   /* Tooltip background (light mode; overridden in dark/grey themes) */
   --tooltip-bg: rgba(0, 0, 0, 0.85);
 
@@ -146,8 +142,6 @@
   --scrollbar: #555;
   --scrollbar-hover: #777;
   --scrollbar-track: rgba(255, 255, 255, 0.05);
-
-  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.2);
 
   --header-bg: rgba(44, 46, 47, 0.95);
   --sidebar-bg: #2c2e2f;
@@ -394,7 +388,6 @@ a.text-muted:hover,
 .btn.focus,
 .btn:focus {
   outline: 0;
-  box-shadow: none;
   line-height: var(--line-height-normal);
 }
 
@@ -422,7 +415,6 @@ a.text-muted:hover,
   background: var(--card-bg);
   border-width: 0;
   margin-bottom: var(--space-4);
-  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal) ease;
   border-radius: var(--radius-2xl);
 }
@@ -436,7 +428,6 @@ a.text-muted:hover,
 .no-hover-card:hover,
 .no-hover-card.card:hover {
   transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
 }
 
 .card-body {
@@ -448,7 +439,6 @@ a.text-muted:hover,
 .panel {
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 
 /* 胶囊切换项（分类二级导航 / 关于页切换） */

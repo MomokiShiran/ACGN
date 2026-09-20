@@ -71,7 +71,6 @@ onMounted(() => {
 /* 顶部导航栏 */
 .navbar {
   background: var(--header-bg);
-  box-shadow: var(--shadow-sm);
   transition: background-color var(--transition-normal);
 }
 .navbar-inner {

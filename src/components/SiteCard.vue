@@ -99,7 +99,6 @@ const onImgError = handleIconError
   margin-bottom: var(--space-4);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
   text-decoration: none;
 }
 .url-card-body {
@@ -178,7 +177,6 @@ a.togo {
 .site-content .url-body:hover,
 .site-content .url-body:active {
   transform: none !important;
-  box-shadow: none !important;
 }
 
 .togo-arrow {
@@ -195,7 +193,6 @@ a.togo {
 .dark .url-card:hover,
 .dark .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
   transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
   color: var(--text) !important;
 }
 
