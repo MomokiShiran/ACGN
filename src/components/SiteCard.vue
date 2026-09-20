@@ -185,4 +185,29 @@ a.togo {
   width: 16px;
   height: 16px;
 }
+
+/* ---- 暗色主题微调（原 main.css Theme Overrides） ---- */
+.dark .url-body {
+  background-color: var(--card-bg);
+}
+
+/* 禁用卡片 hover 抬升 */
+.dark .url-card:hover,
+.dark .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  color: var(--text) !important;
+}
+
+/* 链接 hover 保持主色 */
+.dark .url-body a:hover,
+.dark .url-body:hover strong {
+  color: var(--primary) !important;
+}
+
+/* 直达箭头暗色下保持弱化 */
+.dark .togo,
+.dark .togo:hover {
+  opacity: 0.3;
+}
 </style>

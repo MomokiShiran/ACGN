@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <h4 class="page-title"><img class="page-title-icon" :src="tagIcon" alt="" />投稿 & 反馈</h4>
-    <div class="postsite-card">
+    <PageTitle>投稿 & 反馈</PageTitle>
+    <div class="panel postsite-card">
       <p class="text-muted">感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。</p>
       <p class="text-muted">
         <strong>联系方式：</strong>
@@ -18,30 +18,12 @@
 </template>
 
 <script setup>
-import tagIcon from '@/assets/icons/tag.svg'
+import PageTitle from '@/components/PageTitle.vue'
 </script>
 
 <style scoped>
-/* 页面标题 */
-.page-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  color: var(--text-muted);
-  font-size: var(--font-size-lg);
-}
-.page-title img.page-title-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-1);
-  transform: rotate(135deg);
-}
-
 .postsite-card {
   padding: var(--space-5);
-  background: var(--card-bg);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 .postsite-card p:last-child {
   margin-bottom: 0;

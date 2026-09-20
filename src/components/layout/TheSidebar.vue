@@ -32,6 +32,20 @@
       </div>
 
       <div class="sidebar-footer">
+        <div class="sidebar-theme">
+          <button
+            v-for="item in THEME_MODES"
+            :key="item.value"
+            type="button"
+            class="theme-btn"
+            :class="{ active: mode === item.value }"
+            :aria-label="item.label"
+            :title="item.label"
+            @click="setMode(item.value)"
+          >
+            <img class="theme-icon" :src="themeIcons[item.value]" alt="" />
+          </button>
+        </div>
         <ul class="sidebar-nav-list">
           <li class="sidebar-item">
             <router-link to="/sitetrash" class="sidebar-menu-link">
@@ -54,15 +68,29 @@
 <script setup>
 import { useSitesStore } from '@/stores/sites'
 import { useSidebar } from '@/composables/useSidebar'
+import { useTheme } from '@/composables/useTheme'
+import { THEME_MODES } from '@/composables/themeConstants'
 import { resolveNavIcon, handleIconError } from '@/composables/useSiteIcon'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
 import trashIcon from '@/assets/icons/trash.svg'
 import linkIcon from '@/assets/icons/link.svg'
+import sunIcon from '@/assets/icons/sun.svg'
+import moonIcon from '@/assets/icons/moon.svg'
+import autoIcon from '@/assets/icons/auto.svg'
 
 const store = useSitesStore()
 const categories = store.categories
 
 const { isMobileOpen, isMinimized } = useSidebar()
+// 活跃态按持久化源模式(sourceMode)判断：auto 时实际模式已解析为 dark/light，
+// 用 mode 判断会导致 auto 按钮永不高亮
+const { sourceMode: mode, setMode } = useTheme()
+
+const themeIcons = {
+  light: sunIcon,
+  dark: moonIcon,
+  auto: autoIcon,
+}
 </script>
 
 <style scoped>
@@ -71,7 +99,7 @@ const { isMobileOpen, isMinimized } = useSidebar()
   font-size: var(--font-size-sm);
   width: 150px;
   height: 100vh;
-  z-index: 1081;
+  z-index: var(--z-sidebar);
   position: sticky;
   top: 0;
   background: var(--sidebar-bg);
@@ -148,6 +176,45 @@ const { isMobileOpen, isMinimized } = useSidebar()
   padding: var(--space-2) 0;
   border-top: 1px solid rgba(129, 129, 129, 0.15);
 }
+.sidebar-theme {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0 var(--space-3) var(--space-2);
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid rgba(129, 129, 129, 0.15);
+}
+.theme-btn {
+  flex: 1;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--input-bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.theme-btn:hover {
+  background: var(--sidebar-hover);
+}
+.theme-btn.active {
+  border-color: var(--primary);
+}
+.theme-icon {
+  width: 16px;
+  height: 16px;
+}
+.mini-sidebar .sidebar-theme {
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0 var(--space-1) var(--space-2);
+}
+.mini-sidebar .theme-btn {
+  flex: none;
+  width: 100%;
+}
 .mini-sidebar .sidebar-menu {
   width: 60px;
 }
@@ -185,7 +252,7 @@ const { isMobileOpen, isMinimized } = useSidebar()
     top: 0 !important;
     left: 0 !important;
     position: fixed !important;
-    z-index: 1090 !important;
+    z-index: var(--z-modal) !important;
     display: block !important;
     padding-left: 0 !important;
     visibility: hidden;

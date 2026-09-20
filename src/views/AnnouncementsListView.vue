@@ -1,13 +1,13 @@
 <template>
   <div class="content">
-    <h4 class="page-title"><img class="page-title-icon" :src="tagIcon" alt="" />公告</h4>
-    <div v-if="store.announcements.length === 0" class="ann-empty">暂无公告</div>
+    <PageTitle>公告</PageTitle>
+    <EmptyState v-if="store.announcements.length === 0">暂无公告</EmptyState>
     <div v-else class="ann-list">
       <router-link
         v-for="item in store.announcements"
         :key="item.id"
         :to="{ name: 'AnnouncementDetail', params: { id: item.id } }"
-        class="ann-item"
+        class="panel ann-item"
       >
         <div class="ann-item-head">
           <h5 class="ann-item-title">{{ item.title }}</h5>
@@ -22,37 +22,14 @@
 
 <script setup>
 import { useAnnouncementsStore } from '@/stores/announcements'
-import tagIcon from '@/assets/icons/tag.svg'
+import PageTitle from '@/components/PageTitle.vue'
+import EmptyState from '@/components/EmptyState.vue'
 import angleRightIcon from '@/assets/icons/angle-right.svg'
 
 const store = useAnnouncementsStore()
 </script>
 
 <style scoped>
-/* 页面标题 */
-.page-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  color: var(--text-muted);
-  font-size: var(--font-size-lg);
-}
-.page-title img.page-title-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-1);
-  transform: rotate(135deg);
-}
-
-.ann-empty {
-  padding: 60px 20px;
-  text-align: center;
-  color: var(--text-muted);
-  background: var(--card-bg);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
-}
-
 .ann-list {
   display: flex;
   flex-direction: column;
@@ -62,9 +39,6 @@ const store = useAnnouncementsStore()
 .ann-item {
   display: block;
   padding: var(--space-4);
-  background: var(--card-bg);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
   text-decoration: none;
   transition: box-shadow var(--transition-normal);
 }
@@ -110,7 +84,7 @@ const store = useAnnouncementsStore()
 .ann-item-excerpt {
   margin: var(--space-2) 0 0;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;

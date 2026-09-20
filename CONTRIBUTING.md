@@ -77,7 +77,6 @@ ACGN/
 ├── scripts/               # Node 脚本（站点数据校验等）
 ├── src/
 │   ├── assets/            # 静态资源
-│   │   ├── fonts/         # FontAwesome 字体
 │   │   └── images/sites/  # 网站图标
 │   ├── components/        # 可复用组件
 │   │   ├── layout/        # 布局组件（侧边栏/顶栏/页脚）
@@ -186,7 +185,7 @@ npm run test
     {
       "id": "term-x",
       "name": "分类名称",
-      "icon": "fas fa-star",
+      "icon": "✨",
       "sites": [
         {
           "id": 1,

@@ -1,7 +1,7 @@
 <template>
   <div v-if="friendsStore.links.length > 0">
     <h4 class="friendlinks-title"><img class="title-icon" :src="bookmarkIcon" alt="" />友情链接</h4>
-    <div class="friendlinks-card card no-hover-card">
+    <div class="friendlinks-card card">
       <div class="card-body">
         <a
           v-for="link in friendsStore.links"

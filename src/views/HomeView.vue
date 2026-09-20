@@ -12,9 +12,7 @@
         </div>
         <template v-else>
           <h4 class="search-results-title">
-            <img class="results-title-icon" :src="tagIcon" alt="" />搜索结果（{{
-              searchResults.length
-            }}）
+            <img class="tag-icon" :src="tagIcon" alt="" />搜索结果（{{ searchResults.length }}）
           </h4>
           <CategoryList :categories="groupedResults" />
         </template>
@@ -58,12 +56,6 @@ const groupedResults = computed(() => {
   margin-bottom: var(--space-4);
   color: var(--text-muted);
   font-size: var(--font-size-lg);
-}
-.search-results-title img.results-title-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-1);
-  transform: rotate(135deg);
 }
 .search-empty {
   text-align: center;

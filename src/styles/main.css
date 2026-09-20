@@ -61,14 +61,12 @@
 
   /* Typography */
   --font-family:
-    'SF Pro SC', 'SF Pro Text', 'PingFang SC', 'PingFang TC', 'PingFang HK',
-    'Hiragino Sans GB', 'Hiragino Sans CNS', 'Noto Sans SC', 'Noto Sans TC',
-    'Microsoft YaHei UI', 'Microsoft YaHei',
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', system-ui,
-    sans-serif;
+    'SF Pro SC', 'SF Pro Text', 'PingFang SC', 'PingFang TC', 'PingFang HK', 'Hiragino Sans GB',
+    'Hiragino Sans CNS', 'Noto Sans SC', 'Noto Sans TC', 'Microsoft YaHei UI', 'Microsoft YaHei',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', system-ui, sans-serif;
   --font-mono:
-    'SF Mono', 'SF Pro Mono', 'Fira Code', 'Menlo', 'Monaco', 'Consolas',
-    'Liberation Mono', 'Courier New', monospace;
+    'SF Mono', 'SF Pro Mono', 'Fira Code', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
+    'Courier New', monospace;
 
   --font-size-xs: 0.45rem;
   --font-size-sm: 0.75rem;
@@ -345,15 +343,6 @@ body {
   margin-left: auto;
 }
 
-.nothing {
-  padding: var(--space-5) 0;
-  text-align: center;
-  color: var(--text-muted);
-  background: rgba(136, 136, 136, 0.2);
-  border-radius: var(--radius-lg);
-  line-height: var(--line-height-normal);
-}
-
 .sticky {
   position: sticky;
   top: 0;
@@ -368,15 +357,6 @@ a.text-muted:hover,
 .text-muted a:hover {
   color: var(--primary) !important;
 }
-
-.overflowClip_1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block !important;
-  line-height: var(--line-height-normal);
-}
-
 
 /* ============================================
    Component primitives (buttons / cards / inputs)
@@ -464,6 +444,46 @@ a.text-muted:hover,
   padding: var(--space-4);
 }
 
+/* 通用面板容器（公告条目 / 投稿卡片等） */
+.panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 胶囊切换项（分类二级导航 / 关于页切换） */
+.pill {
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color var(--transition-normal),
+    background-color var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+.pill:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.pill-bordered {
+  border-color: var(--border);
+}
+
+.pill-primary,
+.pill-primary:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
 .badge {
   display: inline-block;
   padding: 0.25em 0.4em;
@@ -481,38 +501,22 @@ a.text-muted:hover,
   background-color: var(--primary);
 }
 
-.alert {
-  position: relative;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
+small {
+  font-size: 80%;
 }
 
-.alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+h2 {
+  font-size: 2rem;
 }
-
-.dark .alert-danger {
-  color: #f8d7da;
-  background-color: #5a1a1f;
-  border-color: #721c24;
+h3 {
+  font-size: 1.75rem;
 }
-
-.transparent {
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: unset !important;
+h5 {
+  font-size: 1.25rem;
 }
-
-small { font-size: 80%; }
-
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h6 {
+  font-size: 1rem;
+}
 
 /* ============================================
    Utility Classes
@@ -520,40 +524,56 @@ h6 { font-size: 1rem; }
    ============================================ */
 
 /* Display / Flex */
-.d-flex { display: flex !important; }
-.flex-column { flex-direction: column !important; }
-.flex-fill { flex: 1 1 auto !important; }
-.overflow-hidden { overflow: hidden; }
-.text-center { text-align: center; }
-
-/* 圆角 */
-.rounded-circle { border-radius: 50%; }
+.d-flex {
+  display: flex !important;
+}
+.flex-column {
+  flex-direction: column !important;
+}
+.flex-fill {
+  flex: 1 1 auto !important;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.text-center {
+  text-align: center;
+}
 
 /* Spacing - margin */
-.m-1 { margin: var(--space-1); }
-.mx-1 { margin-right: var(--space-1); margin-left: var(--space-1); }
-.mx-2 { margin-right: var(--space-2); margin-left: var(--space-2); }
-.ms-4 { margin-left: var(--space-4); }
-.me-2 { margin-right: var(--space-2); }
-.mt-2 { margin-top: var(--space-2); }
-.mt-3 { margin-top: var(--space-3); }
-.mb-2 { margin-bottom: var(--space-2); }
-.mb-4 { margin-bottom: var(--space-4); }
+.m-1 {
+  margin: var(--space-1);
+}
+.mx-1 {
+  margin-right: var(--space-1);
+  margin-left: var(--space-1);
+}
+.mx-2 {
+  margin-right: var(--space-2);
+  margin-left: var(--space-2);
+}
+.ms-4 {
+  margin-left: var(--space-4);
+}
+.me-2 {
+  margin-right: var(--space-2);
+}
+.mt-2 {
+  margin-top: var(--space-2);
+}
+.mt-3 {
+  margin-top: var(--space-3);
+}
+.mb-2 {
+  margin-bottom: var(--space-2);
+}
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
 
 /* Text color */
-.text-muted { color: var(--text-muted); }
-
-/* 移动端 / 桌面端可见性 */
-@media (min-width: 768px) {
-  .desktop-only { display: block; }
-  .mobile-only { display: none; }
-}
-@media (max-width: 767.98px) {
-  .desktop-only { display: none; }
-  .mobile-only { display: block; }
-
-  /* 移动端排版微调 */
-  .text-lg { font-size: var(--font-size-lg) !important; }
+.text-muted {
+  color: var(--text-muted);
 }
 
 /* ============================================
@@ -569,39 +589,6 @@ h6 { font-size: 1rem; }
 }
 
 /* Component backgrounds for dark mode */
-.dark .card,
-.dark .url-body {
+.dark .card {
   background-color: var(--card-bg);
 }
-
-/* Grey-mode sidebar hover contrast */
-.light .sidebar-item > a:hover {
-  color: var(--primary);
-  background: var(--sidebar-hover);
-}
-
-/* Disable card hover-lift on announcement-style cards in dark mode */
-.dark .url-card:hover,
-.dark .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
-  transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
-  color: var(--text) !important;
-}
-
-/* Link hover stays primary-colored */
-.dark .url-body a:hover,
-.dark .url-body:hover strong,
-.dark .footer-text a:hover,
-.dark .footer-text a:hover strong {
-  color: var(--primary) !important;
-}
-
-/* Keep secondary arrows muted */
-.dark .togo,
-.dark .togo:hover {
-  opacity: 0.3;
-}
-
-/* Footer tool button hover contrast */
-.dark .footer-tools .btn:hover { color: var(--bg-surface); }
-.light .footer-tools .btn:hover { color: var(--text-dark); }

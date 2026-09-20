@@ -286,6 +286,25 @@ watch(
   margin-top: var(--space-5);
 }
 
+/* 未找到提示（原 main.css primitives） */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.dark .alert-danger {
+  color: #f8d7da;
+  background-color: #5a1a1f;
+  border-color: #721c24;
+}
+
 /* 详情页移动端适配 */
 @media (max-width: 767.98px) {
   .site-detail-avatar {

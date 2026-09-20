@@ -134,4 +134,20 @@ onUnmounted(() => {
     right: 10px;
   }
 }
+
+/* ---- 原 main.css 组件/主题微调 ---- */
+.rounded-circle {
+  border-radius: var(--radius-full);
+}
+
+.dark .footer-tools .btn:hover {
+  color: var(--bg-surface);
+}
+.light .footer-tools .btn:hover {
+  color: var(--text-dark);
+}
+.dark .footer-text a:hover,
+.dark .footer-text a:hover strong {
+  color: var(--primary) !important;
+}
 </style>

@@ -3,31 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <script>
-      // 首帧防闪色：绘制前按存储/系统偏好预置主题类（取值与 useDark 一致）
+      // 首帧防闪色：绘制前按 theme-mode 与系统偏好预置类名及底色
+      // （类名/色值来源：src/composables/themeConstants.js，与 useColorMode 一致；
+      //   运行期的底色跟随切换由 src/composables/useTheme.js 同步）
       ;(function () {
-        var classList = document.documentElement.classList
-        var stored
+        var root = document.documentElement
+        var m = null
         try {
-          stored = localStorage.getItem('theme-mode')
-        } catch (e) {
-          stored = null
-        }
-        var isDark = stored === 'dark'
-        if (!isDark && stored !== 'light' && window.matchMedia) {
-          isDark = matchMedia('(prefers-color-scheme: dark)').matches
-        }
-        classList.add(isDark ? 'dark' : 'light')
+          m = localStorage.getItem('theme-mode')
+        } catch (e) {}
+        var dark =
+          m === 'dark' ||
+          (m !== 'light' &&
+            !!window.matchMedia &&
+            matchMedia('(prefers-color-scheme: dark)').matches)
+        root.classList.add(dark ? 'dark' : 'light')
+        root.style.backgroundColor = dark ? '#1b1d1f' : '#f9f9f9'
       })()
     </script>
-    <style>
-      /* 首帧关键 CSS：main.css 注入前先按主题类着底色，避免露出浏览器默认画布 */
-      html {
-        background-color: #f9f9f9;
-      }
-      html.dark {
-        background-color: #1b1d1f;
-      }
-    </style>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta
       name="viewport"

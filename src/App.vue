@@ -1,8 +1,4 @@
 <template>
-  <Teleport to="head">
-    <meta name="theme-color" :content="themeColor" />
-  </Teleport>
-
   <div v-if="isNested" class="iframe-warning" :class="themeClass">
     <svg class="warning-icon" viewBox="0 0 24 24" width="56" height="56" aria-hidden="true">
       <path
@@ -39,7 +35,7 @@ import { usePageTitle } from './composables/usePageTitle'
 import { isNested } from './composables/useIframeProtect'
 
 const { isMobileOpen, initInteraction } = useSidebar()
-const { themeClass, themeColor } = useTheme()
+const { themeClass } = useTheme()
 
 usePageTitle()
 
@@ -85,7 +81,7 @@ onUnmounted(() => {
   background: #007bff;
   color: #fff;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   font-size: 14px;
 }
 .warning-link:hover {

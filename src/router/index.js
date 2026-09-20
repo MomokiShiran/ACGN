@@ -10,19 +10,19 @@ const routes = [
     path: '/about',
     name: 'About',
     component: () => import('@/views/ContentView.vue'),
-    meta: { title: '关于', pageKey: 'about' },
+    meta: { pageKey: 'about' },
   },
   {
     path: '/privacy',
     name: 'Privacy',
     component: () => import('@/views/ContentView.vue'),
-    meta: { title: '隐私政策', pageKey: 'privacy' },
+    meta: { pageKey: 'privacy' },
   },
   {
     path: '/disclaimer',
     name: 'Disclaimer',
     component: () => import('@/views/ContentView.vue'),
-    meta: { title: '免责声明', pageKey: 'disclaimer' },
+    meta: { pageKey: 'disclaimer' },
   },
   {
     path: '/postsite',

@@ -66,7 +66,7 @@ const clear = () => {
   padding: 0 10px 0 44px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   box-sizing: border-box;
 }
 .content-search-box:focus-within {
@@ -110,7 +110,7 @@ const clear = () => {
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 .content-search-clear:hover {
   color: var(--text);

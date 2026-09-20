@@ -4,19 +4,14 @@
     <ContentPageLayout panel-class="card no-hover-card">
       <h1 class="cp-title">{{ page.title }}</h1>
       <div class="cp-body">
-        <section v-for="section in normalized.sections" :key="section.heading" class="cp-section">
+        <section v-for="section in page.sections" :key="section.heading" class="cp-section">
           <h3 class="cp-heading">{{ section.heading }}</h3>
-          <template v-for="(block, index) in section.blocks" :key="index">
-            <p v-if="block.type === 'p'" class="cp-paragraph">
-              <InlineNodes :nodes="block.nodes" />
-            </p>
-            <ul v-else-if="block.type === 'list'" class="cp-list">
-              <li v-for="(item, itemIndex) in block.items" :key="itemIndex">
-                <InlineNodes :nodes="item" />
-              </li>
-            </ul>
-            <h6 v-else-if="block.type === 'h6'" class="cp-subhead">{{ block.text }}</h6>
-          </template>
+          <component
+            v-for="(block, index) in section.blocks"
+            :key="index"
+            :is="blockRenderers[block.type] || EmptyBlock"
+            :block="block"
+          />
         </section>
         <p class="cp-updated">最后更新时间：{{ page.updatedAt }}</p>
       </div>
@@ -25,52 +20,64 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { defineComponent, h } from 'vue'
 import ContentPageLayout from '@/components/ContentPageLayout.vue'
 import LegalNav from '@/components/LegalNav.vue'
 import InlineNodes from '@/components/InlineNodes.vue'
 
 // 数据驱动的静态内容页：page 结构见 src/data/contentPages.json
 // - section.blocks: { type: 'p' | 'list' | 'h6' }
-// - 段落/列表项节点可为字符串，或 { to } 站内链接 / { href } 外链 / { strong } 加粗
-const props = defineProps({
+// - nodes/列表项可为字符串、站内 { to }、外链 { href }、加粗 { strong }
+// - 外链的 target/rel 已直接写在数据里，运行时不再做归一化
+// - 新增块类型只需在 blockRenderers 注册一条 { type: renderer }
+defineProps({
   page: {
     type: Object,
     required: true,
   },
 })
 
-// 字符串节点归一化为 { text }，http(s) 外链自动添加新窗口打开
-const toNode = (n) => {
-  if (typeof n === 'string') return { text: n }
-  if (n.href && /^https?:/.test(n.href)) {
-    return { ...n, target: '_blank', rel: 'noopener noreferrer' }
-  }
-  return n
-}
+const toNodes = (item) => (Array.isArray(item) ? item : [item])
 
-const normalized = computed(() => ({
-  ...props.page,
-  sections: props.page.sections.map((section) => ({
-    ...section,
-    blocks: section.blocks.map((block) => {
-      if (block.type === 'p') {
-        return { ...block, nodes: block.nodes.map(toNode) }
-      }
-      if (block.type === 'list') {
-        // 列表项允许是字符串或内联节点数组
-        return {
-          ...block,
-          items: block.items.map((item) => (Array.isArray(item) ? item.map(toNode) : [toNode(item)])),
-        }
-      }
-      return block
-    }),
-  })),
-}))
+const ParagraphBlock = defineComponent({
+  name: 'ParagraphBlock',
+  props: { block: { type: Object, required: true } },
+  render() {
+    return h('p', { class: 'cp-paragraph' }, h(InlineNodes, { nodes: this.block.nodes }))
+  },
+})
+
+const ListBlock = defineComponent({
+  name: 'ListBlock',
+  props: { block: { type: Object, required: true } },
+  render() {
+    return h(
+      'ul',
+      { class: 'cp-list' },
+      this.block.items.map((item, index) =>
+        h('li', { key: index }, h(InlineNodes, { nodes: toNodes(item) }))
+      )
+    )
+  },
+})
+
+const HeadingBlock = defineComponent({
+  name: 'HeadingBlock',
+  props: { block: { type: Object, required: true } },
+  render() {
+    return h('h6', { class: 'cp-subhead' }, this.block.text)
+  },
+})
+
+// 未知块类型渲染为空，不产生告警
+const EmptyBlock = { name: 'EmptyBlock', render: () => null }
+
+const blockRenderers = { p: ParagraphBlock, list: ListBlock, h6: HeadingBlock }
 </script>
 
-<style scoped>
+<style>
+/* 非 scoped：block 由 defineComponent 渲染，无法继承本组件 scopeId；
+   cp-* 类仅用于内容页，无全局冲突风险 */
 .cp-title {
   margin: 0 0 var(--space-4);
   font-size: var(--font-size-2xl);
