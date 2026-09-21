@@ -14,7 +14,7 @@
         {{ tab.name }}
       </button>
     </div>
-    <SiteRow>
+    <SiteRow v-if="visibleSites.length">
       <SiteCard v-for="site in visibleSites" :key="site.id" :site="site" />
     </SiteRow>
   </div>

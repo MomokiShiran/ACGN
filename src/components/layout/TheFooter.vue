@@ -110,7 +110,7 @@ onUnmounted(() => {
   font-size: 11px;
   max-width: 800px;
   margin: 0 auto;
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
 }
 @media (max-width: 767.98px) {
   .main-footer .footer-text {

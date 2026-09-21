@@ -130,7 +130,7 @@ watch(
   align-items: center;
   gap: 6px;
   padding: 6px 16px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--bg-surface);
   color: var(--text-muted);
   font-size: var(--font-size-sm);
@@ -199,7 +199,7 @@ watch(
 .site-detail-desc {
   margin: 0;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
 }
 .site-detail-avatar {
   display: flex;
@@ -209,13 +209,13 @@ watch(
   height: 80px;
   margin-right: var(--space-3);
   flex-shrink: 0;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 .site-detail-avatar > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 
 /* 操作按钮：pill 主按钮 + 灰底次级按钮 */
@@ -226,7 +226,7 @@ watch(
   flex-wrap: wrap;
 }
 .btn-cta {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 8px 20px;
 }
 .btn-cta img.cta-icon {

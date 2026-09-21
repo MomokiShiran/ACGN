@@ -74,6 +74,7 @@
 
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
+  --line-height-relaxed: 1.8;
 
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -120,6 +121,11 @@
   --black: #14171b;
   --black-dark: #000;
   --black-light: #222831;
+
+  /* Alert tokens */
+  --alert-danger-text: #721c24;
+  --alert-danger-bg: #f8d7da;
+  --alert-danger-border: #f5c6cb;
 }
 
 /* ============================================
@@ -160,6 +166,11 @@
 
   /* 夜间模式加深粉色底色，保证 hero 块在深色页面上可见 */
   --primary-soft: rgba(215, 90, 127, 0.15);
+
+  /* alert-danger dark variant */
+  --alert-danger-text: #f8d7da;
+  --alert-danger-bg: #5a1a1f;
+  --alert-danger-border: #721c24;
 }
 
 /* ============================================
@@ -331,6 +342,7 @@ body {
 }
 
 .content {
+  flex: 1;
   padding: var(--space-5) var(--space-8);
   width: 100%;
   margin-right: auto;
@@ -409,9 +421,6 @@ a.text-muted:hover,
   min-width: 0;
   word-wrap: break-word;
   background-clip: border-box;
-}
-
-.card {
   background: var(--card-bg);
   border-width: 0;
   margin-bottom: var(--space-4);
@@ -489,6 +498,20 @@ a.text-muted:hover,
 
 .badge-danger {
   background-color: var(--primary);
+}
+
+/* Alert primitives */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+.alert-danger {
+  color: var(--alert-danger-text);
+  background-color: var(--alert-danger-bg);
+  border-color: var(--alert-danger-border);
 }
 
 small {

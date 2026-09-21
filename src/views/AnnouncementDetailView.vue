@@ -98,7 +98,7 @@ watch(
 
 .ann-detail-content {
   color: var(--text-dark);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
   white-space: pre-line;
 }
 
