@@ -35,6 +35,8 @@ usePageTitle(computed(() => announcement.value?.title))
 watch(
   () => route.params.id,
   (id) => {
+    // 重置为空，无效 id 时显示"公告未找到"而非残留上一条公告的数据
+    announcement.value = null
     if (id) {
       announcement.value = store.findById(id)
     }
@@ -53,7 +55,6 @@ watch(
   border-radius: 999px;
   background: var(--bg-surface);
   color: var(--text-muted);
-  box-shadow: var(--shadow-sm);
   font-size: var(--font-size-sm);
   text-decoration: none;
   transition: var(--transition-normal);
@@ -72,14 +73,12 @@ watch(
   color: var(--text-muted);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 
 .ann-detail {
   padding: var(--space-5);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
 }
 
 .ann-detail-title {
@@ -99,7 +98,7 @@ watch(
 
 .ann-detail-content {
   color: var(--text-dark);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
   white-space: pre-line;
 }
 

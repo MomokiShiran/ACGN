@@ -4,20 +4,12 @@
       <button
         v-show="showGoUp"
         type="button"
-        class="btn rounded-circle go-up m-1"
+        class="btn go-up m-1"
         rel="go-top"
         aria-label="返回顶部"
         @click="scrollToTop"
       >
         <img class="footer-btn-icon" aria-hidden="true" :src="arrowUpIcon" alt="" />
-      </button>
-      <button
-        type="button"
-        class="btn rounded-circle switch-dark-mode m-1"
-        :aria-label="isDark ? '切换到日间模式' : '切换到夜间模式'"
-        @click="toggle()"
-      >
-        <img class="footer-btn-icon" aria-hidden="true" :src="isDark ? sunIcon : moonIcon" alt="" />
       </button>
     </div>
 
@@ -48,12 +40,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useTheme } from '@/composables/useTheme'
 import arrowUpIcon from '@/assets/icons/arrow-up.svg'
-import sunIcon from '@/assets/icons/sun.svg'
-import moonIcon from '@/assets/icons/moon.svg'
-
-const { isDark, toggle } = useTheme()
 
 const showGoUp = ref(false)
 
@@ -123,7 +110,7 @@ onUnmounted(() => {
   font-size: 11px;
   max-width: 800px;
   margin: 0 auto;
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
 }
 @media (max-width: 767.98px) {
   .main-footer .footer-text {

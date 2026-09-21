@@ -3,7 +3,6 @@
     <div class="url-body">
       <router-link
         :to="{ name: 'SiteDetail', query: { id: site.id } }"
-        target="_blank"
         class="url-card-link"
         :title="site.description"
         rel="noopener noreferrer"
@@ -100,7 +99,6 @@ const onImgError = handleIconError
   margin-bottom: var(--space-4);
   background: var(--card-bg);
   border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-sm);
   text-decoration: none;
 }
 .url-card-body {
@@ -179,11 +177,34 @@ a.togo {
 .site-content .url-body:hover,
 .site-content .url-body:active {
   transform: none !important;
-  box-shadow: none !important;
 }
 
 .togo-arrow {
   width: 16px;
   height: 16px;
+}
+
+/* ---- 暗色主题微调（原 main.css Theme Overrides） ---- */
+.dark .url-body {
+  background-color: var(--card-bg);
+}
+
+/* 禁用卡片 hover 抬升 */
+.dark .url-card:hover,
+.dark .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
+  transform: none !important;
+  color: var(--text) !important;
+}
+
+/* 链接 hover 保持主色 */
+.dark .url-body a:hover,
+.dark .url-body:hover strong {
+  color: var(--primary) !important;
+}
+
+/* 直达箭头暗色下保持弱化 */
+.dark .togo,
+.dark .togo:hover {
+  opacity: 0.3;
 }
 </style>

@@ -1,10 +1,10 @@
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-// 全局单例状态：整个应用只有一个侧边栏，需要跨 App/TheNavbar/TheSidebar 共享
-const isMobileOpen = ref(false)
-const isMinimized = ref(false)
+export const useSidebarStore = defineStore('sidebar', () => {
+  const isMobileOpen = ref(false)
+  const isMinimized = ref(false)
 
-export function useSidebar() {
   const hide = () => {
     isMobileOpen.value = false
   }
@@ -68,8 +68,9 @@ export function useSidebar() {
   return {
     isMobileOpen,
     isMinimized,
+    hide,
     toggleMobile,
     triggerMini,
     initInteraction,
   }
-}
+})

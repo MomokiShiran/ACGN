@@ -33,10 +33,6 @@
   --scrollbar-track: rgba(0, 0, 0, 0.05);
   --scrollbar-width: 8px;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 30px 20px -20px rgba(0, 0, 0, 0.15);
-
   /* Tooltip background (light mode; overridden in dark/grey themes) */
   --tooltip-bg: rgba(0, 0, 0, 0.85);
 
@@ -61,14 +57,12 @@
 
   /* Typography */
   --font-family:
-    'SF Pro SC', 'SF Pro Text', 'PingFang SC', 'PingFang TC', 'PingFang HK',
-    'Hiragino Sans GB', 'Hiragino Sans CNS', 'Noto Sans SC', 'Noto Sans TC',
-    'Microsoft YaHei UI', 'Microsoft YaHei',
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', system-ui,
-    sans-serif;
+    'SF Pro SC', 'SF Pro Text', 'PingFang SC', 'PingFang TC', 'PingFang HK', 'Hiragino Sans GB',
+    'Hiragino Sans CNS', 'Noto Sans SC', 'Noto Sans TC', 'Microsoft YaHei UI', 'Microsoft YaHei',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', system-ui, sans-serif;
   --font-mono:
-    'SF Mono', 'SF Pro Mono', 'Fira Code', 'Menlo', 'Monaco', 'Consolas',
-    'Liberation Mono', 'Courier New', monospace;
+    'SF Mono', 'SF Pro Mono', 'Fira Code', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
+    'Courier New', monospace;
 
   --font-size-xs: 0.45rem;
   --font-size-sm: 0.75rem;
@@ -80,6 +74,7 @@
 
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
+  --line-height-relaxed: 1.8;
 
   --font-weight-light: 300;
   --font-weight-normal: 400;
@@ -126,13 +121,18 @@
   --black: #14171b;
   --black-dark: #000;
   --black-light: #222831;
+
+  /* Alert tokens */
+  --alert-danger-text: #721c24;
+  --alert-danger-bg: #f8d7da;
+  --alert-danger-border: #f5c6cb;
 }
 
 /* ============================================
    Dark mode overrides
    ============================================ */
 
-.io-black-mode {
+.dark {
   --text: #c6c9cf;
   --text-muted: #bbb;
   --text-dark: #e8eaed;
@@ -148,8 +148,6 @@
   --scrollbar: #555;
   --scrollbar-hover: #777;
   --scrollbar-track: rgba(255, 255, 255, 0.05);
-
-  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.2);
 
   --header-bg: rgba(44, 46, 47, 0.95);
   --sidebar-bg: #2c2e2f;
@@ -168,13 +166,18 @@
 
   /* 夜间模式加深粉色底色，保证 hero 块在深色页面上可见 */
   --primary-soft: rgba(215, 90, 127, 0.15);
+
+  /* alert-danger dark variant */
+  --alert-danger-text: #f8d7da;
+  --alert-danger-bg: #5a1a1f;
+  --alert-danger-border: #721c24;
 }
 
 /* ============================================
    Grey mode overrides
    ============================================ */
 
-.io-grey-mode {
+.light {
   --text: #515c6b;
   --text-muted: #515c6b;
   --text-dark: #3a434e;
@@ -339,19 +342,11 @@ body {
 }
 
 .content {
+  flex: 1;
   padding: var(--space-5) var(--space-8);
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-}
-
-.nothing {
-  padding: var(--space-5) 0;
-  text-align: center;
-  color: var(--text-muted);
-  background: rgba(136, 136, 136, 0.2);
-  border-radius: var(--radius-lg);
-  line-height: var(--line-height-normal);
 }
 
 .sticky {
@@ -368,15 +363,6 @@ a.text-muted:hover,
 .text-muted a:hover {
   color: var(--primary) !important;
 }
-
-.overflowClip_1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block !important;
-  line-height: var(--line-height-normal);
-}
-
 
 /* ============================================
    Component primitives (buttons / cards / inputs)
@@ -414,7 +400,6 @@ a.text-muted:hover,
 .btn.focus,
 .btn:focus {
   outline: 0;
-  box-shadow: none;
   line-height: var(--line-height-normal);
 }
 
@@ -436,13 +421,9 @@ a.text-muted:hover,
   min-width: 0;
   word-wrap: break-word;
   background-clip: border-box;
-}
-
-.card {
   background: var(--card-bg);
   border-width: 0;
   margin-bottom: var(--space-4);
-  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal) ease;
   border-radius: var(--radius-2xl);
 }
@@ -456,12 +437,50 @@ a.text-muted:hover,
 .no-hover-card:hover,
 .no-hover-card.card:hover {
   transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
 }
 
 .card-body {
   flex: 1 1 auto;
   padding: var(--space-4);
+}
+
+/* 通用面板容器（公告条目 / 投稿卡片等） */
+.panel {
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+}
+
+/* 胶囊切换项（分类二级导航 / 关于页切换） */
+.pill {
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color var(--transition-normal),
+    background-color var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+.pill:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.pill-bordered {
+  border-color: var(--border);
+}
+
+.pill-primary,
+.pill-primary:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 .badge {
@@ -481,6 +500,7 @@ a.text-muted:hover,
   background-color: var(--primary);
 }
 
+/* Alert primitives */
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
@@ -488,31 +508,28 @@ a.text-muted:hover,
   border: 1px solid transparent;
   border-radius: var(--radius-md);
 }
-
 .alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+  color: var(--alert-danger-text);
+  background-color: var(--alert-danger-bg);
+  border-color: var(--alert-danger-border);
 }
 
-.io-black-mode .alert-danger {
-  color: #f8d7da;
-  background-color: #5a1a1f;
-  border-color: #721c24;
+small {
+  font-size: 80%;
 }
 
-.transparent {
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: unset !important;
+h2 {
+  font-size: 2rem;
 }
-
-small { font-size: 80%; }
-
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h3 {
+  font-size: 1.75rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
 
 /* ============================================
    Utility Classes
@@ -520,40 +537,56 @@ h6 { font-size: 1rem; }
    ============================================ */
 
 /* Display / Flex */
-.d-flex { display: flex !important; }
-.flex-column { flex-direction: column !important; }
-.flex-fill { flex: 1 1 auto !important; }
-.overflow-hidden { overflow: hidden; }
-.text-center { text-align: center; }
-
-/* 圆角 */
-.rounded-circle { border-radius: 50%; }
+.d-flex {
+  display: flex !important;
+}
+.flex-column {
+  flex-direction: column !important;
+}
+.flex-fill {
+  flex: 1 1 auto !important;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.text-center {
+  text-align: center;
+}
 
 /* Spacing - margin */
-.m-1 { margin: var(--space-1); }
-.mx-1 { margin-right: var(--space-1); margin-left: var(--space-1); }
-.mx-2 { margin-right: var(--space-2); margin-left: var(--space-2); }
-.ms-4 { margin-left: var(--space-4); }
-.me-2 { margin-right: var(--space-2); }
-.mt-2 { margin-top: var(--space-2); }
-.mt-3 { margin-top: var(--space-3); }
-.mb-2 { margin-bottom: var(--space-2); }
-.mb-4 { margin-bottom: var(--space-4); }
+.m-1 {
+  margin: var(--space-1);
+}
+.mx-1 {
+  margin-right: var(--space-1);
+  margin-left: var(--space-1);
+}
+.mx-2 {
+  margin-right: var(--space-2);
+  margin-left: var(--space-2);
+}
+.ms-4 {
+  margin-left: var(--space-4);
+}
+.me-2 {
+  margin-right: var(--space-2);
+}
+.mt-2 {
+  margin-top: var(--space-2);
+}
+.mt-3 {
+  margin-top: var(--space-3);
+}
+.mb-2 {
+  margin-bottom: var(--space-2);
+}
+.mb-4 {
+  margin-bottom: var(--space-4);
+}
 
 /* Text color */
-.text-muted { color: var(--text-muted); }
-
-/* 移动端 / 桌面端可见性 */
-@media (min-width: 768px) {
-  .desktop-only { display: block; }
-  .mobile-only { display: none; }
-}
-@media (max-width: 767.98px) {
-  .desktop-only { display: none; }
-  .mobile-only { display: block; }
-
-  /* 移动端排版微调 */
-  .text-lg { font-size: var(--font-size-lg) !important; }
+.text-muted {
+  color: var(--text-muted);
 }
 
 /* ============================================
@@ -564,44 +597,11 @@ h6 { font-size: 1rem; }
    ============================================ */
 
 /* Muted text tweaks */
-.io-black-mode .text-muted {
+.dark .text-muted {
   color: var(--text-muted) !important;
 }
 
 /* Component backgrounds for dark mode */
-.io-black-mode .card,
-.io-black-mode .url-body {
+.dark .card {
   background-color: var(--card-bg);
 }
-
-/* Grey-mode sidebar hover contrast */
-.io-grey-mode .sidebar-item > a:hover {
-  color: var(--primary);
-  background: var(--sidebar-hover);
-}
-
-/* Disable card hover-lift on announcement-style cards in dark mode */
-.io-black-mode .url-card:hover,
-.io-black-mode .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
-  transform: none !important;
-  box-shadow: var(--shadow-sm) !important;
-  color: var(--text) !important;
-}
-
-/* Link hover stays primary-colored */
-.io-black-mode .url-body a:hover,
-.io-black-mode .url-body:hover strong,
-.io-black-mode .footer-text a:hover,
-.io-black-mode .footer-text a:hover strong {
-  color: var(--primary) !important;
-}
-
-/* Keep secondary arrows muted */
-.io-black-mode .togo,
-.io-black-mode .togo:hover {
-  opacity: 0.3;
-}
-
-/* Footer tool button hover contrast */
-.io-black-mode .footer-tools .btn:hover { color: var(--bg-surface); }
-.io-grey-mode .footer-tools .btn:hover { color: var(--text-dark); }

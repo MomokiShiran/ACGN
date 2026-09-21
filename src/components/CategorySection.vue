@@ -1,31 +1,30 @@
 <template>
   <div :id="category.id">
-    <h4 class="cat-section-title">
-      <img class="title-tag-icon" :src="tagIcon" alt="" />{{ category.name }}
-    </h4>
+    <CatSectionTitle>{{ category.name }}</CatSectionTitle>
     <!-- 横向二级菜单：有子分类时显示在标题下方 -->
     <div v-if="subTabs.length" class="cat-subnav">
       <button
         v-for="tab in subTabs"
         :key="tab.id"
         type="button"
-        class="cat-subnav-item"
-        :class="{ active: activeSub === tab.id }"
+        class="pill pill-bordered cat-subnav-item"
+        :class="{ 'pill-primary': activeSub === tab.id }"
         @click="activeSub = tab.id"
       >
         {{ tab.name }}
       </button>
     </div>
-    <div class="row">
+    <SiteRow v-if="visibleSites.length">
       <SiteCard v-for="site in visibleSites" :key="site.id" :site="site" />
-    </div>
+    </SiteRow>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import SiteCard from './SiteCard.vue'
-import tagIcon from '@/assets/icons/tag.svg'
+import CatSectionTitle from './CatSectionTitle.vue'
+import SiteRow from './SiteRow.vue'
 
 const props = defineProps({
   category: {
@@ -55,81 +54,10 @@ const visibleSites = computed(() => {
 </script>
 
 <style scoped>
-/* 弹性栅格容器 */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: calc(-1 * var(--space-4));
-  margin-left: calc(-1 * var(--space-4));
-}
-@media (min-width: 768px) {
-  .row {
-    margin-right: -0.75rem;
-    margin-left: -0.75rem;
-  }
-}
-@media (max-width: 767.98px) {
-  .row {
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-/* 分区标题：左侧主色圆角竖条 */
-.cat-section-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
-}
-.cat-section-title::before {
-  content: '';
-  width: 4px;
-  height: 1.1em;
-  border-radius: 999px;
-  background: var(--primary);
-  margin-right: var(--space-2);
-}
-.cat-section-title > img.title-tag-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-1);
-  transform: rotate(135deg);
-}
-
-/* 分类横向二级菜单 */
 .cat-subnav {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-2);
   margin-bottom: var(--space-4);
-}
-
-.cat-subnav-item {
-  border: 1px solid var(--border);
-  background: var(--bg-surface);
-  color: var(--text-muted);
-  padding: 5px 14px;
-  border-radius: 999px;
-  font-size: var(--font-size-sm);
-  line-height: 1.5;
-  cursor: pointer;
-  transition:
-    color var(--transition-normal),
-    background-color var(--transition-normal),
-    border-color var(--transition-normal);
-}
-
-.cat-subnav-item:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-}
-
-.cat-subnav-item.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
 }
 </style>

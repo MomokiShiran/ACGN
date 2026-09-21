@@ -43,12 +43,10 @@
       </div>
       <!-- 相关站点 -->
       <div v-if="relatedSites.length" class="site-detail-related">
-        <h2 class="cat-section-title">
-          <img class="title-tag-icon" :src="tagIcon" alt="" />相关站点
-        </h2>
-        <div class="row">
+        <CatSectionTitle tag="h2" :icon="tagIcon">相关站点</CatSectionTitle>
+        <SiteRow>
           <SiteCard v-for="s in relatedSites" :key="s.id" :site="s" />
-        </div>
+        </SiteRow>
       </div>
     </div>
   </div>
@@ -61,6 +59,8 @@ import { useSitesStore } from '@/stores/sites'
 import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
 import { usePageTitle } from '@/composables/usePageTitle'
 import SiteCard from '@/components/SiteCard.vue'
+import CatSectionTitle from '@/components/CatSectionTitle.vue'
+import SiteRow from '@/components/SiteRow.vue'
 import arrowLeftIcon from '@/assets/icons/arrow-left.svg'
 import externalLinkIcon from '@/assets/icons/external-link.svg'
 import tagIcon from '@/assets/icons/tag.svg'
@@ -130,10 +130,9 @@ watch(
   align-items: center;
   gap: 6px;
   padding: 6px 16px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--bg-surface);
   color: var(--text-muted);
-  box-shadow: var(--shadow-sm);
   font-size: var(--font-size-sm);
   text-decoration: none;
   transition: var(--transition-normal);
@@ -144,50 +143,6 @@ watch(
 .site-detail-back {
   display: flex;
   margin-bottom: var(--space-3);
-}
-
-/* 弹性栅格容器（相关站点） */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: calc(-1 * var(--space-4));
-  margin-left: calc(-1 * var(--space-4));
-}
-@media (min-width: 768px) {
-  .row {
-    margin-right: -0.75rem;
-    margin-left: -0.75rem;
-  }
-}
-@media (max-width: 767.98px) {
-  .row {
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-/* 分区标题：左侧主色圆角竖条 */
-.cat-section-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
-}
-.cat-section-title::before {
-  content: '';
-  width: 4px;
-  height: 1.1em;
-  border-radius: 999px;
-  background: var(--primary);
-  margin-right: var(--space-2);
-}
-.cat-section-title > img.title-tag-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-1);
-  transform: rotate(135deg);
 }
 
 /* 头部 hero 块与简介卡片共用的圆角 */
@@ -205,7 +160,6 @@ watch(
   background: var(--card-bg);
   padding: var(--space-4) var(--space-5);
   margin-top: var(--space-4);
-  box-shadow: var(--shadow-sm);
 }
 /* 标题共享样式 */
 .site-detail-name,
@@ -245,7 +199,7 @@ watch(
 .site-detail-desc {
   margin: 0;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: var(--line-height-relaxed);
 }
 .site-detail-avatar {
   display: flex;
@@ -255,13 +209,13 @@ watch(
   height: 80px;
   margin-right: var(--space-3);
   flex-shrink: 0;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 .site-detail-avatar > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 
 /* 操作按钮：pill 主按钮 + 灰底次级按钮 */
@@ -272,7 +226,7 @@ watch(
   flex-wrap: wrap;
 }
 .btn-cta {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 8px 20px;
 }
 .btn-cta img.cta-icon {
@@ -284,6 +238,25 @@ watch(
 /* 相关站点 */
 .site-detail-related {
   margin-top: var(--space-5);
+}
+
+/* 未找到提示（原 main.css primitives） */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.dark .alert-danger {
+  color: #f8d7da;
+  background-color: #5a1a1f;
+  border-color: #721c24;
 }
 
 /* 详情页移动端适配 */

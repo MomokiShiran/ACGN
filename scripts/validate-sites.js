@@ -9,7 +9,7 @@ const sitesPath = path.join(__dirname, '../src/data/sites.json')
 const sitetrashPath = path.join(__dirname, '../src/data/sitetrash.json')
 
 const DATETIME_RE = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/
-const ICON_RE = /^(?:(?:https?:)?\/\/|\/|\.\/|assets\/images\/sites\/)/
+const ICON_RE = /^(?:(?:https?:)?\/\/|\/|\.\/)/
 
 function readAndParse(filePath) {
   try {
@@ -84,7 +84,7 @@ function validateRequiredFields(categories, fileName) {
       if (site.icon && !ICON_RE.test(site.icon)) {
         console.error(
           `✗ 站点 icon 格式异常 [${fileName} -> ${categoryName}]:`,
-          `${site.name || site.id} 的值 '${site.icon}'，应为 URL、/ 开头、./ 开头或 assets/images/sites/ 相对路径`
+          `${site.name || site.id} 的值 '${site.icon}'，应为 URL、/ 开头或 ./ 开头相对路径（本地图标请统一使用 ./ 前缀）`
         )
         hasError = true
       }

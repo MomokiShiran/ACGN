@@ -54,13 +54,16 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { useSidebar } from '@/composables/useSidebar'
-import { useHitokoto } from '@/composables/useHitokoto'
+import { useSidebarStore } from '@/stores/sidebar'
+import { useHitokotoStore } from '@/stores/hitokoto'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
 import menuIcon from '@/assets/icons/menu.svg'
 
-const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = useSidebar()
-const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = useHitokoto()
+const sidebarStore = useSidebarStore()
+const hitokotoStore = useHitokotoStore()
+
+const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = sidebarStore
+const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = hitokotoStore
 
 onMounted(() => {
   initHitokoto()
@@ -71,7 +74,6 @@ onMounted(() => {
 /* 顶部导航栏 */
 .navbar {
   background: var(--header-bg);
-  box-shadow: var(--shadow-sm);
   transition: background-color var(--transition-normal);
 }
 .navbar-inner {
@@ -235,6 +237,33 @@ onMounted(() => {
   }
   .navbar-mobile {
     display: block !important;
+  }
+}
+
+/* ---- 原 main.css 排版/工具类 ---- */
+.overflowClip_1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block !important;
+  line-height: var(--line-height-normal);
+}
+
+/* 桌面端 / 移动端可见性 */
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
+  .mobile-only {
+    display: none;
+  }
+}
+@media (max-width: 767.98px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
   }
 }
 </style>

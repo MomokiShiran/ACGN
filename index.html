@@ -3,15 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <script>
-      // 防主题闪白：绘制前按存储/系统偏好预置主题类（取值逻辑与 useDark 保持一致）
+      // 首帧防闪色：绘制前按 theme-mode 与系统偏好预置类名及底色
+      // （类名/色值来源：src/composables/themeConstants.js，与 useColorMode 一致；
+      //   运行期的底色跟随切换由 src/composables/useTheme.js 同步）
       ;(function () {
-        var m = localStorage.getItem('io-theme-mode')
+        var root = document.documentElement
+        var m = null
+        try {
+          m = localStorage.getItem('theme-mode')
+        } catch (e) {}
         var dark =
           m === 'dark' ||
-          ((m === null || m === 'auto') &&
-            window.matchMedia &&
+          (m !== 'light' &&
+            !!window.matchMedia &&
             matchMedia('(prefers-color-scheme: dark)').matches)
-        document.documentElement.classList.add(dark ? 'io-black-mode' : 'io-grey-mode')
+        root.classList.add(dark ? 'dark' : 'light')
+        root.style.backgroundColor = dark ? '#1b1d1f' : '#f9f9f9'
       })()
     </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />

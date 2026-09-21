@@ -66,14 +66,14 @@ const clear = () => {
   padding: 0 10px 0 44px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   box-sizing: border-box;
 }
 .content-search-box:focus-within {
   border-color: var(--primary);
 }
-/* 夜间模式 --border 为 transparent，恢复可见边框（.io-black-mode 在 <html> 上，属祖先选择器） */
-.io-black-mode .content-search-box {
+/* 夜间模式 --border 为 transparent，恢复可见边框（.dark 在 <html> 上，属祖先选择器） */
+.dark .content-search-box {
   border-color: var(--bg-gray);
 }
 
@@ -110,7 +110,7 @@ const clear = () => {
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 .content-search-clear:hover {
   color: var(--text);

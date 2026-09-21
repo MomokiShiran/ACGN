@@ -1,10 +1,12 @@
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 const HITOKOTO_API = 'https://v1.hitokoto.cn/'
-const text = ref('')
-const from = ref('')
 
-export function useHitokoto() {
+export const useHitokotoStore = defineStore('hitokoto', () => {
+  const text = ref('')
+  const from = ref('')
+
   const fetchHitokoto = async () => {
     try {
       const response = await fetch(HITOKOTO_API)
@@ -25,4 +27,4 @@ export function useHitokoto() {
   }
 
   return { text, from, init }
-}
+})

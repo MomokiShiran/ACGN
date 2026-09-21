@@ -9,20 +9,20 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: () => import('@/views/AboutView.vue'),
-    meta: { title: '关于' },
+    component: () => import('@/views/ContentView.vue'),
+    meta: { pageKey: 'about' },
   },
   {
     path: '/privacy',
     name: 'Privacy',
-    component: () => import('@/views/PrivacyView.vue'),
-    meta: { title: '隐私政策' },
+    component: () => import('@/views/ContentView.vue'),
+    meta: { pageKey: 'privacy' },
   },
   {
     path: '/disclaimer',
     name: 'Disclaimer',
-    component: () => import('@/views/DisclaimerView.vue'),
-    meta: { title: '免责声明' },
+    component: () => import('@/views/ContentView.vue'),
+    meta: { pageKey: 'disclaimer' },
   },
   {
     path: '/postsite',

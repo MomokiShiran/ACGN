@@ -4,8 +4,8 @@
       v-for="item in items"
       :key="item.to"
       :to="item.to"
-      class="legal-nav-item"
-      :class="{ active: route.path === item.to }"
+      class="pill legal-nav-item"
+      :class="{ 'pill-primary': route.path === item.to }"
     >
       {{ item.label }}
     </router-link>
@@ -25,27 +25,10 @@ const items = [
 </script>
 
 <style scoped>
-/* 胶囊导航：关于 / 免责 / 隐私 三页共用 */
 .legal-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-2);
   margin-bottom: var(--space-4);
-}
-.legal-nav-item {
-  padding: 6px 16px;
-  border-radius: 999px;
-  background: var(--bg-surface);
-  color: var(--text-muted);
-  font-size: var(--font-size-sm);
-  text-decoration: none;
-  transition: var(--transition-normal);
-}
-.legal-nav-item:hover {
-  color: var(--primary);
-}
-.legal-nav-item.active {
-  color: #fff;
-  background: var(--primary);
 }
 </style>
