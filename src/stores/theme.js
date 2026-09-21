@@ -1,7 +1,13 @@
 import { defineStore } from 'pinia'
 import { computed, watchEffect } from 'vue'
 import { useColorMode } from '@vueuse/core'
-import { DARK, LIGHT, STORAGE_KEY, DARK_THEME_COLOR, LIGHT_THEME_COLOR } from '@/composables/themeConstants'
+import {
+  DARK,
+  LIGHT,
+  STORAGE_KEY,
+  DARK_THEME_COLOR,
+  LIGHT_THEME_COLOR,
+} from '@/composables/themeConstants'
 
 export const useThemeStore = defineStore('theme', () => {
   // useColorMode 声明式管理主题：localStorage 持久化（'dark' | 'light' | 'auto'）、
