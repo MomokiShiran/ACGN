@@ -54,13 +54,16 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { useSidebar } from '@/composables/useSidebar'
-import { useHitokoto } from '@/composables/useHitokoto'
+import { useSidebarStore } from '@/stores/sidebar'
+import { useHitokotoStore } from '@/stores/hitokoto'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
 import menuIcon from '@/assets/icons/menu.svg'
 
-const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = useSidebar()
-const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = useHitokoto()
+const sidebarStore = useSidebarStore()
+const hitokotoStore = useHitokotoStore()
+
+const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = sidebarStore
+const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = hitokotoStore
 
 onMounted(() => {
   initHitokoto()

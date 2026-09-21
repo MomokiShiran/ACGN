@@ -77,8 +77,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useSitesStore } from '@/stores/sites'
-import { useSidebar } from '@/composables/useSidebar'
-import { useTheme } from '@/composables/useTheme'
+import { useSidebarStore } from '@/stores/sidebar'
+import { useThemeStore } from '@/stores/theme'
 import { THEME_MODES } from '@/composables/themeConstants'
 import { resolveNavIcon, handleIconError } from '@/composables/useSiteIcon'
 import logoUrl from '@/assets/images/20210727002253-59085.jpeg'
@@ -91,10 +91,13 @@ import autoIcon from '@/assets/icons/auto.svg'
 const store = useSitesStore()
 const categories = store.categories
 
-const { isMobileOpen, isMinimized } = useSidebar()
+const sidebarStore = useSidebarStore()
+const themeStore = useThemeStore()
+
+const { isMobileOpen, isMinimized } = sidebarStore
 // 活跃态按持久化源模式(sourceMode)判断：auto 时实际模式已解析为 dark/light，
 // 用 mode 判断会导致 auto 按钮永不高亮
-const { sourceMode: mode, setMode } = useTheme()
+const { sourceMode: mode, setMode } = themeStore
 
 const themeIcons = {
   light: sunIcon,

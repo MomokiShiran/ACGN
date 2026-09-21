@@ -29,13 +29,18 @@ import { onMounted, onUnmounted } from 'vue'
 import TheSidebar from './components/layout/TheSidebar.vue'
 import TheNavbar from './components/layout/TheNavbar.vue'
 import TheFooter from './components/layout/TheFooter.vue'
-import { useSidebar } from './composables/useSidebar'
-import { useTheme } from './composables/useTheme'
+import { useSidebarStore } from './stores/sidebar'
+import { useThemeStore } from './stores/theme'
+import { useAppStore } from './stores/app'
 import { usePageTitle } from './composables/usePageTitle'
-import { isNested } from './composables/useIframeProtect'
 
-const { isMobileOpen, initInteraction } = useSidebar()
-const { themeClass } = useTheme()
+const sidebarStore = useSidebarStore()
+const themeStore = useThemeStore()
+const appStore = useAppStore()
+
+const { isMobileOpen, initInteraction } = sidebarStore
+const { themeClass } = themeStore
+const { isNested } = appStore
 
 usePageTitle()
 
