@@ -166,7 +166,7 @@ const cycleTheme = () => {
   display: block;
   overflow: hidden;
   padding: 0;
-  padding-left: var(--space-3);
+  padding-left: var(--space-4);
   line-height: 50px;
   max-height: 50px;
   color: var(--sidebar-text);
