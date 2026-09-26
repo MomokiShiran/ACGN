@@ -76,7 +76,6 @@ onUnmounted(() => {
   color-scheme: light;
   /* 品牌色 */
   --primary: #d75a7f;
-  --primary-hover: #c9496e;
   --primary-soft: rgba(215, 90, 127, 0.06);
   /* 文字 */
   --text: #282a2d;

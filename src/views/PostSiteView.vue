@@ -2,12 +2,12 @@
   <PageContent>
     <SectionTitle>投稿 & 反馈</SectionTitle>
     <Card>
-      <p class="text-muted">感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。</p>
-      <p class="text-muted">
+      <p class="post-hint">感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。</p>
+      <p class="post-hint">
         <strong>联系方式：</strong>
         <AppLink href="mailto:help@acgn-world.com">help@acgn-world.com</AppLink>
       </p>
-      <p class="text-muted">
+      <p class="post-hint">
         <strong>GitHub：</strong>
         <AppLink
           href="https://github.com/MomokiShiran/ACGN"
@@ -28,7 +28,7 @@ import AppLink from '@/components/AppLink.vue'
 </script>
 
 <style scoped>
-.text-muted {
+.post-hint {
   margin: 0;
   color: var(--text-muted);
 }
