@@ -74,70 +74,93 @@
 ```
 ACGN/
 ├── .github/               # GitHub Actions 工作流
+├── public/                # 不经构建处理的静态资源
 ├── scripts/               # Node 脚本（站点数据校验等）
 ├── src/
-│   ├── assets/            # 静态资源
-│   │   └── images/sites/  # 网站图标
-│   ├── components/        # 可复用组件
-│   │   ├── layout/        # 布局组件（侧边栏/顶栏/页脚）
-│   │   ├── CategoryList.vue
-│   │   ├── CategorySection.vue
-│   │   ├── ContentPageLayout.vue
+│   ├── assets/           # 静态资源
+│   │   ├── icons/        # 内联 SVG 图标
+│   │   └── images/       # Logo、favicon、站点图标
+│   ├── components/       # 可复用组件
+│   │   ├── layout/       # 布局组件（TheNavbar / TheSidebar / TheFooter）
+│   │   ├── LinkTag.vue         # 内/外链统一渲染
+│   │   ├── AppLink.vue         # 外链按钮
+│   │   ├── Button.vue          # 按钮
+│   │   ├── Badge.vue           # 徽章
+│   │   ├── Card.vue            # 卡片容器
+│   │   ├── PillGroup.vue       # 标签组
+│   │   ├── SectionTitle.vue    # 区块标题
+│   │   ├── PageContent.vue     # 内容区内边距外壳
+│   │   ├── ContentPage.vue     # 数据驱动的静态内容页
+│   │   ├── ScrollTopButton.vue
+│   │   ├── BackBar.vue
+│   │   ├── EmptyState.vue
+│   │   ├── InlineNodes.vue
 │   │   ├── LegalNav.vue
 │   │   ├── SearchBar.vue
-│   │   └── SiteCard.vue
+│   │   ├── SiteCard.vue
+│   │   ├── SiteRow.vue
+│   │   ├── CategoryList.vue
+│   │   ├── CategorySection.vue
+│   │   ├── AnnouncementItem.vue
+│   │   └── FriendLinks.vue
 │   ├── composables/       # Vue 组合式函数
-│   │   ├── useTheme.js
-│   │   ├── useSidebar.js
-│   │   ├── useSiteIcon.js
+│   │   ├── legalLinks.js       # 法律页面链接（LegalNav 与页脚共用）
+│   │   ├── themeConstants.js   # 主题令牌与 class 名
 │   │   ├── usePageTitle.js
-│   │   ├── useIframeProtect.js
-│   │   └── useHitokoto.js
-│   ├── constants/         # 常量与配置
+│   │   └── useSiteIcon.js
+│   ├── constants/
+│   │   └── app.js         # 页面标题常量
 │   ├── data/              # JSON 数据
 │   │   ├── announcements.json
+│   │   ├── contentPages.json   # 关于/声明/隐私 页内容
 │   │   ├── friends.json
 │   │   ├── sites.json
 │   │   └── sitetrash.json
-│   ├── router/            # Vue Router 配置
+│   ├── router/
+│   │   └── index.js       # Vue Router 配置
 │   ├── stores/            # Pinia 状态管理
-│   │   └── __tests__/     # 单元测试
-│   ├── styles/            # 全局样式（main.css）
+│   │   ├── __tests__/     # store 单元测试
+│   │   ├── announcements.js
+│   │   ├── friends.js
+│   │   ├── hitokoto.js
+│   │   ├── sidebar.js
+│   │   ├── sites.js
+│   │   └── theme.js
 │   ├── views/             # 页面组件
 │   │   ├── HomeView.vue
 │   │   ├── SiteDetailView.vue
 │   │   ├── SiteTrashView.vue
 │   │   ├── AnnouncementsListView.vue
 │   │   ├── AnnouncementDetailView.vue
+│   │   ├── ContentView.vue     # 关于/声明/隐私 共用
 │   │   ├── PostSiteView.vue
-│   │   ├── AboutView.vue
-│   │   ├── DisclaimerView.vue
-│   │   ├── PrivacyView.vue
 │   │   └── NotFoundView.vue
-│   ├── App.vue            # 根组件
+│   ├── App.vue            # 根组件（主题变量 + 全局样式）
 │   └── main.js            # 应用入口
-├── .eslintrc.js
+├── .eslintrc.cjs
 ├── .prettierrc
 ├── index.html             # Vite HTML 入口
 ├── package.json
 ├── vite.config.js
 ├── README.md
-└── CONTRIBUTING.md
+├── CONTRIBUTING.md
+└── CHANGELOG.md
 ```
 
 ### 技术栈
 
-| 分类  | 技术              | 说明                          |
-| ----- | ----------------- | ----------------------------- |
-| 框架  | Vue 3             | 组合式 API              |
-| 构建  | Vite              | 开发服务器与生产构建          |
-| 路由  | Vue Router 4      | Hash 模式                     |
-| 状态  | Pinia             | 集中管理站点、公告、友链数据  |
-| 样式  | CSS3 + CSS 变量   | 全局样式表 + 组件 scoped 样式 |
-| 数据  | JSON              | 轻量级数据存储                |
-| 规范  | ESLint + Prettier | 代码质量与格式                |
-| 测试  | Vitest            | 单元测试                      |
-| CI/CD | GitHub Actions    | 数据校验 + 自动构建部署       |
+| 分类    | 技术               | 说明                             |
+| ------- | ------------------ | -------------------------------- |
+| 框架    | Vue 3              | 组合式 API                       |
+| 构建    | Vite               | 开发服务器与生产构建             |
+| 路由    | Vue Router 4       | Hash 模式                        |
+| 状态    | Pinia              | 集中管理站点、公告、友链数据     |
+| 组合式  | VueUse             | 主题色 / 滚动位置等              |
+| 样式    | CSS3 + CSS 变量    | 主题令牌 + 组件 scoped 样式      |
+| 数据    | JSON               | 轻量级数据存储                   |
+| 规范    | ESLint + Prettier  | 代码质量与格式                   |
+| 测试    | Vitest             | 单元测试                         |
+| CI/CD   | GitHub Actions     | 数据校验 + 自动构建部署          |
 
 ### 开发命令
 
@@ -248,7 +271,7 @@ npm run test
 
 ### 方式一：通过投稿页面
 
-访问 [投稿页面](#/postsite) 提交网站信息，我们会审核后添加。(未实现)
+访问 [投稿页面](#/postsite) 获取投稿邮箱与 GitHub Issue 联系方式。该页面只是联系方式说明，不是在线表单，不会直接提交数据。
 
 ### 方式二：直接贡献代码
 

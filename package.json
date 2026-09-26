@@ -1,6 +1,6 @@
 {
   "name": "acgn",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "ACG二次元导航盒子",
   "type": "module",
   "scripts": {

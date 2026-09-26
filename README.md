@@ -4,7 +4,7 @@
 
 欢迎来到 ACGN ～
 
-**投稿和申请友链请通过[投稿页面](#/postsite) 提交，提交前请仔细阅读收录条件。**(未实现)
+**投稿和申请友链请通过[投稿页面](#/postsite) 提交，提交前请仔细阅读[收录标准](CONTRIBUTING.md#网站收录标准)。**（该页面提供邮箱与 GitHub Issue 联系方式，不是在线表单）
 
 **也可以直接在 GitHub 上编辑（PR 目标分支：`develop`）：**
 - [编辑 sites.json](https://github.com/MomokiShiran/ACGN/edit/develop/src/data/sites.json) — 添加/修改网站条目
@@ -58,14 +58,15 @@ npm run format:check # 检查上述文件格式
 - **Vite** — 构建工具与开发服务器
 - **Vue Router 4** — Hash 模式路由
 - **Pinia** — 状态管理
-- **CSS3 + CSS 变量** — 全局样式表 + 组件 scoped 样式
+- **VueUse** — 常用组合式工具（主题色、滚动位置等）
+- **CSS3 + CSS 变量** — 主题令牌 + 组件 scoped 样式
 - **JSON** — 数据存储
 - **Vitest** — 单元测试
 - **ESLint + Prettier** — 代码规范工具
 
 ## 版本
 
-当前版本 **2.1.0**
+当前版本 **2.2.0**
 
 查看完整更新历史请访问 [CHANGELOG.md](CHANGELOG.md)
 
