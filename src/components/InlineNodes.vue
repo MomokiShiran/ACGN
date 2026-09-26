@@ -1,10 +1,10 @@
 <template>
   <template v-for="(node, index) in nodes" :key="index">
-    <router-link v-if="node.to" :to="node.to">{{ node.text }}</router-link>
-    <a v-else-if="node.href" :href="node.href" :target="node.target" :rel="node.rel">
+    <AppLink v-if="node.to" :to="node.to">{{ node.text }}</AppLink>
+    <AppLink v-else-if="node.href" :href="node.href" :target="node.target" :rel="node.rel">
       <img v-if="node.icon === 'github'" class="cp-icon" :src="githubIcon" alt="" />
       {{ node.text }}
-    </a>
+    </AppLink>
     <strong v-else-if="node.strong">{{ node.text }}</strong>
     <template v-else>{{ typeof node === 'string' ? node : node.text }}</template>
   </template>
@@ -12,6 +12,7 @@
 
 <script setup>
 import githubIcon from '@/assets/icons/github.svg'
+import AppLink from './AppLink.vue'
 
 defineProps({
   nodes: {
@@ -25,7 +26,7 @@ defineProps({
 .cp-icon {
   width: 18px;
   height: 18px;
-  margin-right: var(--space-2);
+  margin-right: 8px;
   vertical-align: middle;
 }
 </style>

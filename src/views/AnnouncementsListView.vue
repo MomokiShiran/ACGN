@@ -1,18 +1,19 @@
 <template>
-  <div class="content">
-    <PageTitle>公告</PageTitle>
+  <PageContent>
+    <SectionTitle>公告</SectionTitle>
     <EmptyState v-if="store.announcements.length === 0">暂无公告</EmptyState>
     <div v-else class="ann-list">
       <AnnouncementItem v-for="item in store.announcements" :key="item.id" :item="item" />
     </div>
-  </div>
+  </PageContent>
 </template>
 
 <script setup>
 import { useAnnouncementsStore } from '@/stores/announcements'
-import PageTitle from '@/components/PageTitle.vue'
+import SectionTitle from '@/components/SectionTitle.vue'
 import EmptyState from '@/components/EmptyState.vue'
 import AnnouncementItem from '@/components/AnnouncementItem.vue'
+import PageContent from '@/components/PageContent.vue'
 
 const store = useAnnouncementsStore()
 </script>
@@ -21,6 +22,6 @@ const store = useAnnouncementsStore()
 .ann-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 12px;
 }
 </style>

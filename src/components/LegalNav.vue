@@ -1,34 +1,16 @@
 <template>
-  <nav class="legal-nav">
-    <router-link
-      v-for="item in items"
-      :key="item.to"
-      :to="item.to"
-      class="pill legal-nav-item"
-      :class="{ 'pill-primary': route.path === item.to }"
-    >
-      {{ item.label }}
-    </router-link>
-  </nav>
+  <PillGroup tag="nav" :items="items" :active="route.path" />
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
+import PillGroup from './PillGroup.vue'
 
 const route = useRoute()
 
 const items = [
-  { to: '/about', label: '关于本站' },
-  { to: '/disclaimer', label: '免责声明' },
-  { to: '/privacy', label: '隐私政策' },
+  { value: '/about', label: '关于本站', to: '/about' },
+  { value: '/disclaimer', label: '免责声明', to: '/disclaimer' },
+  { value: '/privacy', label: '隐私政策', to: '/privacy' },
 ]
 </script>
-
-<style scoped>
-.legal-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
-</style>

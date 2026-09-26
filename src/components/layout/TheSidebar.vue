@@ -1,22 +1,22 @@
 <template>
   <div
     id="sidebar"
-    class="sticky sidebar-nav sidebar"
-    :class="{ show: isMobileOpen, 'mini-sidebar': isMinimized }"
+    class="sidebar-nav sidebar"
+    :class="{ show: sidebarStore.isMobileOpen, 'mini-sidebar': sidebarStore.isMinimized }"
   >
     <div class="sidebar-nav-inner">
       <div class="sidebar-logo">
         <div class="logo overflow-hidden">
-          <router-link to="/">
-            <img :src="logoUrl" height="40" alt="MyACGN" loading="lazy" />
+          <router-link to="/" class="sidebar-logo-link">
+            <img class="logo-img" :src="logoUrl" height="40" alt="MyACGN" loading="lazy" />
           </router-link>
         </div>
       </div>
 
-      <div class="sidebar-menu flex-fill">
+      <div class="sidebar-menu">
         <div class="sidebar-menu-inner">
           <ul class="sidebar-nav-list" id="sidebar-nav-list">
-            <li v-for="cat in categories" :key="cat.id" class="sidebar-item">
+            <li v-for="cat in store.categories" :key="cat.id" class="sidebar-item">
               <router-link :to="{ path: '/', hash: '#' + cat.id }" class="sidebar-menu-link">
                 <img
                   :src="resolveNavIcon(cat.icon)"
@@ -38,10 +38,10 @@
             :key="item.value"
             type="button"
             class="theme-btn"
-            :class="{ active: mode === item.value }"
+            :class="{ active: themeStore.sourceMode === item.value }"
             :aria-label="item.label"
             :title="item.label"
-            @click="setMode(item.value)"
+            @click="themeStore.setMode(item.value)"
           >
             <img class="theme-icon" :src="themeIcons[item.value]" alt="" />
           </button>
@@ -52,7 +52,7 @@
             :title="currentLabel"
             @click="cycleTheme"
           >
-            <img class="theme-icon" :src="themeIcons[mode]" alt="" />
+            <img class="theme-icon" :src="themeIcons[themeStore.sourceMode]" alt="" />
           </button>
         </div>
         <ul class="sidebar-nav-list">
@@ -89,15 +89,9 @@ import moonIcon from '@/assets/icons/moon.svg'
 import autoIcon from '@/assets/icons/auto.svg'
 
 const store = useSitesStore()
-const categories = store.categories
 
 const sidebarStore = useSidebarStore()
 const themeStore = useThemeStore()
-
-const { isMobileOpen, isMinimized } = sidebarStore
-// 活跃态按持久化源模式(sourceMode)判断：auto 时实际模式已解析为 dark/light，
-// 用 mode 判断会导致 auto 按钮永不高亮
-const { sourceMode: mode, setMode } = themeStore
 
 const themeIcons = {
   light: sunIcon,
@@ -106,29 +100,32 @@ const themeIcons = {
 }
 
 // 当前模式标签（供迷你单钮 tooltip / aria）
-const currentLabel = computed(() => THEME_MODES.find((m) => m.value === mode.value)?.label ?? '')
+const currentLabel = computed(
+  () => THEME_MODES.find((m) => m.value === themeStore.sourceMode.value)?.label ?? ''
+)
 
 // 迷你侧栏单钮：点击按 浅色 → 深色 → 跟随系统 循环，图标跟随当前模式
 const cycleTheme = () => {
-  const idx = THEME_MODES.findIndex((m) => m.value === mode.value)
-  setMode(THEME_MODES[(idx + 1) % THEME_MODES.length].value)
+  const idx = THEME_MODES.findIndex((m) => m.value === themeStore.sourceMode.value)
+  themeStore.setMode(THEME_MODES[(idx + 1) % THEME_MODES.length].value)
 }
 </script>
 
 <style scoped>
 .sidebar-nav {
-  display: table-cell;
-  font-size: var(--font-size-sm);
-  width: 150px;
+  --divider: rgba(129, 129, 129, 0.15);
+  flex: 0 0 150px;
+  font-size: 0.75rem;
   height: 100vh;
-  z-index: var(--z-sidebar);
+  z-index: 1080;
   position: sticky;
   top: 0;
   background: var(--sidebar-bg);
-  transition: width var(--transition-normal);
+  transition: flex-basis 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 .sidebar-nav.mini-sidebar {
-  width: 60px;
+  flex-basis: 60px;
 }
 .sidebar-nav-inner {
   width: inherit;
@@ -139,14 +136,15 @@ const cycleTheme = () => {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  transition: background-color var(--transition-normal);
+  transition: background-color 0.3s;
   overflow: hidden;
 }
 .sidebar-logo {
+  box-sizing: border-box;
   height: 74px;
   background: var(--sidebar-bg);
-  border-bottom: 1px solid rgba(129, 129, 129, 0.15);
-  transition: background-color var(--transition-fast);
+  border-bottom: 1px solid var(--divider);
+  transition: background-color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,22 +155,29 @@ const cycleTheme = () => {
   align-items: center;
   justify-content: center;
   width: 100%;
+  overflow: hidden;
 }
-.logo img {
+.sidebar-logo-link {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.logo-img {
   max-height: 40px;
   width: auto;
 }
 .sidebar-menu {
-  transition: all var(--transition-normal);
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .sidebar-menu-link {
   display: block;
   overflow: hidden;
-  padding: 0;
-  padding-left: var(--space-4);
+  padding: 0 0 0 16px;
   line-height: 50px;
   max-height: 50px;
   color: var(--sidebar-text);
+  text-decoration: none;
   background: none;
   border: none;
   text-align: left;
@@ -180,7 +185,15 @@ const cycleTheme = () => {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-  transition: all var(--transition-normal);
+  outline: none;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.sidebar-menu-link:active {
+  color: var(--primary);
 }
 .sidebar-item {
   position: relative;
@@ -189,23 +202,20 @@ const cycleTheme = () => {
   color: var(--primary);
   background: var(--sidebar-hover);
 }
-.sidebar-nav-inner .flex-fill {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
 .sidebar-footer {
   flex-shrink: 0;
-  padding: var(--space-2) 0;
-  border-top: 1px solid rgba(129, 129, 129, 0.15);
+  padding: 8px 0;
+  border-top: 1px solid var(--divider);
 }
 .sidebar-theme {
   display: flex;
-  gap: var(--space-2);
-  padding: 0 var(--space-3) var(--space-2);
-  margin-bottom: var(--space-2);
-  border-bottom: 1px solid rgba(129, 129, 129, 0.15);
+  gap: 8px;
+  padding: 0 12px 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--divider);
 }
 .theme-btn {
+  box-sizing: border-box;
   flex: 1;
   height: 30px;
   display: flex;
@@ -214,9 +224,13 @@ const cycleTheme = () => {
   padding: 0;
   background: var(--input-bg);
   border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .theme-btn:hover {
   background: var(--sidebar-hover);
@@ -234,8 +248,8 @@ const cycleTheme = () => {
 }
 .mini-sidebar .sidebar-theme {
   flex-direction: column;
-  gap: var(--space-1);
-  padding: 0 var(--space-1) var(--space-2);
+  gap: 4px;
+  padding: 0 4px 8px;
 }
 .mini-sidebar .theme-btn:not(.theme-btn-mini) {
   display: none;
@@ -247,10 +261,7 @@ const cycleTheme = () => {
   flex: none;
   width: 100%;
 }
-.mini-sidebar .sidebar-menu {
-  width: 60px;
-}
-.mini-sidebar .logo img {
+.mini-sidebar .logo-img {
   max-height: 32px;
 }
 .sidebar-nav-list {
@@ -260,19 +271,17 @@ const cycleTheme = () => {
 .sidebar-cat-icon {
   width: 18px;
   height: 18px;
-  margin-right: var(--space-2);
+  margin-right: 8px;
   flex-shrink: 0;
   vertical-align: middle;
 }
-.mini-sidebar .sidebar-menu-text {
-  display: none;
+.sidebar-menu-text {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
-
-/* 桌面端始终显示侧栏（兜底，防止其它响应式规则误隐藏） */
-@media (min-width: 768px) {
-  .sidebar-nav {
-    display: block !important;
-  }
+.mini-sidebar .sidebar-menu-text {
+  opacity: 0;
 }
 
 /* 移动端侧边栏：遮罩层 + 抽屉 */
@@ -284,11 +293,11 @@ const cycleTheme = () => {
     top: 0 !important;
     left: 0 !important;
     position: fixed !important;
-    z-index: var(--z-modal) !important;
+    z-index: 1090 !important;
     display: block !important;
     padding-left: 0 !important;
     visibility: hidden;
-    transition: visibility var(--transition-fast);
+    transition: visibility 0.2s;
     pointer-events: none;
   }
   .sidebar-nav.show {
@@ -300,11 +309,11 @@ const cycleTheme = () => {
     height: 100%;
     width: 17.5rem;
     will-change: transform;
-    transition: transform var(--transition-fast) cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     transform: translateX(-100%);
   }
   .sidebar-nav.show .sidebar-nav-inner {
-    transition: transform var(--transition-fast) cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(0);
   }
 }

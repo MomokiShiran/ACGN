@@ -7,8 +7,8 @@
 .site-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: calc(-1 * var(--space-4));
-  margin-left: calc(-1 * var(--space-4));
+  margin-right: calc(-1 * 16px);
+  margin-left: calc(-1 * 16px);
 }
 @media (min-width: 768px) {
   .site-row {

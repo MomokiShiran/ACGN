@@ -66,15 +66,11 @@ const clear = () => {
   padding: 0 10px 0 44px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
+  border-radius: 100px;
   box-sizing: border-box;
 }
 .content-search-box:focus-within {
   border-color: var(--primary);
-}
-/* 夜间模式 --border 为 transparent，恢复可见边框（.dark 在 <html> 上，属祖先选择器） */
-.dark .content-search-box {
-  border-color: var(--bg-gray);
 }
 
 .content-search-icon {
@@ -93,9 +89,11 @@ const clear = () => {
   border: none;
   outline: none;
   background: transparent;
-  font-size: var(--font-size-md);
+  font-size: 0.875rem;
   color: var(--text);
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .content-search-input::placeholder {
   color: var(--text-muted);
@@ -110,7 +108,9 @@ const clear = () => {
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .content-search-clear:hover {
   color: var(--text);
@@ -134,7 +134,7 @@ const clear = () => {
     font-size: 14px;
   }
   .content-search-input {
-    font-size: var(--font-size-sm);
+    font-size: 0.75rem;
     padding: 0 8px;
   }
   .content-search-clear {

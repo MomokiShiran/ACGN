@@ -1,23 +1,19 @@
 <template>
   <SearchBar v-model="keyword" />
 
-  <div class="content">
+  <PageContent>
     <CategoryList v-if="!keyword.trim()" :categories="store.flatCategories" />
 
     <template v-else>
-      <div v-if="groupedResults.length === 0" class="search-empty">
-        <div>没找到匹配的站点，试试其他关键字吧</div>
-      </div>
+      <EmptyState v-if="groupedResults.length === 0">没找到匹配的站点，试试其他关键字吧</EmptyState>
       <template v-else>
-        <h4 class="search-results-title">
-          <img class="tag-icon" :src="tagIcon" alt="" />搜索结果（{{ searchResults.length }}）
-        </h4>
+        <SectionTitle :icon="tagIcon" rotate>搜索结果（{{ searchResults.length }}）</SectionTitle>
         <CategoryList :categories="groupedResults" />
       </template>
     </template>
 
     <FriendLinks v-if="!keyword.trim()" />
-  </div>
+  </PageContent>
 </template>
 
 <script setup>
@@ -26,8 +22,10 @@ import { useSitesStore } from '@/stores/sites'
 import SearchBar from '@/components/SearchBar.vue'
 import CategoryList from '@/components/CategoryList.vue'
 import FriendLinks from '@/components/FriendLinks.vue'
+import SectionTitle from '@/components/SectionTitle.vue'
+import EmptyState from '@/components/EmptyState.vue'
+import PageContent from '@/components/PageContent.vue'
 import tagIcon from '@/assets/icons/tag.svg'
-import searchIcon from '@/assets/icons/search.svg'
 
 const store = useSitesStore()
 const keyword = ref('')
@@ -50,24 +48,3 @@ const groupedResults = computed(() => {
     .filter((cat) => cat.sites.length > 0)
 })
 </script>
-
-<style scoped>
-.search-results-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  color: var(--text-muted);
-  font-size: var(--font-size-lg);
-}
-.search-empty {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-muted);
-}
-.search-empty-icon {
-  display: block;
-  font-size: 48px;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-</style>

@@ -1,13 +1,15 @@
 <template>
-  <div class="empty-state"><slot /></div>
+  <Card class="empty-state"><slot /></Card>
 </template>
+
+<script setup>
+import Card from './Card.vue'
+</script>
 
 <style scoped>
 .empty-state {
-  padding: 60px 20px;
+  --card-padding: 60px 20px;
   text-align: center;
   color: var(--text-muted);
-  background: var(--card-bg);
-  border-radius: var(--radius-2xl);
 }
 </style>

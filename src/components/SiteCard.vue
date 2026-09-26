@@ -10,11 +10,11 @@
         <div class="url-card-body">
           <div class="url-content">
             <div class="url-img">
-              <img loading="lazy" :src="iconUrl" @error="onImgError" />
+              <img class="url-icon" loading="lazy" :src="iconUrl" @error="onImgError" />
             </div>
             <div class="url-info">
               <div class="url-name">
-                <span v-if="site.isNew" class="badge badge-danger url-new" title="新">New</span>
+                <Badge class="url-new" title="新">New</Badge>
                 <strong>{{ site.name }}</strong>
               </div>
               <p class="url-desc">{{ site.description }}</p>
@@ -39,6 +39,7 @@
 import { computed } from 'vue'
 import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
 import arrowRightIcon from '@/assets/icons/arrow-right.svg'
+import Badge from './Badge.vue'
 
 const props = defineProps({
   site: {
@@ -52,43 +53,46 @@ const onImgError = handleIconError
 </script>
 
 <style scoped>
-/* 栅格列宽（原 col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2） */
+/* 栅格列宽（原 col-6 col-sm-4 col-md-3 col-lg-3 col-xl-2）
+   列宽百分比 + 横向 padding，必须 border-box 否则栅格溢出 */
 .url-card {
+  box-sizing: border-box;
   flex: 0 0 50%;
-  max-width: 50%;
-  padding: 0 var(--space-2);
+  min-width: 0;
+  padding: 0 8px;
 }
 @media (min-width: 576px) {
   .url-card {
     flex: 0 0 33.333333%;
-    max-width: 33.333333%;
   }
 }
 @media (min-width: 768px) {
   .url-card {
     flex: 0 0 25%;
-    max-width: 25%;
-    padding: 0 var(--space-4);
+    padding: 0 16px;
   }
 }
 @media (min-width: 1200px) {
   .url-card {
     flex: 0 0 16.666667%;
-    max-width: 16.666667%;
   }
 }
 
 .url-body {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 16px);
+  margin-bottom: 16px;
   transform: translateY(0);
-  transition: all var(--transition-normal);
-  border-radius: var(--radius-2xl);
+  transition: transform 0.3s;
+  border-radius: 16px;
 }
 .url-body:hover {
-  transform: translateY(var(--card-hover-y));
+  transform: translateY(-3px);
 }
 .url-body:active {
-  transform: translateY(var(--card-hover-y-minor));
+  transform: translateY(-2px);
 }
 
 /* 卡片主体（原 card no-c mb-4） */
@@ -96,10 +100,13 @@ const onImgError = handleIconError
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--space-4);
+  flex: 1 1 auto;
   background: var(--card-bg);
-  border-radius: var(--radius-2xl);
+  border-radius: 16px;
+  color: var(--text);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .url-card-body {
   padding: 0.9375rem;
@@ -116,12 +123,12 @@ const onImgError = handleIconError
   flex: none;
   width: 40px;
   height: 40px;
-  margin-right: var(--space-2);
+  margin-right: 8px;
   background: rgba(128, 128, 128, 0.1);
   border-radius: 50%;
   overflow: hidden;
 }
-.url-img > img {
+.url-icon {
   max-height: 100%;
   vertical-align: unset;
 }
@@ -130,28 +137,28 @@ const onImgError = handleIconError
   flex: 1 1 auto;
   min-width: 0;
   overflow: hidden;
-  padding-right: var(--space-2);
+  padding-right: 8px;
 }
 .url-name {
   display: block;
-  line-height: var(--line-height-normal);
+  line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .url-new {
-  margin-right: var(--space-1);
+  margin-right: 4px;
 }
 .url-desc {
   margin: 0;
   color: var(--text-muted);
-  line-height: var(--line-height-normal);
+  line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-a.togo {
+.togo {
   position: absolute;
   top: 20px;
   right: 0;
@@ -161,14 +168,19 @@ a.togo {
   text-align: center;
   color: var(--text-muted);
   opacity: 0.2;
-  transition: opacity var(--transition-normal);
+  transition: opacity 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.url-body:hover a.togo {
+.togo:hover {
+  color: var(--primary);
+}
+.url-body:hover .togo {
   opacity: 1;
 }
 /* 触屏设备无 hover，直达按钮常显 */
 @media (hover: none) {
-  a.togo {
+  .togo {
     opacity: 1;
   }
 }
@@ -191,14 +203,15 @@ a.togo {
 
 /* 禁用卡片 hover 抬升 */
 .dark .url-card:hover,
-.dark .url-card:hover :is(a, h1, h2, h3, h4, h5, h6) {
+.dark .url-card:hover .url-card-link,
+.dark .url-card:hover .togo {
   transform: none !important;
   color: var(--text) !important;
 }
 
 /* 链接 hover 保持主色 */
-.dark .url-body a:hover,
-.dark .url-body:hover strong {
+.dark .url-card-link:hover,
+.dark .togo:hover {
   color: var(--primary) !important;
 }
 

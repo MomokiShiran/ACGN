@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'AnnouncementDetail', params: { id: item.id } }" class="panel ann-item">
+  <router-link :to="{ name: 'AnnouncementDetail', params: { id: item.id } }" class="ann-item">
     <div class="ann-item-head">
       <h5 class="ann-item-title">{{ item.title }}</h5>
       <img class="ann-item-arrow" aria-hidden="true" :src="angleRightIcon" alt="" />
@@ -20,8 +20,13 @@ defineProps({
 <style scoped>
 .ann-item {
   display: block;
-  padding: var(--space-4);
+  padding: 16px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  color: var(--text);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .ann-item:hover .ann-item-title {
   color: var(--primary);
@@ -34,7 +39,7 @@ defineProps({
 .ann-item-head {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 8px;
 }
 
 .ann-item-title {
@@ -44,28 +49,28 @@ defineProps({
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
-  transition: color var(--transition-normal);
+  font-weight: 600;
+  color: var(--text-heading);
+  transition: color 0.3s;
 }
 
 .ann-item-arrow {
   flex-shrink: 0;
   color: var(--text-muted);
   transition:
-    color var(--transition-normal),
-    transform var(--transition-normal);
+    color 0.3s,
+    transform 0.3s;
 }
 
 .ann-item-meta {
-  margin: var(--space-1) 0 0;
+  margin: 4px 0 0;
   color: var(--text-muted);
 }
 
 .ann-item-excerpt {
-  margin: var(--space-2) 0 0;
+  margin: 8px 0 0;
   color: var(--text-muted);
-  line-height: var(--line-height-relaxed);
+  line-height: 1.8;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;

@@ -1,7 +1,7 @@
 <template>
-  <div class="content">
+  <PageContent>
     <LegalNav />
-    <ContentPageLayout panel-class="card no-hover-card">
+    <Card>
       <h1 class="cp-title">{{ page.title }}</h1>
       <div class="cp-body">
         <section v-for="section in page.sections" :key="section.heading" class="cp-section">
@@ -15,13 +15,14 @@
         </section>
         <p class="cp-updated">最后更新时间：{{ page.updatedAt }}</p>
       </div>
-    </ContentPageLayout>
-  </div>
+    </Card>
+  </PageContent>
 </template>
 
 <script setup>
 import { defineComponent, h } from 'vue'
-import ContentPageLayout from '@/components/ContentPageLayout.vue'
+import Card from '@/components/Card.vue'
+import PageContent from '@/components/PageContent.vue'
 import LegalNav from '@/components/LegalNav.vue'
 import InlineNodes from '@/components/InlineNodes.vue'
 
@@ -55,7 +56,7 @@ const ListBlock = defineComponent({
       'ul',
       { class: 'cp-list' },
       this.block.items.map((item, index) =>
-        h('li', { key: index }, h(InlineNodes, { nodes: toNodes(item) }))
+        h('li', { key: index, class: 'cp-list-item' }, h(InlineNodes, { nodes: toNodes(item) }))
       )
     )
   },
@@ -79,22 +80,22 @@ const blockRenderers = { p: ParagraphBlock, list: ListBlock, h6: HeadingBlock }
 /* 非 scoped：block 由 defineComponent 渲染，无法继承本组件 scopeId；
    cp-* 类仅用于内容页，无全局冲突风险 */
 .cp-title {
-  margin: 0 0 var(--space-4);
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
-  line-height: var(--line-height-tight);
+  margin: 0 0 16px;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  line-height: 1.2;
 }
 
 .cp-section {
-  margin-bottom: var(--space-4);
+  margin-bottom: 16px;
 }
 
 .cp-heading {
-  margin: 0 0 var(--space-2);
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-heading);
 }
 
 .cp-section > *:first-child {
@@ -102,24 +103,25 @@ const blockRenderers = { p: ParagraphBlock, list: ListBlock, h6: HeadingBlock }
 }
 
 .cp-paragraph {
-  margin: var(--space-2) 0;
+  margin: 8px 0;
   white-space: pre-line;
 }
 
 .cp-list {
-  margin: var(--space-2) 0;
-  padding-left: var(--space-5);
+  margin: 8px 0;
+  padding-left: 20px;
   color: var(--text);
 }
 
-.cp-list li {
-  margin-top: var(--space-1);
+.cp-list-item {
+  margin-top: 4px;
 }
 
 .cp-subhead {
-  margin: var(--space-3) 0 var(--space-2);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
+  margin: 12px 0 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-heading);
 }
 
 .cp-updated {

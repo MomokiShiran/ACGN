@@ -1,37 +1,37 @@
 <template>
-  <div class="navbar big sticky header">
+  <div class="navbar">
     <div class="navbar-inner">
       <router-link to="/" class="navbar-logo mobile-only">
-        <img loading="lazy" :src="logoUrl" height="40" alt="MyACGN" />
+        <img class="navbar-logo-img" loading="lazy" :src="logoUrl" height="40" alt="MyACGN" />
       </router-link>
 
       <div class="navbar-left">
         <div class="navbar-btn desktop-only">
-          <label>
+          <label class="menu-label">
             <input
               class="mini-button"
               type="checkbox"
-              :checked="!isMinimized"
-              @change="triggerMini($event.target.checked)"
+              :checked="!sidebarStore.isMinimized"
+              @change="sidebarStore.triggerMini($event.target.checked)"
             />
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <path class="line-1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
-              <path class="line-2" d="M0 50h80"></path>
-              <path class="line-3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
+            <svg class="menu-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path class="menu-path line-1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
+              <path class="menu-path line-2" d="M0 50h80"></path>
+              <path class="menu-path line-3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
             </svg>
           </label>
         </div>
 
-        <router-link to="/announcements" class="btn navbar-announcement" rel="announcement">
+        <router-link to="/announcements" class="navbar-announcement" rel="announcement">
           公告
         </router-link>
       </div>
 
       <div class="navbar-right">
         <div class="navbar-hitokoto desktop-only">
-          <div class="navbar-hitokoto-text overflowClip_1">
-            <span class="hitokoto">{{ hitokotoText }}</span>
-            <span v-if="hitokotoFrom" class="hitokoto-from text-muted"> —— {{ hitokotoFrom }}</span>
+          <div class="navbar-hitokoto-text">
+            <span class="hitokoto">{{ hitokotoStore.text }}</span>
+            <span v-if="hitokotoStore.from" class="hitokoto-from">—— {{ hitokotoStore.from }}</span>
           </div>
         </div>
 
@@ -40,9 +40,9 @@
             type="button"
             class="navbar-toggle"
             id="sidebar-toggle"
-            :aria-label="isMobileOpen ? '关闭菜单' : '打开菜单'"
-            :aria-expanded="isMobileOpen"
-            @click="toggleMobile"
+            :aria-label="sidebarStore.isMobileOpen ? '关闭菜单' : '打开菜单'"
+            :aria-expanded="sidebarStore.isMobileOpen"
+            @click="sidebarStore.toggleMobile"
           >
             <img class="navbar-toggle-icon" aria-hidden="true" :src="menuIcon" alt="" />
           </button>
@@ -62,11 +62,8 @@ import menuIcon from '@/assets/icons/menu.svg'
 const sidebarStore = useSidebarStore()
 const hitokotoStore = useHitokotoStore()
 
-const { isMobileOpen, isMinimized, toggleMobile, triggerMini } = sidebarStore
-const { init: initHitokoto, text: hitokotoText, from: hitokotoFrom } = hitokotoStore
-
 onMounted(() => {
-  initHitokoto()
+  hitokotoStore.init()
 })
 </script>
 
@@ -74,7 +71,11 @@ onMounted(() => {
 /* 顶部导航栏 */
 .navbar {
   background: var(--header-bg);
-  transition: background-color var(--transition-normal);
+  position: sticky;
+  top: 0;
+  z-index: 1080;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s;
 }
 .navbar-inner {
   display: flex;
@@ -90,8 +91,10 @@ onMounted(() => {
   justify-content: center;
   flex-shrink: 0;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.navbar-logo img {
+.navbar-logo-img {
   max-height: 36px;
   width: auto;
   display: block;
@@ -115,8 +118,13 @@ onMounted(() => {
   display: none;
 }
 .navbar-hitokoto-text {
-  font-size: var(--font-size-md);
+  font-size: 0.875rem;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  line-height: 1.5;
 }
 
 /* 移动端菜单开关 */
@@ -132,9 +140,15 @@ onMounted(() => {
   color: var(--text-muted);
   background: none;
   border: 0;
+  border-radius: 6px;
   line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .navbar-toggle:hover {
+  color: var(--primary);
+}
+.navbar-toggle:active {
   color: var(--primary);
 }
 .navbar-toggle-icon {
@@ -146,15 +160,17 @@ onMounted(() => {
 .navbar-btn {
   height: 74px;
   width: 40px;
+  border-radius: 6px;
+  cursor: pointer;
 }
-.navbar-btn svg {
+.navbar-btn .menu-svg {
   margin: 0 -20px;
   height: 74px;
 }
-.navbar-btn input[type='checkbox'] {
+.navbar-btn .mini-button {
   display: none;
 }
-.navbar-btn path {
+.navbar-btn .menu-path {
   fill: none;
   stroke: #888;
   stroke-width: 3;
@@ -165,17 +181,20 @@ onMounted(() => {
   stroke-dasharray: var(--length) var(--total-length);
   stroke-dashoffset: var(--offset);
   transition:
-    all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
-    stroke var(--transition-fast);
+    stroke-dasharray 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+    stroke-dashoffset 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+    stroke 0.2s;
 }
-.navbar-btn label {
+.navbar-btn .menu-label {
   display: block;
   top: 0;
   right: 0;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.navbar-btn input:checked + svg .line-1,
-.navbar-btn input:checked + svg .line-3 {
+.navbar-btn .mini-button:checked + .menu-svg .line-1,
+.navbar-btn .mini-button:checked + .menu-svg .line-3 {
   --length: 12.602325267;
 }
 .navbar-btn .line-1,
@@ -185,24 +204,28 @@ onMounted(() => {
 .navbar-btn .line-2 {
   --total-length: 80;
 }
-.navbar-btn label:hover path {
+.navbar-btn .menu-label:hover .menu-path {
   stroke: var(--primary);
 }
 
-/* 横幅区 */
-.navbar.big {
-  backdrop-filter: var(--header-blur);
-  background: var(--header-bg);
-}
-
-/* 公告按钮 */
 .navbar-announcement {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
   color: var(--text);
   text-decoration: none;
-  font-size: var(--font-size-sm);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .navbar-announcement:hover {
   color: var(--primary);
@@ -216,7 +239,7 @@ onMounted(() => {
   .navbar-logo {
     display: none !important;
   }
-  .navbar-logo img {
+  .navbar-logo-img {
     max-height: 40px;
   }
   .navbar-hitokoto {
@@ -228,25 +251,15 @@ onMounted(() => {
     height: 56px;
     padding: 0 12px;
   }
-  .navbar-logo.mobile-only,
-  a.navbar-logo {
+  .navbar-logo.mobile-only {
     display: flex !important;
   }
-  .navbar-logo img {
+  .navbar-logo-img {
     max-height: 32px;
   }
   .navbar-mobile {
     display: block !important;
   }
-}
-
-/* ---- 原 main.css 排版/工具类 ---- */
-.overflowClip_1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block !important;
-  line-height: var(--line-height-normal);
 }
 
 /* 桌面端 / 移动端可见性 */

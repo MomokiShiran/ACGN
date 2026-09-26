@@ -1,37 +1,39 @@
 <template>
-  <div class="content customize-site">
-    <div class="site-detail-back">
-      <router-link to="/" class="back-btn">
-        <img class="back-icon" :src="arrowLeftIcon" alt="" />
-        返回首页
-      </router-link>
-    </div>
+  <PageContent>
+    <BackBar to="/" label="返回首页" />
     <div v-if="!site" class="alert alert-danger">未找到该网站</div>
     <div v-else>
       <!-- 头部信息区：淡粉底大圆角 hero 块 -->
       <div class="site-detail-hero">
         <div class="site-detail-head">
           <div class="site-detail-avatar">
-            <img :src="faviconUrl" :alt="site.name" @error="onImgError" />
+            <img
+              class="site-detail-avatar-img"
+              :src="faviconUrl"
+              :alt="site.name"
+              @error="onImgError"
+            />
           </div>
           <div class="site-detail-info">
             <h1 class="site-detail-name">{{ site.name }}</h1>
             <p class="site-detail-meta">
-              <span class="badge badge-danger">{{ categoryName }}</span>
+              <Badge>{{ categoryName }}</Badge>
               <span v-if="site.createdAt">收录：{{ site.createdAt }}</span>
               <span v-if="siteUrl">{{ siteUrl }}</span>
             </p>
             <p class="site-detail-lead">{{ site.description }}</p>
             <div class="site-detail-actions">
-              <a
+              <Button
+                shape="pill"
+                size="lg"
+                tone="primary"
+                :icon="externalLinkIcon"
                 :href="site.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn btn-primary btn-cta"
               >
-                <img class="cta-icon" :src="externalLinkIcon" alt="" />
                 访问网站
-              </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -43,13 +45,13 @@
       </div>
       <!-- 相关站点 -->
       <div v-if="relatedSites.length" class="site-detail-related">
-        <CatSectionTitle tag="h2" :icon="tagIcon">相关站点</CatSectionTitle>
+        <SectionTitle tag="h2" bar :icon="tagIcon" rotate>相关站点</SectionTitle>
         <SiteRow>
           <SiteCard v-for="s in relatedSites" :key="s.id" :site="s" />
         </SiteRow>
       </div>
     </div>
-  </div>
+  </PageContent>
 </template>
 
 <script setup>
@@ -59,9 +61,12 @@ import { useSitesStore } from '@/stores/sites'
 import { resolveIcon, handleIconError } from '@/composables/useSiteIcon'
 import { usePageTitle } from '@/composables/usePageTitle'
 import SiteCard from '@/components/SiteCard.vue'
-import CatSectionTitle from '@/components/CatSectionTitle.vue'
+import SectionTitle from '@/components/SectionTitle.vue'
 import SiteRow from '@/components/SiteRow.vue'
-import arrowLeftIcon from '@/assets/icons/arrow-left.svg'
+import BackBar from '@/components/BackBar.vue'
+import PageContent from '@/components/PageContent.vue'
+import Badge from '@/components/Badge.vue'
+import Button from '@/components/Button.vue'
 import externalLinkIcon from '@/assets/icons/external-link.svg'
 import tagIcon from '@/assets/icons/tag.svg'
 
@@ -124,68 +129,47 @@ watch(
 </script>
 
 <style scoped>
-/* 返回按钮 */
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-surface);
-  color: var(--text-muted);
-  font-size: var(--font-size-sm);
-  text-decoration: none;
-  transition: var(--transition-normal);
-}
-.back-btn:hover {
-  color: var(--primary);
-}
-.site-detail-back {
-  display: flex;
-  margin-bottom: var(--space-3);
-}
-
 /* 头部 hero 块与简介卡片共用的圆角 */
-.site-detail-hero,
-.site-detail-body {
-  border-radius: var(--radius-2xl);
+.site-detail-hero {
+  border-radius: 16px;
 }
 /* 头部信息区：淡粉底 */
 .site-detail-hero {
   background: var(--primary-soft);
-  padding: var(--space-5);
+  padding: 20px;
 }
 /* 站点简介：白色卡片 */
 .site-detail-body {
+  padding: 16px 20px;
+  margin-top: 16px;
   background: var(--card-bg);
-  padding: var(--space-4) var(--space-5);
-  margin-top: var(--space-4);
+  border-radius: 16px;
 }
 /* 标题共享样式 */
 .site-detail-name,
 .site-detail-body-title {
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-dark);
+  font-weight: 600;
+  color: var(--text-heading);
 }
 .site-detail-name {
-  margin: 0 0 var(--space-1);
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-tight);
+  margin: 0 0 4px;
+  font-size: 1.375rem;
+  line-height: 1.2;
 }
 .site-detail-body-title {
-  margin: 0 0 var(--space-2);
-  font-size: var(--font-size-lg);
+  margin: 0 0 8px;
+  font-size: 1rem;
 }
 .site-detail-meta {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 4px 8px;
-  margin: 0 0 var(--space-2);
+  margin: 0 0 8px;
   color: var(--text-muted);
 }
 .site-detail-lead {
-  margin: 0 0 var(--space-2);
+  margin: 0 0 8px;
   color: var(--text-muted);
 }
 .site-detail-head {
@@ -199,7 +183,7 @@ watch(
 .site-detail-desc {
   margin: 0;
   color: var(--text-muted);
-  line-height: var(--line-height-relaxed);
+  line-height: 1.8;
 }
 .site-detail-avatar {
   display: flex;
@@ -207,37 +191,27 @@ watch(
   justify-content: center;
   width: 80px;
   height: 80px;
-  margin-right: var(--space-3);
+  margin-right: 12px;
   flex-shrink: 0;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
 }
-.site-detail-avatar > img {
+.site-detail-avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
 }
 
-/* 操作按钮：pill 主按钮 + 灰底次级按钮 */
 .site-detail-actions {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
-.btn-cta {
-  border-radius: var(--radius-pill);
-  padding: 8px 20px;
-}
-.btn-cta img.cta-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: var(--space-1);
-}
 
 /* 相关站点 */
 .site-detail-related {
-  margin-top: var(--space-5);
+  margin-top: 20px;
 }
 
 /* 未找到提示（原 main.css primitives） */
@@ -246,7 +220,7 @@ watch(
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: 6px;
 }
 .alert-danger {
   color: #721c24;
@@ -266,10 +240,10 @@ watch(
     height: 56px;
   }
   .site-detail-name {
-    font-size: var(--font-size-xl);
+    font-size: 1.125rem;
   }
   .site-detail-hero {
-    padding: var(--space-4);
+    padding: 16px;
   }
 }
 </style>

@@ -1,16 +1,19 @@
 <template>
-  <div class="content page not-found-page">
+  <PageContent class="not-found-page">
     <div class="not-found-code">404</div>
     <h2 class="not-found-title">页面未找到</h2>
-    <p class="text-muted mb-4">抱歉，您访问的页面不存在。</p>
-    <router-link to="/" class="btn btn-primary">返回首页</router-link>
-  </div>
+    <p class="text-muted">抱歉，您访问的页面不存在。</p>
+    <Button shape="rounded" size="md" tone="primary" to="/">返回首页</Button>
+  </PageContent>
 </template>
 
-<script setup></script>
+<script setup>
+import PageContent from '@/components/PageContent.vue'
+import Button from '@/components/Button.vue'
+</script>
 
 <style scoped>
-.not-found-page {
+.content.not-found-page {
   text-align: center;
   padding: 60px 20px;
 }
@@ -20,5 +23,13 @@
 }
 .not-found-title {
   margin-bottom: 10px;
+  font-size: 2rem;
+}
+.not-found-page .text-muted {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.text-muted {
+  color: var(--text-muted);
 }
 </style>

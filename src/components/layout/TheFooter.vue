@@ -1,11 +1,10 @@
 <template>
   <footer class="main-footer">
-    <div class="footer-tools d-flex flex-column">
+    <div class="footer-tools">
       <button
         v-show="showGoUp"
         type="button"
-        class="btn go-up m-1"
-        rel="go-top"
+        class="go-up"
         aria-label="返回顶部"
         @click="scrollToTop"
       >
@@ -13,22 +12,26 @@
       </button>
     </div>
 
-    <div class="footer-inner text-center">
+    <div class="footer-inner">
       <div class="footer-text">
         © 2026 ACGN &nbsp;&nbsp;Powered by
-        <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer">
+        <AppLink
+          href="https://github.com/MomokiShiran/ACGN"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <strong>ACGN</strong>
-        </a>
+        </AppLink>
         <span class="mx-2">|</span>
-        <router-link to="/about" class="text-muted">关于本站</router-link>
+        <AppLink to="/about" muted>关于本站</AppLink>
         <span class="mx-1">|</span>
-        <router-link to="/disclaimer" class="text-muted">免责声明</router-link>
+        <AppLink to="/disclaimer" muted>免责声明</AppLink>
         <span class="mx-1">|</span>
-        <router-link to="/privacy" class="text-muted">隐私政策</router-link>
+        <AppLink to="/privacy" muted>隐私政策</AppLink>
       </div>
-      <div class="footer-text mt-2 text-muted footer-note">
+      <div class="footer-text text-muted footer-note">
         <strong>联系方式：</strong>若有任何问题或合作，请发送邮件至
-        <a href="mailto:help@acgn-world.com" class="text-muted">help@acgn-world.com</a>
+        <AppLink href="mailto:help@acgn-world.com" muted>help@acgn-world.com</AppLink>
         <br />
         <strong>免责声明：</strong>本站仅提供网站链接导航服务，不存储、不制作、不传播任何内容。
         所有链接均指向第三方网站，本站对第三方网站内容不承担任何责任。如有侵权内容，请联系我们删除。
@@ -41,6 +44,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import arrowUpIcon from '@/assets/icons/arrow-up.svg'
+import AppLink from '../AppLink.vue'
 
 const showGoUp = ref(false)
 
@@ -73,33 +77,39 @@ onUnmounted(() => {
 <style scoped>
 .main-footer {
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: 4px;
   padding: 1rem;
   margin: 0.5rem 1rem;
+}
+.footer-inner {
+  text-align: center;
 }
 .footer-tools {
   position: fixed;
   bottom: 20px;
   right: 20px;
   display: flex;
-  z-index: var(--z-footer-tools);
+  flex-direction: column;
+  z-index: 1082;
 }
-.footer-tools .btn {
+.footer-tools .go-up {
   color: var(--footer-btn-text);
   background: var(--footer-btn-bg);
-  width: var(--size-sm);
-  height: var(--size-sm);
-  font-size: var(--font-size-md);
-  text-align: center;
-  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  font-size: 0.875rem;
   padding: unset;
   display: flex;
   align-items: center;
   justify-content: center;
   border: unset;
-  border-radius: var(--radius-full) !important;
+  border-radius: 50%;
+  line-height: 1.5;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.footer-tools .btn:hover {
+.footer-tools .go-up:hover {
   color: var(--text);
 }
 .footer-btn-icon {
@@ -110,12 +120,21 @@ onUnmounted(() => {
   font-size: 11px;
   max-width: 800px;
   margin: 0 auto;
-  line-height: var(--line-height-relaxed);
+  line-height: 1.8;
+}
+.text-muted {
+  color: var(--text-muted);
+}
+/* 分隔符间距（扁平化后原 mx-* 工具类丢失，就地补回） */
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 @media (max-width: 767.98px) {
-  .main-footer .footer-text {
-    text-align: center;
-  }
   .footer-tools {
     bottom: 15px;
     right: 10px;

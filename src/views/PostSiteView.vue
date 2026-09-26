@@ -1,37 +1,35 @@
 <template>
-  <div class="content">
-    <PageTitle>投稿 & 反馈</PageTitle>
-    <div class="panel postsite-card">
+  <PageContent>
+    <SectionTitle>投稿 & 反馈</SectionTitle>
+    <Card>
       <p class="text-muted">感谢您的投稿！请通过邮件联系站长，或在 GitHub 上提交 Issue。</p>
       <p class="text-muted">
         <strong>联系方式：</strong>
-        <a href="mailto:help@acgn-world.com">help@acgn-world.com</a>
+        <AppLink href="mailto:help@acgn-world.com">help@acgn-world.com</AppLink>
       </p>
       <p class="text-muted">
         <strong>GitHub：</strong>
-        <a href="https://github.com/MomokiShiran/ACGN" target="_blank" rel="noopener noreferrer"
-          >ACGN 项目</a
+        <AppLink
+          href="https://github.com/MomokiShiran/ACGN"
+          target="_blank"
+          rel="noopener noreferrer"
+          >ACGN 项目</AppLink
         >
       </p>
-    </div>
-  </div>
+    </Card>
+  </PageContent>
 </template>
 
 <script setup>
-import PageTitle from '@/components/PageTitle.vue'
+import SectionTitle from '@/components/SectionTitle.vue'
+import PageContent from '@/components/PageContent.vue'
+import Card from '@/components/Card.vue'
+import AppLink from '@/components/AppLink.vue'
 </script>
 
 <style scoped>
-.postsite-card {
-  padding: var(--space-5);
-}
-.postsite-card p:last-child {
-  margin-bottom: 0;
-}
-
-@media (max-width: 767.98px) {
-  .postsite-card {
-    padding: var(--space-4);
-  }
+.text-muted {
+  margin: 0;
+  color: var(--text-muted);
 }
 </style>
