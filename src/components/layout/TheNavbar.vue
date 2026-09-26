@@ -7,19 +7,20 @@
 
       <div class="navbar-left">
         <div class="navbar-btn desktop-only">
-          <label class="menu-label">
-            <input
-              class="mini-button"
-              type="checkbox"
-              :checked="!sidebarStore.isMinimized"
-              @change="sidebarStore.triggerMini($event.target.checked)"
-            />
+          <button
+            class="menu-label"
+            type="button"
+            :class="{ 'is-open': !sidebarStore.isMinimized }"
+            :aria-expanded="!sidebarStore.isMinimized"
+            :aria-label="sidebarStore.isMinimized ? '展开侧边栏' : '收起侧边栏'"
+            @click="sidebarStore.toggleMini()"
+          >
             <svg class="menu-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <path class="menu-path line-1" d="M0 40h62c18 0 18-20-17 5L31 55"></path>
               <path class="menu-path line-2" d="M0 50h80"></path>
-              <path class="menu-path line-3" d="M0 60h62c18 0 18 20-17-5L31 45"></path>
+              <path class="menu-path line-3" d="M0 60h62c18 20 18 20-17 5L31 45"></path>
             </svg>
-          </label>
+          </button>
         </div>
 
         <router-link to="/announcements" class="navbar-announcement" rel="announcement">
@@ -167,9 +168,6 @@ onMounted(() => {
   margin: 0 -20px;
   height: 74px;
 }
-.navbar-btn .mini-button {
-  display: none;
-}
 .navbar-btn .menu-path {
   fill: none;
   stroke: #888;
@@ -187,14 +185,18 @@ onMounted(() => {
 }
 .navbar-btn .menu-label {
   display: block;
-  top: 0;
-  right: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: 0;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.navbar-btn .mini-button:checked + .menu-svg .line-1,
-.navbar-btn .mini-button:checked + .menu-svg .line-3 {
+.navbar-btn .menu-label.is-open .line-1,
+.navbar-btn .menu-label.is-open .line-3 {
   --length: 12.602325267;
 }
 .navbar-btn .line-1,
