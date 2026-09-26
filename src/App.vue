@@ -80,7 +80,7 @@ onUnmounted(() => {
   /* 文字 */
   --text: #282a2d;
   --text-heading: #1d232b;
-  --text-muted: #888;
+  --text-muted: #666;
   /* 表面 */
   --bg: #f9f9f9;
   --bg-surface: #fff;
@@ -91,10 +91,10 @@ onUnmounted(() => {
   /* 顶栏 / 页脚 */
   --header-bg: rgba(255, 255, 255, 0.7);
   --footer-btn-bg: rgba(0, 0, 0, 0.1);
-  --footer-btn-text: #888;
+  --footer-btn-text: #666;
   /* 侧栏 */
-  --sidebar-bg: #fff5f7;
-  --sidebar-text: #9a8a8f;
+  --sidebar-bg: #fff;
+  --sidebar-text: #515c6b;
   --sidebar-hover: rgba(215, 90, 127, 0.08);
 }
 
@@ -116,18 +116,6 @@ onUnmounted(() => {
   --sidebar-text: #b2b8be;
   --sidebar-hover: rgba(0, 0, 0, 0.3);
   --primary-soft: rgba(215, 90, 127, 0.15);
-}
-
-/* 显式浅色主题（index.html 切换时挂类） */
-.light {
-  color-scheme: light;
-  --text: #515c6b;
-  --text-muted: #515c6b;
-  --text-heading: #3a434e;
-  --header-bg: #fff;
-  --sidebar-bg: #fff;
-  --sidebar-text: #515c6b;
-  --input-bg: #f0f2f4;
 }
 
 body {
