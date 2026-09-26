@@ -14,7 +14,7 @@
             </div>
             <div class="url-info">
               <div class="url-name">
-                <Badge class="url-new" title="新">New</Badge>
+                <Badge v-if="site.isNew" class="url-new" title="新">New</Badge>
                 <strong>{{ site.name }}</strong>
               </div>
               <p class="url-desc">{{ site.description }}</p>
